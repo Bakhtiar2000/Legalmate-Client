@@ -1,0 +1,80 @@
+[
+    {
+      "_id": 1,
+      "name": "Criminal Law",
+      "img": "https://www.svgrepo.com/show/380208/crime-handcuffs-magic-magician-police.svg",
+      "attorneys": 32,
+      "contents": [
+        "Criminal Appeal",
+        "Ad-interim Bail",
+        "Anticipatory (Bail from the Hon’ble High Court)",
+        "Criminal Defense",
+        "Criminal Prosecution"
+      ]
+    },
+    {
+      "_id": 2,
+      "name": "Civil Matters",
+      "img": "https://www.svgrepo.com/show/504626/mull.svg",
+      "attorneys": 15,
+      "contents": [
+        "Land disputes",
+        "Succession, partition, breach of contract",
+        "Landlord-Tenant disputes",
+        "Landlord-Developer disputes",
+        "Declaration suit, Title suit, Money Suit"
+      ]
+    },
+    {
+      "_id": 3,
+      "name": "Family Law",
+      "img": "https://www.svgrepo.com/show/438524/family-round.svg",
+      "attorneys": 42,
+      "contents": [
+        "Litigation in the Family Courts",
+        "Divorce process",
+        "Pre & post divorce mediation",
+        "Special Marriage (Cross religion marriage)",
+        "Child custody"
+      ]
+    },
+    {
+      "_id": 4,
+      "name": "Business Law",
+      "img": "https://www.svgrepo.com/show/422574/business-growth-management.svg",
+      "attorneys": 26,
+      "contents": [
+        "Corporate Governance",
+        "Business Formation and Registration",
+        "Mergers and Acquisitions",
+        "Commercial Contracts",
+        "Intellectual Property"
+      ]
+    },
+    {
+      "_id": 5,
+      "name": "Immigration & Visa",
+      "img": "https://www.svgrepo.com/show/429364/identification-immigration-passport.svg",
+      "attorneys": 28,
+      "contents": [
+        "File assessment for immigration application",
+        "Application filing & handing",
+        "Appeal against rejection",
+        "Drafting of required documents",
+        "PI Visa recommendation"
+      ]
+    },
+    {
+      "_id": 6,
+      "name": "Banking & Finance",
+      "img": "https://www.svgrepo.com/show/513165/bank.svg",
+      "attorneys": 19,
+      "contents": [
+        "Banking Regulations",
+        "Loan Agreements",
+        "Securities and Investments",
+        "Financial Compliance",
+        "Debt Restructuring"
+      ]
+    }
+]

@@ -3,7 +3,7 @@ import { BsBuildings } from "react-icons/bs"
 const Stats = () => {
     return (
         <section className='relative bg-[url("https://i.ibb.co/Q6vt0gj/images-auto-x2.png")] bg-fixed bg-cover bg-no-repeat bg-center h-[420px] md:h-60 duration-300'>
-            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
             <div className=' absolute top-16 container right-2 left-2'>
                 <div className='w-full duration-300 grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-10'>
                     <div className='text-center'>

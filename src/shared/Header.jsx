@@ -16,7 +16,7 @@ const Header = () => {
     console.log(isMenuOpen);
     
     return (
-        <div className="flex justify-between gap-5 items-center px-5 py-3 bg-dark">
+        <div className="flex justify-between gap-5 items-center px-5 py-3 bg-dark z-50">
 
             {/* Logo nad name */}
            <div className='flex gap-5'>

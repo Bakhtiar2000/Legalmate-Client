@@ -1,20 +1,23 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import Breadcrumbs from '../../components/Breadcrumbs';
+import React from "react";
+import { Helmet } from "react-helmet";
+import Breadcrumbs from "../../components/Breadcrumbs";
+import ContactInfo from "./ContactInfo";
+import SendMail from "./SendMail";
 
 const Contact = () => {
-    return (
-        <div>
-             <Helmet>
-                <title>Contact - Legalmate</title>
-            </Helmet>
+  return (
+    <div>
+      <Helmet>
+        <title>Contact - Legalmate</title>
+      </Helmet>
 
-            <Breadcrumbs title="Contact" />
+      <Breadcrumbs title="Contact" />
 
+      <ContactInfo />
 
-            <h3>Contact</h3>
-        </div>
-    );
+      <SendMail />
+    </div>
+  );
 };
 
 export default Contact;

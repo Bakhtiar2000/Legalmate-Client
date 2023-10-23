@@ -8,6 +8,7 @@ import PracticeAreas from '../pages/practiceAreas/PracticeAreas';
 import Attorneys from '../pages/attorneys/Attorneys';
 import AboutUs from '../pages/aboutUs/AboutUs';
 import Contact from '../pages/contact/Contact';
+import Register from '../pages/login/Register';
 
 const router= createBrowserRouter([
         {
@@ -38,6 +39,10 @@ const router= createBrowserRouter([
                 {
                     path: "/login",
                     element: <Login></Login>
+                },
+                {
+                    path: "/register",
+                    element: <Register></Register>
                 }
             ]
         }

@@ -1,51 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 
 const Login = () => {
+  const [type, setType] = useState('password');
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-        </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
+    <div className="max-w-5xl mx-auto">
+      <div className="flex justify-center">
+
+        {/* Image */}
+        <img className="w-full hidden lg:block h-fit" src="https://img.freepik.com/free-photo/truth-concept-arrangement-with-balance_23-2149051293.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=sph" alt="" />
+
+        {/* Login Form */}
+        <div className="w-full bg-[url('https://img.freepik.com/free-photo/truth-concept-arrangement-with-balance_23-2149051293.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=sph')] bg-no-repeat bg-cover bg-center lg:bg-none bg-lightDark flex justify-center items-center h-screen lg:h-auto px-5">
+          <div className="mx-auto">
+            <h2 className="text-4xl font-semibold mb-10">Login to <span className="text-secondary">Legalmate</span></h2>
+
+            {/* Email */}
+            <input 
+            className="h-12 w-full outline-none px-3 text-dark mb-5" 
+            type="email"
+            placeholder="Email: "
+            />
+
+            {/* Password */}
+            <div className="h-12 w-full bg-white px-3 flex justify-between items-center mb-5">
+              <input 
+              className="flex-1 outline-none text-dark" 
+              type={type}
+              placeholder="Password: "
               />
+
+              {/* Eye */}
+              <div className='cursor-pointer text-black' onClick={() => setType(type === 'password' ? 'text' : 'password')}>
+                  {
+                      type === 'password' ? <AiOutlineEye /> : <AiOutlineEyeInvisible />
+                  }
+              </div>
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="password"
-                placeholder="password"
-                className="input input-bordered"
-                required
+            {/* Submit */}
+            <input 
+            className="h-12 w-full outline-none  px-3 font-bold cursor-pointer bg-white hover:bg-primary hover:text-white text-primary duration-300"
+            type="submit"
+            Value="Login"
+            />
+
+            {/* Sign up */}
+            <p className='mt-2 text-end text-gray'>New to Legalmate? <Link className='text-primary' to='/register'>Sign Up</Link></p>
+
+            {/* Divider */}
+            <div className='flex items-center gap-3 mx-5 my-5'>
+              <span className='border-t w-full block'></span>
+              <span>OR</span>
+              <span className='border-t w-full block'></span>
+            </div>
+
+            {/* Sign in with Google */}
+            <button
+              className="flex items-center justify-center gap-5 bg-white text-black w-full h-12 duration-300"
+            >
+              <img
+                className="w-8"
+                src="https://i.ibb.co/0f4JQNf/google.png"
+                alt="Google"
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
-            </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
-            </div>
-          </form>
+              <p>Sign in with Google</p>
+            </button>
+          </div>
         </div>
+
+        
+        
       </div>
     </div>
   );
