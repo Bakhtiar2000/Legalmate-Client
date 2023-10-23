@@ -12,6 +12,7 @@ const AboutUs = () => {
             <Breadcrumbs title="About Us" />
 
             <h3>About Us</h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum error quae tempora porro eos culpa exercitationem, omnis voluptatum impedit ducimus, officia rem numquam at molestias consectetur reiciendis. Hic porro accusamus nisi dignissimos repudiandae voluptatem recusandae incidunt fuga placeat, odit reprehenderit impedit nobis consequatur dicta in, provident eveniet. Voluptatum, culpa fugiat.
         </div>
     );
 };
