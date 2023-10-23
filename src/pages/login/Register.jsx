@@ -49,6 +49,8 @@ const Register = () => {
               placeholder="Confirm Password: "
               />
 
+              <input type="radio" name="" id="" />
+
               {/* Submit */}
               <input 
               className="h-12 w-full outline-none  px-3 font-bold cursor-pointer bg-white hover:bg-primary hover:text-white text-primary duration-300"
