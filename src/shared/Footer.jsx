@@ -3,7 +3,7 @@ import logo from "/Legalmate Icon.ico"
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-dark text-white">
+        <footer className="footer p-10 bg-dark text-white z-50">
           <aside className='md:mx-auto'>
             <img src={logo} alt="" />
             <p className='text-center text-primary text-2xl -mt-3'>Legalmate</p>

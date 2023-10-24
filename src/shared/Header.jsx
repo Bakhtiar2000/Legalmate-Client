@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from "/Legalmate Icon.ico"
-import ActiveLink from '../components/ActiveLink';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
+import NavItems from '../components/navItems';
+import Profile from '../components/Profile';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen]= useState(false)
-    const navItems= 
-    <>
-        <li><ActiveLink to="/">Home</ActiveLink></li>
-        <li><ActiveLink to="/practiceAreas">Practice areas</ActiveLink></li>
-        <li><ActiveLink to="/attorneys">Our attorneys</ActiveLink></li>
-        <li><ActiveLink to="/aboutUs">About us</ActiveLink></li>
-        <li><ActiveLink to="/contact">Contact</ActiveLink></li>
-    </>
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
     console.log(isMenuOpen);
     
     return (
@@ -28,35 +28,51 @@ const Header = () => {
 
            {/* NavItems in the center */}
             <ul className='hidden lg:flex justify-center gap-5 items-center text-white'>
-                {navItems}
+                <NavItems />
             </ul>
 
             {/* Login button */}
-            <Link to="/login">
-                <button className='hidden lg:block px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white'>Login</button>
-            </Link>
+            {
+                user?.email?
+                <div className='hidden lg:flex justify-end items-center gap-10'>
+                    <Profile />
+                    <button className='px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white' onClick={handleLogOut}>Log out</button>
+                </div> :
+                <Link to="/login">
+                    <button className='hidden lg:block px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white'>Login</button>
+                </Link>
+
+            }
 
             {/* SideNav */}
-            <label className="lg:hidden btn btn-circle swap swap-rotate bg-transparent text-white hover:text-black">
-                <input  onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} type="checkbox" />  
+           <div className='lg:hidden flex justify-end items-center gap-10'>
+                {/* Profile Picture */}
+                <Profile />
 
-                {/* hamburger icon */}
-                <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
+                {/* Toggle Icon */}
+                <label className="btn btn-circle swap swap-rotate bg-transparent text-white hover:text-black">
+                    <input  onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} type="checkbox" />  
 
-                {/* close icon */}
-                <svg className="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
-            </label>
+                    {/* hamburger icon */}
+                    <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
+
+                    {/* close icon */}
+                    <svg className="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
+                </label>
+           </div>
 
                 {
                     isMenuOpen &&
                     // NavItems
                     <ul className="absolute lg:hidden top-24 right-2 duration-300 bg-dark z-50 p-2 menu text-white w-56 rounded-box">
-                        {navItems}
+                        <NavItems />
 
                     {/* Login button */}
-                    <Link to="/login" className='mt-3 w-full'>
-                        <button className='text-center px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white'>Login</button>
-                    </Link>
+                    {
+                        user?.email?
+                        <button className='mt-3 text-center px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white' onClick={handleLogOut}>Log out</button>:
+                        <Link to="/login" className='mt-3 text-center px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white'>Login</Link>
+                    }
                     </ul>
                 }
         </div>

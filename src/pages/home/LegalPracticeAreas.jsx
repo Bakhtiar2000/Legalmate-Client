@@ -42,7 +42,7 @@ const LegalPracticeAreas = () => {
         <div>
         {
           practiceAreasData?.map((practiceArea) => (
-            <SwiperSlide className="rounded-lg border border-primary p-5 w-80 mx-auto duration-300 h-full">
+            <SwiperSlide key={practiceArea._id} className="rounded-lg border border-primary p-5 w-80 mx-auto duration-300 h-full">
               <img
                 className="w-16 md:w-20 h-16 md:h-20 object-cover bg-white text-secondary p-2 rounded-full mb-3"
                 src={practiceArea.img}
