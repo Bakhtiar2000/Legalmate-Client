@@ -3,6 +3,7 @@ import logo from "/Legalmate Icon.ico"
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import NavItems from '../components/navItems';
+import Profile from '../components/Profile';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -34,7 +35,7 @@ const Header = () => {
             {
                 user?.email?
                 <div className='hidden lg:flex justify-end items-center gap-10'>
-                    <Link className='w-6 h-6 md:w-10 md:h-10' to='/'><img src={user?.photoURL} alt={user?.displayName} className='rounded-full w-6 h-6 md:w-10 md:h-10' /></Link>
+                    <Profile />
                     <button className='px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white' onClick={handleLogOut}>Log out</button>
                 </div> :
                 <Link to="/login">
@@ -45,7 +46,10 @@ const Header = () => {
 
             {/* SideNav */}
            <div className='lg:hidden flex justify-end items-center gap-10'>
-            <Link className='w-6 h-6 md:w-10 md:h-10' to='/'><img src={user?.photoURL} alt={user?.displayName} className='rounded-full w-6 h-6 md:w-10 md:h-10' /></Link>
+                {/* Profile Picture */}
+                <Profile />
+
+                {/* Toggle Icon */}
                 <label className="btn btn-circle swap swap-rotate bg-transparent text-white hover:text-black">
                     <input  onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} type="checkbox" />  
 

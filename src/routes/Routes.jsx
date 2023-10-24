@@ -13,6 +13,8 @@ import Appointments from '../pages/appointments/Appointments';
 import Messages from '../pages/messages/Messages';
 import FindCases from '../pages/findCases/FindCases';
 import MyCases from '../pages/myCases/myCases';
+import MyProfile from '../pages/myProfle/MyProfile';
+import PaymentHistory from '../pages/paymentHistory/PaymentHistory';
 
 const router= createBrowserRouter([
         {
@@ -63,6 +65,14 @@ const router= createBrowserRouter([
                 {
                     path: "/myCases",
                     element: <MyCases></MyCases>
+                },
+                {
+                    path: "/myProfile",
+                    element: <MyProfile></MyProfile>
+                },
+                {
+                    path: "/paymentHistory",
+                    element: <PaymentHistory></PaymentHistory>
                 }
             ]
         }
