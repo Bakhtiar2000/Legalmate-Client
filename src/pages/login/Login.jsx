@@ -4,6 +4,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from 'react-toastify';
+import Swal from "sweetalert2";
 
 const Login = () => {
   
@@ -19,6 +20,16 @@ const Login = () => {
     signIn(data.email, data.password)
         .then(() => {
             navigate(from, { replace: true })
+             
+            Swal.fire({
+              title: 'Account login successful',
+              showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+              }
+          })
         })
         .catch(error => {
           console.log(error);
@@ -43,6 +54,24 @@ const Login = () => {
         })
     };
 
+    const handleLogInWithGoogle = ()=> {
+      googleSignIn()
+        .then(() => {
+          navigate(from, { replace: true })
+          
+          Swal.fire({
+            title: 'Account login successful',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+        })
+        .catch(error => console.log(error));
+    }
+
   return (
     <div className="max-w-5xl mx-auto">
       <div className="flex justify-center">
@@ -51,13 +80,14 @@ const Login = () => {
         <img className="w-full hidden lg:block" src="https://img.freepik.com/free-photo/truth-concept-arrangement-with-balance_23-2149051293.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=sph" alt="" />
 
         {/* Login Form */}
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-[url('https://img.freepik.com/free-photo/truth-concept-arrangement-with-balance_23-2149051293.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=sph')] bg-no-repeat bg-cover bg-center lg:bg-none bg-lightDark flex justify-center items-center h-screen lg:h-auto px-5">
+        <div className="w-full bg-[url('https://img.freepik.com/free-photo/truth-concept-arrangement-with-balance_23-2149051293.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=sph')] bg-no-repeat bg-cover bg-center lg:bg-none bg-lightDark flex justify-center items-center h-screen lg:h-auto px-5">
           <div className="mx-auto">
             <h2 className="text-4xl font-semibold mb-10">Login to <span className="text-secondary">Legalmate</span></h2>
 
+           <form onSubmit={handleSubmit(onSubmit)} >
             {/* Email */}
             <input 
-            className="h-12 w-full outline-none px-3 text-dark mb-5" 
+            className="h-12 w-full outline-none px-3 text-dark" 
             type="email"
             placeholder="Email: "
             {...register("email", { required: true })} 
@@ -65,7 +95,7 @@ const Login = () => {
             {errors.email && <span className='text-sm text-red-400 ml-1'>Email is required</span>}
 
             {/* Password */}
-            <div className="h-12 w-full bg-white px-3 flex justify-between items-center mb-5">
+            <div className="h-12 w-full bg-white px-3 flex justify-between items-center mt-5">
               <input 
               className="flex-1 outline-none text-dark" 
               type={type}
@@ -84,13 +114,14 @@ const Login = () => {
 
             {/* Submit */}
             <input 
-            className="h-12 w-full outline-none  px-3 font-bold cursor-pointer bg-white hover:bg-primary hover:text-white text-primary duration-300"
+            className="h-12 w-full outline-none  px-3 font-bold cursor-pointer bg-white hover:bg-primary hover:text-white text-primary duration-300 mt-5"
             type="submit"
             value="Login"
             />
 
             {/* Sign up */}
             <p className='mt-2 text-end text-gray'>New to Legalmate? <Link className='text-primary' to='/register'>Sign Up</Link></p>
+           </form>
 
             {/* Divider */}
             <div className='flex items-center gap-3 mx-5 my-5'>
@@ -100,7 +131,8 @@ const Login = () => {
             </div>
 
             {/* Sign in with Google */}
-            <button
+            <button 
+            onClick={handleLogInWithGoogle}
               className="flex items-center justify-center gap-5 bg-white text-black w-full h-12 duration-300"
             >
               <img
@@ -111,10 +143,7 @@ const Login = () => {
               <p>Sign in with Google</p>
             </button>
           </div>
-        </form>
-
-        
-        
+        </div>
       </div>
     </div>
   );

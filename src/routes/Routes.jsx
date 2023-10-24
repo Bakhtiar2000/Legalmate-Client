@@ -9,6 +9,10 @@ import Attorneys from '../pages/attorneys/Attorneys';
 import AboutUs from '../pages/aboutUs/AboutUs';
 import Contact from '../pages/contact/Contact';
 import Register from '../pages/login/Register';
+import Appointments from '../pages/appointments/Appointments';
+import Messages from '../pages/messages/Messages';
+import FindCases from '../pages/findCases/FindCases';
+import MyCases from '../pages/myCases/myCases';
 
 const router= createBrowserRouter([
         {
@@ -43,6 +47,22 @@ const router= createBrowserRouter([
                 {
                     path: "/register",
                     element: <Register></Register>
+                },
+                {
+                    path: "/appointments",
+                    element: <Appointments></Appointments>
+                },
+                {
+                    path: "/messages",
+                    element: <Messages></Messages>
+                },
+                {
+                    path: "/findCases",
+                    element: <FindCases></FindCases>
+                },
+                {
+                    path: "/myCases",
+                    element: <MyCases></MyCases>
                 }
             ]
         }
