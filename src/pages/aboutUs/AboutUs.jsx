@@ -19,19 +19,16 @@ const AboutUs = () => {
                     <p className='lg:text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae distinctio ea adipisci pariatur, ipsum repudiandae. Dolorem, ad? Incidunt, saepe necessitatibus sapiente eligendi maxime reprehenderit quisquam! Error necessitatibus blanditiis facere deserunt, dignissimos vitae eligendi animi totam nihil nemo eveniet tenetur voluptates est, quis consequuntur incidunt alias tempore repudiandae dicta eum cum aliquid ipsa iste ut? Qui quis error, fugiat corrupti, excepturi odit possimus eum voluptates distinctio iusto ex? Tenetur fugiat eum modi quas necessitatibus saepe sunt qui exercitationem magnam excepturi. Quaerat a amet molestias veniam exercitationem facilis possimus expedita fugit unde iste neque, iure id itaque totam alias blanditiis ab aut.</p>
 
                     <h2 className='text-4xl text-primary font-semibold mb-5 mt-10 mx-auto'>Why Choose Us?</h2>
-                    <div className='flex items-center gap-3 mb-5 lg:text-xl'>
-                        <img className="w-8 lg:w-10 h-8 lg:h-10" src="https://i.ibb.co/ChcsTY9/law-office-svgrepo-com.png" alt="" />
-                        <p className='text-4xl pr-3'>:</p>
+                    <div className='flex items-center gap-3 mb-5 lg:text-xl pl-8'>
+                        <img className="w-6 h-6" src="https://i.ibb.co/ChcsTY9/law-office-svgrepo-com.png" alt="" />
                         <p>Best Case Strategy</p>
                     </div>
-                    <div className='flex items-center gap-3 mb-5 lg:text-xl'>
-                        <img className="w-8 lg:w-10 h-8 lg:h-10" src="https://i.ibb.co/s6bDWsy/female-attorney-woman-female-lawyer-svgrepo-com.png" alt="" />
-                        <p className='text-4xl pr-3'>:</p>
+                    <div className='flex items-center gap-3 mb-5 lg:text-xl pl-8'>
+                        <img className="w-6 h-6" src="https://i.ibb.co/s6bDWsy/female-attorney-woman-female-lawyer-svgrepo-com.png" alt="" />
                         <p>Unparalleled Access to Top Attorneys</p>
                     </div>
-                    <div className='flex items-center gap-3 mb-5 lg:text-xl'>
-                        <img className="w-8 lg:w-10 h-8 lg:h-10" src="https://i.ibb.co/L858fbY/incognito-svgrepo-com.png" alt="" />
-                        <p className='text-4xl pr-3'>:</p>
+                    <div className='flex items-center gap-3 mb-5 lg:text-xl pl-8'>
+                        <img className="w-6 h-6" src="https://i.ibb.co/L858fbY/incognito-svgrepo-com.png" alt="" />
                         <p>Privacy and Security</p>
                     </div>
 

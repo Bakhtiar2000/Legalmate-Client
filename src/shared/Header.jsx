@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from "/Legalmate Icon.ico"
 import ActiveLink from '../components/ActiveLink';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen]= useState(false)
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
     const navItems= 
     <>
         <li><ActiveLink to="/">Home</ActiveLink></li>
@@ -32,9 +40,19 @@ const Header = () => {
             </ul>
 
             {/* Login button */}
-            <Link to="/login">
-                <button className='hidden lg:block px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white'>Login</button>
-            </Link>
+            {
+                user?.email?
+                <>
+
+                    <Link className='w-6 h-6 md:w-10 md:h-10' to='/'><img src={user?.photoURL} alt={user?.displayName} className='rounded-full w-6 h-6 md:w-10 md:h-10' /></Link>
+                    <button className='hidden lg:block px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white' onClick={handleLogOut}>Log out</button>
+                </> :
+                <Link to="/login">
+                    <button className='hidden lg:block px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white'>Login</button>
+                </Link>
+                // <button className='hidden lg:block px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white'>Logout</button>
+
+            }
 
             {/* SideNav */}
             <label className="lg:hidden btn btn-circle swap swap-rotate bg-transparent text-white hover:text-black">
@@ -54,9 +72,13 @@ const Header = () => {
                         {navItems}
 
                     {/* Login button */}
-                    <Link to="/login" className='mt-3 w-full'>
+                    {
+                        user?.email?
+                        <button className='text-center px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white' onClick={handleLogOut}>Log out</button>:
+                        <Link to="/login" className='mt-3 w-full'>
                         <button className='text-center px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white'>Login</button>
                     </Link>
+                    }
                     </ul>
                 }
         </div>

@@ -3,6 +3,10 @@ import Header from '../shared/Header';
 import { Outlet } from 'react-router-dom';
 import Footer from '../shared/Footer';
 
+// react toastify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Main = () => {
     return (
         <div>
@@ -11,6 +15,7 @@ const Main = () => {
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>
+            <ToastContainer />
         </div>
     );
 };
