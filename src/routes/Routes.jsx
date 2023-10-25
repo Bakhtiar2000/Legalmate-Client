@@ -15,6 +15,8 @@ import FindCases from '../pages/findCases/FindCases';
 import MyCases from '../pages/myCases/myCases';
 import MyProfile from '../pages/myProfle/MyProfile';
 import PaymentHistory from '../pages/paymentHistory/PaymentHistory';
+import PrivateRoute from './PrivateRoute';
+import AttorneyDetails from '../pages/attorneys/AttorneyDetails';
 
 const router= createBrowserRouter([
         {
@@ -33,6 +35,11 @@ const router= createBrowserRouter([
                 {
                     path: "/attorneys",
                     element: <Attorneys></Attorneys>
+                },
+                {
+                    path: "/attorney_details/:id",
+                    element: <PrivateRoute><AttorneyDetails></AttorneyDetails></PrivateRoute>,
+                    // loader: ({ params }) => fetch(`${baseURL}/attorney/${params.id}`)
                 },
                 {
                     path: "/aboutUs",
