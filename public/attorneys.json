@@ -1,17 +1,89 @@
 [
-    {
-      "_id": 1,
-      "name": "Musharraf Karim",
-      "img": "https://img.freepik.com/premium-photo/happy-laughing-old-bearded-business-man-leader_941600-6823.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=ais",
-      "about":
-        "As an Accident Law specialist, I'm committed to guiding you through the legal complexities of accidents. With years of experience, I aim to ensure you receive the justice and support you deserve.",
-      "practiceArea": "Accident Law",
-      "client": 32,
-      "facebook": "https:/www.facebook.com/",
-      "linkedin": "https:/www.linkedin.com/",
-      "twitter": "https:/www.twitter.com/",
-      "email": "musharraf@gmail.com"
-    },
+  {
+    "_id": 1,
+    "name": "Musharraf Karim",
+    "img": "https://img.freepik.com/premium-photo/happy-laughing-old-bearded-business-man-leader_941600-6823.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=ais",
+    "about":
+      "As an Accident Law specialist, I'm committed to guiding you through the legal complexities of accidents. With years of experience, I aim to ensure you receive the justice and support you deserve.",
+    "practiceArea": "Accident Law",
+    "contact": "+8801879379797",
+    "location": "Dhaka, Bangladesh",
+    "hourly_rate": "$200-250",
+    "rating": 4.6,
+    "license": [
+      {
+        "state": "Dhaka",
+        "acquired_year": 2010,
+        "licensed_for": 13,
+        "status": "Active"
+      }
+    ],
+    "experience": [
+      {
+        "position" : "Attorney",
+        "company": "Pivotal Law Group",
+        "start_year": 2017,
+        "end_year": "present"
+      },
+      {
+        "position" : "Associate Attorney",
+        "company": "Rao & Pierce",
+        "start_year": 2013,
+        "end_year": 2017
+      },
+      {
+        "position" : "Associate Attorney",
+        "company": "Mercado & Hartung",
+        "start_year": 2011,
+        "end_year": 2012
+      }
+    ],
+    "education": [
+      {
+        "institution": "Seattle University School of Law",
+        "subject": "JD - Juris Doctor",
+        "start_year": 2007,
+        "end_year": 2009
+      },
+      {
+        "institution": "University of British Columbia",
+        "subject": "BA - Bachelor of Arts",
+        "start_year": 2004,
+        "end_year": 2007
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Salma Khatun",
+        "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+        "rating": 5,
+        "date": "October 10, 2017 "
+      },
+      {
+        "name": "Salma Khatun",
+        "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+        "rating": 4,
+        "date": "October 10, 2017 "
+      }
+    ],
+    "awards": [
+      {
+        "name": "Rising Star",
+        "from": "Super Lawyers",
+        "year": 2020
+      },
+      {
+        "name": "Bangladesh's Most Honored Professionals",
+        "from": "BD Registry",
+        "year": 2022
+      }
+    ],
+    "website": "https:/www.website.com/",
+    "facebook": "https:/www.facebook.com/",
+    "linkedin": "https:/www.linkedin.com/",
+    "twitter": "https:/www.twitter.com/",
+    "email": "musharraf@gmail.com"
+  },
     {
       "_id": 2,
       "name": "Linkon Chowdhury",

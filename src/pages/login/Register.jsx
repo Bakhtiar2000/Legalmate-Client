@@ -34,6 +34,7 @@ const Register = () => {
       .then((result) => {
         profileUpdate(result.user, data.name)
           .then((result) => {
+            
             navigate(from, { replace: true });
             Swal.fire({
               title: 'Account created successfully',
