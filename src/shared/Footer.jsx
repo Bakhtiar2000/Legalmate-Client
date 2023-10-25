@@ -1,35 +1,55 @@
 import React from 'react';
 import logo from "/Legalmate Icon.ico"
+import { Link } from 'react-router-dom';
+import { FaFacebookF, FaLinkedin, FaTwitter } from "react-icons/fa"
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-dark text-white z-50">
-          <aside className='md:mx-auto'>
-            <img src={logo} alt="" />
-            <p className='text-center text-primary text-2xl -mt-3'>Legalmate</p>
-            <p>Serving Legal support since 2012</p>
-          </aside> 
-          <nav className='md:mx-auto'>
-            <header className="footer-title">Services</header> 
-            <a className="link link-hover">Branding</a> 
-            <a className="link link-hover">Design</a> 
-            <a className="link link-hover">Marketing</a> 
-            <a className="link link-hover">Advertisement</a>
-          </nav> 
-          <nav className='md:mx-auto'>
-            <header className="footer-title">Company</header> 
-            <a className="link link-hover">About us</a> 
-            <a className="link link-hover">Contact</a> 
-            <a className="link link-hover">Jobs</a> 
-            <a className="link link-hover">Press kit</a>
-          </nav> 
-          <nav className='md:mx-auto'>
-            <header className="footer-title">Contact Us</header> 
-            <p>43/7 Northern Tower, Banani</p>
-            <p>Dhaka-1263, Bangladesh</p>
-            <p>support@legalmate.com</p>
-            <p>+8801543435473</p>
-          </nav>
+        <footer className=" bg-dark text-white">
+            <div className='container py-10 md:flex justify-between gap-5 z-50'>
+                <div className='mb-10 md:mb-0'>
+                  <img src={logo} alt="" />
+                  <p className='text-primary text-2xl -mt-3'>Legalmate</p>
+                  <p>Serving Legal support since 2012</p>
+                  <div className="flex gap-3 items-center mt-5">
+                    <a href="https:/www.facebook.com/" target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
+                      <FaFacebookF />
+                    </a>
+                    <a href="https:/www.linkedin.com/" target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
+                      <FaLinkedin />
+                    </a>
+                    <a href="https:/www.twitter.com/" target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
+                      <FaTwitter />
+                    </a>
+                  </div>
+                </div> 
+
+                <div className='flex flex-col mb-10 md:mb-0 w-fit'>
+                  <header className='text-xl text-primary mb-1'>Quick Links</header> 
+                  <p className='border rounded border-primary mb-2 w-16'></p>
+                  <Link to="/practiceAreas" className="link link-hover">Practice areas</Link> 
+                  <Link to="/attorneys" className="link link-hover">Our attorneys</Link> 
+                  <Link to="/aboutUs" className="link link-hover">About us</Link> 
+                  <Link to="/contact" className="link link-hover">Contact</Link>
+                </div> 
+
+                <div className='flex flex-col mb-10 md:mb-0  w-fit'>
+                <header className='text-xl text-primary mb-1'>Legal Concerns</header> 
+                  <span className='border rounded border-primary mb-2 w-20'></span>
+                  <a className="link link-hover">Terms of use</a>
+                  <a className="link link-hover">Privacy policy</a>
+                  <a className="link link-hover">Cookie policy</a>
+                </div> 
+
+                <div className='mb-10 md:mb-0  w-fit'>
+                <header className='text-xl text-primary mb-1'>Contact Us</header> 
+                  <p className='border rounded border-primary mb-2 w-16'></p>
+                  <p>43/7 Northern Tower, Banani</p>
+                  <p>Dhaka-1263, Bangladesh</p>
+                  <p>support@legalmate.com</p>
+                  <p>+8801543435473</p>
+                </div>
+            </div> 
         </footer>
     );
 };

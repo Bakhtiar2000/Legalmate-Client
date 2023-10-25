@@ -6,7 +6,79 @@
       "about":
         "As an Accident Law specialist, I'm committed to guiding you through the legal complexities of accidents. With years of experience, I aim to ensure you receive the justice and support you deserve.",
       "practiceArea": "Accident Law",
-      "client": 32,
+      "contact": "+8801879379797",
+      "location": "Dhaka, Bangladesh",
+      "hourly_rate": "$200-250",
+      "rating": 4.6,
+      "license": [
+        {
+          "state": "Dhaka",
+          "acquired_year": 2010,
+          "licensed_for": 13,
+          "status": "Active"
+        }
+      ],
+      "experience": [
+        {
+          "position" : "Attorney",
+          "company": "Pivotal Law Group",
+          "start_year": 2017,
+          "end_year": "present"
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Rao & Pierce",
+          "start_year": 2013,
+          "end_year": 2017
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Mercado & Hartung",
+          "start_year": 2011,
+          "end_year": 2012
+        }
+      ],
+      "education": [
+        {
+          "institution": "Seattle University School of Law",
+          "subject": "JD - Juris Doctor",
+          "start_year": 2007,
+          "end_year": 2009
+        },
+        {
+          "institution": "University of British Columbia",
+          "subject": "BA - Bachelor of Arts",
+          "start_year": 2004,
+          "end_year": 2007
+        }
+      ],
+      "reviews": [
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 5,
+          "date": "October 10, 2017 "
+        },
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 4,
+          "date": "October 10, 2017 "
+        }
+      ],
+      "awards": [
+        {
+          "name": "Rising Star",
+          "from": "Super Lawyers",
+          "year": 2020
+        },
+        {
+          "name": "Bangladesh's Most Honored Professionals",
+          "from": "BD Registry",
+          "year": 2022
+        }
+      ],
+      "website": "https:/www.website.com/",
       "facebook": "https:/www.facebook.com/",
       "linkedin": "https:/www.linkedin.com/",
       "twitter": "https:/www.twitter.com/",
@@ -19,7 +91,79 @@
       "about":
         "In the world of Business Law, my goal is to provide unwavering guidance to businesses of all sizes. I'm dedicated to using my expertise to help your business thrive within the bounds of the law.",
       "practiceArea": "Business Law",
-      "client": 35,
+            "contact": "+8801879379797",
+      "location": "Dhaka, Bangladesh",
+      "hourly_rate": "$200-250",
+      "rating": 4.6,
+      "license": [
+        {
+          "state": "Dhaka",
+          "acquired_year": 2010,
+          "licensed_for": 13,
+          "status": "Active"
+        }
+      ],
+      "experience": [
+        {
+          "position" : "Attorney",
+          "company": "Pivotal Law Group",
+          "start_year": 2017,
+          "end_year": "present"
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Rao & Pierce",
+          "start_year": 2013,
+          "end_year": 2017
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Mercado & Hartung",
+          "start_year": 2011,
+          "end_year": 2012
+        }
+      ],
+      "education": [
+        {
+          "institution": "Seattle University School of Law",
+          "subject": "JD - Juris Doctor",
+          "start_year": 2007,
+          "end_year": 2009
+        },
+        {
+          "institution": "University of British Columbia",
+          "subject": "BA - Bachelor of Arts",
+          "start_year": 2004,
+          "end_year": 2007
+        }
+      ],
+      "reviews": [
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 5,
+          "date": "October 10, 2017 "
+        },
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 4,
+          "date": "October 10, 2017 "
+        }
+      ],
+      "awards": [
+        {
+          "name": "Rising Star",
+          "from": "Super Lawyers",
+          "year": 2020
+        },
+        {
+          "name": "Bangladesh's Most Honored Professionals",
+          "from": "BD Registry",
+          "year": 2022
+        }
+      ],
+      "website": "https:/www.website.com/",
       "facebook": "https:/www.facebook.com/",
       "linkedin": "https:/www.linkedin.com/",
       "twitter": "https:/www.twitter.com/",
@@ -32,7 +176,79 @@
       "about":
         "With a compassionate approach, I specialize in Family Law to help families navigate sensitive legal matters. I'm here to offer support and legal solutions that ensure your family's well-being.",
       "practiceArea": "Family Law",
-      "client": 22,
+            "contact": "+8801879379797",
+      "location": "Dhaka, Bangladesh",
+      "hourly_rate": "$200-250",
+      "rating": 4.6,
+      "license": [
+        {
+          "state": "Dhaka",
+          "acquired_year": 2010,
+          "licensed_for": 13,
+          "status": "Active"
+        }
+      ],
+      "experience": [
+        {
+          "position" : "Attorney",
+          "company": "Pivotal Law Group",
+          "start_year": 2017,
+          "end_year": "present"
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Rao & Pierce",
+          "start_year": 2013,
+          "end_year": 2017
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Mercado & Hartung",
+          "start_year": 2011,
+          "end_year": 2012
+        }
+      ],
+      "education": [
+        {
+          "institution": "Seattle University School of Law",
+          "subject": "JD - Juris Doctor",
+          "start_year": 2007,
+          "end_year": 2009
+        },
+        {
+          "institution": "University of British Columbia",
+          "subject": "BA - Bachelor of Arts",
+          "start_year": 2004,
+          "end_year": 2007
+        }
+      ],
+      "reviews": [
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 5,
+          "date": "October 10, 2017 "
+        },
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 4,
+          "date": "October 10, 2017 "
+        }
+      ],
+      "awards": [
+        {
+          "name": "Rising Star",
+          "from": "Super Lawyers",
+          "year": 2020
+        },
+        {
+          "name": "Bangladesh's Most Honored Professionals",
+          "from": "BD Registry",
+          "year": 2022
+        }
+      ],
+      "website": "https:/www.website.com/",
       "facebook": "https:/www.facebook.com/",
       "linkedin": "https:/www.linkedin.com/",
       "twitter": "https:/www.twitter.com/",
@@ -45,7 +261,79 @@
       "about":
         "In Education Law, I'm dedicated to assisting educational institutions and students with their legal needs. My commitment to the field ensures that educational endeavors are protected and upheld.",
       "practiceArea": "Education Law",
-      "client": 19,
+            "contact": "+8801879379797",
+      "location": "Dhaka, Bangladesh",
+      "hourly_rate": "$200-250",
+      "rating": 4.6,
+      "license": [
+        {
+          "state": "Dhaka",
+          "acquired_year": 2010,
+          "licensed_for": 13,
+          "status": "Active"
+        }
+      ],
+      "experience": [
+        {
+          "position" : "Attorney",
+          "company": "Pivotal Law Group",
+          "start_year": 2017,
+          "end_year": "present"
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Rao & Pierce",
+          "start_year": 2013,
+          "end_year": 2017
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Mercado & Hartung",
+          "start_year": 2011,
+          "end_year": 2012
+        }
+      ],
+      "education": [
+        {
+          "institution": "Seattle University School of Law",
+          "subject": "JD - Juris Doctor",
+          "start_year": 2007,
+          "end_year": 2009
+        },
+        {
+          "institution": "University of British Columbia",
+          "subject": "BA - Bachelor of Arts",
+          "start_year": 2004,
+          "end_year": 2007
+        }
+      ],
+      "reviews": [
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 5,
+          "date": "October 10, 2017 "
+        },
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 4,
+          "date": "October 10, 2017 "
+        }
+      ],
+      "awards": [
+        {
+          "name": "Rising Star",
+          "from": "Super Lawyers",
+          "year": 2020
+        },
+        {
+          "name": "Bangladesh's Most Honored Professionals",
+          "from": "BD Registry",
+          "year": 2022
+        }
+      ],
+      "website": "https:/www.website.com/",
       "facebook": "https:/www.facebook.com/",
       "linkedin": "https:/www.linkedin.com/",
       "twitter": "https:/www.twitter.com/",
@@ -58,7 +346,79 @@
       "about":
         "As an Insurance Law expert, I'm here to offer comprehensive support to individuals and companies dealing with insurance matters. My knowledge and dedication make me a trusted advocate for your insurance needs.",
       "practiceArea": "Insurance Law",
-      "client": 44,
+            "contact": "+8801879379797",
+      "location": "Dhaka, Bangladesh",
+      "hourly_rate": "$200-250",
+      "rating": 4.6,
+      "license": [
+        {
+          "state": "Dhaka",
+          "acquired_year": 2010,
+          "licensed_for": 13,
+          "status": "Active"
+        }
+      ],
+      "experience": [
+        {
+          "position" : "Attorney",
+          "company": "Pivotal Law Group",
+          "start_year": 2017,
+          "end_year": "present"
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Rao & Pierce",
+          "start_year": 2013,
+          "end_year": 2017
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Mercado & Hartung",
+          "start_year": 2011,
+          "end_year": 2012
+        }
+      ],
+      "education": [
+        {
+          "institution": "Seattle University School of Law",
+          "subject": "JD - Juris Doctor",
+          "start_year": 2007,
+          "end_year": 2009
+        },
+        {
+          "institution": "University of British Columbia",
+          "subject": "BA - Bachelor of Arts",
+          "start_year": 2004,
+          "end_year": 2007
+        }
+      ],
+      "reviews": [
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 5,
+          "date": "October 10, 2017 "
+        },
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 4,
+          "date": "October 10, 2017 "
+        }
+      ],
+      "awards": [
+        {
+          "name": "Rising Star",
+          "from": "Super Lawyers",
+          "year": 2020
+        },
+        {
+          "name": "Bangladesh's Most Honored Professionals",
+          "from": "BD Registry",
+          "year": 2022
+        }
+      ],
+      "website": "https:/www.website.com/",
       "facebook": "https:/www.facebook.com/",
       "linkedin": "https:/www.linkedin.com/",
       "twitter": "https:/www.twitter.com/",
@@ -71,7 +431,79 @@
       "about":
         "Specializing in Culprit Law, my mission is to provide fair representation and ensure justice for those facing legal challenges. I'm dedicated to advocating for your rights and upholding the principles of justice.",
       "practiceArea": "Criminal Law",
-      "client": 28,
+            "contact": "+8801879379797",
+      "location": "Dhaka, Bangladesh",
+      "hourly_rate": "$200-250",
+      "rating": 4.6,
+      "license": [
+        {
+          "state": "Dhaka",
+          "acquired_year": 2010,
+          "licensed_for": 13,
+          "status": "Active"
+        }
+      ],
+      "experience": [
+        {
+          "position" : "Attorney",
+          "company": "Pivotal Law Group",
+          "start_year": 2017,
+          "end_year": "present"
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Rao & Pierce",
+          "start_year": 2013,
+          "end_year": 2017
+        },
+        {
+          "position" : "Associate Attorney",
+          "company": "Mercado & Hartung",
+          "start_year": 2011,
+          "end_year": 2012
+        }
+      ],
+      "education": [
+        {
+          "institution": "Seattle University School of Law",
+          "subject": "JD - Juris Doctor",
+          "start_year": 2007,
+          "end_year": 2009
+        },
+        {
+          "institution": "University of British Columbia",
+          "subject": "BA - Bachelor of Arts",
+          "start_year": 2004,
+          "end_year": 2007
+        }
+      ],
+      "reviews": [
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 5,
+          "date": "October 10, 2017 "
+        },
+        {
+          "name": "Salma Khatun",
+          "review": "I had the great fortune tomorrow Kim! I went in knowing I needed to accomplish something not knowing anything on how to accomplish it. Kim was patient, extremely thorough. When she says not to worry about something that she’ll take care of... really, don’t fret! She’ll do it or get you and answer you need. My time with her has ended but surely I would not Hesitate on reaching to her for any future tasks that I may need!",
+          "rating": 4,
+          "date": "October 10, 2017 "
+        }
+      ],
+      "awards": [
+        {
+          "name": "Rising Star",
+          "from": "Super Lawyers",
+          "year": 2020
+        },
+        {
+          "name": "Bangladesh's Most Honored Professionals",
+          "from": "BD Registry",
+          "year": 2022
+        }
+      ],
+      "website": "https:/www.website.com/",
       "facebook": "https:/www.facebook.com/",
       "linkedin": "https:/www.linkedin.com/",
       "twitter": "https:/www.twitter.com/",

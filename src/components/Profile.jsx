@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { Link } from 'react-router-dom';
-import { VscAccount } from "react-icons/vsc"
-import { MdOutlineHistory } from "react-icons/md"
+import { VscAccount, VscLaw } from "react-icons/vsc"
+import { MdOutlineHistory, MdOutlineContactMail } from "react-icons/md"
 
 const Profile = () => {
     const { user } = useContext(AuthContext)
@@ -26,6 +26,12 @@ const Profile = () => {
                     </li>
                     <li>
                         <Link to='/paymentHistory' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'><MdOutlineHistory /> Payment History</Link>
+                    </li>
+                    <li>
+                        <Link to='/aboutUs' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'><VscLaw /> About Us</Link>
+                    </li>
+                    <li>
+                        <Link to='/contact' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'><MdOutlineContactMail /> Contact</Link>
                     </li>
 
                 </ul>

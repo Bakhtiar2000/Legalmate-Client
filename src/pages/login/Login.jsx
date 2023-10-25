@@ -87,7 +87,7 @@ const Login = () => {
            <form onSubmit={handleSubmit(onSubmit)} >
             {/* Email */}
             <input 
-            className="h-12 w-full outline-none px-3 text-dark" 
+            className="h-12 w-full outline-none px-3 text-dark bg-white" 
             type="email"
             placeholder="Email: "
             {...register("email", { required: true })} 
@@ -97,7 +97,7 @@ const Login = () => {
             {/* Password */}
             <div className="h-12 w-full bg-white px-3 flex justify-between items-center mt-5">
               <input 
-              className="flex-1 outline-none text-dark" 
+              className="flex-1 outline-none text-dark bg-white" 
               type={type}
               placeholder="Password: "
               {...register("password", { required: true })} 

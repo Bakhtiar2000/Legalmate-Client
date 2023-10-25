@@ -88,7 +88,7 @@ const Register = () => {
               <form onSubmit={handleSubmit(onSubmit)} >
                 {/* Full Name */}
                 <input 
-                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary  px-3 text-dark" 
+                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary  px-3 text-dark bg-white" 
                 type="text"
                 placeholder="Full Name: "
                 {...register("name")} 
@@ -96,7 +96,7 @@ const Register = () => {
 
                 {/* Image */}
                 <input 
-                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary px-3 text-dark mt-5" 
+                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary px-3 text-dark mt-5 bg-white" 
                 type="text"
                 placeholder="Image URL: "
                 {...register("image")} 
@@ -104,7 +104,7 @@ const Register = () => {
     
                 {/* Email */}
                 <input 
-                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary  px-3 text-dark mt-5" 
+                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary  px-3 text-dark mt-5 bg-white" 
                 type="email"
                 placeholder="*Email: "
                 {...register("email", { required: true })} 
@@ -113,7 +113,7 @@ const Register = () => {
     
                 {/* Password */}
                 <input 
-                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary  px-3 text-dark mt-5" 
+                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary  px-3 text-dark mt-5 bg-white" 
                 type="password"
                 placeholder="*Password: "
                 {...register("password", { required: true })} 
@@ -122,7 +122,7 @@ const Register = () => {
 
                 {/* Confirm Password */}
                 <input 
-                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary  px-3 text-dark mt-5" 
+                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary  px-3 text-dark mt-5 bg-white" 
                 type="password"
                 placeholder="*Confirm Password: "
                 {...register("confirm", { required: true})} 
