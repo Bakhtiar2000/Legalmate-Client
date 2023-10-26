@@ -4,10 +4,10 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const NavItems = () => {
     const { user } = useContext(AuthContext)
-    const role= "user"
+    // const role= "user"
     // const role= "client"
-    // const role= "attorney"
-    console.log(role);
+    const role= "attorney"
+    // console.log(role);
 
     // if (!user?.email) {
     //     role = "user"

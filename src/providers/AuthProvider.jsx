@@ -1,15 +1,17 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from 'react';
 import app from "../Firebase/firebase.config";
+import useAxiosSecure from "../hooks/useAxios";
 
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
+    console.log(user)
     const [currentUser, setCurrentUser] = useState({});
     const [loading, setLoading] = useState(true);
-
+    const [axiosSecure] = useAxiosSecure();
     // auth initialize
     const auth = getAuth(app);
 
@@ -18,7 +20,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
-    
+
 
     // email sign in
     const signIn = (email, password) => {
@@ -48,16 +50,29 @@ const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+        const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
             setLoading(false)
-            setUser(currentUser)
-            console.log(currentUser);
+            setUser(authUser)
+            // console.log(user);
+            user?.email && await axiosSecure.get(`/users/email/${user?.email}`)
+                .then((data) => {
+                    // console.log("data",data)
+                    setCurrentUser(data.data);
+                })
+                .catch((err) => {
+                    console.log(err)
+                    setLoading(false);
+                });
+            if (authUser === null) {
+                setCurrentUser({})
+                setLoading(false);
+            }
         });
 
         return () => {
             return unsubscribe();
         }
-    }, [])
+    }, [user])
 
     const authInfo = {
         user,

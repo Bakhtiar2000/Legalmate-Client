@@ -10,7 +10,7 @@ const AttorneyDiv = ({attorney}) => {
     const presentEmployment= experience.filter(exp=> exp.end_year === "present")
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
-    console.log(presentEmployment);
+    // console.log(presentEmployment);
 
     // rating style
     const myStyles = {
@@ -49,7 +49,7 @@ const AttorneyDiv = ({attorney}) => {
                     <p className="hover:text-primary font-semibold text-2xl cursor-pointer duration-300 w-fit"> {name} </p>
                     <p>({practiceArea} Specialist)</p>
                 </div>
-                <p>{presentEmployment[0].company}</p>
+                <p>{presentEmployment[0]?.company}</p>
                 <p className="text-sm">{location}</p>
 
                 {/* rating */}
