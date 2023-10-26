@@ -2,18 +2,21 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { useLoaderData } from 'react-router-dom';
+import AttorneyDetailsBody from './AttorneyDetailsBody';
 
 const AttorneyDetails = () => {
-    // const singleAttorney= useLoaderData()
+    const singleAttorney= useLoaderData()
+    console.log(singleAttorney);
+
     return (
         <div>
              <Helmet>
-                <title>Recruiter Details - Legalmate</title>
+                <title>Attorney Details - Legalmate</title>
             </Helmet>
 
-            <Breadcrumbs title="Recruiter Details" />
+            <Breadcrumbs title="Attorney Details" />
 
-            <h3>Attorney id: {singleAttorney?._id}</h3>
+            <AttorneyDetailsBody singleAttorney={singleAttorney}></AttorneyDetailsBody>
         </div>
     );
 };

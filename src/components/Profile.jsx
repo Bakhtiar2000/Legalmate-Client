@@ -6,12 +6,13 @@ import { MdOutlineHistory, MdOutlineContactMail } from "react-icons/md"
 
 const Profile = () => {
     const { user } = useContext(AuthContext)
+    // console.log(user);
     return (
         <div className='relative z-[999] group'>
             {/* Profile Picture */}
             {
                 user?.photoURL ? 
-                <Link className='w-10 h-10' to="/"><img className="h-10 w-10 rounded-full object-cover shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl cursor-pointer" src={user?.photoURL} alt={user?.displayName} /></Link> :
+                <div className='w-10 h-10'><img className="h-10 w-10 rounded-full object-cover shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl cursor-pointer bg-white" src={user?.photoURL} alt={user?.displayName} /></div> :
                 <p className="h-12 w-12 bg-primary text-dark text-xl flex items-center justify-center font-bold rounded-full uppercase shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl cursor-pointer">{user?.displayName?.slice(0, 2)}</p>
             }
             {/* Dropdown */}
