@@ -47,7 +47,9 @@ const Header = () => {
             {/* SideNav */}
            <div className='lg:hidden flex justify-end items-center gap-10'>
                 {/* Profile Picture */}
-                <Profile />
+                {
+                    user?.email && <Profile />
+                }
 
                 {/* Toggle Icon */}
                 <label className="btn btn-circle swap swap-rotate bg-transparent text-white hover:text-black">

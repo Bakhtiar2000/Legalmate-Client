@@ -4,9 +4,9 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const NavItems = () => {
     const { user } = useContext(AuthContext)
-    // const role= "user"
+    const role= "user"
     // const role= "client"
-    const role= "attorney"
+    // const role= "attorney"
     console.log(role);
 
     // if (!user?.email) {
@@ -22,8 +22,6 @@ const NavItems = () => {
                 <li><ActiveLink to="/myCases">My cases</ActiveLink></li>
                 <li><ActiveLink to="/appointments">Appointments</ActiveLink></li>
                 <li><ActiveLink to="/messages">Messages</ActiveLink></li>
-                <li><ActiveLink to="/aboutUs">About us</ActiveLink></li>
-                <li><ActiveLink to="/contact">Contact</ActiveLink></li>
             </>:
 
             role=== "attorney"?
@@ -32,8 +30,6 @@ const NavItems = () => {
                 <li><ActiveLink to="/findCases">Find cases</ActiveLink></li>
                 <li><ActiveLink to="/appointments">Appointments</ActiveLink></li>
                 <li><ActiveLink to="/messages">Messages</ActiveLink></li>
-                <li><ActiveLink to="/aboutUs">About us</ActiveLink></li>
-                <li><ActiveLink to="/contact">Contact</ActiveLink></li>
             </>:
 
             <>
