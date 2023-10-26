@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-// import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://legalmate-server.vercel.app/',
 });
 
 const useAxiosSecure = () => {
-    // const navigate = useNavigate();
 
     useEffect(() => {
         axiosSecure.interceptors.request.use((config) => {
@@ -18,7 +16,6 @@ const useAxiosSecure = () => {
             return config;
         });
     }, []);
-
     return [axiosSecure];
 };
 

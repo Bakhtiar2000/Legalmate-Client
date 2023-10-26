@@ -6,8 +6,10 @@ import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
 const AttorneyDiv = ({attorney}) => {
-    const {_id, name, img, about, practiceArea, contact, location, hourly_rate, rating, license, experience, education, reviews, awards, website, facebook, linkedin, twitter, email }= attorney
+    const {_id, name, img, about, practiceArea, contact, location, hourly_rate, license, experience, education, reviews, awards, website, facebook, linkedin, twitter, email }= attorney
     const presentEmployment= experience.filter(exp=> exp.end_year === "present")
+    const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
+    const averageRating = totalRating / reviews.length;
     console.log(presentEmployment);
 
     // rating style
@@ -41,41 +43,33 @@ const AttorneyDiv = ({attorney}) => {
                 </div>
             </div>
 
-
             <div>
                 {/* name and practice area */}
-                <div className='flex items-end gap-3 '>
-                    <p className="hover:text-primary font-semibold text-2xl cursor-pointer duration-300"> {name} </p>
+                <div className='sm:flex items-end gap-3 '>
+                    <p className="hover:text-primary font-semibold text-2xl cursor-pointer duration-300 w-fit"> {name} </p>
                     <p>({practiceArea} Specialist)</p>
                 </div>
                 <p>{presentEmployment[0].company}</p>
-                <p className="text-sm mb-5">{location}</p>
+                <p className="text-sm">{location}</p>
 
                 {/* rating */}
-                {/* <div className="flex items-center justify-center gap-1 mt-5">
-                    <p className="px-2 text-purple bg-purple/30">
-                    {review.length > 0 && review[0].rating}
-                    </p>
-
+                <div className="flex items-center gap-2 mt-2 mb-5">
                     <Rating
                     className="max-w-[110px]"
                     readOnly
-                    value={review.length > 0 && review[0].rating}
+                    value={reviews.length > 0 && averageRating}
                     itemStyles={myStyles}
                     />
-
-                    <span className="text-gray">(0{review.length})</span>
-                </div> */}
+                         <p className="font-bold text-orange-500">{averageRating}</p>
+                    <span className="text-gray">({reviews.length} reviews)</span>
+                </div>
 
                     < p className='text-orange-500'>Licensed for 35 years</p>
                     <p>{about}</p>
                 </div>
 
-            
-         
-
             {/* TODO: add link address */}
-            <Link className="bg-primary/50 text-white group-hover:inline-block hidden p-3 rounded-md absolute top-1 right-1 md:-right-16 group-hover:right-1 duration-300 hover:bg-primary shadow-xl shadow-purple/20 hover:shadow-white/20">
+            <Link to={`/attorney_details/${_id}`} className="bg-primary/50 text-white group-hover:inline-block hidden p-3 rounded-md absolute top-3 right-3 md:-right-16 group-hover:right-3 duration-300 hover:bg-primary shadow-xl shadow-purple/20 hover:shadow-white/20">
               <HiOutlineExternalLink size="20px" />
             </Link>
         </div>

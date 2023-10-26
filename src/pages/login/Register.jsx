@@ -38,40 +38,40 @@ const Register = () => {
       role: data.role,
     }
     console.log(userData)
-    // signUp(data.email, data.password)
-    //   .then((result) => {
-    //     profileUpdate(result.user, data.name)
-    //       .then((result) => {
-    //         axiosSecure.post('/users', userData)
-    //           .then((data) => {
-    //             console.log(data)
-    //           })
-    //           .catch((err) => {
-    //             console.log(err)
-    //           });
-    //         navigate(from, { replace: true });
-    //         Swal.fire({
-    //           title: 'Account created successfully',
-    //           showClass: {
-    //             popup: 'animate__animated animate__fadeInDown'
-    //           },
-    //           hideClass: {
-    //             popup: 'animate__animated animate__fadeOutUp'
-    //           }
-    //         })
-    //       })
-    //       .catch((error) => {
-    //         setLoading(false)
-    //         toast.error(error.message, {
-    //           position: "top-right",
-    //           autoClose: 4000,
-    //           theme: "light",
-    //         });
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error)
-    //   })
+    signUp(data.email, data.password)
+      .then((result) => {
+        profileUpdate(result.user, data.name)
+          .then((result) => {
+            axiosSecure.post('/users', userData)
+              .then((data) => {
+                console.log(data)
+              })
+              .catch((err) => {
+                console.log(err)
+              });
+            navigate(from, { replace: true });
+            Swal.fire({
+              title: 'Account created successfully',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
+          })
+          .catch((error) => {
+            setLoading(false)
+            toast.error(error.message, {
+              position: "top-right",
+              autoClose: 4000,
+              theme: "light",
+            });
+          });
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   };
 
   const handleLogInWithGoogle = () => {
