@@ -48,10 +48,23 @@ const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setLoading(false)
-            setUser(currentUser)
-            console.log(currentUser);
+        setLoading(true);
+        const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
+            setUser(authUser)
+            setLoading(true);
+            authUser?.email && await axiosSecure.get(`/users/email/${authUser?.email}`)
+                .then((data) => {
+                    setCurrentUser(data.data);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    console.log(err)
+                    setLoading(false);
+                });
+            if (authUser === null) {
+                setCurrentUser({})
+                setLoading(false);
+            }
         });
 
         return () => {

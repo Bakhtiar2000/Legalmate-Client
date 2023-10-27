@@ -13,7 +13,7 @@ import AttorneyExperience from "./AttorneyExperience";
 import AttorneyAwards from "./AttorneyAwards";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
-    const {_id, name, img, about, practiceArea, contact, location, hourly_rate, license, experience, education, reviews, awards, website, facebook, linkedin, twitter, email }= singleAttorney
+    const { name, img, about, practiceArea, contact, location, hourly_rate, license, experience, education, reviews, awards, facebook, linkedin, twitter, email }= singleAttorney
     const presentEmployment= experience.filter(exp=> exp.end_year === "present")
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;

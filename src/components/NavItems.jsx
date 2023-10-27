@@ -1,17 +1,21 @@
 import React, { useContext } from 'react';
 import ActiveLink from '../components/ActiveLink';
 import { AuthContext } from '../providers/AuthProvider';
+import useUser from '../hooks/useUser';
 
 const NavItems = () => {
     const { user } = useContext(AuthContext)
-    const role= "user"
-    // const role= "client"
-    // const role= "attorney"
-    console.log(role);
+    const [userData]= useUser();
+    let role
+    console.log(userData);
 
-    // if (!user?.email) {
-    //     role = "user"
-    // }
+    role= "user"
+    // role= "client"
+    // role= "attorney"
+    console.log(role);
+    if (!user?.email) {
+        role = "user"
+    }
     return (
         <>
         {
