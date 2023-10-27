@@ -30,7 +30,7 @@ const Messages = () => {
             .catch(error => {
                 console.log(error)
             })
-    }, [currentChat]);
+    }, [currentChat , chats]);
 
     // Connect with Socket.io 
     useEffect(() => {
@@ -90,6 +90,7 @@ const Messages = () => {
             </Helmet>
 
             <Breadcrumbs title="Messages" />
+            <h1>{currentUser.name}</h1>
 
             {
                 chats.length !== 0 &&

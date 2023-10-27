@@ -8,7 +8,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
-    console.log(user)
+    // console.log(user)
     const [currentUser, setCurrentUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [axiosSecure] = useAxiosSecure();

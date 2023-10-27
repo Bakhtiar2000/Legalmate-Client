@@ -15,6 +15,7 @@ const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
     }
 
     useEffect(() => {
+        
         const receiver = chat?.members.find(id => id !== currentUser?._id)
 
         axiosSecure.get(`/users/id/${receiver}`)
@@ -28,7 +29,7 @@ const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
     }, [chat, currentUser]);
 
     const searchOnlineUser = onlineUser?.some(user => user.userId === chatReceiver?._id)
-console.log(chatReceiver.name)
+    console.log(chatReceiver?.name)
     return (
         <div>
             <div className='hover:bg-purple/20 shadow-lg shadow-gray/40 p-2 rounded-md mb-2 duration-300 group'>
