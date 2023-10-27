@@ -33,7 +33,7 @@ const Register = () => {
 
     const userData = {
       name: data.name,
-      email: data.name,
+      email: data.email,
       image: data.image,
       role: data.role,
     }

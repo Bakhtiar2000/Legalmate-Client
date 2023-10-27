@@ -11,7 +11,7 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <div className='bg-[#14161B] text-white'>
+            <div className='bg-[#14161B] text-white pt-10'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

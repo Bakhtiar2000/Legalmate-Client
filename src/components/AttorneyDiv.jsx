@@ -49,7 +49,7 @@ const AttorneyDiv = ({attorney}) => {
                     <p className="hover:text-primary font-semibold text-2xl cursor-pointer duration-300 w-fit"> {name} </p>
                     <p>({practiceArea} Specialist)</p>
                 </div>
-                <p>{presentEmployment[0].company}</p>
+                <p>{presentEmployment[0]?.company}</p>
                 <p className="text-sm">{location}</p>
 
                 {/* rating */}
@@ -64,7 +64,7 @@ const AttorneyDiv = ({attorney}) => {
                     <span className="text-gray">({reviews.length} reviews)</span>
                 </div>
 
-                    < p className='text-orange-500'>Licensed for {currentYear - license[0].acquired_year} years</p>
+                    < p className='text-orange-500'>Licensed for {currentYear - license[0]?.acquired_year} years</p>
                     <p>{about}</p>
                 </div>
 

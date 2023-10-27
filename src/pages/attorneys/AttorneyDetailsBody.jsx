@@ -1,7 +1,7 @@
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { FaFacebookF, FaLinkedin, FaTwitter } from "react-icons/fa";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { BiCurrentLocation } from "react-icons/bi";
@@ -11,6 +11,9 @@ import AttorneyReviews from "./AttorneyReviews";
 import AttorneyEducation from "./AttorneyEducation";
 import AttorneyExperience from "./AttorneyExperience";
 import AttorneyAwards from "./AttorneyAwards";
+import useUsers from "../../hooks/useUserData";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxios";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
     const { name, img, about, practiceArea, contact, location, hourly_rate, license, experience, education, reviews, awards, facebook, linkedin, twitter, email }= singleAttorney
@@ -18,6 +21,11 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
 
+    const [userData, UserDataLoading, refetch] = useUsers();
+    const { currentUser } = useAuth()
+    const [receiverId, setReceiverId] = useState();
+    const [axiosSecure] = useAxiosSecure();
+    console.log(userData)
     // rating style
     const myStyles = {
         itemShapes: Star,
@@ -28,6 +36,34 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     const sections = ['Reviews', 'Experience', 'Education', 'Awards']
     const initialIndex = sections.indexOf('Reviews')
     const [tabIndex, setTabIndex] = useState(initialIndex)
+
+    useEffect(() => {
+        const user = userData.find(user => user?.email === email)
+
+        setReceiverId(user?._id)
+    }, [userData, singleAttorney]);
+
+    const createChat = () => {
+        // console.log("receiver",receiverId);
+        // console.log("sender" ,currentUser?._id);
+        const chatMembers = {
+            sender: currentUser?._id,
+            receiver: receiverId,
+        };
+        console.log(chatMembers);
+        if (receiverId === undefined || currentUser?._id === undefined) {
+            return
+        }
+        axiosSecure
+            .post("/chat", chatMembers)
+            .then((res) => {
+                console.log(res.data)
+                // navigate("/dashboard/messages");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
     return (
         <div className='container py-20' >
@@ -45,15 +81,15 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
 
                     {/* Social Links */}
                     <div className="flex justify-center gap-3 items-center mt-5">
-                    <a href={facebook} target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
-                        <FaFacebookF />
-                    </a>
-                    <a href={linkedin} target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
-                        <FaLinkedin />
-                    </a>
-                    <a href={twitter} target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
-                        <FaTwitter />
-                    </a>
+                        <a href={facebook} target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
+                            <FaFacebookF />
+                        </a>
+                        <a href={linkedin} target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
+                            <FaLinkedin />
+                        </a>
+                        <a href={twitter} target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
+                            <FaTwitter />
+                        </a>
                     </div>
                 </div>
 
@@ -70,10 +106,10 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                             {/* rating */}
                             <div className="flex items-center gap-2 mt-2 mb-5">
                                 <Rating
-                                className="max-w-[110px]"
-                                readOnly
-                                value={reviews.length > 0 && averageRating}
-                                itemStyles={myStyles}
+                                    className="max-w-[110px]"
+                                    readOnly
+                                    value={reviews.length > 0 && averageRating}
+                                    itemStyles={myStyles}
                                 />
                                 <p className="font-bold text-orange-500">{averageRating}</p>
                                 <span className="text-gray">({reviews.length})</span>
@@ -97,7 +133,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                                     </div>
 
                                     <div className="flex items-center gap-2">
-                                        <GrStatusGoodSmall fill="green"/>
+                                        <GrStatusGoodSmall fill="green" />
                                         <p>Status</p>
                                     </div>
                                 </div>
@@ -123,6 +159,12 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                         </div>
                         <div className="w-full bg-orange-900 rounded-lg px-5 py-3">
                             <p className="lg:text-xl text-center">Email: {email}</p>
+                        </div>
+                        <div className="w-full bg-orange-900 rounded-lg px-2 py-3">
+                            <button onClick={createChat} className="lg:text-xl text-center">
+                                Message
+                            </button>
+
                         </div>
                     </div>
                 </div>

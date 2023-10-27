@@ -6,7 +6,7 @@ import AttorneyDiv from "../../components/AttorneyDiv";
 
 const TopRatedAttorneys = () => {
   const [attorneysData] = useAttorneys();
-  console.log(attorneysData);
+  // console.log(attorneysData);
   return (
     <section className="container mb-10">
       <SectionTitle
@@ -15,8 +15,11 @@ const TopRatedAttorneys = () => {
         para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita ratione id dolores velit tenetur. Illo."
       />
       {
-        attorneysData?.slice(0,3).map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>)
+        attorneysData?.map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>)
       }
+      {/* {
+        attorneysData?.slice(0,3).map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>)
+      } */}
       <Link className="flex justify-center" to="/attorneys">
         <button className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5">
           Show more
