@@ -8,9 +8,9 @@ const AttorneyAwards = ({awards}) => {
                     {
                         awards.map(award=> 
                         <div className='border border-white/40 rounded px-5 py-3'>
-                            <p className='text-primary text-xl'>{award.name}</p>
-                            <p className=''>{award.from}</p>
-                            <p className='text-sm italic'>{award.year}</p>
+                            <p className='text-primary text-xl'>{award?.name}</p>
+                            <p className=''>{award?.from}</p>
+                            <p className='text-sm italic'>{award?.year}</p>
                         </div>)
                     }
                 </div>

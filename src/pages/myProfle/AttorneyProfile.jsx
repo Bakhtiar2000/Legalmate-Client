@@ -2,35 +2,79 @@ import useCurrentAttorney from '../../hooks/useCurrentAttorney';
 import { BiCurrentLocation } from "react-icons/bi";
 import { TbLicense } from "react-icons/tb";
 import { GrStatusGoodSmall } from "react-icons/gr"
-import { FiEdit } from "react-icons/fi"
+import { HiOutlineExternalLink } from "react-icons/hi";
 import PageLoader from '../../components/PageLoader';
 import useAuth from '../../hooks/useAuth';
 import { BsCamera, BsCheckLg } from 'react-icons/bs';
 import { RxCrossCircled } from 'react-icons/rx';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CustomModal from '../../components/CustomModal';
 
 const AttorneyProfile = () => {
-    const {user, loading} = useAuth()
-    if (loading) return <PageLoader />
-    const [currentAttorneyData, attorneyLoading, refetch] = useCurrentAttorney();
+  
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    if (attorneyLoading) return <PageLoader />
+    const [currentAttorneyData, attorneyLoading, refetch] = useCurrentAttorney();
+
+    // States
+    const [isBasicInfoModalOpen, setIsBasicInfoModalOpen] = useState(false);
+    const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
+    const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
+    const [isAwardModalOpen, setIsAwardModalOpen] = useState(false);
+    const [isLicenseEditClicked, setIsLicenseEditClicked] = useState(false);
+    const {user, loading} = useAuth()
+    useEffect(() => {
+        refetch()
+    }, [user]);
+   
+    if (attorneyLoading || currentAttorneyData===null) return <PageLoader />
 
     const {_id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards} = currentAttorneyData
     
-    const onSubmit= data =>{
+    //Basic info Submit
+    const onBasicInfoSubmit= data =>{
         console.log(data);
         //TODO: save the basic info data
         reset()
         setIsBasicInfoModalOpen(false)
     }
-
-    const [isBasicInfoModalOpen, setIsBasicInfoModalOpen] = useState(false);
     const handleBasicInfoModal = (e) => {
         if (e == "cancel") setIsBasicInfoModalOpen(false)
     }
+
+    //Education Submit
+    const onEducationSubmit= data =>{
+        console.log(data);
+        //TODO: save the education data
+        reset()
+        setIsEducationModalOpen(false)
+    }
+    const handleEducationModal = (e) => {
+        if (e == "cancel") setIsEducationModalOpen(false)
+    }
+
+    //Experience Submit
+    const onExperienceSubmit= data =>{
+        console.log(data);
+        //TODO: save the experience data
+        reset()
+        setIsExperienceModalOpen(false)
+    }
+    const handleExperienceModal = (e) => {
+        if (e == "cancel") setIsExperienceModalOpen(false)
+    }
+
+    //Award Submit
+    const onAwardSubmit= data =>{
+        console.log(data);
+        //TODO: save the award data
+        reset()
+        setIsAwardModalOpen(false)
+    }
+    const handleAwardModal = (e) => {
+        if (e == "cancel") setIsAwardModalOpen(false)
+    }
+
     // Image Hosting
     const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
@@ -67,23 +111,24 @@ const AttorneyProfile = () => {
     }
     return (
         <div className='container py-20'>
-            <div className='relative group w-fit mx-auto md:flex gap-8 rounded p-5 bg-lightDark'>
+            {/* Basic Information */}
+            <div className='w-fit mx-auto md:flex gap-8 rounded p-5 bg-lightDark'>
                 {/* Image */}
                <div className='relative'>
                     <div className='min-w-max'>
                         {
                             img?
                             <img
-                                className="w-64 h-80 object-cover rounded mx-auto border border-primary"
+                                className="w-48 md:w-64 h-60 md:h-80 object-cover rounded mx-auto border border-primary"
                                 src={img}
                                 alt={name}
                             />:
                             <img
-                                className='w-64 h-80 object-cover rounded mx-auto border border-primary'
+                                className='w-48 md:w-64 h-60 md:h-80 object-cover rounded mx-auto border border-primary'
                                 src="https://i.ibb.co/wNJtyRX/image-14.png" />
                         }
                     </div>
-                    <label className='rounded-full border border-primary bg-lightDark/80 hover:bg-lightDark text-2xl p-[5px] z-20 cursor-pointer text-primary duration-300 absolute -bottom-4 left-[90%]'>
+                    <label className='rounded-full border border-primary bg-lightDark/80 hover:bg-lightDark text-2xl p-[5px] z-20 cursor-pointer text-primary duration-300 absolute -bottom-4 left-[82%] md:left-[90%]'>
 
                         <input
                             name='picture'
@@ -108,7 +153,7 @@ const AttorneyProfile = () => {
                         </div>
 
                         {/* License information */}
-                        <div className="bg-lightDark/50 rounded-lg p-3 md:ml-5 border border-dashed border-white h-fit w-fit">
+                        <div className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 border border-dashed border-white h-fit w-fit">
                             <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license[0]?.licensed_for} {license[0]?.licensed_for && "years"}</p>
 
                             <div className="flex items-center gap-5">
@@ -129,11 +174,65 @@ const AttorneyProfile = () => {
                                     </div>
                                 </div>
 
-                                <div>
-                                    <p>{license[0]?.state}</p>
-                                    <p>{license[0]?.acquired_year}</p>
-                                    <p className="text-green-500">{license[0]?.status}</p>
-                                </div>
+                                {
+                                    !isLicenseEditClicked?
+                                    <div>
+                                        <p>A</p>
+                                        <p>V</p>
+                                        <p className="text-green-500">R</p>
+                                    </div>:
+
+                                    <div className='max-w-[160px] text-black'>
+                                        {/* license state */}
+                                        <div className='w-full'>
+                                            <input
+                                                {...register("licenseState")}
+                                                defaultValue={license?.state}
+                                                placeholder='License of State'
+                                                className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
+                                            />
+                                        </div>
+
+                                        {/* license Acquired Year */}
+                                        <div className='w-full'>
+                                            <input
+                                                type='number'
+                                                {...register("licenseAcquiredYear")}
+                                                defaultValue={license?.acquired_year}
+                                                placeholder='Year of Acquisition'
+                                                className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
+                                            />
+                                        </div>
+
+                                        {/* license Status */}
+                                        <div className='w-full'>
+                                            <input
+                                                {...register("licenseStatus")}
+                                                defaultValue={license?.status}
+                                                placeholder='Active / Inactive'
+                                                className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
+                                            />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            <div className='flex justify-end'>
+                            {
+                                !isLicenseEditClicked?
+                                <p 
+                                    onClick={()=> setIsLicenseEditClicked(true)} 
+                                    className="mt-2 w-fit text-center px-2 bg-secondary hover:bg-secondary/60 duration-300 rounded text-white cursor-pointer"
+                                >
+                                    Update
+                                </p>:
+                                <p 
+                                    onClick={()=> setIsLicenseEditClicked(false)} 
+                                    className="mt-2 w-fit text-center px-2 bg-green-500 hover:bg-green-500/60 duration-300 rounded text-white cursor-pointer"
+                                >
+                                    Save
+                                </p>
+                            }
                             </div>
                         </div>
                     </div>
@@ -145,12 +244,90 @@ const AttorneyProfile = () => {
                             <p>{about}</p>
                         </div>
                     }
+
+                    {/* Edit details button */}
+                    <p 
+                        onClick={()=> setIsBasicInfoModalOpen(true)} 
+                        className="mt-auto w-full text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white cursor-pointer"
+                    >
+                        Edit Details
+                    </p>
                 </div>
-                <p onClick={()=> setIsBasicInfoModalOpen(true)} className="bg-primary/50 text-white group-hover:inline-block hidden p-3 rounded-md absolute top-3 right-3 md:-right-16 group-hover:right-3 duration-300 hover:bg-primary shadow-xl shadow-purple/20 hover:shadow-white/20 cursor-pointer">
-                    Edit Details
-                </p>
             </div>
 
+            {/* Education */}
+            <div className='p-5 rounded-lg bg-lightDark mt-10 max-w-5xl mx-auto'>
+                <h2 className='text-3xl text-primary mb-1'>Education Details</h2>
+                <p className='border-t border-primary'></p>
+
+                {
+                    education.length === 0?
+                    <p className='text-center text-2xl mt-5'>☹ No education data found</p>:
+                    <div className='flex flex-wrap gap-10'>
+                        {
+                            education.map(edu=> 
+                            <div className='border border-white/40 rounded px-5 py-3'>
+                                <p className='text-primary text-xl'>{edu?.institution}</p>
+                                <p className=''>{edu?.subject}</p>
+                                <p className='text-sm italic'>{edu?.start_year} - {edu?.end_year}</p>
+                            </div>)
+                        }
+                    </div>
+                }
+                <div className='flex justify-center'>
+                    <button onClick={()=> setIsEducationModalOpen(true)} className="text-center  text-blue-500 mt-5 cursor-pointer">➕ Add Education</button>
+                </div>
+            </div>
+
+            {/* Experience */}
+            <div className='p-5 rounded-lg bg-lightDark mt-10 max-w-5xl mx-auto'>
+                <h2 className='text-3xl text-primary mb-1'>Experience Details</h2>
+                <p className='border-t border-primary'></p>
+
+                {
+                    experience.length === 0?
+                    <p className='text-center text-2xl mt-5'>☹ No Experience data found</p>:
+                    <div className='flex flex-wrap gap-10'>
+                        {
+                            experience.map(exp=> 
+                            <div className='border border-white/40 rounded px-5 py-3'>
+                                <p className='text-primary text-xl'>{exp?.company}</p>
+                                <p className=''>{exp?.position}</p>
+                                <p className='text-sm italic'>{exp?.start_year} - {exp?.end_year}</p>
+                            </div>)
+                        }
+                    </div>
+                }
+                <div className='flex justify-center'>
+                    <button onClick={()=> setIsExperienceModalOpen(true)} className="text-center  text-blue-500 mt-5 cursor-pointer">➕ Add Experience</button>
+                </div>
+            </div>
+
+            {/* Awards */}
+            <div className='p-5 rounded-lg bg-lightDark mt-10 max-w-5xl mx-auto'>
+                <h2 className='text-3xl text-primary mb-1'>Awards Details</h2>
+                <p className='border-t border-primary'></p>
+
+                {
+                    awards.length === 0?
+                    <p className='text-center text-2xl mt-5'>☹ No Awards data found</p>:
+                    <div className='flex flex-wrap gap-10'>
+                        {
+                            awards.map(award=> 
+                            <div className='border border-white/40 rounded px-5 py-3'>
+                                 <p className='text-primary text-xl'>{award?.name}</p>
+                                <p className=''>{award?.from}</p>
+                                <p className='text-sm italic'>{award?.year}</p>
+                            </div>)
+                        }
+                    </div>
+                }
+                <div className='flex justify-center'>
+                    <button onClick={()=> setIsAwardModalOpen(true)} className="text-center  text-blue-500 mt-5 cursor-pointer">➕ Add Awards</button>
+                </div>
+            </div>
+
+            {/* Basic Info Modal */}
             {
                 isBasicInfoModalOpen &&
                 <CustomModal 
@@ -158,7 +335,7 @@ const AttorneyProfile = () => {
                     setIsModalOpen={setIsBasicInfoModalOpen}
                     handleModal={handleBasicInfoModal}
                 >
-                    <form className='text-black' onSubmit={handleSubmit(onSubmit)}>
+                    <form className='text-black' onSubmit={handleSubmit(onBasicInfoSubmit)}>
                         <h3 className="font-bold text-xl mb-2">Update Your Basic Profile Information</h3>
                         <p className='border-t border-dark mb-5'></p>
 
@@ -170,7 +347,7 @@ const AttorneyProfile = () => {
                                     {...register("name")}
                                     defaultValue={name}
                                     placeholder='Your full name'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>
 
@@ -181,7 +358,7 @@ const AttorneyProfile = () => {
                                     {...register("practiceArea")}
                                     placeholder='Your focused practice area'
                                     defaultValue={practiceArea}
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>
                         </div>
@@ -194,7 +371,7 @@ const AttorneyProfile = () => {
                                     {...register("location")}
                                     defaultValue={location}
                                     placeholder='Your Location'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>
 
@@ -205,51 +382,10 @@ const AttorneyProfile = () => {
                                     {...register("hourlyRate")}
                                     defaultValue={hourly_rate}
                                     placeholder='Write within a range'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>
-                        </div>
-                    
-                        {/* License */}
-                        <div className=' border bg-primary/20 border-primary px-3 pt-2 rounded-lg my-2'>
-                            <p className='text-xl font-semibold mb-1 text-secondary'>License Information</p>
-                            <div className='sm:flex gap-3'>
-                                {/* license state */}
-                                <div className='w-full'>
-                                    <label className='text-dark text-sm'>State:</label>
-                                    <input
-                                        {...register("licenseState")}
-                                        defaultValue={license?.state}
-                                        placeholder='License of State'
-                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
-                                    />
-                                </div>
-
-                                {/* license Acquired Year */}
-                                <div className='w-full'>
-                                    <label className='text-dark text-sm'>Acquisition year:</label>
-                                    <input
-                                        type='number'
-                                        {...register("licenseAcquiredYear")}
-                                        defaultValue={license?.acquired_year}
-                                        placeholder='Year of Acquisition'
-                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
-                                    />
-                                </div>
-
-                                {/* license Status */}
-                                <div className='w-full'>
-                                    <label className='text-dark text-sm'>Status:</label>
-                                    <input
-                                        {...register("licenseStatus")}
-                                        defaultValue={license?.status}
-                                        placeholder='Active / Inactive'
-                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
-                                    />
-                                </div>
-
-                            </div>
-                        </div>
+                        </div>                       
 
                         {/* About */}
                         <div className='w-full'>
@@ -258,10 +394,190 @@ const AttorneyProfile = () => {
                                 {...register("about")}
                                 defaultValue={about}
                                 placeholder='Write about yourself within 250 words'
-                                className='w-full h-32 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                className='w-full h-32 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                             />
                         </div>
 
+                        <input 
+                            className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-2 sm:mt-5 cursor-pointer"
+                            type="submit"
+                        />
+                    </form>
+                </CustomModal>
+            }
+
+            {/* Education Modal */}
+            {
+                isEducationModalOpen &&
+                <CustomModal 
+                    isModalOpen={isEducationModalOpen}
+                    setIsModalOpen={setIsEducationModalOpen}
+                    handleModal={handleEducationModal}
+                >
+                    <form className='text-black' onSubmit={handleSubmit(onEducationSubmit)}>
+                        <h3 className="font-bold text-xl mb-2">Add Education Information</h3>
+                        <p className='border-t border-dark mb-5'></p>
+                            <div className='sm:flex gap-5'>
+                                {/* Institution name */}
+                                <div className='w-full'>
+                                    <label className='text-dark text-sm'>Institution:</label>
+                                    <input
+                                        type='text'
+                                        {...register("institution")}
+                                        placeholder='e.g: University of British Columbia'
+                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    />
+                                </div>
+
+                                 {/* Subject */}
+                                <div className='w-full'>
+                                    <label className='text-dark text-sm'>Subject:</label>
+                                    <input
+                                        type='text'
+                                        {...register("subject")}
+                                        placeholder='e.g: JD - Juris Doctor'
+                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    />
+                                </div>
+                           </div>
+
+                           <div className='sm:flex gap-5'>
+                                {/* Start year */}
+                                <div className='w-full'>
+                                    <label className='text-dark text-sm'>Start year:</label>
+                                    <input
+                                        type='number'
+                                        {...register("edu_start_year")}
+                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    />
+                                </div>
+
+                                 {/* End year */}
+                                <div className='w-full'>
+                                    <label className='text-dark text-sm'>End year:</label>
+                                    <input
+                                        type='number'
+                                        {...register("edu_end_year")}
+                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    />
+                                </div>
+                           </div>
+                        <input 
+                            className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5 cursor-pointer"
+                            type="submit"
+                        />
+                    </form>
+                </CustomModal>
+            }
+
+            {/* Experience Modal */}
+            {
+                isExperienceModalOpen &&
+                <CustomModal 
+                    isModalOpen={isExperienceModalOpen}
+                    setIsModalOpen={setIsExperienceModalOpen}
+                    handleModal={handleExperienceModal}
+                >
+                    <form className='text-black' onSubmit={handleSubmit(onExperienceSubmit)}>
+                        <h3 className="font-bold text-xl mb-2">Add Experience Information</h3>
+                        <p className='border-t border-dark mb-5'></p>
+                           <div className='sm:flex gap-5'>
+                                {/* Company */}
+                                <div className='w-full'>
+                                    <label className='text-dark text-sm'>Company:</label>
+                                    <input
+                                        type='text'
+                                        {...register("company")}
+                                        placeholder='e.g: Pivotal Law Group'
+                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    />
+                                </div>
+
+                                 {/* Position */}
+                                <div className='w-full'>
+                                    <label className='text-dark text-sm'>Position:</label>
+                                    <input
+                                        type='text'
+                                        {...register("position")}
+                                        placeholder='e.g: Attorney'
+                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    />
+                                </div>
+                           </div>
+
+                           <div className='sm:flex gap-5'>
+                                {/* Start year */}
+                                <div className='w-full'>
+                                    <label className='text-dark text-sm'>Start year:</label>
+                                    <input
+                                        type='number'
+                                        {...register("exp_start_year")}
+                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    />
+                                </div>
+
+                                 {/* End year */}
+                                <div className='w-full'>
+                                    <label className='text-dark text-sm'>End year:</label>
+                                    <input
+                                        type='number'
+                                        {...register("exp_end_year")}
+                                        className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    />
+                                </div>
+                           </div>
+                        <input 
+                            className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5 cursor-pointer"
+                            type="submit"
+                        />
+                    </form>
+                </CustomModal>
+            }
+
+            {/* Award Modal */}
+            {
+                isAwardModalOpen &&
+                <CustomModal 
+                    isModalOpen={isAwardModalOpen}
+                    setIsModalOpen={setIsAwardModalOpen}
+                    handleModal={handleAwardModal}
+                >
+                    <form className='text-black' onSubmit={handleSubmit(onAwardSubmit)}>
+                        <h3 className="font-bold text-xl mb-2">Add Award Information</h3>
+                        <p className='border-t border-dark mb-5'></p>
+                            {/* Award name */}
+                            <div className='w-full'>
+                                <label className='text-dark text-sm'>Award name:</label>
+                                <input
+                                    type='text'
+                                    {...register("award_name")}
+                                    placeholder='e.g: Rising Star'
+                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                />
+                            </div>
+
+                            {/* Given by */}
+                            <div className='w-full'>
+                                <label className='text-dark text-sm'>Award Given by:</label>
+                                <input
+                                    type='text'
+                                    {...register("position")}
+                                    placeholder='e.g: Super Lawyers'
+                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                />
+                            </div>
+
+
+                            {/* year */}
+                            <div className='w-full'>
+                                <label className='text-dark text-sm'>Year:</label>
+                                <input
+                                    type='number'
+                                    placeholder='The year of winning award'
+                                    {...register("exp_start_year")}
+                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                />
+                            </div>
                         <input 
                             className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5 cursor-pointer"
                             type="submit"
