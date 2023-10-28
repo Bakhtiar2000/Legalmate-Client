@@ -15,23 +15,21 @@ const AttorneyProfile = () => {
     const {user, loading} = useAuth()
     if (loading) return <PageLoader />
     const [currentAttorneyData, attorneyLoading, refetch] = useCurrentAttorney();
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     if (attorneyLoading) return <PageLoader />
 
     const {_id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards} = currentAttorneyData
     
     const onSubmit= data =>{
-        console.log(data.data);
+        console.log(data);
+        //TODO: save the basic info data
+        reset()
+        setIsBasicInfoModalOpen(false)
     }
 
     const [isBasicInfoModalOpen, setIsBasicInfoModalOpen] = useState(false);
     const handleBasicInfoModal = (e) => {
-        console.log(e);
         if (e == "cancel") setIsBasicInfoModalOpen(false)
-        else if (e== "save") {
-            //Todo: Update basic information
-            setIsBasicInfoModalOpen(false)
-        }
     }
     // Image Hosting
     const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
@@ -265,9 +263,8 @@ const AttorneyProfile = () => {
                         </div>
 
                         <input 
-                            className="flex flex-end text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5"
+                            className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5 cursor-pointer"
                             type="submit"
-                            onClick={()=> handleBasicInfoModal("save")}
                         />
                     </form>
                 </CustomModal>
