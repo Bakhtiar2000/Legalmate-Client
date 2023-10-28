@@ -15,21 +15,22 @@ const AttorneyProfile = () => {
     const {user, loading} = useAuth()
     if (loading) return <PageLoader />
     const [currentAttorneyData, attorneyLoading, refetch] = useCurrentAttorney();
-
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     if (attorneyLoading) return <PageLoader />
-    console.log(currentAttorneyData);
 
     const {_id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards} = currentAttorneyData
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    
     const onSubmit= data =>{
         console.log(data.data);
     }
 
     const [isBasicInfoModalOpen, setIsBasicInfoModalOpen] = useState(false);
     const handleBasicInfoModal = (e) => {
-        if (e == "cancel") setIsBasicInfoModalOpen(true)
-        if (e== "save") {
+        console.log(e);
+        if (e == "cancel") setIsBasicInfoModalOpen(false)
+        else if (e== "save") {
             //Todo: Update basic information
+            setIsBasicInfoModalOpen(false)
         }
     }
     // Image Hosting
@@ -159,13 +160,16 @@ const AttorneyProfile = () => {
                     setIsModalOpen={setIsBasicInfoModalOpen}
                     handleModal={handleBasicInfoModal}
                 >
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form className='text-black' onSubmit={handleSubmit(onSubmit)}>
+                        <h3 className="font-bold text-xl mb-2">Update Your Basic Profile Information</h3>
+                        <p className='border-t border-dark mb-5'></p>
+
                         <div className='sm:flex gap-5'>
                             {/* Name */}
                             <div className='w-full'>
                                 <label className='text-dark text-sm'>Name:</label>
                                 <input
-                                    // {...register("name")}
+                                    {...register("name")}
                                     defaultValue={name}
                                     placeholder='Your full name'
                                     className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
@@ -176,7 +180,7 @@ const AttorneyProfile = () => {
                             <div className='w-full'>
                                 <label className='text-dark text-sm'>Legal practice area:</label>
                                 <input
-                                    // {...register("practiceArea")}
+                                    {...register("practiceArea")}
                                     placeholder='Your focused practice area'
                                     defaultValue={practiceArea}
                                     className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
@@ -189,7 +193,7 @@ const AttorneyProfile = () => {
                             <div className='w-full'>
                                 <label className='text-dark text-sm'>Location:</label>
                                 <input
-                                    // {...register("location")}
+                                    {...register("location")}
                                     defaultValue={location}
                                     placeholder='Your Location'
                                     className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
@@ -200,7 +204,7 @@ const AttorneyProfile = () => {
                             <div className='w-full'>
                                 <label className='text-dark text-sm'>Hourly rate:</label>
                                 <input
-                                    // {...register("location")}
+                                    {...register("hourlyRate")}
                                     defaultValue={hourly_rate}
                                     placeholder='Write within a range'
                                     className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
@@ -216,7 +220,7 @@ const AttorneyProfile = () => {
                                 <div className='w-full'>
                                     <label className='text-dark text-sm'>State:</label>
                                     <input
-                                        // {...register("location")}
+                                        {...register("licenseState")}
                                         defaultValue={license?.state}
                                         placeholder='License of State'
                                         className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
@@ -228,7 +232,7 @@ const AttorneyProfile = () => {
                                     <label className='text-dark text-sm'>Acquisition year:</label>
                                     <input
                                         type='number'
-                                        // {...register("location")}
+                                        {...register("licenseAcquiredYear")}
                                         defaultValue={license?.acquired_year}
                                         placeholder='Year of Acquisition'
                                         className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
@@ -239,7 +243,7 @@ const AttorneyProfile = () => {
                                 <div className='w-full'>
                                     <label className='text-dark text-sm'>Status:</label>
                                     <input
-                                        // {...register("location")}
+                                        {...register("licenseStatus")}
                                         defaultValue={license?.status}
                                         placeholder='Active / Inactive'
                                         className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
@@ -253,14 +257,18 @@ const AttorneyProfile = () => {
                         <div className='w-full'>
                             <label className='text-dark text-sm'>About yourself:</label>
                             <textarea
-                                // {...register("about")}
+                                {...register("about")}
                                 defaultValue={about}
                                 placeholder='Write about yourself within 250 words'
                                 className='w-full h-32 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
                             />
                         </div>
 
-                        <input className="flex flex-end text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5" type="submit" value="Save Changes" />
+                        <input 
+                            className="flex flex-end text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5"
+                            type="submit"
+                            onClick={()=> handleBasicInfoModal("save")}
+                        />
                     </form>
                 </CustomModal>
             }
