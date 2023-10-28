@@ -17,11 +17,10 @@ import useAxiosSecure from "../../hooks/useAxios";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
     const { name, img, about, practiceArea, contact, location, hourly_rate, license, experience, education, reviews, awards, facebook, linkedin, twitter, email }= singleAttorney
-    const presentEmployment= experience.filter(exp=> exp.end_year === "present")
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
 
-    const [userData, UserDataLoading, refetch] = useUsers();
+    const [userData] = useUsers();
     const { currentUser } = useAuth()
     const [receiverId, setReceiverId] = useState();
     const [axiosSecure] = useAxiosSecure();

@@ -8,7 +8,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
-    // console.log(user)
+    console.log(user?.email)
     const [currentUser, setCurrentUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [axiosSecure] = useAxiosSecure();
@@ -51,8 +51,8 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
-            setLoading(false)
             setUser(authUser)
+            setLoading(false)
             // console.log(user);
             user?.email && await axiosSecure.get(`/users/email/${user?.email}`)
                 .then((data) => {

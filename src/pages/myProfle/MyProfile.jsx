@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
+import AttorneyProfile from './AttorneyProfile';
 
 const MyProfile = () => {
     return (
@@ -11,7 +12,7 @@ const MyProfile = () => {
 
             <Breadcrumbs title="My Profile" />
 
-            <h3>My Profile</h3>
+            <AttorneyProfile></AttorneyProfile>
         </div>
     );
 };
