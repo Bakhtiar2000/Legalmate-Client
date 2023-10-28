@@ -96,11 +96,15 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
     }
 
     return (
-        <div className='bg-white shadow-lg p-3 rounded-md'>
-            <div className='bg-black flex items-center justify-between shadow-lg shadow-gray/40 p-2 rounded-md mb-2 duration-300'>
+        <div className='bg-lightDark shadow-lg p-3 rounded-md'>
+            <div className='flex items-center justify-between bg-dark shadow-md shadow-white/20 p-2 rounded-md mb-2 duration-300'>
                 <div className='flex items-center gap-2 '>
-                    <div className='relative w-12 h-12 shadow-md rounded-full overflow-hidden'>
-                        <img src={chatReceiver?.image} className='w-full h-full object-cover object-center rounded-full' alt={chatReceiver?.name} />
+                    <div className='relative w-12 h-12 shadow-md rounded-full overflow-hidden mr-2'>
+                        {
+                            chatReceiver?.image?
+                            <img src={chatReceiver?.image} className='w-full h-full object-cover object-center rounded-full' alt={chatReceiver?.name} />:
+                            <p className='w-full h-full object-cover bg-primary text-dark text-xl flex items-center justify-center font-bold rounded-full uppercase shadow-lg'>{chatReceiver?.name?.slice(0, 2)}</p>
+                        }
                     </div>
 
                     <div className='flex flex-col justify-center'>
@@ -114,14 +118,14 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
                     <button
                         onClick={deleteChat}
                         data-tooltip-id="delete_chat" data-tooltip-content="Delete Conversation"
-                        className='h-10 w-10 bg-white rounded-full shadow-md text-blabg-black flex items-center justify-center hover:text-red-400 duration-300'
+                        className='h-10 w-10 bg-white rounded-full shadow-md text-black flex items-center justify-center hover:text-red-400 duration-300'
                     >
                         <MdDeleteOutline size='24' />
                     </button>
                 </div>
             </div>
 
-            <div className='h-[50vh] overflow-y-scroll p-3 rounded-md'>
+            <div className='h-[54vh] overflow-y-scroll p-3 rounded-md'>
                 {
                     message.length !== 0 ? message.map((sms, index) =>
                         <StartMessage sms={sms} key={index} />

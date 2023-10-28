@@ -94,9 +94,9 @@ const Messages = () => {
 
             {
                 chats.length !== 0 &&
-                <div className="grid md:grid-cols-3 gap-6 rounded-md mt-10">
+                <div className="container grid md:grid-cols-3 gap-6 rounded-md py-10">
 
-                    <div className="bg-white p-3 rounded-md shadow-lg md:min-h-[68vh]">
+                    <div className="bg-lightDark text-white p-3 rounded-md shadow-lg md:min-h-[68vh]">
                         {chats?.map((chat, index) => (
                             <div key={index} className="cursor-pointer"
                                 onClick={() => setCurrentChat(chat)}>

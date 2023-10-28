@@ -6,12 +6,12 @@ import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
 const AttorneyDiv = ({attorney}) => {
-    const {_id, name, img, about, practiceArea, contact, location, hourly_rate, license, experience, education, reviews, awards, website, facebook, linkedin, twitter, email }= attorney
+    const {_id, name, img, about, practiceArea, location, license, experience, reviews, facebook, linkedin, twitter }= attorney
     const presentEmployment= experience.filter(exp=> exp.end_year === "present")
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
-    console.log(_id);
-
+    console.log(presentEmployment);
+    const currentYear = new Date().getFullYear();
     // rating style
     const myStyles = {
         itemShapes: Star,
@@ -64,7 +64,7 @@ const AttorneyDiv = ({attorney}) => {
                     <span className="text-gray">({reviews.length} reviews)</span>
                 </div>
 
-                    < p className='text-orange-500'>Licensed for 35 years</p>
+                    < p className='text-orange-500'>Licensed for {currentYear - license[0]?.acquired_year} years</p>
                     <p>{about}</p>
                 </div>
 

@@ -16,8 +16,8 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxios";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
-    const { _id, name, img, about, practiceArea, contact, location, hourly_rate, license, experience, education, reviews, awards, website, facebook, linkedin, twitter, email } = singleAttorney
-    const presentEmployment = experience.filter(exp => exp.end_year === "present")
+    const { name, img, about, practiceArea, contact, location, hourly_rate, license, experience, education, reviews, awards, facebook, linkedin, twitter, email }= singleAttorney
+    const presentEmployment= experience.filter(exp=> exp.end_year === "present")
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
 
@@ -50,7 +50,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
             sender: currentUser?._id,
             receiver: receiverId,
         };
-        // console.log(chatMembers);
+        console.log(chatMembers);
         if (receiverId === undefined || currentUser?._id === undefined) {
             return
         }

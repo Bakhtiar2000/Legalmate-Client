@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logo from "/Legalmate Icon.ico"
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
@@ -8,6 +8,21 @@ import Profile from '../components/Profile';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen]= useState(false)
+    const [navState, setNavState] = useState(false);
+
+    const onNavScroll = () => {
+        if (window.scrollY > 300) {
+            setNavState(true);
+        } else {
+            setNavState(false);
+        }
+    };
+
+    // scroll top
+    useEffect(() => {
+        window.addEventListener("scroll", onNavScroll);
+    }, []);
+
     const handleLogOut = () => {
         logOut()
             .then()
@@ -16,7 +31,7 @@ const Header = () => {
     // console.log(isMenuOpen);
     
     return (
-        <div className="flex justify-between gap-5 items-center px-5 py-3 bg-dark z-50">
+        <div className={`fixed w-full flex justify-between gap-5 items-center px-5 py-3 z-50 ${navState ? 'backdrop-blur-md bg-dark/60 shadow-primary/20' : 'bg-dark  backdrop-blur-md'}`}>
 
             {/* Logo nad name */}
            <div className='flex gap-5'>
@@ -45,7 +60,7 @@ const Header = () => {
             }
 
             {/* SideNav */}
-           <div className='lg:hidden flex justify-end items-center gap-10'>
+           <div className='lg:hidden flex justify-end items-center gap-3 md:gap-10'>
                 {/* Profile Picture */}
                 {
                     user?.email && <Profile />

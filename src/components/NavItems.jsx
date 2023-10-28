@@ -1,21 +1,15 @@
 import React, { useContext } from 'react';
 import ActiveLink from '../components/ActiveLink';
 import { AuthContext } from '../providers/AuthProvider';
+import useUser from '../hooks/useUser';
 
 const NavItems = () => {
-    const { user } = useContext(AuthContext)
-    // const role= "user"
-    // const role= "client"
-    const role= "attorney"
-    // console.log(role);
+    const { currentUser } = useContext(AuthContext)
 
-    // if (!user?.email) {
-    //     role = "user"
-    // }
     return (
         <>
         {
-            role=== "client"?
+            currentUser.role=== "client"?
             <>
                 <li><ActiveLink to="/">Home</ActiveLink></li>
                 <li><ActiveLink to="/attorneys">Find attorneys</ActiveLink></li>
@@ -24,7 +18,7 @@ const NavItems = () => {
                 <li><ActiveLink to="/messages">Messages</ActiveLink></li>
             </>:
 
-            role=== "attorney"?
+            currentUser.role=== "attorney"?
             <>
                 <li><ActiveLink to="/">Home</ActiveLink></li>
                 <li><ActiveLink to="/findCases">Find cases</ActiveLink></li>
