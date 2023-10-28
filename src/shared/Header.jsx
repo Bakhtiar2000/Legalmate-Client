@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import logo from "/Legalmate Icon.ico"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import NavItems from '../components/navItems';
 import Profile from '../components/Profile';
@@ -9,6 +9,7 @@ const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen]= useState(false)
     const [navState, setNavState] = useState(false);
+    const navigate = useNavigate();
 
     const onNavScroll = () => {
         if (window.scrollY > 300) {
@@ -27,6 +28,7 @@ const Header = () => {
         logOut()
             .then()
             .catch()
+        navigate("/login")    
     }
     // console.log(isMenuOpen);
     
@@ -68,7 +70,7 @@ const Header = () => {
 
                 {/* Toggle Icon */}
                 <label className="btn btn-circle swap swap-rotate bg-transparent text-white hover:text-black">
-                    <input  onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} type="checkbox" />  
+                    <input onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} type="checkbox" />  
 
                     {/* hamburger icon */}
                     <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>

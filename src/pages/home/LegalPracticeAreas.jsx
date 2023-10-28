@@ -12,7 +12,7 @@ const LegalPracticeAreas = () => {
   const [practiceAreasData] = usePracticeAreas();
 
   return (
-    <section className="container">
+    <section className="container mb-5">
       <SectionTitle
         title="Our"
         redTitle="Practice Areas"
