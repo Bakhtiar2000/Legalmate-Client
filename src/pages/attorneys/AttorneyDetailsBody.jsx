@@ -16,7 +16,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxios";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
-    const { name, img, about, practiceArea, contact, location, hourly_rate, license, experience, education, reviews, awards, facebook, linkedin, twitter, email }= singleAttorney
+    const { name, img, about, practiceArea, location, hourly_rate, license, experience, education, reviews, awards,  email }= singleAttorney
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
 
@@ -72,24 +72,18 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                 {/* Image and social Links */}
                 <div className='min-w-max'>
                     {/* Image */}
-                    <img
-                        className="w-64 h-80 object-cover rounded mx-auto border border-primary"
-                        src={img}
-                        alt=""
-                    />
-
-                    {/* Social Links */}
-                    <div className="flex justify-center gap-3 items-center mt-5">
-                        <a href={facebook} target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
-                            <FaFacebookF />
-                        </a>
-                        <a href={linkedin} target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
-                            <FaLinkedin />
-                        </a>
-                        <a href={twitter} target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
-                            <FaTwitter />
-                        </a>
-                    </div>
+                    {
+                        img?
+                        <img
+                            className="w-64 h-80 object-cover rounded mx-auto border border-primary"
+                            src={img}
+                            alt=""
+                        />:
+                        <img
+                            className='w-64 h-80 object-cover rounded mx-auto border border-primary'
+                            src="https://i.ibb.co/wNJtyRX/image-14.png" 
+                        />
+                }
                 </div>
 
                 <div className="flex flex-col gap-8">
@@ -110,7 +104,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                                     value={reviews.length > 0 && averageRating}
                                     itemStyles={myStyles}
                                 />
-                                <p className="font-bold text-orange-500">{averageRating}</p>
+                                <p className="font-bold text-orange-500">{reviews.length!==0 && averageRating}</p>
                                 <span className="text-gray">({reviews.length})</span>
                             </div>
                         </div>
@@ -147,24 +141,18 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                     </div>
 
                     {/* About */}
-                    <div className="bg-primary/20 px-5 py-3 rounded-lg max-w-2xl">
-                        <p>{about}</p>
-                    </div>
+                   {
+                        about &&
+                        <div className="bg-primary/20 px-5 py-3 rounded-lg max-w-2xl">
+                            <p>{about}</p>
+                        </div>
+                   }
 
-                    {/* Contact Information */}
-                    <div className="flex justify-center gap-5 items-center">
-                        <div className="w-full bg-green-900 rounded-lg px-5 py-3">
-                            <p className="lg:text-xl text-center">Contact: {contact}</p>
-                        </div>
-                        <div className="w-full bg-orange-900 rounded-lg px-5 py-3">
-                            <p className="lg:text-xl text-center">Email: {email}</p>
-                        </div>
-                        <div className="w-full bg-orange-900 rounded-lg px-2 py-3">
-                            <button onClick={createChat} className="lg:text-xl text-center">
-                                Message
-                            </button>
-
-                        </div>
+                    {/* Message */}
+                    <div className="mt-auto w-full bg-green-600 hover:bg-green-800 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
+                        <button onClick={createChat} className="lg:text-xl text-center">
+                            Message
+                        </button>
                     </div>
                 </div>
             </div>
@@ -180,7 +168,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                         <Tab>Awards</Tab>
                     </TabList>
                     <TabPanel>
-                        <AttorneyReviews reviews={reviews}></AttorneyReviews>
+                        <AttorneyReviews reviews={reviews} name={name}></AttorneyReviews>
                     </TabPanel>
                     <TabPanel>
                         <AttorneyEducation education={education}></AttorneyEducation>

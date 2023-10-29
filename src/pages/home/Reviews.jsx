@@ -10,7 +10,7 @@ import useOurReviews from '../../hooks/useOurReviews';
 const Reviews = () => {
     const [ourReviewsData] = useOurReviews();
     return (
-        <section className='mx-2 pb-5 lg:pb-10'>
+        <section className='mx-2 pb-20'>
             <SectionTitle  title="Client" redTitle="Reviews" para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita ratione id dolores velit tenetur. Illo." />
             <Swiper
                 spaceBetween={30}

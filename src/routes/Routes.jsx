@@ -9,7 +9,6 @@ import Attorneys from '../pages/attorneys/Attorneys';
 import AboutUs from '../pages/aboutUs/AboutUs';
 import Contact from '../pages/contact/Contact';
 import Register from '../pages/login/Register';
-import Appointments from '../pages/appointments/Appointments';
 import Messages from '../pages/messages/Messages';
 import FindCases from '../pages/findCases/FindCases';
 import MyCases from '../pages/myCases/myCases';
@@ -17,6 +16,7 @@ import MyProfile from '../pages/myProfle/MyProfile';
 import PaymentHistory from '../pages/paymentHistory/PaymentHistory';
 import PrivateRoute from './PrivateRoute';
 import AttorneyDetails from '../pages/attorneys/AttorneyDetails';
+import PostACase from '../pages/postACase/PostACase';
 
 const baseURL= "https://legalmate-server.vercel.app/"
 
@@ -60,16 +60,16 @@ const router= createBrowserRouter([
                     element: <Register></Register>
                 },
                 {
-                    path: "/appointments",
-                    element: <Appointments></Appointments>
-                },
-                {
                     path: "/messages",
                     element: <Messages></Messages>
                 },
                 {
                     path: "/findCases",
                     element: <FindCases></FindCases>
+                },
+                {
+                    path: "/postACase",
+                    element: <PostACase></PostACase>
                 },
                 {
                     path: "/myCases",

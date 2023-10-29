@@ -214,12 +214,14 @@ const AttorneyProfile = () => {
 
                                         {/* license Status */}
                                         <div className='w-full'>
-                                            <input
+                                            <select
                                                 {...register("licenseStatus")}
-                                                defaultValue={license[0]?.status}
-                                                placeholder='Active / Inactive'
                                                 className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
-                                            />
+                                            >
+                                                <option disabled value="">License Status</option>
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+                                            </select>    
                                         </div>
                                     </div>
                                 }
@@ -385,7 +387,7 @@ const AttorneyProfile = () => {
                                 <input
                                     {...register("location")}
                                     defaultValue={location}
-                                    placeholder='Your Location'
+                                    placeholder='e.g. Dhaka, Bangladesh'
                                     className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>
@@ -408,7 +410,7 @@ const AttorneyProfile = () => {
                             <textarea
                                 {...register("about")}
                                 defaultValue={about}
-                                placeholder='Write about yourself within 250 words'
+                                placeholder='Write about your professional life within 250 words'
                                 className='w-full h-32 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                             />
                         </div>

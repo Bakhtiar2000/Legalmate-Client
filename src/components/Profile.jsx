@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { VscAccount, VscLaw } from "react-icons/vsc"
+import { BsFileEarmarkMedical } from "react-icons/bs"
 import { MdOutlineHistory, MdOutlineContactMail } from "react-icons/md"
 
 const Profile = () => {
-    const { user } = useContext(AuthContext)
+    const { currentUser, user } = useContext(AuthContext)
     // console.log(user);
     return (
         <div className='relative z-[999] group'>
@@ -17,24 +18,27 @@ const Profile = () => {
             }
             {/* Dropdown */}
             <div
-                className="absolute right-0 top-28 max-w-xs min-w-[200px] bg-white shadow-4xl rounded-lg border-b-4 border-purple shadow-gray/40 origin-top-right transition-all duration-300 ease-in-out group-hover:top-[60px] overflow-hidden invisible group-hover:visible opacity-0 group-hover:opacity-100">
+                className="absolute right-0 top-28 max-w-xs min-w-[200px] bg-white shadow-4xl rounded-lg border-b-4 border-dark shadow-gray/40 origin-top-right transition-all duration-300 ease-in-out group-hover:top-[60px] overflow-hidden invisible group-hover:visible opacity-0 group-hover:opacity-100">
 
-                <ul
-                    className="flex flex-col text-dark"
-                >
-                    <li>
-                        <Link to='/myProfile' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'><VscAccount /> My Profile</Link>
-                    </li>
-                    <li>
-                        <Link to='/paymentHistory' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'><MdOutlineHistory /> Payment History</Link>
-                    </li>
-                    <li>
-                        <Link to='/aboutUs' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'><VscLaw /> About Us</Link>
-                    </li>
-                    <li>
-                        <Link to='/contact' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'><MdOutlineContactMail /> Contact</Link>
-                    </li>
-
+                <ul className="flex flex-col text-dark">
+                {
+                currentUser.role== "attorney" ?
+                <>
+                    {/* Attorney Profile Menu */}
+                    <li><Link to='/myProfile' className='text-dark flex items-center gap-4 hover:gap-5 hover:bg-dark/20 py-2 pl-4 hover:underline duration-300'><VscAccount /> My Profile</Link> </li>
+                    <li> <Link to='/paymentHistory' className='text-dark flex items-center gap-4 hover:gap-5 hover:bg-dark/20 py-2 pl-4 hover:underline duration-300'><MdOutlineHistory /> Payment History</Link></li>
+                    <li><Link to='/aboutUs' className='text-dark flex items-center gap-4 hover:gap-5 hover:bg-dark/20 py-2 pl-4 hover:underline duration-300'><VscLaw /> About Us</Link></li>
+                    <li><Link to='/contact' className='text-dark flex items-center gap-4 hover:gap-5 hover:bg-dark/20 py-2 pl-4 hover:underline duration-300'><MdOutlineContactMail /> Contact</Link></li>
+                </>:
+                <>
+                    {/* Client Profile Menu */}
+                    <li><Link to='/myProfile' className='text-dark flex items-center gap-4 hover:gap-5 hover:bg-dark/20 py-2 pl-4 hover:underline duration-300'><VscAccount /> My Profile</Link></li>
+                    <li><Link to='/myCases' className='text-dark flex items-center gap-4 hover:gap-5 hover:bg-dark/20 py-2 pl-4 hover:underline duration-300'><BsFileEarmarkMedical /> My Cases</Link></li>
+                    <li> <Link to='/paymentHistory' className='text-dark flex items-center gap-4 hover:gap-5 hover:bg-dark/20 py-2 pl-4 hover:underline duration-300'><MdOutlineHistory /> Payment History</Link></li>
+                    <li><Link to='/aboutUs' className='text-dark flex items-center gap-4 hover:gap-5 hover:bg-dark/20 py-2 pl-4 hover:underline duration-300'><VscLaw /> About Us</Link></li>
+                    <li><Link to='/contact' className='text-dark flex items-center gap-4 hover:gap-5 hover:bg-dark/20 py-2 pl-4 hover:underline duration-300'><MdOutlineContactMail /> Contact</Link></li>
+                </>
+                }
                 </ul>
             </div>
         </div>

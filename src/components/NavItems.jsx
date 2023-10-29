@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import ActiveLink from '../components/ActiveLink';
 import { AuthContext } from '../providers/AuthProvider';
-import useUser from '../hooks/useUser';
 
 const NavItems = () => {
     const { currentUser } = useContext(AuthContext)
@@ -13,8 +12,7 @@ const NavItems = () => {
             <>
                 <li><ActiveLink to="/">Home</ActiveLink></li>
                 <li><ActiveLink to="/attorneys">Find attorneys</ActiveLink></li>
-                <li><ActiveLink to="/myCases">My cases</ActiveLink></li>
-                <li><ActiveLink to="/appointments">Appointments</ActiveLink></li>
+                <li><ActiveLink to="/postACase">Post a Case</ActiveLink></li>
                 <li><ActiveLink to="/messages">Messages</ActiveLink></li>
             </>:
 
@@ -22,7 +20,6 @@ const NavItems = () => {
             <>
                 <li><ActiveLink to="/">Home</ActiveLink></li>
                 <li><ActiveLink to="/findCases">Find cases</ActiveLink></li>
-                <li><ActiveLink to="/appointments">Appointments</ActiveLink></li>
                 <li><ActiveLink to="/messages">Messages</ActiveLink></li>
             </>:
 

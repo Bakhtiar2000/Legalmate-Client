@@ -2,18 +2,18 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
 
-const Appointments = () => {
+const PostACase = () => {
     return (
         <div>
             <Helmet>
-                <title>Appointments - Legalmate</title>
+                <title>Post a Case - Legalmate</title>
             </Helmet>
 
-            <Breadcrumbs title="Appointments" />
+            <Breadcrumbs title="Post a Case" />
 
-            <h3>Appointments</h3>
+            <h3>Post a Case</h3>
         </div>
     );
 };
 
-export default Appointments;
+export default PostACase;
