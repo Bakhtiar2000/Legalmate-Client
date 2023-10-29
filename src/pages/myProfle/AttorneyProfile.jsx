@@ -1,5 +1,4 @@
 import useCurrentAttorney from '../../hooks/useCurrentAttorney';
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { BiCurrentLocation } from "react-icons/bi";
 import { TbLicense } from "react-icons/tb";
 import { GrStatusGoodSmall } from "react-icons/gr"
@@ -26,7 +25,6 @@ const AttorneyProfile = () => {
     const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
     const [isAwardModalOpen, setIsAwardModalOpen] = useState(false);
     const [isLicenseEditClicked, setIsLicenseEditClicked] = useState(false);
-    const [isAwardEditClicked, setIsAwardEditClicked] = useState(false);
     const [present, setPresent] = useState(false);
     const { user, loading } = useAuth()
     useEffect(() => {
@@ -36,12 +34,8 @@ const AttorneyProfile = () => {
     if (attorneyLoading || currentAttorneyData === null) return <PageLoader />
 
     const { _id, email, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards } = currentAttorneyData
-
-
     const newEducations = [...education, { subject: watch('subject'), institution: watch('institution'), start_year: watch('edu_start_year'), end_year: watch('edu_end_year') }];
-
     const newExperience = [...experience, { company: watch('company'), position: watch('position'), start_year: watch('exp_start_year'), end_year: watch('exp_end_year') }];
-
     const newAwards = [...awards, { name: watch('award_name'), from: watch('from'), year: watch('year') }];
 
 
@@ -87,24 +81,25 @@ const AttorneyProfile = () => {
 
         const updateData = {
             email: email,
-            licenseState: data.licenseState,
-            licenseAcquiredYear: data.licenseAcquiredYear,
-            licenseStatus: data.licenseStatus,
+            license: {
+                licenseState: data.licenseState,
+                licenseAcquiredYear: data.licenseAcquiredYear,
+                licenseStatus: data.licenseStatus
+            }
+
         }
         console.log(updateData);
-        // axiosSecure.patch(`/candidates/availability/${_id}`, updateData)
-        //     .then(res => {
-        //         if (res.status === 200) {
-        //             setAvailability(!availability)
-        //             refetch()
-        //         }
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     })
-        //TODO: save the basic info data
-        reset()
-        // setIsLicenseEditClicked(false)
+        axiosSecure.patch(`/attorney/license/`, updateData)
+            .then(res => {
+                if (res.status === 200) {
+                    refetch()
+                    setIsLicenseEditClicked(false)
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        
     }
 
     //Education Submit complete
@@ -172,22 +167,12 @@ const AttorneyProfile = () => {
     const handleAwardModal = (e) => {
         if (e == "cancel") setIsAwardModalOpen(false)
     }
-
-    // Award delete and update
-    const handleAwardDelete = (index)=>{
-        console.log("Deleting Award", index);
-    }
-
-    const handleAwardUpdate = (index)=>{
-        console.log("Updating Award", index);
-    }
-
     // Image Hosting
     const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
 
     const handlePictureUpload = event => {
-        const picture = event.target.files[0]
+        const picture = event.target.files
         const formData = new FormData()
         formData.append('image', picture)
         console.log(picture)
@@ -262,32 +247,32 @@ const AttorneyProfile = () => {
 
                         {/* License information */}
                         <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 border border-dashed border-white h-fit w-fit">
-                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license[0]?.licensed_for} {license[0]?.licensed_for && "years"}</p>
+                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license?.licensed_for} {license?.licensed_for && "years"}</p>
 
                             <div className="flex items-center gap-5 duration-300">
                                 <div>
                                     <div className="flex items-center gap-2">
                                         <BiCurrentLocation />
-                                        <p>State:</p>
+                                        <p>State:{license.licenseState}</p>
                                     </div>
 
                                     <div className={`flex items-center gap-2 ${isLicenseEditClicked && "my-2"}`}>
                                         <TbLicense />
-                                        <p>Acquired:</p>
+                                        <p>Acquired:{license.licenseAcquiredYear}</p>
                                     </div>
 
                                     <div className="flex items-center gap-2">
                                         <GrStatusGoodSmall fill="green" />
-                                        <p>Status:</p>
+                                        <p>Status:{license.licenseStatus}</p>
                                     </div>
                                 </div>
 
                                 {
                                     !isLicenseEditClicked ?
                                         <div>
-                                            <p>{license[0]?.state}</p>
-                                            <p>{license[0]?.acquired_year}</p>
-                                            <p className="text-green-500">{license[0]?.status}</p>
+                                            <p>{license?.state}</p>
+                                            <p>{license?.acquired_year}</p>
+                                            <p className="text-green-500">{license?.status}</p>
                                         </div> :
 
                                         <div className='max-w-[160px] text-black'>
@@ -295,7 +280,7 @@ const AttorneyProfile = () => {
                                             <div className='w-full'>
                                                 <input
                                                     {...register("licenseState")}
-                                                    defaultValue={license[0]?.state}
+                                                    defaultValue={license.licenseState}
                                                     placeholder='License of State'
                                                     className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
@@ -306,7 +291,7 @@ const AttorneyProfile = () => {
                                                 <input
                                                     type='number'
                                                     {...register("licenseAcquiredYear")}
-                                                    defaultValue={license[0]?.acquired_year}
+                                                    defaultValue={license.licenseAcquiredYear}
                                                     placeholder='Year of Acquisition'
                                                     className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
@@ -316,7 +301,7 @@ const AttorneyProfile = () => {
                                             <div className='w-full'>
                                                 <input
                                                     {...register("licenseStatus")}
-                                                    defaultValue={license[0]?.status}
+                                                    defaultValue={license.licenseStatus}
                                                     placeholder='Active / Inactive'
                                                     className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />

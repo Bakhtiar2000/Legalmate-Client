@@ -10,14 +10,12 @@
       "location": "Dhaka, Bangladesh",
       "hourly_rate": "$200-250",
       "rating": 4.6,
-      "license": [
-        {
+      "license":{
           "state": "Dhaka",
           "acquired_year": 2010,
           "licensed_for": 13,
           "status": "Active"
-        }
-      ],
+        },
       "experience": [
         {
           "position" : "Attorney",
