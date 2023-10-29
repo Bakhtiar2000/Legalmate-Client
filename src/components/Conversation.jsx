@@ -16,6 +16,7 @@ const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
     }
 
     useEffect(() => {
+        
         const receiver = chat?.members.find(id => id !== currentUser?._id)
 
         axiosSecure.get(`/users/id/${receiver}`)

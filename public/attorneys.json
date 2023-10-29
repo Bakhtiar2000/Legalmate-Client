@@ -1,6 +1,6 @@
 [
     {
-      "_id": 1,
+      
       "name": "Musharraf Karim",
       "img": "https://img.freepik.com/premium-photo/happy-laughing-old-bearded-business-man-leader_941600-6823.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=ais",
       "about":
@@ -9,6 +9,7 @@
       "contact": "+8801879379797",
       "location": "Dhaka, Bangladesh",
       "hourly_rate": "$200-250",
+      "rating": 4.6,
       "license": [
         {
           "state": "Dhaka",
@@ -84,7 +85,7 @@
       "email": "musharraf@gmail.com"
     },
     {
-      "_id": 2,
+      
       "name": "Linkon Chowdhury",
       "img": "https://img.freepik.com/free-photo/portrait-cheerful-hairless-elder-man-dressed-dark-blue-suit-against-dark-background_613910-17566.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=ais",
       "about":
@@ -93,6 +94,7 @@
             "contact": "+8801879379797",
       "location": "Dhaka, Bangladesh",
       "hourly_rate": "$200-250",
+      "rating": 4.6,
       "license": [
         {
           "state": "Dhaka",
@@ -168,7 +170,7 @@
       "email": "linkon@gmail.com"
     },
     {
-      "_id": 3,
+      
       "name": "Rakibul hasan",
       "img": "https://img.freepik.com/premium-photo/confident-elderly-businessman_882186-5441.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=ais",
       "about":
@@ -177,6 +179,7 @@
             "contact": "+8801879379797",
       "location": "Dhaka, Bangladesh",
       "hourly_rate": "$200-250",
+      "rating": 4.6,
       "license": [
         {
           "state": "Dhaka",
@@ -252,7 +255,7 @@
       "email": "rakib@gmail.com"
     },
     {
-      "_id": 4,
+      
       "name": "Mustafa Rabbani",
       "img": "https://img.freepik.com/free-photo/handsome-corporate-man-real-estate-agent-assistant-smiling-hold-hands-together-how-may-i-help-you-smiling-friendly-polite-assist-customer-white-background_176420-45257.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=ais",
       "about":
@@ -261,6 +264,7 @@
             "contact": "+8801879379797",
       "location": "Dhaka, Bangladesh",
       "hourly_rate": "$200-250",
+      "rating": 4.6,
       "license": [
         {
           "state": "Dhaka",
@@ -336,7 +340,7 @@
       "email": "mustafa@gmail.com"
     },
     {
-      "_id": 5,
+      
       "name": "Al Imran Tonmoy",
       "img": "https://img.freepik.com/free-photo/business-man-curly-cute-handsome-guy-black-suit-close-up-smiling_140725-162638.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=ais",
       "about":
@@ -345,6 +349,7 @@
             "contact": "+8801879379797",
       "location": "Dhaka, Bangladesh",
       "hourly_rate": "$200-250",
+      "rating": 4.6,
       "license": [
         {
           "state": "Dhaka",
@@ -420,7 +425,7 @@
       "email": "tonmoy@gmail.com"
     },
     {
-      "_id": 6,
+      
       "name": "Jashim Bhuiyan",
       "img": "https://img.freepik.com/free-photo/portrait-smiling-caucasian-senior-businessman_1262-2142.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=ais",
       "about":
@@ -429,6 +434,7 @@
             "contact": "+8801879379797",
       "location": "Dhaka, Bangladesh",
       "hourly_rate": "$200-250",
+      "rating": 4.6,
       "license": [
         {
           "state": "Dhaka",
