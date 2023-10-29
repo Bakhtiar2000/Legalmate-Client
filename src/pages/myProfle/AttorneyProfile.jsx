@@ -8,15 +8,19 @@ import useAuth from '../../hooks/useAuth';
 import { BsCamera, BsCheckLg } from 'react-icons/bs';
 import { RxCrossCircled } from 'react-icons/rx';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CustomModal from '../../components/CustomModal';
 
 const AttorneyProfile = () => {
-    const {user, loading} = useAuth()
-    if (loading) return <PageLoader />
-    const [currentAttorneyData, attorneyLoading, refetch] = useCurrentAttorney();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    if (attorneyLoading) return <PageLoader />
+    const [currentAttorneyData, attorneyLoading, refetch] = useCurrentAttorney();
+    const [isBasicInfoModalOpen, setIsBasicInfoModalOpen] = useState(false);
+    const {user, loading} = useAuth()
+    useEffect(() => {
+        refetch()
+    }, [user]);
+   
+    if (attorneyLoading || currentAttorneyData===null) return <PageLoader />
 
     const {_id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards} = currentAttorneyData
     
@@ -27,7 +31,7 @@ const AttorneyProfile = () => {
         setIsBasicInfoModalOpen(false)
     }
 
-    const [isBasicInfoModalOpen, setIsBasicInfoModalOpen] = useState(false);
+
     const handleBasicInfoModal = (e) => {
         if (e == "cancel") setIsBasicInfoModalOpen(false)
     }
