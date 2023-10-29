@@ -7,9 +7,9 @@ const AttorneyExperience = ({experience}) => {
           {
               experience.map(exp=> 
               <div className='border border-white/40 rounded px-5 py-3'>
-                  <p className='text-primary text-xl'>{exp.company}</p>
-                  <p className=''>{exp.position}</p>
-                  <p className='text-sm italic'>{exp.start_year} - {exp.end_year}</p>
+                  <p className='text-primary text-xl'>{exp?.company}</p>
+                  <p className=''>{exp?.position}</p>
+                  <p className='text-sm italic'>{exp?.start_year} - {exp?.end_year}</p>
               </div>)
           }
         </div>

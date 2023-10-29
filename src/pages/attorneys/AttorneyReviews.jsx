@@ -42,19 +42,19 @@ const AttorneyReviews = ({ reviews }) => {
                         <div className='duration-300 h-full bg-lightDark rounded-lg p-3 md:py-5 md:px-8 border border-slate-500 shadow-lg max-w-4xl mx-auto'>
                            <div className='flex items-center justify-between gap-5 mb-5'>
                                 <div>
-                                    <p className='text-xl md:text-2xl font-semibold md:mb-2'>{review.name}</p>
-                                    <p className='text-slate-500'>{review.date}</p>
+                                    <p className='text-xl md:text-2xl font-semibold md:mb-2'>{review?.name}</p>
+                                    <p className='text-slate-500'>{review?.date}</p>
                                 </div>
                                 {/* rating */}
                                 <Rating
                                     className="max-w-[110px]"
                                     readOnly
-                                    value={review.rating}
+                                    value={review?.rating}
                                     itemStyles={myStyles}
                                 />
                            </div>
     
-                            <p className='mb-5 italic'>"{review.review}"</p>
+                            <p className='mb-5 italic'>"{review?.review}"</p>
                         </div>
                     </SwiperSlide>)
                 }
