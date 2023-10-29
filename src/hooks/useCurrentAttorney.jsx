@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxios";
 import useAuth from "./useAuth";
-import PageLoader from "../components/PageLoader";
 
 const useCurrentAttorney = () => {
     const { user } = useAuth();

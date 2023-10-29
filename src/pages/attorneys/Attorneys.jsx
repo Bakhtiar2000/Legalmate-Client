@@ -1,8 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
+import AttorneyFilter from './AttorneyFilter';
 
 const Attorneys = () => {
+ 
     return (
         <div>
              <Helmet>
@@ -11,7 +13,7 @@ const Attorneys = () => {
 
             <Breadcrumbs title="Our Attorneys" />
 
-            <h3>Attorneys</h3>
+            <AttorneyFilter></AttorneyFilter>
         </div>
     );
 };
