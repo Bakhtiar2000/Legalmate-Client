@@ -89,6 +89,7 @@ const AttorneyFilter = () => {
                         </label>
                         <select name="practice area" id="practice_area"
                             {...register("practice_area")}
+                            defaultValue=""
                             className="w-full border text-lg pl-2 py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent"
                         >
                             <option disabled value="">Select practice area</option>
