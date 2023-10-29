@@ -42,6 +42,14 @@ const AttorneyProfile = () => {
         if (e == "cancel") setIsBasicInfoModalOpen(false)
     }
 
+    //License submit 
+    const onLicenseSubmit= data =>{
+        console.log(data);
+        //TODO: save the basic info data
+        reset()
+        setIsLicenseEditClicked(false)
+    }
+
     //Education Submit
     const onEducationSubmit= data =>{
         console.log(data);
@@ -153,17 +161,17 @@ const AttorneyProfile = () => {
                         </div>
 
                         {/* License information */}
-                        <div className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 border border-dashed border-white h-fit w-fit">
+                        <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 border border-dashed border-white h-fit w-fit">
                             <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license[0]?.licensed_for} {license[0]?.licensed_for && "years"}</p>
 
-                            <div className="flex items-center gap-5">
+                            <div className="flex items-center gap-5 duration-300">
                                 <div>
                                     <div className="flex items-center gap-2">
                                         <BiCurrentLocation />
                                         <p>State:</p>
                                     </div>
 
-                                    <div className="flex items-center gap-2">
+                                    <div className={`flex items-center gap-2 ${isLicenseEditClicked && "my-2"}`}>
                                         <TbLicense />
                                         <p>Acquired:</p>
                                     </div>
@@ -177,9 +185,9 @@ const AttorneyProfile = () => {
                                 {
                                     !isLicenseEditClicked?
                                     <div>
-                                        <p>A</p>
-                                        <p>V</p>
-                                        <p className="text-green-500">R</p>
+                                        <p>{license[0]?.state}</p>
+                                        <p>{license[0]?.acquired_year}</p>
+                                        <p className="text-green-500">{license[0]?.status}</p>
                                     </div>:
 
                                     <div className='max-w-[160px] text-black'>
@@ -187,7 +195,7 @@ const AttorneyProfile = () => {
                                         <div className='w-full'>
                                             <input
                                                 {...register("licenseState")}
-                                                defaultValue={license?.state}
+                                                defaultValue={license[0]?.state}
                                                 placeholder='License of State'
                                                 className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                             />
@@ -198,7 +206,7 @@ const AttorneyProfile = () => {
                                             <input
                                                 type='number'
                                                 {...register("licenseAcquiredYear")}
-                                                defaultValue={license?.acquired_year}
+                                                defaultValue={license[0]?.acquired_year}
                                                 placeholder='Year of Acquisition'
                                                 className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                             />
@@ -208,7 +216,7 @@ const AttorneyProfile = () => {
                                         <div className='w-full'>
                                             <input
                                                 {...register("licenseStatus")}
-                                                defaultValue={license?.status}
+                                                defaultValue={license[0]?.status}
                                                 placeholder='Active / Inactive'
                                                 className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                             />
@@ -226,15 +234,22 @@ const AttorneyProfile = () => {
                                 >
                                     Update
                                 </p>:
-                                <p 
+                                <div className='flex justify-end gap-2 items-center'>
+                                    <p 
                                     onClick={()=> setIsLicenseEditClicked(false)} 
-                                    className="mt-2 w-fit text-center px-2 bg-green-500 hover:bg-green-500/60 duration-300 rounded text-white cursor-pointer"
-                                >
-                                    Save
-                                </p>
+                                    className="mt-2 w-fit text-center px-2 bg-red-500 hover:bg-red-500/60 duration-300 rounded text-white cursor-pointer"
+                                    >
+                                        Cancel
+                                    </p>
+                                    <input
+                                        type='submit' 
+                                        value="Save" 
+                                        className="mt-2 w-fit text-center px-2 bg-green-500 hover:bg-green-500/60 duration-300 rounded text-white cursor-pointer"
+                                    />
+                                </div>
                             }
                             </div>
-                        </div>
+                        </form>
                     </div>
 
                     {/* About */}
@@ -401,6 +416,7 @@ const AttorneyProfile = () => {
                         <input 
                             className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-2 sm:mt-5 cursor-pointer"
                             type="submit"
+                            value="Save Changes"
                         />
                     </form>
                 </CustomModal>
@@ -465,6 +481,7 @@ const AttorneyProfile = () => {
                         <input 
                             className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5 cursor-pointer"
                             type="submit"
+                            value="Save Changes"
                         />
                     </form>
                 </CustomModal>
@@ -529,6 +546,7 @@ const AttorneyProfile = () => {
                         <input 
                             className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5 cursor-pointer"
                             type="submit"
+                            value="Save Changes"
                         />
                     </form>
                 </CustomModal>
@@ -581,6 +599,7 @@ const AttorneyProfile = () => {
                         <input 
                             className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5 cursor-pointer"
                             type="submit"
+                            value="Save Changes"
                         />
                     </form>
                 </CustomModal>
