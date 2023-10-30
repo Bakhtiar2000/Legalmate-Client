@@ -9,11 +9,15 @@ import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import CustomModal from '../../components/CustomModal';
 import useAxiosSecure from '../../hooks/useAxios';
+import AttorneyEducationProfile from './AttorneyEducationProfile';
+import AttorneyExperienceProfile from './AttorneyExperienceProfile';
+import AttorneyAwardProfile from './AttorneyAwardProfile';
 
 const AttorneyProfile = () => {
     const [axiosSecure] = useAxiosSecure()
-    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, setValue, reset, formState: { errors } } = useForm();
     const [currentAttorneyData, attorneyLoading, refetch] = useCurrentAttorney();
+    console.log(currentAttorneyData);
 
     // States
     const [isBasicInfoModalOpen, setIsBasicInfoModalOpen] = useState(false);
@@ -21,6 +25,7 @@ const AttorneyProfile = () => {
     const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
     const [isAwardModalOpen, setIsAwardModalOpen] = useState(false);
     const [isLicenseEditClicked, setIsLicenseEditClicked] = useState(false);
+    const [present, setPresent] = useState(false);
     const { user, loading } = useAuth()
     useEffect(() => {
         refetch()
@@ -29,16 +34,18 @@ const AttorneyProfile = () => {
     if (attorneyLoading || currentAttorneyData === null) return <PageLoader />
 
     const { _id, email, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards } = currentAttorneyData
-
-
     const newEducations = [...education, { subject: watch('subject'), institution: watch('institution'), start_year: watch('edu_start_year'), end_year: watch('edu_end_year') }];
-
     const newExperience = [...experience, { company: watch('company'), position: watch('position'), start_year: watch('exp_start_year'), end_year: watch('exp_end_year') }];
-
-    const newAwards = [...awards, { name: watch('award_name'), from: watch('position'), year: watch('year') }];
-
+    const newAwards = [...awards, { name: watch('award_name'), from: watch('from'), year: watch('year') }];
 
 
+    //Validate end date
+    const validateEndingDate = (endingDate, startingDate) => {
+        if (endingDate && startingDate) {
+            return endingDate >= startingDate || "Ending date must be greater than or equal to the starting date";
+        }
+        return true;
+    };
 
     //Basic info Submit Complete
     const onBasicInfoSubmit = data => {
@@ -66,7 +73,7 @@ const AttorneyProfile = () => {
 
     }
     const handleBasicInfoModal = (e) => {
-        // if (e == "cancel") setIsBasicInfoModalOpen(false)
+        if (e == "cancel") setIsBasicInfoModalOpen(false)
     }
 
     //License submit 
@@ -112,10 +119,9 @@ const AttorneyProfile = () => {
             .catch(error => {
                 console.log(error);
             })
-
     }
     const handleEducationModal = (e) => {
-        // if (e == "cancel") setIsEducationModalOpen(false)
+        if (e == "cancel") setIsEducationModalOpen(false)
     }
 
     //Experience Submit Complete
@@ -135,10 +141,9 @@ const AttorneyProfile = () => {
             .catch(error => {
                 console.log(error);
             })
-
     }
     const handleExperienceModal = (e) => {
-        // if (e == "cancel") setIsExperienceModalOpen(false)
+        if (e == "cancel") setIsExperienceModalOpen(false)
     }
 
     //Award Submit
@@ -158,13 +163,10 @@ const AttorneyProfile = () => {
             .catch(error => {
                 console.log(error);
             })
-
-
     }
     const handleAwardModal = (e) => {
-        // if (e == "cancel") setIsAwardModalOpen(false)
+        if (e == "cancel") setIsAwardModalOpen(false)
     }
-
     // Image Hosting
     const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
@@ -205,7 +207,7 @@ const AttorneyProfile = () => {
             {/* Basic Information */}
             <div className='w-fit mx-auto md:flex gap-8 rounded p-5 bg-lightDark'>
                 {/* Image */}
-                <div className='relative'>
+                <div className='relative h-fit w-fit'>
                     <div className='min-w-max'>
                         {
                             img ?
@@ -244,7 +246,7 @@ const AttorneyProfile = () => {
                         </div>
 
                         {/* License information */}
-                        <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 border border-dashed border-white h-fit w-fit">
+                        <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 mt-5 md:mt-0 border border-dashed border-white h-fit w-fit">
                             <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license?.licensed_for} {license?.licensed_for && "years"}</p>
 
                             <div className="flex items-center gap-5 duration-300">
@@ -346,7 +348,7 @@ const AttorneyProfile = () => {
                     {/* Edit details button */}
                     <p
                         onClick={() => setIsBasicInfoModalOpen(true)}
-                        className="mt-auto w-full text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white cursor-pointer"
+                        className="mt-auto w-full text-center px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white cursor-pointer"
                     >
                         Edit Details
                     </p>
@@ -361,14 +363,14 @@ const AttorneyProfile = () => {
                 {
                     education.length === 0 ?
                         <p className='text-center text-2xl mt-5'>☹ No education data found</p> :
-                        <div className='flex flex-wrap gap-10'>
+                        <div className='grid lg:grid-cols-2 gap-6 mt-5'>
                             {
-                                education.map(edu =>
-                                    <div className='border border-white/40 rounded px-5 py-3'>
-                                        <p className='text-primary text-xl'>{edu?.institution}</p>
-                                        <p className=''>{edu?.subject}</p>
-                                        <p className='text-sm italic'>{edu?.start_year} - {edu?.end_year}</p>
-                                    </div>)
+                                education.map((edu, index) =><AttorneyEducationProfile
+                                    key={index}
+                                    edu={edu}
+                                    index={index}
+                                    validateEndingDate={validateEndingDate}
+                                ></AttorneyEducationProfile>)
                             }
                         </div>
                 }
@@ -385,14 +387,14 @@ const AttorneyProfile = () => {
                 {
                     experience.length === 0 ?
                         <p className='text-center text-2xl mt-5'>☹ No Experience data found</p> :
-                        <div className='flex flex-wrap gap-10'>
+                        <div className='grid lg:grid-cols-2 gap-6 mt-5'>
                             {
-                                experience.map(exp =>
-                                    <div className='border border-white/40 rounded px-5 py-3'>
-                                        <p className='text-primary text-xl'>{exp?.company}</p>
-                                        <p className=''>{exp?.position}</p>
-                                        <p className='text-sm italic'>{exp?.start_year} - {exp?.end_year}</p>
-                                    </div>)
+                                experience.map((exp, index) =><AttorneyExperienceProfile
+                                    key={index}
+                                    exp={exp}
+                                    index={index}
+                                    validateEndingDate={validateEndingDate}
+                                ></AttorneyExperienceProfile>)
                             }
                         </div>
                 }
@@ -409,14 +411,13 @@ const AttorneyProfile = () => {
                 {
                     awards.length === 0 ?
                         <p className='text-center text-2xl mt-5'>☹ No Awards data found</p> :
-                        <div className='flex flex-wrap gap-10'>
+                        <div className='grid lg:grid-cols-2 gap-6 mt-5'>
                             {
-                                awards.map(award =>
-                                    <div className='border border-white/40 rounded px-5 py-3'>
-                                        <p className='text-primary text-xl'>{award?.name}</p>
-                                        <p className=''>{award?.from}</p>
-                                        <p className='text-sm italic'>{award?.year}</p>
-                                    </div>)
+                                awards.map((award, index) =><AttorneyAwardProfile
+                                    key={index}
+                                    award={award}
+                                    index={index}
+                                ></AttorneyAwardProfile>)
                             }
                         </div>
                 }
@@ -522,9 +523,9 @@ const AttorneyProfile = () => {
                                 <label className='text-dark text-sm'>Institution:</label>
                                 <input
                                     type='text'
-                                    {...register("institution")}
+                                    {...register("institution", {required: true})}
                                     placeholder='e.g: University of British Columbia'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.institution && 'border-2 border-red-500'}`}
                                 />
                             </div>
 
@@ -533,9 +534,9 @@ const AttorneyProfile = () => {
                                 <label className='text-dark text-sm'>Subject:</label>
                                 <input
                                     type='text'
-                                    {...register("subject")}
+                                    {...register("subject", {required: true})}
                                     placeholder='e.g: JD - Juris Doctor'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                     className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.subject && 'border-2 border-red-500'}`}
                                 />
                             </div>
                         </div>
@@ -546,19 +547,48 @@ const AttorneyProfile = () => {
                                 <label className='text-dark text-sm'>Start year:</label>
                                 <input
                                     type='number'
-                                    {...register("edu_start_year")}
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    {...register("edu_start_year", {required: true})}
+                                     className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.edu_start_year && 'border-2 border-red-500'}`}
                                 />
                             </div>
 
                             {/* End year */}
                             <div className='w-full'>
                                 <label className='text-dark text-sm'>End year:</label>
-                                <input
-                                    type='number'
-                                    {...register("edu_end_year")}
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
-                                />
+                                {
+                                    present?
+                                    <input
+                                        value='Present'
+                                        readOnly
+                                        {...register("edu_end_year", {required: true})}
+                                        className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.edu_end_year && 'border-2 border-red-500'}`}
+                                    />:
+                                    <>
+                                    <input
+                                        type='number'
+                                        {...register("edu_end_year", {required: true,  validate: (value) => validateEndingDate(value, watch("edu_start_year"))})}
+                                        className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors?.edu_end_year?.type === "required" && 'border-2 border-red-500'}`}
+                                    />
+                                    {errors?.edu_end_year?.type === 'validate' && <span className='text-red-500 text-sm duration-300'>Invalid End year</span>}
+                                    </>
+                                }
+
+                                {/* Checkbox for present */}
+                                <label className='flex gap-2 justify-end text-base'>
+                                    <input
+                                        type="checkbox"
+                                        onChange={e => {
+                                            setPresent(e.target.checked);
+                                            console.log(e.target.checked);
+                                            if (e.target.checked) {
+                                                setValue('edu_end_year', 'Present')
+                                            } else {
+                                                setValue('edu_end_year', '')
+                                            }
+                                        }}
+                                    />
+                                    Currently studying here
+                                </label>
                             </div>
                         </div>
                         <input
@@ -587,9 +617,9 @@ const AttorneyProfile = () => {
                                 <label className='text-dark text-sm'>Company:</label>
                                 <input
                                     type='text'
-                                    {...register("company")}
+                                    {...register("company", {required: true})}
                                     placeholder='e.g: Pivotal Law Group'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                  className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.company && 'border-2 border-red-500'}`}
                                 />
                             </div>
 
@@ -598,9 +628,9 @@ const AttorneyProfile = () => {
                                 <label className='text-dark text-sm'>Position:</label>
                                 <input
                                     type='text'
-                                    {...register("position")}
+                                    {...register("position", {required: true})}
                                     placeholder='e.g: Attorney'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                  className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.position && 'border-2 border-red-500'}`}
                                 />
                             </div>
                         </div>
@@ -611,19 +641,48 @@ const AttorneyProfile = () => {
                                 <label className='text-dark text-sm'>Start year:</label>
                                 <input
                                     type='number'
-                                    {...register("exp_start_year")}
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                    {...register("exp_start_year", {required: true})}
+                                  className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.exp_start_year && 'border-2 border-red-500'}`}
                                 />
                             </div>
 
-                            {/* End year */}
-                            <div className='w-full'>
+                             {/* End year */}
+                             <div className='w-full'>
                                 <label className='text-dark text-sm'>End year:</label>
-                                <input
-                                    type='number'
-                                    {...register("exp_end_year")}
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
-                                />
+                                {
+                                    present?
+                                    <input
+                                        value='Present'
+                                        readOnly
+                                        {...register("exp_end_year", {required: true})}
+                                        className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.exp_end_year && 'border-2 border-red-500'}`}
+                                    />:
+                                    <>
+                                    <input
+                                        type='number'
+                                        {...register("exp_end_year", {required: true,  validate: (value) => validateEndingDate(value, watch("exp_start_year"))})}
+                                        className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors?.exp_end_year?.type === "required" && 'border-2 border-red-500'}`}
+                                    />
+                                    {errors?.exp_end_year?.type === 'validate' && <span className='text-red-500 text-sm duration-300'>Invalid End year</span>}
+                                    </>
+                                }
+
+                                {/* Checkbox for present */}
+                                <label className='flex gap-2 justify-end text-base'>
+                                    <input
+                                        type="checkbox"
+                                        onChange={e => {
+                                            setPresent(e.target.checked);
+                                            console.log(e.target.checked);
+                                            if (e.target.checked) {
+                                                setValue('exp_end_year', 'Present')
+                                            } else {
+                                                setValue('exp_end_year', '')
+                                            }
+                                        }}
+                                    />
+                                    Currently working here
+                                </label>
                             </div>
                         </div>
                         <input
@@ -651,9 +710,9 @@ const AttorneyProfile = () => {
                             <label className='text-dark text-sm'>Award name:</label>
                             <input
                                 type='text'
-                                {...register("award_name")}
+                                {...register("award_name", {required: true})}
                                 placeholder='e.g: Rising Star'
-                                className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.award_name && 'border-2 border-red-500'}`}
                             />
                         </div>
 
@@ -662,9 +721,9 @@ const AttorneyProfile = () => {
                             <label className='text-dark text-sm'>Award Given by:</label>
                             <input
                                 type='text'
-                                {...register("position")}
+                                {...register("from", {required: true})}
                                 placeholder='e.g: Super Lawyers'
-                                className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.from && 'border-2 border-red-500'}`}
                             />
                         </div>
 
@@ -675,8 +734,8 @@ const AttorneyProfile = () => {
                             <input
                                 type='number'
                                 placeholder='The year of winning award'
-                                {...register("year")}
-                                className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3'
+                                {...register("year", {required: true})}
+                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.year && 'border-2 border-red-500'}`}
                             />
                         </div>
                         <input

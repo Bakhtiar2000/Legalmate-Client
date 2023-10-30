@@ -4,6 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import AttorneyProfile from './AttorneyProfile';
 import useAuth from '../../hooks/useAuth';
 import ClientProfile from './ClientProfile';
+import PageLoader from '../../components/PageLoader';
 
 const MyProfile = () => {
     const {currentUser} = useAuth()
@@ -19,7 +20,9 @@ const MyProfile = () => {
            {
                 currentUser.role=== "attorney"?
                 <AttorneyProfile></AttorneyProfile>:
-                <ClientProfile></ClientProfile>
+                currentUser.role=== "client"?
+                <ClientProfile></ClientProfile>:
+                <PageLoader />
            }
         </div>
     );
