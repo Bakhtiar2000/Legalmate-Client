@@ -6,7 +6,7 @@ import AttorneyDetailsBody from './AttorneyDetailsBody';
 
 const AttorneyDetails = () => {
     const singleAttorney= useLoaderData()
-    console.log(singleAttorney);
+    // console.log(singleAttorney);
 
     return (
         <div>
