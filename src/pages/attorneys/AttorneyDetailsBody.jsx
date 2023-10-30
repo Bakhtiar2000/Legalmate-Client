@@ -14,17 +14,22 @@ import AttorneyAwards from "./AttorneyAwards";
 import useUsers from "../../hooks/useUserData";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxios";
+import usePaymentHistory from "../../hooks/usePaymentHistory";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
-    const { name, img, about, practiceArea, location, hourly_rate, license, experience, education, reviews, awards,  email }= singleAttorney
+    // console.log(singleAttorney)
+    const { _id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, reviews, awards, email } = singleAttorney
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
 
+
+    const [paymentData, paymentLoading, paymentRefetch] = usePaymentHistory();
     const [userData] = useUsers();
     const { currentUser } = useAuth()
     const [receiverId, setReceiverId] = useState();
     const [axiosSecure] = useAxiosSecure();
-    console.log(userData)
+    const [paymentSuccess, setPaymentSuccess] = useState()
+
     // rating style
     const myStyles = {
         itemShapes: Star,
@@ -63,6 +68,44 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                 console.log(error);
             });
     }
+    const paymentHandle = () => {
+        const timestamp = new Date().getTime();
+        const random = Math.floor(Math.random() * 1000);
+        const tran_id = `${timestamp}${random}`
+        console.log(tran_id)
+        const paymentInfo = {
+            attorneyID: _id,
+            attorneyName: name,
+            attorneyEmail: email,
+            clintName: currentUser.name,
+            clintEmail: currentUser.email,
+            practiceArea: practiceArea,
+            amount: 500,
+            tran_id: tran_id,
+
+        }
+        console.log(paymentInfo)
+        axiosSecure.post('/payment', paymentInfo)
+            .then(res => {
+                console.log("res.data", res.data)
+                window.location.replace(res.data.url)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }
+    useEffect(() => {
+        paymentData?.map(pay => {
+            const paymentStatus = pay.attorneyID === _id && pay.attorneyEmail === email && pay.clintEmail === currentUser?.email && pay.clintName === currentUser.name
+
+            if (paymentStatus) setPaymentSuccess(true)
+
+            // console.log("paymentStatus", paymentStatus)
+           
+        })
+
+    }, [singleAttorney, currentUser]);
 
     return (
         <div className='container py-20' >
@@ -73,17 +116,17 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                 <div className='min-w-max'>
                     {/* Image */}
                     {
-                        img?
-                        <img
-                            className="w-64 h-80 object-cover rounded mx-auto border border-primary"
-                            src={img}
-                            alt=""
-                        />:
-                        <img
-                            className='w-64 h-80 object-cover rounded mx-auto border border-primary'
-                            src="https://i.ibb.co/wNJtyRX/image-14.png" 
-                        />
-                }
+                        img ?
+                            <img
+                                className="w-64 h-80 object-cover rounded mx-auto border border-primary"
+                                src={img}
+                                alt=""
+                            /> :
+                            <img
+                                className='w-64 h-80 object-cover rounded mx-auto border border-primary'
+                                src="https://i.ibb.co/wNJtyRX/image-14.png"
+                            />
+                    }
                 </div>
 
                 <div className="flex flex-col gap-8">
@@ -104,14 +147,14 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                                     value={reviews.length > 0 && averageRating}
                                     itemStyles={myStyles}
                                 />
-                                <p className="font-bold text-orange-500">{reviews.length!==0 && averageRating}</p>
+                                <p className="font-bold text-orange-500">{reviews.length !== 0 && averageRating}</p>
                                 <span className="text-gray">({reviews.length})</span>
                             </div>
                         </div>
 
                         {/* License information */}
                         <div className="bg-lightDark/50 rounded-lg p-3 md:ml-5 border border-dashed border-white h-fit w-fit">
-                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license[0]?.licensed_for} years</p>
+                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license.licenseAcquiredYear} years</p>
 
                             <div className="flex items-center gap-5">
                                 <div>
@@ -132,28 +175,42 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                                 </div>
 
                                 <div>
-                                    <p>{license[0]?.state}</p>
-                                    <p>{license[0]?.acquired_year}</p>
-                                    <p className="text-green-500">{license[0]?.status}</p>
+                                    <p>{license.licenseState}</p>
+                                    <p>{license.licenseAcquiredYear}</p>
+                                    <p className="text-green-500">{license.licenseStatus}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* About */}
-                   {
+                    {
                         about &&
                         <div className="bg-primary/20 px-5 py-3 rounded-lg max-w-2xl">
                             <p>{about}</p>
                         </div>
-                   }
+                    }
 
                     {/* Message */}
-                    <div className="mt-auto w-full bg-green-600 hover:bg-green-800 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
-                        <button onClick={createChat} className="lg:text-xl text-center">
-                            Message
-                        </button>
-                    </div>
+                    {
+                        paymentSuccess ?
+                            <button onClick={createChat} className="lg:text-xl text-center">
+                                <div className="mt-auto w-full bg-green-600 hover:bg-green-800 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
+                                    Message
+
+                                </div>
+                            </button>
+                            :
+                            <button onClick={paymentHandle} className="lg:text-xl text-center">
+                                <div className="mt-auto w-full bg-red-600 hover:bg-green-800 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
+
+                                    Payment
+                                </div>
+                            </button>
+
+                    }
+
+
                 </div>
             </div>
 

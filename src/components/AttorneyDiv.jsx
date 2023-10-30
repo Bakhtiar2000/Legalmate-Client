@@ -63,7 +63,7 @@ const AttorneyDiv = ({attorney}) => {
 
                 {
                     license.length!== 0 && 
-                    < p className='text-orange-500'>Licensed for {currentYear - license[0]?.acquired_year} years</p>
+                    < p className='text-orange-500'>Licensed for {currentYear - license.licenseAcquiredYear} years</p>
                 }
                 <p>{about}</p>
                 </div>
