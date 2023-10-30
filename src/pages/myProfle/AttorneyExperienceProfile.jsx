@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import useAxiosSecure from '../../hooks/useAxios';
 
-const AttorneyExperienceProfile = ({ exp, index, validateEndingDate }) => {
-
+const AttorneyExperienceProfile = ({ exp,id, refetch, index, validateEndingDate }) => {
+    const [axiosSecure] = useAxiosSecure();
     const { register, handleSubmit, watch, setValue, reset, formState: { errors } } = useForm();
     const [present, setPresent] = useState(false);
     const [isExperienceEditClicked, setIsExperienceEditClicked] = useState(false);
     // experience delete and update
     const handleExperienceDelete = (index)=>{
+        const data = {
+            id: id,
+            position: index
+        }
+        console.log("Deleting experience", data);
+        axiosSecure.patch(`/attorney/deleteExp`, data)
+            .then(res => {
+                console.log(res.data)
+                if (res.status === 200) {
+                    refetch()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
 
-        //TODO: delete operation
-        console.log("Deleting experience", index);
     }
 
     const handleExperienceUpdate = (data)=>{
