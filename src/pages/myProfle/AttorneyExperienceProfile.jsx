@@ -37,7 +37,7 @@ const AttorneyExperienceProfile = ({ exp, index, validateEndingDate }) => {
                     <p className='text-sm italic'>{exp?.start_year} - {exp?.end_year}</p>
 
                 </>:
-                <form className='text-black w-96' onSubmit={handleSubmit(handleExperienceUpdate)}>
+                <form className='text-black' onSubmit={handleSubmit(handleExperienceUpdate)}>
                     <div className='sm:flex gap-2'>
                         {/* company name */}
                         <div className='w-full'>

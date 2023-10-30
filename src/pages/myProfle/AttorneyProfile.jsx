@@ -207,7 +207,7 @@ const AttorneyProfile = () => {
             {/* Basic Information */}
             <div className='w-fit mx-auto md:flex gap-8 rounded p-5 bg-lightDark'>
                 {/* Image */}
-                <div className='relative h-fit'>
+                <div className='relative h-fit w-fit'>
                     <div className='min-w-max'>
                         {
                             img ?
@@ -246,7 +246,7 @@ const AttorneyProfile = () => {
                         </div>
 
                         {/* License information */}
-                        <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 border border-dashed border-white h-fit w-fit">
+                        <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 mt-5 md:mt-0 border border-dashed border-white h-fit w-fit">
                             <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license?.licensed_for} {license?.licensed_for && "years"}</p>
 
                             <div className="flex items-center gap-5 duration-300">
@@ -348,7 +348,7 @@ const AttorneyProfile = () => {
                     {/* Edit details button */}
                     <p
                         onClick={() => setIsBasicInfoModalOpen(true)}
-                        className="mt-auto w-full text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white cursor-pointer"
+                        className="mt-auto w-full text-center px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white cursor-pointer"
                     >
                         Edit Details
                     </p>
@@ -363,7 +363,7 @@ const AttorneyProfile = () => {
                 {
                     education.length === 0 ?
                         <p className='text-center text-2xl mt-5'>☹ No education data found</p> :
-                        <div className='flex flex-wrap gap-6 mt-5'>
+                        <div className='grid lg:grid-cols-2 gap-6 mt-5'>
                             {
                                 education.map((edu, index) =><AttorneyEducationProfile
                                     key={index}
@@ -387,7 +387,7 @@ const AttorneyProfile = () => {
                 {
                     experience.length === 0 ?
                         <p className='text-center text-2xl mt-5'>☹ No Experience data found</p> :
-                        <div className='flex flex-wrap gap-6 mt-5'>
+                        <div className='grid lg:grid-cols-2 gap-6 mt-5'>
                             {
                                 experience.map((exp, index) =><AttorneyExperienceProfile
                                     key={index}
@@ -411,7 +411,7 @@ const AttorneyProfile = () => {
                 {
                     awards.length === 0 ?
                         <p className='text-center text-2xl mt-5'>☹ No Awards data found</p> :
-                        <div className='flex flex-wrap gap-6 mt-5'>
+                        <div className='grid lg:grid-cols-2 gap-6 mt-5'>
                             {
                                 awards.map((award, index) =><AttorneyAwardProfile
                                     key={index}

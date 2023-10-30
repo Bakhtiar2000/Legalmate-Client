@@ -28,7 +28,7 @@ const AttorneyEducationProfile = ({ edu, index, validateEndingDate }) => {
         reset()
     }
     return (
-        <div key={index} className='relative group border border-white/40 rounded shadow-lg shadow-primary/20 px-3 md:px-5 py-1 md:py-3'>
+        <div key={index} className='relative group border border-white/40 rounded shadow-lg shadow-primary/20 px-5 py-3'>
             {
                 !isEducationEditClicked?
                 <>
@@ -36,7 +36,7 @@ const AttorneyEducationProfile = ({ edu, index, validateEndingDate }) => {
                     <p className=''>{edu?.subject}</p>
                     <p className='text-sm italic'>{edu?.start_year} - {edu?.end_year}</p>
                 </>:
-                <form className='text-black w-96' onSubmit={handleSubmit(handleEducationUpdate)}>
+                <form className='text-black' onSubmit={handleSubmit(handleEducationUpdate)}>
                     <div className='sm:flex gap-2'>
                         {/* Institution name */}
                         <div className='w-full'>

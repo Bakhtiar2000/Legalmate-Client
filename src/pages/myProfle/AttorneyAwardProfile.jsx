@@ -34,7 +34,7 @@ const AttorneyAwardProfile = ({ award, index }) => {
                     <p className=''>{award?.from}</p>
                     <p className='text-sm italic'>{award?.year}</p>
                 </>:
-                <form className='text-black w-60' onSubmit={handleSubmit(handleAwardUpdate)}>
+                <form className='text-black' onSubmit={handleSubmit(handleAwardUpdate)}>
 
                     {/* name */}
                     <div className='w-full'>
