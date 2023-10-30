@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import StartMessage from './StartMessage';
+import StartMessage from '../../components/StartMessage';
 import InputEmoji from "react-input-emoji";
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2'
@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 // react icons
 import { BsFillSendFill } from 'react-icons/bs';
 import { MdDeleteOutline } from 'react-icons/md';
-import useAxiosSecure from '../hooks/useAxios';
+import useAxiosSecure from '../../hooks/useAxios';
 
 const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNewMessage, setMessage, message, onlineUser, chatRefetch }) => {
     const [axiosSecure] = useAxiosSecure();

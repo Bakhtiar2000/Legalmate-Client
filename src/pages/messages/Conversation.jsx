@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { RxDotFilled } from "react-icons/rx";
-import useAuth from '../hooks/useAuth';
-import useAxiosSecure from '../hooks/useAxios';
-import useUsers from '../hooks/useUserData';
-import PageLoader from './PageLoader';
+import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxios';
+import useUsers from '../../hooks/useUserData';
+import PageLoader from '../../components/PageLoader';
 
 const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
     const { currentUser, loading } = useAuth();

@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import logo from "/Legalmate Icon.ico"
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
-import NavItems from '../components/navItems';
+import NavItems from '../components/NavItems';
 import Profile from '../components/Profile';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut, currentUser } = useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen]= useState(false)
     const [navState, setNavState] = useState(false);
     const navigate = useNavigate();
@@ -52,7 +52,7 @@ const Header = () => {
             {
                 user?.email?
                 <div className='hidden lg:flex justify-end items-center gap-10'>
-                    <Profile />
+                    {currentUser.role!== "admin" && <Profile />}
                     <button className='px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white' onClick={handleLogOut}>Log out</button>
                 </div> :
                 <Link to="/login">
@@ -65,7 +65,7 @@ const Header = () => {
            <div className='lg:hidden flex justify-end items-center gap-3 md:gap-10'>
                 {/* Profile Picture */}
                 {
-                    user?.email && <Profile />
+                    user?.email && currentUser.role!== "admin" && <Profile />
                 }
 
                 {/* Toggle Icon */}

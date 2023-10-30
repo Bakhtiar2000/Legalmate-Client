@@ -5,8 +5,8 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import useAxiosSecure from '../../hooks/useAxios';
 import useChat from '../../hooks/useChat';
 import useAuth from '../../hooks/useAuth';
-import Conversation from '../../components/Conversation';
-import ChatBox from '../../components/ChatBox';
+import Conversation from './Conversation';
+import ChatBox from './ChatBox';
 
 const Messages = () => {
     const [chats, chatRefetch] = useChat();

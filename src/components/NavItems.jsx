@@ -15,12 +15,18 @@ const NavItems = () => {
                 <li><ActiveLink to="/postACase">Post a Case</ActiveLink></li>
                 <li><ActiveLink to="/messages">Messages</ActiveLink></li>
             </>:
-
             currentUser.role=== "attorney"?
             <>
                 <li><ActiveLink to="/">Home</ActiveLink></li>
                 <li><ActiveLink to="/findCases">Find cases</ActiveLink></li>
                 <li><ActiveLink to="/messages">Messages</ActiveLink></li>
+            </>:
+            currentUser.role=== "admin"?
+            <>
+                <li><ActiveLink to="/">Home</ActiveLink></li>
+                <li><ActiveLink to="/attorneys">Find attorneys</ActiveLink></li>
+                <li><ActiveLink to="/allUsers">All users</ActiveLink></li>
+                <li><ActiveLink to="/allPayments">All payments</ActiveLink></li>
             </>:
 
             <>
