@@ -13,19 +13,7 @@ const PaymentHistory = () => {
     const [paymentsData, paymentsLoading, paymentsRefetch] = useIndividualPaymentHistory();
 
 
-    console.log(paymentsData)
-
-    // useEffect(() => {
-    //     paymentData?.map(pay => {
-    //         const paymentStatus = pay.attorneyID === _id && pay.attorneyEmail === email && pay.clintEmail === currentUser?.email && pay.clintName === currentUser.name
-
-    //         if (paymentStatus) setPaymentSuccess(true)
-
-    //         // console.log("paymentStatus", paymentStatus)
-
-    //     })
-
-    // }, [])
+    
     return (
         <div>
             <Helmet>
