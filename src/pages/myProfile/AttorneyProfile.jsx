@@ -39,7 +39,7 @@ const AttorneyProfile = () => {
     const newEducations = [...education, { subject: watch('subject'), institution: watch('institution'), start_year: watch('edu_start_year'), end_year: watch('edu_end_year') }];
     const newExperience = [...experience, { company: watch('company'), position: watch('position'), start_year: watch('exp_start_year'), end_year: watch('exp_end_year') }];
     const newAwards = [...awards, { name: watch('award_name'), from: watch('from'), year: watch('year') }];
-    // const newDocuments= [...documents, { link: watch('link')}]
+    const newDocuments= [...documents,  watch('link')]
 
 
     //Validate end date
@@ -109,13 +109,14 @@ const AttorneyProfile = () => {
     const onDocumentSubmit = data => {
         const updateData = {
             email: email,
-            // newDocuments
+            newDocuments
         }
         console.log(updateData);
         // axiosSecure.patch('/attorney/document', updateData)
         //     .then(res => {
         //         if (res.status === 200) {
         //             refetch();
+        //             reset()
         //             setIsDocumentEditClicked(false)
         //         }
         //     })
@@ -138,6 +139,7 @@ const AttorneyProfile = () => {
             .then(res => {
                 if (res.status === 200) {
                     refetch();
+                    reset()
                     setIsEducationModalOpen(false)
                 }
             })
@@ -160,6 +162,7 @@ const AttorneyProfile = () => {
             .then(res => {
                 if (res.status === 200) {
                     refetch();
+                    reset()
                     setIsExperienceModalOpen(false)
                 }
             })
@@ -182,6 +185,7 @@ const AttorneyProfile = () => {
             .then(res => {
                 if (res.status === 200) {
                     refetch();
+                    reset()
                     setIsAwardModalOpen(false)
                 }
             })
@@ -384,6 +388,7 @@ const AttorneyProfile = () => {
             <div className='p-5 rounded-lg bg-lightDark mt-10 max-w-5xl mx-auto'>
                 <h2 className='text-3xl text-primary mb-1'>Legal documents</h2>
                 <p className='border-t border-primary'></p>
+                <p className='text-sm mt-2'>N.B. You need to Provide appropriate documents to get access of messaging in our website</p>
                 {
                     documents.length === 0 ?
                         <p className='text-center text-2xl mt-5'>☹ No documents data found</p> :
@@ -418,7 +423,6 @@ const AttorneyProfile = () => {
                                     id={_id}
                                     refetch={refetch}
                                     index={index}
-                                    validateEndingDate={validateEndingDate}
                                 ></AttorneyEducationProfile>)
                             }
                         </div>
@@ -444,7 +448,6 @@ const AttorneyProfile = () => {
                                     index={index}
                                     id={_id}
                                     refetch={refetch}
-                                    validateEndingDate={validateEndingDate}
                                 ></AttorneyExperienceProfile>)
                             }
                         </div>

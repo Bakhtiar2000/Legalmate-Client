@@ -4,6 +4,7 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const NavItems = () => {
     const { currentUser } = useContext(AuthContext)
+    console.log(currentUser);
 
     return (
         <>
