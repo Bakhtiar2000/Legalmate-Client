@@ -105,7 +105,7 @@ const AttorneyProfile = () => {
 
     }
 
-    //Education Submit complete
+    //Document Submit
     const onDocumentSubmit = data => {
         const updateData = {
             email: email,
@@ -264,7 +264,7 @@ const AttorneyProfile = () => {
 
                 <div className="flex flex-col gap-8">
                     {/* Basic info and license */}
-                    <div className="md:flex justify-between gap-8 mt-5 md:mt-0">
+                    <div className="lg:flex justify-between gap-8 mt-5 md:mt-0">
 
                         {/* Name, practice area, location, rating */}
                         <div>
@@ -275,7 +275,7 @@ const AttorneyProfile = () => {
                         </div>
 
                         {/* License information */}
-                        <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 mt-5 md:mt-0 border border-dashed border-white h-fit w-fit">
+                        <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 lg :ml-5 mt-5 lg:mt-0 border border-dashed border-white h-fit w-fit">
                             <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license?.licensed_for} {license?.licensed_for && "years"}</p>
 
                             <div className="flex items-center gap-5 duration-300">

@@ -90,7 +90,6 @@ const Messages = () => {
             </Helmet>
 
             <Breadcrumbs title="Messages" />
-            <h1>{currentUser.name}</h1>
 
             {
                 chats.length !== 0 &&

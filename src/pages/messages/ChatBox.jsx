@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import StartMessage from '../../components/StartMessage';
+import StartMessage from './StartMessage';
 import InputEmoji from "react-input-emoji";
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2'
