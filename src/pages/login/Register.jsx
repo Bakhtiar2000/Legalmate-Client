@@ -99,9 +99,9 @@ const Register = () => {
         <img className="w-full hidden lg:block h-fit" src="https://img.freepik.com/free-photo/truth-concept-arrangement-with-balance_23-2149051293.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=sph" alt="" />
 
         {/* Login Form */}
-        <div className="w-full bg-[url('https://img.freepik.com/free-photo/truth-concept-arrangement-with-balance_23-2149051293.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=sph')] bg-no-repeat bg-cover bg-center lg:bg-none bg-lightDark flex justify-center items-center h-screen lg:h-auto px-5">
+        <div className="w-full min-h-max bg-[url('https://img.freepik.com/free-photo/truth-concept-arrangement-with-balance_23-2149051293.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=sph')] bg-no-repeat bg-cover bg-center lg:bg-none bg-lightDark flex justify-center items-center h-screen lg:h-auto px-5">
           <div className="max-w-sm mx-auto">
-            <h2 className="text-4xl font-semibold mb-10">Sign up to <span className="text-secondary">Legalmate</span></h2>
+            <h2 className="text-4xl font-semibold my-10">Sign up to <span className="text-secondary">Legalmate</span></h2>
 
             <form onSubmit={handleSubmit(onSubmit)} >
               {/* Full Name */}

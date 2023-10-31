@@ -12,6 +12,7 @@ import useAxiosSecure from '../../hooks/useAxios';
 import AttorneyEducationProfile from './AttorneyEducationProfile';
 import AttorneyExperienceProfile from './AttorneyExperienceProfile';
 import AttorneyAwardProfile from './AttorneyAwardProfile';
+import AttorneyDocumentProfile from './AttorneyDocumentProfile';
 
 const AttorneyProfile = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -24,6 +25,7 @@ const AttorneyProfile = () => {
     const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
     const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
     const [isAwardModalOpen, setIsAwardModalOpen] = useState(false);
+    const [isDocumentModalOpen, setIsDocumentModalOpen] = useState(false);
     const [isLicenseEditClicked, setIsLicenseEditClicked] = useState(false);
     const [present, setPresent] = useState(false);
     const { user, loading } = useAuth()
@@ -33,11 +35,12 @@ const AttorneyProfile = () => {
 
     if (attorneyLoading || currentAttorneyData === null) return <PageLoader />
 
-    const { _id, email, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards } = currentAttorneyData
+    const { _id, email, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards, documents } = currentAttorneyData
     const newEducations = [...education, { subject: watch('subject'), institution: watch('institution'), start_year: watch('edu_start_year'), end_year: watch('edu_end_year') }];
     const newExperience = [...experience, { company: watch('company'), position: watch('position'), start_year: watch('exp_start_year'), end_year: watch('exp_end_year') }];
     const newAwards = [...awards, { name: watch('award_name'), from: watch('from'), year: watch('year') }];
-
+    const newDocuments= [...documents,  watch('link')]
+    const currentYear = new Date().getFullYear();
 
     //Validate end date
     const validateEndingDate = (endingDate, startingDate) => {
@@ -82,9 +85,9 @@ const AttorneyProfile = () => {
         const updateData = {
             email: email,
             license: {
-                licenseState: data.licenseState,
-                licenseAcquiredYear: data.licenseAcquiredYear,
-                licenseStatus: data.licenseStatus
+                state: data.licenseState,
+                acquired_year: data.licenseAcquiredYear,
+                status: data.licenseStatus
             }
 
         }
@@ -102,6 +105,29 @@ const AttorneyProfile = () => {
 
     }
 
+    //Document Submit
+    const onDocumentSubmit = data => {
+        const updateData = {
+            email: email,
+            newDocuments
+        }
+        console.log(updateData);
+        // axiosSecure.patch('/attorney/document', updateData)
+        //     .then(res => {
+        //         if (res.status === 200) {
+        //             refetch();
+        //             reset()
+        //             setIsDocumentEditClicked(false)
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     })
+    }
+    const handleDocumentModal = (e) => {
+        if (e == "cancel") setIsDocumentModalOpen(false)
+    }
+
     //Education Submit complete
     const onEducationSubmit = data => {
         const updateData = {
@@ -113,6 +139,7 @@ const AttorneyProfile = () => {
             .then(res => {
                 if (res.status === 200) {
                     refetch();
+                    reset()
                     setIsEducationModalOpen(false)
                 }
             })
@@ -135,6 +162,7 @@ const AttorneyProfile = () => {
             .then(res => {
                 if (res.status === 200) {
                     refetch();
+                    reset()
                     setIsExperienceModalOpen(false)
                 }
             })
@@ -157,6 +185,7 @@ const AttorneyProfile = () => {
             .then(res => {
                 if (res.status === 200) {
                     refetch();
+                    reset()
                     setIsAwardModalOpen(false)
                 }
             })
@@ -235,7 +264,7 @@ const AttorneyProfile = () => {
 
                 <div className="flex flex-col gap-8">
                     {/* Basic info and license */}
-                    <div className="md:flex justify-between gap-8 mt-5 md:mt-0">
+                    <div className="lg:flex justify-between gap-8 mt-5 md:mt-0">
 
                         {/* Name, practice area, location, rating */}
                         <div>
@@ -246,24 +275,24 @@ const AttorneyProfile = () => {
                         </div>
 
                         {/* License information */}
-                        <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 md:ml-5 mt-5 md:mt-0 border border-dashed border-white h-fit w-fit">
-                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license?.licensed_for} {license?.licensed_for && "years"}</p>
+                        <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 lg :ml-5 mt-5 lg:mt-0 border border-dashed border-white h-fit w-fit">
+                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {currentYear - license?.acquired_year} {license?.licensed_for && "years"}</p>
 
                             <div className="flex items-center gap-5 duration-300">
                                 <div>
                                     <div className="flex items-center gap-2">
                                         <BiCurrentLocation />
-                                        <p>State:{license.licenseState}</p>
+                                        <p>State:</p>
                                     </div>
 
                                     <div className={`flex items-center gap-2 ${isLicenseEditClicked && "my-2"}`}>
                                         <TbLicense />
-                                        <p>Acquired:{license.licenseAcquiredYear}</p>
+                                        <p>Acquired:</p>
                                     </div>
 
                                     <div className="flex items-center gap-2">
                                         <GrStatusGoodSmall fill="green" />
-                                        <p>Status:{license.licenseStatus}</p>
+                                        <p>Status:</p>
                                     </div>
                                 </div>
 
@@ -280,7 +309,7 @@ const AttorneyProfile = () => {
                                             <div className='w-full'>
                                                 <input
                                                     {...register("licenseState")}
-                                                    defaultValue={license.licenseState}
+                                                    defaultValue={license.state}
                                                     placeholder='License of State'
                                                     className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
@@ -291,7 +320,7 @@ const AttorneyProfile = () => {
                                                 <input
                                                     type='number'
                                                     {...register("licenseAcquiredYear")}
-                                                    defaultValue={license.licenseAcquiredYear}
+                                                    defaultValue={license.acquired_year}
                                                     placeholder='Year of Acquisition'
                                                     className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
@@ -301,7 +330,7 @@ const AttorneyProfile = () => {
                                             <div className='w-full'>
                                                 <input
                                                     {...register("licenseStatus")}
-                                                    defaultValue={license.licenseStatus}
+                                                    defaultValue={license.status}
                                                     placeholder='Active / Inactive'
                                                     className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
@@ -355,6 +384,29 @@ const AttorneyProfile = () => {
                 </div>
             </div>
 
+            {/* Legal Documents */}
+            <div className='p-5 rounded-lg bg-lightDark mt-10 max-w-5xl mx-auto'>
+                <h2 className='text-3xl text-primary mb-1'>Legal documents</h2>
+                <p className='border-t border-primary'></p>
+                <p className='text-sm mt-2'>N.B. You need to Provide appropriate documents to get access of messaging in our website</p>
+                {
+                    documents.length === 0 ?
+                        <p className='text-center text-2xl mt-5'>☹ No documents data found</p> :
+                        <div className='grid lg:grid-cols-2 gap-6 mt-5'>
+                            {
+                                documents.map((doc, index) =><AttorneyDocumentProfile
+                                    key={index}
+                                    doc={doc}
+                                    index={index}
+                                ></AttorneyDocumentProfile>)
+                            }
+                        </div>
+                }
+                <div className='flex justify-center'>
+                    <button onClick={() => setIsDocumentModalOpen(true)} className="text-center  text-blue-500 mt-5 cursor-pointer">➕ Add Documents</button>
+                </div>
+            </div>
+
             {/* Education */}
             <div className='p-5 rounded-lg bg-lightDark mt-10 max-w-5xl mx-auto'>
                 <h2 className='text-3xl text-primary mb-1'>Education Details</h2>
@@ -371,7 +423,6 @@ const AttorneyProfile = () => {
                                     id={_id}
                                     refetch={refetch}
                                     index={index}
-                                    validateEndingDate={validateEndingDate}
                                 ></AttorneyEducationProfile>)
                             }
                         </div>
@@ -397,7 +448,6 @@ const AttorneyProfile = () => {
                                     index={index}
                                     id={_id}
                                     refetch={refetch}
-                                    validateEndingDate={validateEndingDate}
                                 ></AttorneyExperienceProfile>)
                             }
                         </div>
@@ -505,6 +555,36 @@ const AttorneyProfile = () => {
 
                         <input
                             className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-2 sm:mt-5 cursor-pointer"
+                            type="submit"
+                            value="Save Changes"
+                        />
+                    </form>
+                </CustomModal>
+            }
+
+            {/* Document Modal */}
+            {
+                isDocumentModalOpen &&
+                <CustomModal
+                    isModalOpen={isDocumentModalOpen}
+                    setIsModalOpen={setIsDocumentModalOpen}
+                    handleModal={handleDocumentModal}
+                >
+                    <form className='text-black' onSubmit={handleSubmit(onDocumentSubmit)}>
+                        <h3 className="font-bold text-xl mb-2">Add Document Information</h3>
+                        <p className='border-t border-dark mb-5'></p>
+                        {/* Document name */}
+                        <div className='w-full'>
+                            <label className='text-dark text-sm'>Document's Drive Link:</label>
+                            <input
+                                type='text'
+                                {...register("link", {required: true})}
+                                placeholder='Provide the drive link of Attorney documents'
+                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.link && 'border-2 border-red-500'}`}
+                            />
+                        </div>
+                        <input
+                            className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5 cursor-pointer"
                             type="submit"
                             value="Save Changes"
                         />
@@ -752,6 +832,7 @@ const AttorneyProfile = () => {
                     </form>
                 </CustomModal>
             }
+            
         </div>
     );
 };

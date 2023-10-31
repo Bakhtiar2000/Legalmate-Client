@@ -22,7 +22,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     const { _id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, reviews, awards, email } = singleAttorney
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
-
+    const currentYear = new Date().getFullYear();
 
     const [paymentData, paymentLoading, paymentRefetch] = usePaymentHistory();
 
@@ -162,7 +162,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
 
                         {/* License information */}
                         <div className="bg-lightDark/50 rounded-lg p-3 md:ml-5 border border-dashed border-white h-fit w-fit">
-                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license.licenseAcquiredYear} years</p>
+                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {currentYear- license?.acquired_year} years</p>
 
                             <div className="flex items-center gap-5">
                                 <div>
@@ -183,9 +183,9 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                                 </div>
 
                                 <div>
-                                    <p>{license.licenseState}</p>
-                                    <p>{license.licenseAcquiredYear}</p>
-                                    <p className="text-green-500">{license.licenseStatus}</p>
+                                    <p>{license.state}</p>
+                                    <p>{license.acquired_year}</p>
+                                    <p className="text-green-500">{license.status}</p>
                                 </div>
                             </div>
                         </div>
