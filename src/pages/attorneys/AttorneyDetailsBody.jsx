@@ -203,7 +203,6 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                             :
                             <button onClick={paymentHandle} className="lg:text-xl text-center">
                                 <div className="mt-auto w-full bg-red-600 hover:bg-green-800 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
-
                                     Payment
                                 </div>
                             </button>
@@ -225,7 +224,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                         <Tab>Awards</Tab>
                     </TabList>
                     <TabPanel>
-                        <AttorneyReviews reviews={reviews} name={name}></AttorneyReviews>
+                        <AttorneyReviews reviews={reviews} email={email} paymentSuccess={paymentSuccess} name={name}></AttorneyReviews>
                     </TabPanel>
                     <TabPanel>
                         <AttorneyEducation education={education}></AttorneyEducation>
