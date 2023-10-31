@@ -85,9 +85,9 @@ const AttorneyProfile = () => {
         const updateData = {
             email: email,
             license: {
-                licenseState: data.licenseState,
-                licenseAcquiredYear: data.licenseAcquiredYear,
-                licenseStatus: data.licenseStatus
+                state: data.licenseState,
+                acquired_year: data.licenseAcquiredYear,
+                status: data.licenseStatus
             }
 
         }
@@ -282,17 +282,17 @@ const AttorneyProfile = () => {
                                 <div>
                                     <div className="flex items-center gap-2">
                                         <BiCurrentLocation />
-                                        <p>State:{license.state}</p>
+                                        <p>State:</p>
                                     </div>
 
                                     <div className={`flex items-center gap-2 ${isLicenseEditClicked && "my-2"}`}>
                                         <TbLicense />
-                                        <p>Acquired:{license.acquired_year}</p>
+                                        <p>Acquired:</p>
                                     </div>
 
                                     <div className="flex items-center gap-2">
                                         <GrStatusGoodSmall fill="green" />
-                                        <p>Status:{license.status}</p>
+                                        <p>Status:</p>
                                     </div>
                                 </div>
 
@@ -309,7 +309,7 @@ const AttorneyProfile = () => {
                                             <div className='w-full'>
                                                 <input
                                                     {...register("licenseState")}
-                                                    defaultValue={license.licenseState}
+                                                    defaultValue={license.state}
                                                     placeholder='License of State'
                                                     className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
@@ -320,7 +320,7 @@ const AttorneyProfile = () => {
                                                 <input
                                                     type='number'
                                                     {...register("licenseAcquiredYear")}
-                                                    defaultValue={license.licenseAcquiredYear}
+                                                    defaultValue={license.acquired_year}
                                                     placeholder='Year of Acquisition'
                                                     className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
@@ -330,7 +330,7 @@ const AttorneyProfile = () => {
                                             <div className='w-full'>
                                                 <input
                                                     {...register("licenseStatus")}
-                                                    defaultValue={license.licenseStatus}
+                                                    defaultValue={license.status}
                                                     placeholder='Active / Inactive'
                                                     className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
