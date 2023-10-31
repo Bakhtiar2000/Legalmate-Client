@@ -18,7 +18,9 @@ import PrivateRoute from './PrivateRoute';
 import AttorneyDetails from '../pages/attorneys/AttorneyDetails';
 import PostACase from '../pages/postACase/PostACase';
 import AllPayments from '../pages/allPayments/AllPayments';
-import AllUsers from '../pages/allAttorneys/allUsers';
+import AllAttorneys from '../pages/allAttorneys/allAttorneys';
+import AllClients from '../pages/allClients/AllClients';
+import AllCases from '../pages/allCases/AllCases';
 
 const baseURL= "https://legalmate-server.vercel.app/"
 
@@ -86,8 +88,16 @@ const router= createBrowserRouter([
                     element: <PaymentHistory></PaymentHistory>
                 },
                 {
-                    path: "/allUsers",
-                    element: <AllUsers></AllUsers>
+                    path: "/allAttorneys",
+                    element: <AllAttorneys></AllAttorneys>
+                },
+                {
+                    path: "/allClients",
+                    element: <AllClients></AllClients>
+                },
+                {
+                    path: "/allCases",
+                    element: <AllCases></AllCases>
                 },
                 {
                     path: "/allPayments",

@@ -12,6 +12,7 @@ import useAxiosSecure from '../../hooks/useAxios';
 import AttorneyEducationProfile from './AttorneyEducationProfile';
 import AttorneyExperienceProfile from './AttorneyExperienceProfile';
 import AttorneyAwardProfile from './AttorneyAwardProfile';
+import AttorneyDocumentProfile from './AttorneyDocumentProfile';
 
 const AttorneyProfile = () => {
     const [axiosSecure] = useAxiosSecure()
@@ -24,6 +25,7 @@ const AttorneyProfile = () => {
     const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
     const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
     const [isAwardModalOpen, setIsAwardModalOpen] = useState(false);
+    const [isDocumentModalOpen, setIsDocumentModalOpen] = useState(false);
     const [isLicenseEditClicked, setIsLicenseEditClicked] = useState(false);
     const [present, setPresent] = useState(false);
     const { user, loading } = useAuth()
@@ -33,10 +35,11 @@ const AttorneyProfile = () => {
 
     if (attorneyLoading || currentAttorneyData === null) return <PageLoader />
 
-    const { _id, email, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards } = currentAttorneyData
+    const { _id, email, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards, documents } = currentAttorneyData
     const newEducations = [...education, { subject: watch('subject'), institution: watch('institution'), start_year: watch('edu_start_year'), end_year: watch('edu_end_year') }];
     const newExperience = [...experience, { company: watch('company'), position: watch('position'), start_year: watch('exp_start_year'), end_year: watch('exp_end_year') }];
     const newAwards = [...awards, { name: watch('award_name'), from: watch('from'), year: watch('year') }];
+    // const newDocuments= [...documents, { link: watch('link')}]
 
 
     //Validate end date
@@ -100,6 +103,28 @@ const AttorneyProfile = () => {
                 console.log(error);
             })
         
+    }
+
+    //Education Submit complete
+    const onDocumentSubmit = data => {
+        const updateData = {
+            email: email,
+            // newDocuments
+        }
+        console.log(updateData);
+        // axiosSecure.patch('/attorney/document', updateData)
+        //     .then(res => {
+        //         if (res.status === 200) {
+        //             refetch();
+        //             setIsDocumentEditClicked(false)
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     })
+    }
+    const handleDocumentModal = (e) => {
+        if (e == "cancel") setIsDocumentModalOpen(false)
     }
 
     //Education Submit complete
@@ -355,6 +380,28 @@ const AttorneyProfile = () => {
                 </div>
             </div>
 
+            {/* Legal Documents */}
+            <div className='p-5 rounded-lg bg-lightDark mt-10 max-w-5xl mx-auto'>
+                <h2 className='text-3xl text-primary mb-1'>Legal documents</h2>
+                <p className='border-t border-primary'></p>
+                {
+                    documents.length === 0 ?
+                        <p className='text-center text-2xl mt-5'>☹ No documents data found</p> :
+                        <div className='grid lg:grid-cols-2 gap-6 mt-5'>
+                            {
+                                documents.map((doc, index) =><AttorneyDocumentProfile
+                                    key={index}
+                                    doc={doc}
+                                    index={index}
+                                ></AttorneyDocumentProfile>)
+                            }
+                        </div>
+                }
+                <div className='flex justify-center'>
+                    <button onClick={() => setIsDocumentModalOpen(true)} className="text-center  text-blue-500 mt-5 cursor-pointer">➕ Add Documents</button>
+                </div>
+            </div>
+
             {/* Education */}
             <div className='p-5 rounded-lg bg-lightDark mt-10 max-w-5xl mx-auto'>
                 <h2 className='text-3xl text-primary mb-1'>Education Details</h2>
@@ -499,6 +546,36 @@ const AttorneyProfile = () => {
 
                         <input
                             className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-2 sm:mt-5 cursor-pointer"
+                            type="submit"
+                            value="Save Changes"
+                        />
+                    </form>
+                </CustomModal>
+            }
+
+            {/* Document Modal */}
+            {
+                isDocumentModalOpen &&
+                <CustomModal
+                    isModalOpen={isDocumentModalOpen}
+                    setIsModalOpen={setIsDocumentModalOpen}
+                    handleModal={handleDocumentModal}
+                >
+                    <form className='text-black' onSubmit={handleSubmit(onDocumentSubmit)}>
+                        <h3 className="font-bold text-xl mb-2">Add Document Information</h3>
+                        <p className='border-t border-dark mb-5'></p>
+                        {/* Document name */}
+                        <div className='w-full'>
+                            <label className='text-dark text-sm'>Document's Drive Link:</label>
+                            <input
+                                type='text'
+                                {...register("link", {required: true})}
+                                placeholder='Provide the drive link of Attorney documents'
+                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.link && 'border-2 border-red-500'}`}
+                            />
+                        </div>
+                        <input
+                            className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5 cursor-pointer"
                             type="submit"
                             value="Save Changes"
                         />
@@ -746,6 +823,7 @@ const AttorneyProfile = () => {
                     </form>
                 </CustomModal>
             }
+            
         </div>
     );
 };

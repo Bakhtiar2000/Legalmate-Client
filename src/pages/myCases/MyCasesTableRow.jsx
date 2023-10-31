@@ -19,10 +19,10 @@ const MyCasesTableRow = ({index, singleCase, refetch}) => {
     }
 
     return (
-        <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group text-center">
+        <tr className="border-b border-primary/20 hover:bg-primary/10 duration-300 text-center">
             <td>{index+1}</td>
 
-            <td><button onClick={()=> setIsCaseOpen(true)} className="mt-5 sm:mt-0 w-fit h-fit text-center px-3 py-1 bg-green-500 hover:bg-green-500/60 duration-300 rounded text-white cursor-pointer">Case</button></td>
+            <td><button onClick={()=> setIsCaseOpen(true)} className="mt-5 sm:mt-0 w-max h-fit text-center px-3 py-1 bg-green-500 hover:bg-green-500/60 duration-300 rounded text-white cursor-pointer">Show Post</button></td>
 
             <td>{practice_area}</td>
 

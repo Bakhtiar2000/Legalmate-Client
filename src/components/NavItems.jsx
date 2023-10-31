@@ -25,7 +25,9 @@ const NavItems = () => {
             <>
                 <li><ActiveLink to="/">Home</ActiveLink></li>
                 <li><ActiveLink to="/attorneys">Find attorneys</ActiveLink></li>
-                <li><ActiveLink to="/allUsers">All users</ActiveLink></li>
+                <li><ActiveLink to="/allAttorneys">All attorneys</ActiveLink></li>
+                <li><ActiveLink to="/allClients">All clients</ActiveLink></li>
+                <li><ActiveLink to="/allCases">All cases</ActiveLink></li>
                 <li><ActiveLink to="/allPayments">All payments</ActiveLink></li>
             </>:
 
