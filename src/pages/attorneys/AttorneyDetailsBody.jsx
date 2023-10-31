@@ -16,9 +16,11 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxios";
 import usePaymentHistory from "../../hooks/usePaymentHistory";
 import PageLoader from "../../components/PageLoader";
+import { useNavigate } from "react-router-dom";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
     // console.log(singleAttorney)
+    const navigate = useNavigate();
     const { _id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, reviews, awards, email } = singleAttorney
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
@@ -45,7 +47,6 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
 
     useEffect(() => {
         const user = userData.find(user => user?.email === email)
-
         setReceiverId(user?._id)
     }, [userData, singleAttorney]);
 
@@ -64,7 +65,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
             .post("/chat", chatMembers)
             .then((res) => {
                 console.log(res.data)
-                // navigate("/dashboard/messages");
+                navigate("/messages");
             })
             .catch((error) => {
                 console.log(error);
@@ -102,7 +103,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     useEffect(() => {
 
         paymentData?.map(pay => {
-            const paymentStatus = pay.attorneyID === _id && pay.attorneyEmail === email && pay.clintEmail === currentUser?.email && pay.clintName === currentUser.name
+            const paymentStatus = pay.attorneyID === _id && pay.attorneyEmail === email && pay.clintEmail === currentUser?.email && pay.clintName === currentUser.name && pay.isPaid === true
 
             if (paymentStatus) {
                 paymentRefetch()
@@ -162,7 +163,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
 
                         {/* License information */}
                         <div className="bg-lightDark/50 rounded-lg p-3 md:ml-5 border border-dashed border-white h-fit w-fit">
-                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {currentYear- license?.acquired_year} years</p>
+                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {currentYear - license?.acquired_year} years</p>
 
                             <div className="flex items-center gap-5">
                                 <div>
