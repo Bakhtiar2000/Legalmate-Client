@@ -56,7 +56,7 @@ const AttorneyDiv = ({attorney}) => {
                     value={reviews.length > 0 && averageRating}
                     itemStyles={myStyles}
                     />
-                         <p className="font-bold text-orange-500">{averageRating}</p>
+                         <p className="font-bold text-orange-500">{averageRating.toFixed(1)}</p>
                     <span className="text-gray">({reviews.length} reviews)</span>
                 </div>
                 }

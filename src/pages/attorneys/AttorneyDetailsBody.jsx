@@ -15,6 +15,7 @@ import useUsers from "../../hooks/useUserData";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxios";
 import usePaymentHistory from "../../hooks/usePaymentHistory";
+import PageLoader from "../../components/PageLoader";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
     // console.log(singleAttorney)
@@ -24,6 +25,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
 
 
     const [paymentData, paymentLoading, paymentRefetch] = usePaymentHistory();
+
     const [userData] = useUsers();
     const { currentUser } = useAuth()
     const [receiverId, setReceiverId] = useState();
@@ -95,17 +97,23 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
             })
 
     }
+
+    console.log(paymentData)
     useEffect(() => {
+
         paymentData?.map(pay => {
             const paymentStatus = pay.attorneyID === _id && pay.attorneyEmail === email && pay.clintEmail === currentUser?.email && pay.clintName === currentUser.name
 
-            if (paymentStatus) setPaymentSuccess(true)
+            if (paymentStatus) {
+                paymentRefetch()
+                setPaymentSuccess(true)
+            }
 
-            // console.log("paymentStatus", paymentStatus)
-           
+            console.log("paymentStatus", paymentStatus)
+
         })
 
-    }, [singleAttorney, currentUser]);
+    }, [paymentLoading]);
 
     return (
         <div className='container py-20' >
@@ -147,7 +155,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                                     value={reviews.length > 0 && averageRating}
                                     itemStyles={myStyles}
                                 />
-                                <p className="font-bold text-orange-500">{reviews.length !== 0 && averageRating}</p>
+                                <p className="font-bold text-orange-500">{reviews.length !== 0 && averageRating.toFixed(1)}</p>
                                 <span className="text-gray">({reviews.length})</span>
                             </div>
                         </div>
@@ -203,7 +211,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                             :
                             <button onClick={paymentHandle} className="lg:text-xl text-center">
                                 <div className="mt-auto w-full bg-red-600 hover:bg-green-800 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
-                                    Payment
+                                    Message
                                 </div>
                             </button>
 
