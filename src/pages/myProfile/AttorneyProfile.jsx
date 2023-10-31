@@ -40,7 +40,7 @@ const AttorneyProfile = () => {
     const newExperience = [...experience, { company: watch('company'), position: watch('position'), start_year: watch('exp_start_year'), end_year: watch('exp_end_year') }];
     const newAwards = [...awards, { name: watch('award_name'), from: watch('from'), year: watch('year') }];
     const newDocuments= [...documents,  watch('link')]
-
+    const currentYear = new Date().getFullYear();
 
     //Validate end date
     const validateEndingDate = (endingDate, startingDate) => {
@@ -276,23 +276,23 @@ const AttorneyProfile = () => {
 
                         {/* License information */}
                         <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 lg :ml-5 mt-5 lg:mt-0 border border-dashed border-white h-fit w-fit">
-                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license?.licensed_for} {license?.licensed_for && "years"}</p>
+                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {currentYear - license?.acquired_year} {license?.licensed_for && "years"}</p>
 
                             <div className="flex items-center gap-5 duration-300">
                                 <div>
                                     <div className="flex items-center gap-2">
                                         <BiCurrentLocation />
-                                        <p>State:{license.licenseState}</p>
+                                        <p>State:{license.state}</p>
                                     </div>
 
                                     <div className={`flex items-center gap-2 ${isLicenseEditClicked && "my-2"}`}>
                                         <TbLicense />
-                                        <p>Acquired:{license.licenseAcquiredYear}</p>
+                                        <p>Acquired:{license.acquired_year}</p>
                                     </div>
 
                                     <div className="flex items-center gap-2">
                                         <GrStatusGoodSmall fill="green" />
-                                        <p>Status:{license.licenseStatus}</p>
+                                        <p>Status:{license.status}</p>
                                     </div>
                                 </div>
 
