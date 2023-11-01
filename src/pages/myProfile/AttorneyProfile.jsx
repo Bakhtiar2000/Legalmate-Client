@@ -13,11 +13,13 @@ import AttorneyEducationProfile from './AttorneyEducationProfile';
 import AttorneyExperienceProfile from './AttorneyExperienceProfile';
 import AttorneyAwardProfile from './AttorneyAwardProfile';
 import AttorneyDocumentProfile from './AttorneyDocumentProfile';
+import usePracticeAreas from '../../hooks/usePracticeAreas';
 
 const AttorneyProfile = () => {
     const [axiosSecure] = useAxiosSecure();
     const { register, handleSubmit, watch, setValue, reset, formState: { errors } } = useForm();
     const [currentAttorneyData, attorneyLoading, refetch] = useCurrentAttorney();
+    const [practiceAreasData] = usePracticeAreas();
     // console.log(currentAttorneyData);
 
     // States
@@ -380,12 +382,12 @@ const AttorneyProfile = () => {
                     }
 
                     {/* Edit details button */}
-                    <p
+                    <button
                         onClick={() => setIsBasicInfoModalOpen(true)}
                         className="mt-auto w-full text-center px-5 py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white cursor-pointer"
                     >
                         Edit Details
-                    </p>
+                    </button>
                 </div>
             </div>
 
@@ -516,12 +518,20 @@ const AttorneyProfile = () => {
                             {/* Practice Area */}
                             <div className='w-full'>
                                 <label className='text-dark text-sm'>Legal practice area:</label>
-                                <input
+                                <select name="practice area" id="practice_area"
                                     {...register("practiceArea")}
-                                    placeholder='Your focused practice area'
                                     defaultValue={practiceArea}
                                     className='w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
-                                />
+                                >
+                                    <option disabled value={practiceArea}>{practiceArea}</option>
+                                    {
+                                        Array.from(new Set(practiceAreasData.map(area => area.name))).map((name, index) => (
+                                            <option key={index} value={name}>
+                                                {name}
+                                            </option>
+                                        ))
+                                    }
+                                </select>
                             </div>
                         </div>
 
