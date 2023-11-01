@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const AllPaymentsTableRow = ({index, payment, refetch}) => {
     const {sender_id, sender_name, sender_email, sender_role, target_id, target_name, target_email, target_role, tran_id, amount}= payment
+    console.log(payment);
     return (
         <>
             <tr className="border-b border-primary/20 hover:bg-primary/10 duration-300 text-center">
