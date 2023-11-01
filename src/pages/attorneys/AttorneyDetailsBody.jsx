@@ -17,6 +17,8 @@ import useAxiosSecure from "../../hooks/useAxios";
 import usePaymentHistory from "../../hooks/usePaymentHistory";
 import PageLoader from "../../components/PageLoader";
 import { useNavigate } from "react-router-dom";
+import useClients from "../../hooks/useClients";
+import useAttorneys from "../../hooks/useAttorneys";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
     // console.log(singleAttorney)
@@ -29,11 +31,30 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     const [paymentData, paymentLoading, paymentRefetch] = usePaymentHistory();
 
     const [userData] = useUsers();
-    const { currentUser } = useAuth()
+    const { currentUser } = useAuth();
+    const [clientsData] = useClients();
+    const [attorneysData] = useAttorneys();
     const [receiverId, setReceiverId] = useState();
     const [axiosSecure] = useAxiosSecure();
     const [paymentSuccess, setPaymentSuccess] = useState();
     const [targetRole, setTargetRole] = useState();
+    const [senderId, setSenderId] = useState();
+
+    useEffect(() => {
+
+
+        if (currentUser?.role === "client") {
+            const senderId = clientsData?.filter(client => client.email === currentUser?.email)
+            setSenderId(senderId[0]?._id)
+        }
+        else if (currentUser?.role === "attorney") {
+            const senderId = attorneysData?.filter(attorney => attorney.email === currentUser?.email)
+            console.log(senderId)
+            setSenderId(senderId[0]?._id)
+        }
+    }, [clientsData, currentUser, attorneysData]);
+    console.log(senderId)
+
 
     // rating style
     const myStyles = {
@@ -73,13 +94,15 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
             });
     }
 
+
+
     const paymentHandle = () => {
         const timestamp = new Date().getTime();
         const random = Math.floor(Math.random() * 1000);
         const tran_id = `${timestamp}${random}`
         console.log(tran_id)
         const paymentInfo = {
-            sender_id: currentUser._id,
+            sender_id: senderId,
             sender_name: currentUser.name,
             sender_email: currentUser.email,
             sender_role: currentUser.role,
@@ -102,23 +125,36 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
 
     }
 
-    console.log(paymentData)
+    // console.log(paymentData)
 
     useEffect(() => {
 
         paymentData?.map(pay => {
-            const paymentStatus = pay.attorneyID === _id && pay.attorneyEmail === email && pay.clintEmail === currentUser?.email && pay.clintName === currentUser.name && pay.isPaid === true
+            console.log(pay)
 
-            if (paymentStatus) {
-                paymentRefetch()
-                setPaymentSuccess(true)
+            if (pay.target_role === "attorney") {
+                const paymentStatus = pay.target_id === _id && pay.target_email === email && pay.sender_email === currentUser?.email && pay.sender_name === currentUser?.name && pay.isPaid === true
+                console.log(paymentStatus)
+                if (paymentStatus) {
+                    setPaymentSuccess(true)
+                }
+
+
             }
 
-            console.log("paymentStatus", paymentStatus)
+
 
         })
 
-    }, [paymentLoading]);
+    }, [paymentLoading, userData,paymentData ]);
+
+
+    if (paymentSuccess) {
+        paymentRefetch()
+    }
+
+
+
 
     return (
         <div className='container py-20' >
