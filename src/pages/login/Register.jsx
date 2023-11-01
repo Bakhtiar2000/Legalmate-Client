@@ -43,13 +43,16 @@ const Register = () => {
         profileUpdate(result.user, data.name)
           .then((result) => {
             axiosSecure.post('/users', userData)
-              .then((data) => {
-                console.log(data)
-              })
+            .then(res => {
+              console.log(res.data)
+              if (res.status === 200) {
+                  navigate(from, { replace: true });
+              }
+          })
               .catch((err) => {
                 console.log(err)
               });
-            navigate(from, { replace: true });
+           
             Swal.fire({
               title: 'Account created successfully',
               showClass: {
