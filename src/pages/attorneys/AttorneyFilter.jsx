@@ -12,7 +12,8 @@ const AttorneyFilter = () => {
     const [attorneysData, loading] = useAttorneys();
     const [practiceAreasData] = usePracticeAreas();
     const { register, watch, handleSubmit, reset } = useForm();
-    const [filteredData, setFilteredData] = useState(attorneysData);
+    const approvedAttorneys= attorneysData.filter(data=> data.status === "approved")
+    const [filteredData, setFilteredData] = useState(approvedAttorneys);
     
     const name = watch('name');
     const location = watch('location');
@@ -24,19 +25,19 @@ const AttorneyFilter = () => {
         const searchLocation = location ? location.toLowerCase() : "";
         const searchPracticeArea = practice_area ? practice_area.toLowerCase() : "";
 
-        let filter = attorneysData.filter((data) =>
+        let filter = approvedAttorneys.filter((data) =>
             (!searchName || data.name.toLowerCase().includes(searchName)) &&
             (!searchLocation || data.location.toLowerCase().includes(searchLocation)) &&
             (!searchPracticeArea || data.practiceArea.toLowerCase().includes(searchPracticeArea))
         );
 
         setFilteredData(filter);
-    }, [name, location, practice_area, attorneysData]);
+    }, [name, location, practice_area, approvedAttorneys]);
 
 
     useEffect(() => {
-        setFilteredData(attorneysData);
-    }, [attorneysData])
+        setFilteredData(approvedAttorneys);
+    }, [approvedAttorneys])
 
     if (loading) return <PageLoader />
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaFacebookF, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { Rating, Star } from "@smastrom/react-rating";
@@ -63,7 +62,7 @@ const AttorneyDiv = ({attorney}) => {
 
                 {
                     license.length!== 0 && 
-                    < p className='text-orange-500'>Licensed for {currentYear - license.licenseAcquiredYear} years</p>
+                    < p className='text-orange-500'>Licensed for {currentYear - license.acquired_year} years</p>
                 }
                 <p>{about}</p>
                 </div>
