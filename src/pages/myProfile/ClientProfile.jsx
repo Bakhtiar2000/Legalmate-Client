@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useCurrentClient from '../../hooks/useCurrentClient';
 import CustomModal from '../../components/CustomModal';
+import { BsCamera } from 'react-icons/bs';
 
 const ClientProfile = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -37,23 +38,69 @@ const ClientProfile = () => {
     const handleBasicInfoModal = (e) => {
         if (e == "cancel") setIsBasicInfoModalOpen(false)
     }
+
+    const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
+    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
+
+    const handlePictureUpload = event => {
+        const picture = event.target.files[0]
+        const formData = new FormData()
+        formData.append('image', picture)
+        console.log(picture)
+        // fetch(image_hosting_url, {
+        //     method: "POST",
+        //     body: formData
+        // })
+        //     .then(res => res.json())
+        //     .then(imageResponse => {
+        //         if (imageResponse.success) {
+        //             const image = imageResponse.data.display_url
+        //             const profile = {
+        //                 url: image,
+        //                 email: email
+        //             }
+
+        //             axiosSecure.patch(`/attorney/profilePhoto/${_id }`, profile)
+        //                 .then(res => {
+        //                     console.log(res.data)
+        //                     if (res.status === 200) {
+        //                         refetch()
+        //                     }
+        //                 })
+        //                 .catch(error => {
+        //                     console.log(error);
+        //                 })
+        //         }
+        //     })
+    }
     
     return (
         <div className='container py-20 flex flex-col items-center gap-5'>
-                <div className='min-w-max'>
-                    {/* Image */}
-                    {
-                        img ?
-                            <img
-                                className="w-64 h-80 object-cover rounded mx-auto border border-primary"
-                                src={img}
-                                alt=""
-                            /> :
-                            <img
-                                className='w-64 h-80 object-cover rounded mx-auto border border-primary'
-                                src="https://i.ibb.co/wNJtyRX/image-14.png"
-                            />
-                    }
+                {/* Image */}
+                <div className='relative h-fit w-fit'>
+                    <div className='min-w-max'>
+                        {
+                            img ?
+                                <img
+                                    className="w-48 md:w-64 h-60 md:h-80 object-cover rounded mx-auto border border-primary"
+                                    src={img}
+                                    alt={name}
+                                /> :
+                                <img
+                                    className='w-48 md:w-64 h-60 md:h-80 object-cover rounded mx-auto border border-primary'
+                                    src="https://i.ibb.co/wNJtyRX/image-14.png" />
+                        }
+                    </div>
+                    <label className='rounded-full border border-primary bg-lightDark/80 hover:bg-lightDark text-2xl p-[5px] z-20 cursor-pointer text-primary duration-300 absolute -bottom-4 left-[82%] md:left-[90%]'>
+
+                        <input
+                            name='picture'
+                            type='file'
+                            style={{ display: 'none' }}
+                            onChange={handlePictureUpload}
+                        />
+                        <BsCamera />
+                    </label>
                 </div>
 
                 <p className='text-lg mt-5'>Name: {name? name: "Not Found"}</p>
