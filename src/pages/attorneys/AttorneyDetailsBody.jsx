@@ -32,7 +32,8 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     const { currentUser } = useAuth()
     const [receiverId, setReceiverId] = useState();
     const [axiosSecure] = useAxiosSecure();
-    const [paymentSuccess, setPaymentSuccess] = useState()
+    const [paymentSuccess, setPaymentSuccess] = useState();
+    const [targetRole, setTargetRole] = useState();
 
     // rating style
     const myStyles = {
@@ -71,21 +72,23 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                 console.log(error);
             });
     }
+
     const paymentHandle = () => {
         const timestamp = new Date().getTime();
         const random = Math.floor(Math.random() * 1000);
         const tran_id = `${timestamp}${random}`
         console.log(tran_id)
         const paymentInfo = {
-            attorneyID: _id,
-            attorneyName: name,
-            attorneyEmail: email,
-            clintName: currentUser.name,
-            clintEmail: currentUser.email,
-            practiceArea: practiceArea,
-            amount: 500,
+            sender_id: currentUser._id,
+            sender_name: currentUser.name,
+            sender_email: currentUser.email,
+            sender_role: currentUser.role,
+            target_id: _id,
+            target_name: name,
+            target_email: email,
+            target_role: currentUser?.role === "attorney" ? "client" : "attorney",
             tran_id: tran_id,
-
+            amount: 500
         }
         console.log(paymentInfo)
         axiosSecure.post('/payment', paymentInfo)
@@ -100,6 +103,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     }
 
     console.log(paymentData)
+
     useEffect(() => {
 
         paymentData?.map(pay => {
@@ -220,6 +224,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
 
 
                 </div>
+
             </div>
 
 

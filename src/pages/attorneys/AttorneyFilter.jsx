@@ -18,7 +18,7 @@ const AttorneyFilter = () => {
     const name = watch('name');
     const location = watch('location');
     const practice_area = watch('practice_area');
-    console.log(name, location, practice_area);
+    // console.log(name, location, practice_area);
 
     useEffect(() => {
         const searchName = name ? name.toLowerCase() : "";
