@@ -199,11 +199,12 @@ const AttorneyProfile = () => {
         if (e == "cancel") setIsAwardModalOpen(false)
     }
     // Image Hosting
+
     const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
 
     const handlePictureUpload = event => {
-        const picture = event.target.files
+        const picture = event.target.files[0]
         const formData = new FormData()
         formData.append('image', picture)
         console.log(picture)
@@ -220,7 +221,7 @@ const AttorneyProfile = () => {
                         email: email
                     }
 
-                    axiosSecure.patch(`/attorney/profilePhoto/${_id}`, profile)
+                    axiosSecure.patch(`/attorney/profilePhoto/${_id }`, profile)
                         .then(res => {
                             console.log(res.data)
                             if (res.status === 200) {
@@ -233,6 +234,8 @@ const AttorneyProfile = () => {
                 }
             })
     }
+
+
     return (
         <div className='container py-20'>
             {/* Basic Information */}
@@ -313,7 +316,7 @@ const AttorneyProfile = () => {
                                                     {...register("licenseState")}
                                                     defaultValue={license.state}
                                                     placeholder='License of State'
-                                                    className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
+                                                    className='w-full border text-black bg-white border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
                                             </div>
 
@@ -324,7 +327,7 @@ const AttorneyProfile = () => {
                                                     {...register("licenseAcquiredYear")}
                                                     defaultValue={license.acquired_year}
                                                     placeholder='Year of Acquisition'
-                                                    className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
+                                                    className='w-full border text-black bg-white border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
                                             </div>
 
@@ -334,7 +337,7 @@ const AttorneyProfile = () => {
                                                     {...register("licenseStatus")}
                                                     defaultValue={license.status}
                                                     placeholder='Active / Inactive'
-                                                    className='w-full border border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
+                                                    className='w-full border text-black bg-white border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
                                             </div>
                                         </div>
@@ -506,7 +509,7 @@ const AttorneyProfile = () => {
                                     {...register("name")}
                                     defaultValue={name}
                                     placeholder='Your full name'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
+                                    className='w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>
 
@@ -517,7 +520,7 @@ const AttorneyProfile = () => {
                                     {...register("practiceArea")}
                                     placeholder='Your focused practice area'
                                     defaultValue={practiceArea}
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
+                                    className='w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>
                         </div>
@@ -530,7 +533,7 @@ const AttorneyProfile = () => {
                                     {...register("location")}
                                     defaultValue={location}
                                     placeholder='e.g. Dhaka, Bangladesh'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
+                                    className='w-full border  text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>
 
@@ -541,7 +544,7 @@ const AttorneyProfile = () => {
                                     {...register("hourlyRate")}
                                     defaultValue={hourly_rate}
                                     placeholder='Write within a range'
-                                    className='w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
+                                    className='w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>
                         </div>
@@ -553,7 +556,7 @@ const AttorneyProfile = () => {
                                 {...register("about")}
                                 defaultValue={about}
                                 placeholder='Write about your professional life within 250 words'
-                                className='w-full h-32 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
+                                className='w-full h-32 border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                             />
                         </div>
 
@@ -584,7 +587,7 @@ const AttorneyProfile = () => {
                                 type='text'
                                 {...register("link", { required: true })}
                                 placeholder='Provide the drive link of Attorney documents'
-                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.link && 'border-2 border-red-500'}`}
+                                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.link && 'border-2 border-red-500'}`}
                             />
                         </div>
                         <input
@@ -615,7 +618,7 @@ const AttorneyProfile = () => {
                                     type='text'
                                     {...register("institution", { required: true })}
                                     placeholder='e.g: University of British Columbia'
-                                    className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.institution && 'border-2 border-red-500'}`}
+                                    className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.institution && 'border-2 border-red-500'}`}
                                 />
                             </div>
 
@@ -626,7 +629,7 @@ const AttorneyProfile = () => {
                                     type='text'
                                     {...register("subject", { required: true })}
                                     placeholder='e.g: JD - Juris Doctor'
-                                    className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.subject && 'border-2 border-red-500'}`}
+                                    className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.subject && 'border-2 border-red-500'}`}
                                 />
                             </div>
                         </div>
@@ -638,7 +641,7 @@ const AttorneyProfile = () => {
                                 <input
                                     type='number'
                                     {...register("edu_start_year", { required: true })}
-                                    className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.edu_start_year && 'border-2 border-red-500'}`}
+                                    className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.edu_start_year && 'border-2 border-red-500'}`}
                                 />
                             </div>
 
@@ -651,13 +654,13 @@ const AttorneyProfile = () => {
                                             value='Present'
                                             readOnly
                                             {...register("edu_end_year", { required: true })}
-                                            className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.edu_end_year && 'border-2 border-red-500'}`}
+                                            className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.edu_end_year && 'border-2 border-red-500'}`}
                                         /> :
                                         <>
                                             <input
                                                 type='number'
                                                 {...register("edu_end_year", { required: true, validate: (value) => validateEndingDate(value, watch("edu_start_year")) })}
-                                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors?.edu_end_year?.type === "required" && 'border-2 border-red-500'}`}
+                                                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors?.edu_end_year?.type === "required" && 'border-2 border-red-500'}`}
                                             />
                                             {errors?.edu_end_year?.type === 'validate' && <span className='text-red-500 text-sm duration-300'>Invalid End year</span>}
                                         </>
@@ -709,7 +712,7 @@ const AttorneyProfile = () => {
                                     type='text'
                                     {...register("company", { required: true })}
                                     placeholder='e.g: Pivotal Law Group'
-                                    className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.company && 'border-2 border-red-500'}`}
+                                    className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.company && 'border-2 border-red-500'}`}
                                 />
                             </div>
 
@@ -720,7 +723,7 @@ const AttorneyProfile = () => {
                                     type='text'
                                     {...register("position", { required: true })}
                                     placeholder='e.g: Attorney'
-                                    className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.position && 'border-2 border-red-500'}`}
+                                    className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.position && 'border-2 border-red-500'}`}
                                 />
                             </div>
                         </div>
@@ -732,7 +735,7 @@ const AttorneyProfile = () => {
                                 <input
                                     type='number'
                                     {...register("exp_start_year", { required: true })}
-                                    className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.exp_start_year && 'border-2 border-red-500'}`}
+                                    className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.exp_start_year && 'border-2 border-red-500'}`}
                                 />
                             </div>
 
@@ -745,13 +748,13 @@ const AttorneyProfile = () => {
                                             value='Present'
                                             readOnly
                                             {...register("exp_end_year", { required: true })}
-                                            className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.exp_end_year && 'border-2 border-red-500'}`}
+                                            className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.exp_end_year && 'border-2 border-red-500'}`}
                                         /> :
                                         <>
                                             <input
                                                 type='number'
                                                 {...register("exp_end_year", { required: true, validate: (value) => validateEndingDate(value, watch("exp_start_year")) })}
-                                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors?.exp_end_year?.type === "required" && 'border-2 border-red-500'}`}
+                                                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors?.exp_end_year?.type === "required" && 'border-2 border-red-500'}`}
                                             />
                                             {errors?.exp_end_year?.type === 'validate' && <span className='text-red-500 text-sm duration-300'>Invalid End year</span>}
                                         </>
@@ -802,7 +805,7 @@ const AttorneyProfile = () => {
                                 type='text'
                                 {...register("award_name", { required: true })}
                                 placeholder='e.g: Rising Star'
-                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.award_name && 'border-2 border-red-500'}`}
+                                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.award_name && 'border-2 border-red-500'}`}
                             />
                         </div>
 
@@ -813,7 +816,7 @@ const AttorneyProfile = () => {
                                 type='text'
                                 {...register("from", { required: true })}
                                 placeholder='e.g: Super Lawyers'
-                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.from && 'border-2 border-red-500'}`}
+                                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.from && 'border-2 border-red-500'}`}
                             />
                         </div>
 
@@ -825,7 +828,7 @@ const AttorneyProfile = () => {
                                 type='number'
                                 placeholder='The year of winning award'
                                 {...register("year", { required: true })}
-                                className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.year && 'border-2 border-red-500'}`}
+                                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.year && 'border-2 border-red-500'}`}
                             />
                         </div>
                         <input
