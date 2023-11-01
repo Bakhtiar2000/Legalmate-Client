@@ -39,7 +39,7 @@ const AttorneyProfile = () => {
     const newEducations = [...education, { subject: watch('subject'), institution: watch('institution'), start_year: watch('edu_start_year'), end_year: watch('edu_end_year') }];
     const newExperience = [...experience, { company: watch('company'), position: watch('position'), start_year: watch('exp_start_year'), end_year: watch('exp_end_year') }];
     const newAwards = [...awards, { name: watch('award_name'), from: watch('from'), year: watch('year') }];
-    const newDocuments= [...documents,  watch('link')]
+    const newDocuments = [...documents, watch('link')]
     const currentYear = new Date().getFullYear();
 
     //Validate end date
@@ -112,17 +112,19 @@ const AttorneyProfile = () => {
             newDocuments
         }
         console.log(updateData);
-        // axiosSecure.patch('/attorney/document', updateData)
-        //     .then(res => {
-        //         if (res.status === 200) {
-        //             refetch();
-        //             reset()
-        //             setIsDocumentEditClicked(false)
-        //         }
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     })
+        console.log(data.link, name);
+        axiosSecure.patch('/attorney/document', updateData)
+            .then(res => {
+                console.log(res)
+                if (res.status === 200) {
+                    refetch();
+                    reset()
+                    // setIsDocumentEditClicked(false)
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     const handleDocumentModal = (e) => {
         if (e == "cancel") setIsDocumentModalOpen(false)
@@ -394,10 +396,12 @@ const AttorneyProfile = () => {
                         <p className='text-center text-2xl mt-5'>☹ No documents data found</p> :
                         <div className='grid lg:grid-cols-2 gap-6 mt-5'>
                             {
-                                documents.map((doc, index) =><AttorneyDocumentProfile
+                                documents.map((doc, index) => <AttorneyDocumentProfile
+                                    id={_id}
                                     key={index}
                                     doc={doc}
                                     index={index}
+                                    refetch={refetch}
                                 ></AttorneyDocumentProfile>)
                             }
                         </div>
@@ -578,7 +582,7 @@ const AttorneyProfile = () => {
                             <label className='text-dark text-sm'>Document's Drive Link:</label>
                             <input
                                 type='text'
-                                {...register("link", {required: true})}
+                                {...register("link", { required: true })}
                                 placeholder='Provide the drive link of Attorney documents'
                                 className={`w-full border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.link && 'border-2 border-red-500'}`}
                             />
@@ -832,7 +836,7 @@ const AttorneyProfile = () => {
                     </form>
                 </CustomModal>
             }
-            
+
         </div>
     );
 };

@@ -7,7 +7,7 @@ import { MdOutlineHistory, MdOutlineContactMail } from "react-icons/md"
 
 const Profile = () => {
     const { currentUser, user } = useContext(AuthContext)
-    console.log(user, currentUser);
+    // console.log(user, currentUser);
     return (
         <div className='relative z-[999] group'>
             {/* Profile Picture */}
