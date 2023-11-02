@@ -41,8 +41,6 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     const [senderId, setSenderId] = useState();
 
     useEffect(() => {
-
-
         if (currentUser?.role === "client") {
             const senderId = clientsData?.filter(client => client.email === currentUser?.email)
             setSenderId(senderId[0]?._id)
@@ -54,7 +52,6 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
         }
     }, [clientsData, currentUser, attorneysData]);
     console.log(senderId)
-
 
     // rating style
     const myStyles = {
@@ -73,8 +70,6 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     }, [userData, singleAttorney]);
 
     const createChat = () => {
-        // console.log("receiver",receiverId);
-        // console.log("sender" ,currentUser?._id);
         const chatMembers = {
             sender: currentUser?._id,
             receiver: receiverId,
@@ -93,8 +88,6 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                 console.log(error);
             });
     }
-
-
 
     const paymentHandle = () => {
         const timestamp = new Date().getTime();
@@ -125,10 +118,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
 
     }
 
-    // console.log(paymentData)
-
     useEffect(() => {
-
         paymentData?.map(pay => {
             console.log(pay)
 
@@ -138,23 +128,14 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                 if (paymentStatus) {
                     setPaymentSuccess(true)
                 }
-
-
             }
-
-
-
         })
 
     }, [paymentLoading, userData,paymentData ]);
 
-
     if (paymentSuccess) {
         paymentRefetch()
     }
-
-
-
 
     return (
         <div className='container py-20' >
@@ -244,25 +225,21 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                     {
                         paymentSuccess ?
                             <button onClick={createChat} className="lg:text-xl text-center">
-                                <div className="mt-auto w-full bg-green-600 hover:bg-green-800 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
+                                <div className="mt-auto w-full bg-green-600 hover:bg-green-600/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
                                     Message
 
                                 </div>
                             </button>
                             :
                             <button onClick={paymentHandle} className="lg:text-xl text-center">
-                                <div className="mt-auto w-full bg-red-600 hover:bg-green-800 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
+                                <div className="mt-auto w-full  bg-secondary hover:bg-secondary/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
                                     Message
                                 </div>
                             </button>
 
                     }
-
-
                 </div>
-
             </div>
-
 
             {/* Bottom Section */}
             <div className="mt-10">

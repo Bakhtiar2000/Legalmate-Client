@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
+import CaseFilter from './CaseFilter';
 
 const FindCases = () => {
     return (
@@ -11,7 +12,7 @@ const FindCases = () => {
 
             <Breadcrumbs title="Find Cases" />
 
-            <h3>Find Cases</h3>
+            <CaseFilter/>
         </div>
     );
 };

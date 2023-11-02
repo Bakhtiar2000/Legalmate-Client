@@ -7,10 +7,11 @@ import useChat from '../../hooks/useChat';
 import useAuth from '../../hooks/useAuth';
 import Conversation from './Conversation';
 import ChatBox from './ChatBox';
+import PageLoader from '../../components/PageLoader';
 
 const Messages = () => {
-    const [chats, chatRefetch] = useChat();
-    console.log(chats)
+    const [chats,chatLoading, chatRefetch] = useChat();
+    // console.log(chats)
     const [axiosSecure] = useAxiosSecure()
     const [currentChat, setCurrentChat] = useState();
     const [onlineUser, setOnlineUser] = useState([]);
@@ -19,7 +20,8 @@ const Messages = () => {
     const [newMessage, setNewMessage] = useState(null)
     const [message, setMessage] = useState([])
     const { currentUser } = useAuth();
-    const [messageReceiver, setMessageReceiver] = useState()
+    const [messageReceiver, setMessageReceiver] = useState();
+    const [notification, setNotification] = useState();
 
     useEffect(() => {
         axiosSecure.get(`/message/${currentChat?._id}`)
@@ -30,7 +32,7 @@ const Messages = () => {
             .catch(error => {
                 console.log(error)
             })
-    }, [currentChat , chats]);
+    }, [currentChat, chats]);
 
     // Connect with Socket.io 
     useEffect(() => {
@@ -69,19 +71,25 @@ const Messages = () => {
             if (currentChat?._id !== res.chatId) return;
             setMessage([...message, res]);
         });
-        socket.on("getNotification", (res) => {
-            const isChatOpen = currentChat?.members.some(id => id === res.senderId)
-            if (isChatOpen) {
-                setNotification(pre => [{ ...res, isRead: true }, ...pre])
-            }
-            setNotification(pre => [...pre, res])
-        })
+        // socket.on("getNotification", (res) => {
+        //     const isChatOpen = currentChat?.members.some(id => id === res.senderId)
+        //     if (isChatOpen) {
+                // setNotification(pre => [{ ...res, isRead: true }, ...pre])
+            // }
+            // setNotification(pre => [...pre, res])
+        // })
 
         return () => {
             socket.off("getMessages")
             socket.off("getNotification")
         }
     }, [socket, currentChat, message]);
+
+
+    if (chatLoading) {
+        return <PageLoader/>
+    }
+
 
     return (
         <div>
@@ -91,41 +99,44 @@ const Messages = () => {
 
             <Breadcrumbs title="Messages" />
 
-            {
-                chats.length !== 0 &&
-                <div className="container grid md:grid-cols-3 gap-6 rounded-md py-10">
+            <div className='container py-20'>
+                {
+                    chats.length !== 0 ?
+                        <div className="grid md:grid-cols-3 gap-6 rounded-md">
 
-                    <div className="bg-lightDark text-white p-3 rounded-md shadow-lg md:min-h-[68vh]">
-                        {chats?.map((chat, index) => (
-                            <div key={index} className="cursor-pointer"
-                                onClick={() => setCurrentChat(chat)}>
-                                <Conversation
-                                    chat={chat}
-                                    onlineUser={onlineUser}
-                                    setMessageReceiver={setMessageReceiver}
-                                />
+                            <div className="bg-lightDark text-white p-3 rounded-md shadow-lg md:min-h-[68vh]">
+                                {chats?.map((chat, index) => (
+                                    <div key={index} className="cursor-pointer"
+                                        onClick={() => setCurrentChat(chat)}>
+                                        <Conversation
+                                            chat={chat}
+                                            onlineUser={onlineUser}
+                                            setMessageReceiver={setMessageReceiver}
+                                        />
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
 
-                    {currentChat !== undefined && (
-                        <div className="md:col-span-2 rounded-md">
-                            <ChatBox
-                                currentChat={currentChat}
-                                currentUser={currentUser}
-                                textMessage={textMessage}
-                                setNewMessage={setNewMessage}
-                                setMessage={setMessage}
-                                message={message}
-                                setTextMessage={setTextMessage}
-                                messageReceiver={messageReceiver}
-                                onlineUser={onlineUser}
-                                chatRefetch={chatRefetch}
-                            />
-                        </div>
-                    )}
-                </div>
-            }
+                            {currentChat !== undefined && (
+                                <div className="md:col-span-2 rounded-md">
+                                    <ChatBox
+                                        currentChat={currentChat}
+                                        currentUser={currentUser}
+                                        textMessage={textMessage}
+                                        setNewMessage={setNewMessage}
+                                        setMessage={setMessage}
+                                        message={message}
+                                        setTextMessage={setTextMessage}
+                                        messageReceiver={messageReceiver}
+                                        onlineUser={onlineUser}
+                                        chatRefetch={chatRefetch}
+                                    />
+                                </div>
+                            )}
+                        </div> :
+                        <p className="py-4 px-6 sm:text-lg text-center bg-lightDark rounded-lg">☹ No Messages Found!</p>
+                }
+            </div>
         </div>
     );
 };

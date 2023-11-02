@@ -1,49 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import useAttorneys from '../../hooks/useAttorneys';
-import AttorneyDiv from '../../components/AttorneyDiv';
-import PageLoader from '../../components/PageLoader';
-import { BiCategory, BiSearchAlt, BiCurrentLocation } from 'react-icons/bi';
-import { AiOutlineClear } from 'react-icons/ai';
-import { BsFillPersonFill } from 'react-icons/bs';
-import usePracticeAreas from '../../hooks/usePracticeAreas';
+import useCases from '../../hooks/useCases';
 import { useForm } from 'react-hook-form';
+import PageLoader from '../../components/PageLoader';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { BiCategory, BiCurrentLocation, BiSearchAlt } from 'react-icons/bi';
+import { AiOutlineClear } from 'react-icons/ai';
+import usePracticeAreas from '../../hooks/usePracticeAreas';
+import CaseDiv from './CaseDiv';
+import useAllCases from '../../hooks/useAllCase';
 
-const AttorneyFilter = () => {
-    const [attorneysData, loading] = useAttorneys();
+const CaseFilter = () => {
+    const [allCasesData, allCaseLoading, refetch]= useAllCases()
     const [practiceAreasData] = usePracticeAreas();
-    const { register, handleSubmit, reset, getValues } = useForm();
-    const approvedAttorneys= attorneysData.filter(data=> data.status === "approved")
-    const [filteredData, setFilteredData] = useState(approvedAttorneys);
+    const { register, watch, handleSubmit, reset } = useForm();
+    const approvedCases= allCasesData.filter(data=> data.status === "approved")
+    const [filteredData, setFilteredData] = useState(approvedCases);
+    console.log(allCasesData);
+    console.log(filteredData);
+
+
     const [name, setName] = useState();
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
-    console.log(attorneysData);
+    
     const onSubmit = data => {
         setName(data.name)
         setLocation(data.location)
         setPractice_area(data.practice_area)
         reset();
     }
-    console.log(name, location, practice_area);
+    // console.log(name, location, practice_area);
 
     useEffect(() => {
-        
         const searchName = name ? name.toLowerCase() : "";
         const searchLocation = location ? location.toLowerCase() : "";
         const searchPracticeArea = practice_area ? practice_area.toLowerCase() : "";
 
-        let filter = approvedAttorneys.filter((data) =>
-            (!searchName || data.name.toLowerCase().includes(searchName)) &&
+        let filter = approvedCases.filter((data) =>
+            (!searchName || data.writer.toLowerCase().includes(searchName)) &&
             (!searchLocation || data.location.toLowerCase().includes(searchLocation)) &&
-            (!searchPracticeArea || data.practiceArea.toLowerCase().includes(searchPracticeArea))
+            (!searchPracticeArea || data.practice_area.toLowerCase().includes(searchPracticeArea))
         );
 
         setFilteredData(filter);
-    }, [name, location, practice_area, loading]);
+    }, [name, location, practice_area, allCaseLoading]);
 
     return (
         <div className='container py-20'>
-
             {/* search bar */}
             <div className="max-w-6xl mx-auto duration-300 mb-10">
                 <form
@@ -111,12 +114,12 @@ const AttorneyFilter = () => {
                 </form>
             </div>
             {
-                filteredData.length!==0?
-                filteredData?.map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>):
-                <p className="py-4 px-6 max-w-5xl mx-auto sm:text-lg text-center bg-lightDark rounded-lg">☹ No attorney Found!</p>
+                allCasesData.length!==0?
+                allCasesData.map((singleCase) => <CaseDiv key={singleCase._id} singleCase={singleCase}></CaseDiv>):
+                <p className="py-4 px-6 sm:text-lg max-w-5xl mx-auto text-center bg-lightDark rounded-lg">☹ No case Found!</p>
             }
         </div>
     );
 };
 
-export default AttorneyFilter;
+export default CaseFilter;

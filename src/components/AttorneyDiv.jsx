@@ -9,7 +9,7 @@ const AttorneyDiv = ({attorney}) => {
     const presentEmployment= experience.filter(exp=> exp.end_year === "present")
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
-    // console.log(presentEmployment);
+    // console.log(attorney);
     const currentYear = new Date().getFullYear();
     // rating style
     const myStyles = {
