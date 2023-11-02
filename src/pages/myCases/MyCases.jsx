@@ -3,10 +3,19 @@ import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import useCases from '../../hooks/useCases';
 import MyCasesTableRow from './MyCasesTableRow';
+import useAuth from '../../hooks/useAuth';
+import PageLoader from '../../components/PageLoader';
 
 const MyCases = () => {
-    const [casesData, loading, refetch]= useCases();
+    const { currentUser, loading } = useAuth();
+  
+    const [casesData, caseLoading, refetch] = useCases();
     console.log(casesData);
+
+    if (loading || caseLoading) {
+        return <PageLoader />
+    }
+
 
     return (
         <div>
@@ -22,29 +31,29 @@ const MyCases = () => {
                     {
                         casesData.length > 0 ?
 
-                        <table className="table lg:w-full w-[800px] text-white">
-                            <thead className="text-lg text-green border-b border-green/40">
-                                <tr>
-                                    <th className="px-3 py-3 font-medium text-center text-white">Index</th>
-                                    <th className="px-3 py-3 font-medium text-center text-white">Case Post</th>
-                                    <th className="px-3 py-3 font-medium text-center text-white">Practice area</th>
-                                    <th className="px-3 py-3 font-medium text-center text-white">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    casesData.map((singleCase, index) => (
-                                        <MyCasesTableRow
-                                            index={index}
-                                            key={singleCase._id}
-                                            singleCase={singleCase}
-                                            // refetch={refetch}
-                                        />
-                                    )) 
-                                }
-                            </tbody>
-                        </table>:
-                        <p className="py-4 text-lg text-center">☹ No data available!</p>
+                            <table className="table lg:w-full w-[800px] text-white">
+                                <thead className="text-lg text-green border-b border-green/40">
+                                    <tr>
+                                        <th className="px-3 py-3 font-medium text-center text-white">Index</th>
+                                        <th className="px-3 py-3 font-medium text-center text-white">Case Post</th>
+                                        <th className="px-3 py-3 font-medium text-center text-white">Practice area</th>
+                                        <th className="px-3 py-3 font-medium text-center text-white">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        casesData.map((singleCase, index) => (
+                                            <MyCasesTableRow
+                                                index={index}
+                                                key={singleCase._id}
+                                                singleCase={singleCase}
+                                                refetch={refetch}
+                                            />
+                                        ))
+                                    }
+                                </tbody>
+                            </table> :
+                            <p className="py-4 text-lg text-center">☹ No data available!</p>
                     }
                 </div>
             </div>

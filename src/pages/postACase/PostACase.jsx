@@ -4,19 +4,39 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import { useForm } from 'react-hook-form';
 import usePracticeAreas from '../../hooks/usePracticeAreas';
 import useAuth from '../../hooks/useAuth';
+import useCurrentClient from '../../hooks/useCurrentClient';
+import useAxiosSecure from '../../hooks/useAxios';
 
 const PostACase = () => {
-    const {user}= useAuth()
+    const { currentUser } = useAuth();
+    const [axiosSecure] = useAxiosSecure()
     const [practiceAreasData] = usePracticeAreas();
-    const { register, handleSubmit, reset, formState: { errors }} = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [currentClientData, clientLoading, refetch] = useCurrentClient();
+    // console.log(currentClientData)
 
-    const onCaseSubmit= data =>{
-        const addedCase= {
-            email: user?.email,
+    const onCaseSubmit = data => {
+        const addedCase = {
+            email: currentUser?.email,
             case_post: data?.case_post,
-            practice_area: data?.practice_area
+            practice_area: data?.practice_area,
+            writer: currentUser?.name,
+            writer_id: currentClientData?._id,
         }
         console.log(addedCase);
+
+        axiosSecure.post('/case', addedCase)
+        .then(res => {
+            console.log(res)
+            if (res.status === 200) {
+                refetch();
+                reset()
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
         //TODO: save the basic info data and refetch() after sending to database
         reset()
     }
@@ -33,8 +53,8 @@ const PostACase = () => {
             <div className='container py-20 text-black'>
                 <form className='max-w-4xl mx-auto ' onSubmit={handleSubmit(onCaseSubmit)}>
                     <div className='w-full'>
-                        <textarea 
-                            {...register("case_post", {required: true})}
+                        <textarea
+                            {...register("case_post", { required: true })}
                             placeholder='Write the case for which you require a lawyer. Explain every details accordingly. N.B. You must choose appropriate law practice area for finding the appropriate lawyer'
                             className='w-full h-60 border border-dark/40 py-2 md:py-3 px-3 md:px-5 rounded-md focus:outline-none focus:border-primary'
                         />
@@ -44,7 +64,7 @@ const PostACase = () => {
                     <div className='sm:flex justify-between gap-5 mt-5'>
                         <div>
                             <select
-                                {...register("practice_area", {required: true})}
+                                {...register("practice_area", { required: true })}
                                 defaultValue=""
                                 className="w-64 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1"
                             >
@@ -61,8 +81,8 @@ const PostACase = () => {
                         </div>
 
                         <input
-                            type='submit' 
-                            value="Post The Case" 
+                            type='submit'
+                            value="Post The Case"
                             className="mt-5 sm:mt-0 w-fit h-fit text-center px-5 py-2 bg-green-500 hover:bg-green-500/60 duration-300 rounded text-white cursor-pointer"
                         />
                     </div>
