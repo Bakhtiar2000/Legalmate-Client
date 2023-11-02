@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useCurrentClient from '../../hooks/useCurrentClient';
 import CustomModal from '../../components/CustomModal';
 import { BsCamera } from 'react-icons/bs';
+import PageLoader from '../../components/PageLoader';
 
 const ClientProfile = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();

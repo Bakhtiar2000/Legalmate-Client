@@ -17,7 +17,7 @@ const AllPayments = () => {
             </Helmet>
             <Breadcrumbs title="All Payments" />
 
-            <div className='container py-20 '>
+            <div className='container py-20'>
                 <div className="w-full mx-auto overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-lightDark">
                     {
                         paymentData.length > 0 ?

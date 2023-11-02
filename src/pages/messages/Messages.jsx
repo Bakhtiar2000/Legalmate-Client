@@ -91,9 +91,10 @@ const Messages = () => {
 
             <Breadcrumbs title="Messages" />
 
-            {
-                chats.length !== 0 &&
-                <div className="container grid md:grid-cols-3 gap-6 rounded-md py-10">
+           <div className='container py-20'>
+           {
+                chats.length !== 0 ?
+                <div className="grid md:grid-cols-3 gap-6 rounded-md">
 
                     <div className="bg-lightDark text-white p-3 rounded-md shadow-lg md:min-h-[68vh]">
                         {chats?.map((chat, index) => (
@@ -124,8 +125,10 @@ const Messages = () => {
                             />
                         </div>
                     )}
-                </div>
+                </div>:
+                 <p className="py-4 px-6 sm:text-lg text-center bg-lightDark rounded-lg">☹ No Messages Found!</p>
             }
+           </div>
         </div>
     );
 };
