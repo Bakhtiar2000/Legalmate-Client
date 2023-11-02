@@ -12,7 +12,7 @@ const FindCases = () => {
 
             <Breadcrumbs title="Find Cases" />
 
-            <CaseFilter></CaseFilter>
+            <CaseFilter/>
         </div>
     );
 };

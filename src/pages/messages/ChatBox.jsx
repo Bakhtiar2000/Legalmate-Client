@@ -66,34 +66,34 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
             })
     };
 
-    const deleteChat = () => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axiosSecure.delete(`/chat/delete/${currentChat._id}`)
-                    .then(res => {
-                        if (res.status === 200) {
-                            Swal.fire(
-                                'Deleted!',
-                                'Conversation has been deleted.',
-                                'success'
-                            )
-                            chatRefetch()
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-            }
-        })
-    }
+    // const deleteChat = () => {
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             axiosSecure.delete(`/chat/delete/${currentChat._id}`)
+    //                 .then(res => {
+    //                     if (res.status === 200) {
+    //                         Swal.fire(
+    //                             'Deleted!',
+    //                             'Conversation has been deleted.',
+    //                             'success'
+    //                         )
+    //                         chatRefetch()
+    //                     }
+    //                 })
+    //                 .catch(error => {
+    //                     console.log(error);
+    //                 })
+    //         }
+    //     })
+    // }
 
     return (
         <div className='bg-lightDark shadow-lg p-3 rounded-md'>
@@ -112,7 +112,7 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
                         <p className='text-sm text-dark'>{searchOnlineUser ? "online " : "offline"}</p>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     <Tooltip id="delete_chat"
                     />
                     <button
@@ -122,7 +122,7 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
                     >
                         <MdDeleteOutline size='24' />
                     </button>
-                </div>
+                </div> */}
             </div>
 
             <div className='h-[54vh] overflow-y-scroll p-3 rounded-md'>

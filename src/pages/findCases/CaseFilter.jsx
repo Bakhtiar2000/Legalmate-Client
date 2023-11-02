@@ -6,14 +6,18 @@ import { BiCategory, BiCurrentLocation, BiSearchAlt } from 'react-icons/bi';
 import { AiOutlineClear } from 'react-icons/ai';
 import usePracticeAreas from '../../hooks/usePracticeAreas';
 import CaseDiv from './CaseDiv';
+import useAllCases from '../../hooks/useAllCase';
 
 const CaseFilter = () => {
-    const [casesData, loading]= useCases()
+    const [allCasesData, allCaseLoading, refetch]= useAllCases()
     const [practiceAreasData] = usePracticeAreas();
     const { register, watch, handleSubmit, reset } = useForm();
-    const approvedCases= casesData.filter(data=> data.status === "approved")
+    const approvedCases= allCasesData.filter(data=> data.status === "approved")
     const [filteredData, setFilteredData] = useState(approvedCases);
-    console.log(casesData);
+    console.log(allCasesData);
+    console.log(filteredData);
+
+
     const [name, setName] = useState();
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
@@ -24,7 +28,7 @@ const CaseFilter = () => {
         setPractice_area(data.practice_area)
         reset();
     }
-    console.log(name, location, practice_area);
+    // console.log(name, location, practice_area);
 
     useEffect(() => {
         const searchName = name ? name.toLowerCase() : "";
@@ -38,7 +42,7 @@ const CaseFilter = () => {
         );
 
         setFilteredData(filter);
-    }, [name, location, practice_area, loading]);
+    }, [name, location, practice_area, allCaseLoading]);
 
     return (
         <div className='container py-20'>
@@ -109,8 +113,8 @@ const CaseFilter = () => {
                 </form>
             </div>
             {
-                filteredData.length!==0?
-                filteredData.map((singleCase) => <CaseDiv key={singleCase._id} singleCase={singleCase}></CaseDiv>):
+                allCasesData.length!==0?
+                allCasesData.map((singleCase) => <CaseDiv key={singleCase._id} singleCase={singleCase}></CaseDiv>):
                 <p className="py-4 px-6 sm:text-lg max-w-5xl mx-auto text-center bg-lightDark rounded-lg">☹ No case Found!</p>
             }
         </div>

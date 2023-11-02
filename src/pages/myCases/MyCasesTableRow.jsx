@@ -53,9 +53,34 @@ const MyCasesTableRow = ({ index, singleCase, refetch }) => {
     }
 
     const onCaseUpdate = data => {
-        console.log(data);
-        refetch()
-        reset()
+        const updateCase={
+            caseId:_id,
+            case_post:data.case_post
+        }
+        console.log(updateCase);
+
+        axiosSecure
+        .patch(`/case/update/${_id}` , updateCase)
+        .then((res) => {
+            console.log(res)
+            if (res.status == 200) {
+                refetch()
+                reset()
+                setIsCaseEditClicked(true)
+                // Swal.fire({
+                //     icon: "success",
+                //     title: "Deleted Successfully!",
+                //     showConfirmButton: false,
+                //     timer: 1500,
+                // });
+
+            }
+        })
+        .catch((err) => console.log(err));
+
+
+      
+        // reset()
     }
 
     return (
