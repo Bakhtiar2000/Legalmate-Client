@@ -6,7 +6,7 @@ import useAxiosSecure from '../../hooks/useAxios';
 
 const AllAttorneysTableRow = ({ index, attorney, refetch }) => {
     const { _id, name, img, email, documents, status } = attorney
-    // console.log(attorney);
+    console.log(refetch);
     const [axiosSecure] = useAxiosSecure();
     const [isDocumentOpen, setIsDocumentOpen] = useState(false)
     const [statusUpdate, setStatusUpdate] = useState(status);
