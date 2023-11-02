@@ -5,14 +5,15 @@ import useCases from '../../hooks/useCases';
 import MyCasesTableRow from './MyCasesTableRow';
 import useAuth from '../../hooks/useAuth';
 import PageLoader from '../../components/PageLoader';
+import useCurrentCases from '../../hooks/useCurrentCases';
 
 const MyCases = () => {
     const { currentUser, loading } = useAuth();
   
-    const [casesData, caseLoading, refetch] = useCases();
-    console.log(casesData);
+    const [currentCasesData, currentCasesLoading, refetch] = useCurrentCases();
+    console.log(currentCasesData);
 
-    if (loading || caseLoading) {
+    if (loading || currentCasesLoading) {
         return <PageLoader />
     }
 
@@ -29,7 +30,7 @@ const MyCases = () => {
             <div className='container py-20 '>
                 <div className="w-full max-w-5xl mx-auto overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-lightDark">
                     {
-                        casesData.length > 0 ?
+                        currentCasesData.length > 0 ?
 
                             <table className="table lg:w-full w-[800px] text-white">
                                 <thead className="text-lg text-green border-b border-green/40">
@@ -37,12 +38,13 @@ const MyCases = () => {
                                         <th className="px-3 py-3 font-medium text-center text-white">Index</th>
                                         <th className="px-3 py-3 font-medium text-center text-white">Case Post</th>
                                         <th className="px-3 py-3 font-medium text-center text-white">Practice area</th>
+                                        <th className="px-3 py-3 font-medium text-center text-white">Status</th>
                                         <th className="px-3 py-3 font-medium text-center text-white">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
-                                        casesData.map((singleCase, index) => (
+                                        currentCasesData.map((singleCase, index) => (
                                             <MyCasesTableRow
                                                 index={index}
                                                 key={singleCase._id}

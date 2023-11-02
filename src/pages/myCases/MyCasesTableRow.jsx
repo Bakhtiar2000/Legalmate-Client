@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 const MyCasesTableRow = ({ index, singleCase, refetch }) => {
     const [axiosSecure] = useAxiosSecure();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { _id, case_post, practice_area } = singleCase;
+    const { _id, case_post, practice_area, status } = singleCase;
     const [isCaseOpen, setIsCaseOpen] = useState(false);
     const [isCaseEditClicked, setIsCaseEditClicked] = useState(false);
 
@@ -39,7 +39,7 @@ const MyCasesTableRow = ({ index, singleCase, refetch }) => {
                             refetch()
                             Swal.fire({
                                 icon: "success",
-                                title: "Delete Successfully!",
+                                title: "Deleted Successfully!",
                                 showConfirmButton: false,
                                 timer: 1500,
                             });
@@ -65,6 +65,7 @@ const MyCasesTableRow = ({ index, singleCase, refetch }) => {
             <td><button onClick={() => setIsCaseOpen(true)} className="mt-5 sm:mt-0 w-max h-fit text-center px-3 py-1 bg-green-500 hover:bg-green-500/60 duration-300 rounded text-white cursor-pointer">Show Post</button></td>
 
             <td>{practice_area}</td>
+            <td>{status}</td>
 
             <td className='flex justify-center items-center gap-5 lg:gap-8 cursor-pointer mx-auto'>
                 <AiOutlineDelete onClick={handleCaseDelete} className='hover:bg-red-100 text-red-500 rounded-full text-3xl p-1' />

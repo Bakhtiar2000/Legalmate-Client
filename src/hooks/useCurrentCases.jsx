@@ -5,14 +5,14 @@ import { useQuery } from '@tanstack/react-query';
 const useCurrentCases = () => {
     const [axiosSecure] = useAxiosSecure();
     const { currentUser } = useAuth();
-    const { data: currentCasesData = [], isLoading: loading, refetch } = useQuery({
+    const { data: currentCasesData = [], isLoading: currentCasesLoading, refetch } = useQuery({
         queryKey: ['currentCasesData'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/case/email/${currentUser?.email}`);
             return res.data;
         },
     });
-    return [currentCasesData, loading, refetch];
+    return [currentCasesData, currentCasesLoading, refetch];
 };
 
 export default useCurrentCases;
