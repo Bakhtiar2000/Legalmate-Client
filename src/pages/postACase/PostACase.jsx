@@ -6,6 +6,7 @@ import usePracticeAreas from '../../hooks/usePracticeAreas';
 import useAuth from '../../hooks/useAuth';
 import useCurrentClient from '../../hooks/useCurrentClient';
 import useAxiosSecure from '../../hooks/useAxios';
+import Swal from 'sweetalert2';
 
 const PostACase = () => {
     const { currentUser } = useAuth();
@@ -29,6 +30,11 @@ const PostACase = () => {
         .then(res => {
             console.log(res)
             if (res.status === 200) {
+                Swal.fire(
+                    'Your Case is Posted!',
+                    'It will be visible after admin approval!',
+                    'success'
+                  )
                 refetch();
                 reset()
             }

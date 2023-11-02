@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useCases from '../../hooks/useCases';
 import { useForm } from 'react-hook-form';
-import PageLoader from '../../components/PageLoader';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BiCategory, BiCurrentLocation, BiSearchAlt } from 'react-icons/bi';
 import { AiOutlineClear } from 'react-icons/ai';

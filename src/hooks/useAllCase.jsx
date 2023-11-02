@@ -10,7 +10,7 @@ const useAllCases = () => {
         queryKey: ['allCasesData'],
         queryFn: async () => {
 
-            const res = await axiosSecure.get("case");
+            const res = await axiosSecure.get("case/approved"); 
             return res.data;
         },
     });
