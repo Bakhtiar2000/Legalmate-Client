@@ -11,7 +11,7 @@ const Reviews = () => {
     const [ourReviewsData] = useOurReviews();
     return (
         <section className='mx-2 pb-20'>
-            <SectionTitle  title="Client" redTitle="Reviews" para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita ratione id dolores velit tenetur. Illo." />
+            <SectionTitle  title="Client" redTitle="Reviews" para="Hear what our clients have to say" />
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

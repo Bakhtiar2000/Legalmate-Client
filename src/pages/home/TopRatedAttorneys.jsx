@@ -24,7 +24,7 @@ const TopRatedAttorneys = () => {
       <SectionTitle
         title="Top Rated"
         redTitle="Attorneys"
-        para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita ratione id dolores velit tenetur. Illo."
+        para="Meet expert attorneys from across the country."
       />
       {
         sortedAttorneys?.slice(0,3).map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>)
