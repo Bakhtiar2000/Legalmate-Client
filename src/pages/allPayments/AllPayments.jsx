@@ -31,7 +31,7 @@ const AllPayments = () => {
                                     <th className="px-3 py-3 font-medium text-center text-white">Target</th>
                                     <th className="px-3 py-3 font-medium text-center text-white">Target Mail</th>
                                     <th className="px-3 py-3 font-medium text-center text-white">Tran_ID</th>
-                                    <th className="px-3 py-3 font-medium text-center text-white">Paid?</th>
+                                    <th className="px-3 py-3 font-medium text-center text-white">Status</th>
                                     <th className="px-3 py-3 font-medium text-center text-white">Amount</th>
                                 </tr>
                             </thead>

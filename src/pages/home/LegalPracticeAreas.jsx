@@ -7,8 +7,10 @@ import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
 import usePracticeAreas from "../../hooks/usePracticeAreas";
+import useAuth from "../../hooks/useAuth";
 
 const LegalPracticeAreas = () => {
+  const {currentUser}= useAuth()
   const [practiceAreasData] = usePracticeAreas();
 
   return (
@@ -67,11 +69,14 @@ const LegalPracticeAreas = () => {
         </div>
       </Swiper>
 
-      <Link className="flex justify-center" to="/practiceAreas">
-        <button className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5">
-          Show more
-        </button>
-      </Link>
+      {
+        currentUser?.role!== "attorney" &&
+        <Link className="flex justify-center" to="/practiceAreas">
+          <button className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5">
+            Show more
+          </button>
+        </Link>
+      }
     </section>
   );
 };

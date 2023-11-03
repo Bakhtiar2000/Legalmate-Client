@@ -66,13 +66,13 @@ const MyCasesTableRow = ({ index, singleCase, refetch }) => {
             if (res.status == 200) {
                 refetch()
                 reset()
-                setIsCaseEditClicked(true)
-                // Swal.fire({
-                //     icon: "success",
-                //     title: "Deleted Successfully!",
-                //     showConfirmButton: false,
-                //     timer: 1500,
-                // });
+                setIsCaseEditClicked(false)
+                Swal.fire({
+                    icon: "success",
+                    title: "Post Updated Successfully!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
 
             }
         })

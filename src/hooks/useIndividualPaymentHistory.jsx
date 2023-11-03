@@ -4,12 +4,12 @@ import useAuth from "./useAuth";
 
 const useIndividualPaymentHistory = () => {
     const [axiosSecure] = useAxiosSecure();
-    const { currentUser } = useAuth();
-    console.log(currentUser.email)
+    const { user } = useAuth();
+    console.log(user.email)
     const { data: paymentsData = [], isLoading: paymentsLoading, refetch: paymentsRefetch } = useQuery({
         queryKey: ['paymentsData'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`payment/history/${currentUser?.email}`);
+            const res = await axiosSecure.get(`payment/history/${user?.email}`);
             return res.data;
         },
     });

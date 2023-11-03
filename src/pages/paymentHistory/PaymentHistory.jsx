@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import useAuth from '../../hooks/useAuth';
@@ -7,10 +7,13 @@ import PageLoader from '../../components/PageLoader';
 import PaymentHistoryTableRow from './PaymentHistoryTableRow';
 
 const PaymentHistory = () => {
+    const {user}= useAuth()
     const [paymentsData, paymentsLoading, paymentsRefetch] = useIndividualPaymentHistory();
-    if(paymentsLoading) return <PageLoader />
 
-    
+    useEffect(() => {
+        paymentsRefetch()
+    }, [user]);
+    if (paymentsLoading || paymentsData === null) return <PageLoader />
     return (
         <div>
             <Helmet>
@@ -28,12 +31,9 @@ const PaymentHistory = () => {
                             <thead className="text-lg text-green border-b border-green/40">
                                 <tr>
                                     <th className="px-3 py-3 font-medium text-center text-white">SL</th>
-                                    <th className="px-3 py-3 font-medium text-center text-white">Sender</th>
-                                    <th className="px-3 py-3 font-medium text-center text-white">Sender Mail</th>
                                     <th className="px-3 py-3 font-medium text-center text-white">Target</th>
-                                    <th className="px-3 py-3 font-medium text-center text-white">Target Mail</th>
                                     <th className="px-3 py-3 font-medium text-center text-white">Tran_ID</th>
-                                    <th className="px-3 py-3 font-medium text-center text-white">Paid?</th>
+                                    <th className="px-3 py-3 font-medium text-center text-white">Status</th>
                                     <th className="px-3 py-3 font-medium text-center text-white">Amount</th>
                                 </tr>
                             </thead>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import useCases from '../../hooks/useCases';
@@ -8,15 +8,15 @@ import PageLoader from '../../components/PageLoader';
 import useCurrentCases from '../../hooks/useCurrentCases';
 
 const MyCases = () => {
-    const { currentUser, loading } = useAuth();
+    const { user } = useAuth();
   
     const [currentCasesData, currentCasesLoading, refetch] = useCurrentCases();
     console.log(currentCasesData);
 
-    if (loading || currentCasesLoading) {
-        return <PageLoader />
-    }
-
+    useEffect(() => {
+        refetch()
+    }, [user]);
+    if (currentCasesLoading || currentCasesData === null) return <PageLoader />
 
     return (
         <div>

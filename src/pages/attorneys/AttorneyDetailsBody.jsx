@@ -127,15 +127,12 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                 console.log(paymentStatus)
                 if (paymentStatus) {
                     setPaymentSuccess(true)
+                    paymentRefetch()
                 }
             }
         })
 
-    }, [paymentLoading, userData,paymentData ]);
-
-    if (paymentSuccess) {
-        paymentRefetch()
-    }
+    }, [paymentLoading, userData, paymentData ]);
 
     return (
         <div className='container py-20' >

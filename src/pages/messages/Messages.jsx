@@ -11,7 +11,7 @@ import PageLoader from '../../components/PageLoader';
 
 const Messages = () => {
     const [chats,chatLoading, chatRefetch] = useChat();
-    // console.log(chats)
+    console.log(chats, chatLoading)
     const [axiosSecure] = useAxiosSecure()
     const [currentChat, setCurrentChat] = useState();
     const [onlineUser, setOnlineUser] = useState([]);
@@ -86,10 +86,10 @@ const Messages = () => {
     }, [socket, currentChat, message]);
 
 
-    if (chatLoading) {
-        return <PageLoader/>
-    }
-
+    useEffect(() => {
+        chatRefetch()
+    }, [currentUser]);
+    if (chatLoading || chats === null) return <PageLoader />
 
     return (
         <div>
