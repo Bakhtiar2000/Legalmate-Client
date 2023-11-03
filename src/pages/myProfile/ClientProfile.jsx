@@ -23,7 +23,6 @@ const ClientProfile = () => {
             location: data.location,
             occupation: data.occupation
         }
-        console.log(updateData);
         axiosSecure.patch('/client/details', updateData)
             .then(res => {
                 if (res.status === 200) {
@@ -51,7 +50,6 @@ const ClientProfile = () => {
        const picture = event.target.files[0]
        const formData = new FormData()
        formData.append('image', picture)
-       console.log(picture)
        fetch(image_hosting_url, {
            method: "POST",
            body: formData
@@ -67,7 +65,6 @@ const ClientProfile = () => {
 
                    axiosSecure.patch(`/client/profilePhoto`, profile)
                        .then(res => {
-                           console.log(res.data)
                            if (res.status === 200) {
                                refetch()
                            }

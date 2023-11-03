@@ -3,48 +3,103 @@ import useAuth from '../../hooks/useAuth';
 import useUsers from '../../hooks/useUserData';
 import useAxiosSecure from '../../hooks/useAxios';
 import { useNavigate } from 'react-router-dom';
+import useAttorneys from '../../hooks/useAttorneys';
+import useClients from '../../hooks/useClients';
+import usePaymentHistory from '../../hooks/usePaymentHistory';
 
 const CaseDiv = ({ singleCase }) => {
     const { currentUser } = useAuth();
     const [userData] = useUsers();
     const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate();
-    // console.log(currentUser)
-    const { _id, writer, writer_id, email, location, status, practice_area, case_post } = singleCase
-    // console.log(singleCase);
+    const [clientsData] = useClients();
+    const [attorneysData] = useAttorneys();
+    const [paymentSuccess, setPaymentSuccess] = useState();
+    const [paymentData, paymentLoading, paymentRefetch] = usePaymentHistory();
+    const { _id, writer, writer_id, email, location, status, practice_area, case_post } = singleCase;
     const [receiverId, setReceiverId] = useState();
+    const [senderId, setSenderId] = useState();
 
     useEffect(() => {
         const user = userData.find(user => user?.email === email)
-        // console.log(user)
         setReceiverId(user?._id)
     }, [userData]);
 
 
+    useEffect(() => {
+        if (currentUser?.role === "attorney") {
+            const senderId = attorneysData?.filter(attorney => attorney.email === currentUser?.email)
+            setSenderId(senderId[0]?._id)
+        }
+        else if (currentUser?.role === "client") {
+            const senderId = clientsData?.filter(client => client.email === currentUser?.email)
+            setSenderId(senderId[0]?._id)
+        }
+    }, [clientsData, currentUser, attorneysData]);
 
+
+    useEffect(() => {
+        paymentData?.map(pay => {
+
+            if (pay.target_role === "client") {
+                const paymentStatus = pay.target_id === writer_id && pay.target_email === email && pay.sender_email === currentUser?.email && pay.sender_name === currentUser?.name && pay.isPaid === true
+                if (paymentStatus) {
+                    setPaymentSuccess(true)
+                }
+            }
+            else {
+
+            }
+        })
+
+    }, [paymentLoading, singleCase, paymentData]);
     const createChat = () => {
-        console.log(currentUser._id)
-
-        console.log(_id, receiverId)
 
         const chatMembers = {
             sender: currentUser?._id,
             receiver: receiverId,
         };
-        console.log(chatMembers);
         if (receiverId === undefined || currentUser?._id === undefined) {
             return
         }
         axiosSecure
             .post("/chat", chatMembers)
             .then((res) => {
-                console.log(res.data)
                 navigate("/messages");
             })
             .catch((error) => {
                 console.log(error);
             });
     }
+
+
+    const paymentHandle = () => {
+        const timestamp = new Date().getTime();
+        const random = Math.floor(Math.random() * 1000);
+        const tran_id = `${timestamp}${random}`
+        const paymentInfo = {
+            sender_id: senderId,
+            sender_name: currentUser.name,
+            sender_email: currentUser.email,
+            sender_role: currentUser.role,
+            target_id: writer_id,
+            target_name: writer,
+            target_email: email,
+            target_role: currentUser?.role === "attorney" ? "client" : "attorney",
+            tran_id: tran_id,
+            amount: 500,
+
+        }
+        axiosSecure.post('/payment', paymentInfo)
+            .then(res => {
+                window.location.replace(res.data.url)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }
+
 
 
     return (
@@ -56,9 +111,33 @@ const CaseDiv = ({ singleCase }) => {
                     <p className='text-sm'>Searching specialist in {practice_area}</p>
                 </div>
                 <div>
-                    <button onClick={createChat} className='text-center px-4 py-2 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white'>
-                        Message
-                    </button>
+
+                    {/* Message */}
+                    {
+                        currentUser?.status!=="approved"?
+                        <button disabled className="lg:text-xl text-center">
+                                <div className="mt-auto w-full bg-gray-500 duration-300 rounded-lg px-2 py-3 text-center">
+                                    Message
+                                </div>
+                            </button>:
+                        paymentSuccess ?
+                            <button onClick={createChat} className="lg:text-xl text-center">
+                                <div className="mt-auto w-full bg-green-600 hover:bg-green-600/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
+                                    Message
+                                </div>
+                            </button>
+                            :
+                            <button
+                                onClick={paymentHandle}
+                                className="lg:text-xl text-center">
+                                <div className="mt-auto w-full  bg-secondary hover:bg-secondary/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
+                                    Message 
+                                </div>
+                            </button>
+
+                    }
+
+
                 </div>
             </div>
             <p>{case_post}</p>

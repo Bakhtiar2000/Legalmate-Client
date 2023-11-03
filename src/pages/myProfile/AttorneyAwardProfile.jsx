@@ -24,7 +24,6 @@ const AttorneyAwardProfile = ({ id, refetch, award, index }) => {
             if (result.isConfirmed) {
         axiosSecure.patch(`/attorney/deleteAwd`, data)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     refetch()
                     Swal.fire(

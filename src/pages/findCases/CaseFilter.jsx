@@ -14,10 +14,6 @@ const CaseFilter = () => {
     const { register, watch, handleSubmit, reset } = useForm();
     const approvedCases= allCasesData.filter(data=> data.status === "approved")
     const [filteredData, setFilteredData] = useState(approvedCases);
-    console.log(allCasesData);
-    console.log(filteredData);
-
-
     const [name, setName] = useState();
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
@@ -28,7 +24,6 @@ const CaseFilter = () => {
         setPractice_area(data.practice_area)
         reset();
     }
-    // console.log(name, location, practice_area);
 
     useEffect(() => {
         const searchName = name ? name.toLowerCase() : "";
@@ -113,8 +108,8 @@ const CaseFilter = () => {
                 </form>
             </div>
             {
-                allCasesData.length!==0?
-                allCasesData.map((singleCase) => <CaseDiv key={singleCase._id} singleCase={singleCase}></CaseDiv>):
+                filteredData.length!==0?
+                filteredData.map((singleCase) => <CaseDiv key={singleCase._id} singleCase={singleCase}></CaseDiv>):
                 <p className="py-4 px-6 sm:text-lg max-w-5xl mx-auto text-center bg-lightDark rounded-lg">☹ No case Found!</p>
             }
         </div>

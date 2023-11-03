@@ -6,7 +6,6 @@ import useAxiosSecure from '../../hooks/useAxios';
 
 const AllAttorneysTableRow = ({ index, attorney, refetch }) => {
     const { _id, name, img, email, documents, status } = attorney
-    console.log(refetch);
     const [axiosSecure] = useAxiosSecure();
     const [isDocumentOpen, setIsDocumentOpen] = useState(false)
     const [statusUpdate, setStatusUpdate] = useState(status);
@@ -19,7 +18,6 @@ const AllAttorneysTableRow = ({ index, attorney, refetch }) => {
             status: statusUpdate,
             email
         };
-        // console.log(statusData);
 
         if (statusUpdate != "undefined") {
             Swal.fire({

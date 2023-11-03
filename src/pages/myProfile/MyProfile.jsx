@@ -8,7 +8,6 @@ import PageLoader from '../../components/PageLoader';
 
 const MyProfile = () => {
     const {currentUser} = useAuth()
-    // console.log(currentUser);
     return (
         <div>
             <Helmet>

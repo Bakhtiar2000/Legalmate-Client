@@ -11,7 +11,6 @@ const MyCases = () => {
     const { user } = useAuth();
   
     const [currentCasesData, currentCasesLoading, refetch] = useCurrentCases();
-    console.log(currentCasesData);
 
     useEffect(() => {
         refetch()

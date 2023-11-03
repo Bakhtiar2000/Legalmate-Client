@@ -8,7 +8,6 @@ import PracticeAreasDiv from './PracticeAreasDiv';
 const PracticeAreas = () => {
     const [practiceAreasData, loading, refetch]= usePracticeAreas()
     if(loading) return <PageLoader />
-    console.log(practiceAreasData);
     return (
         <div>
              <Helmet>

@@ -8,8 +8,6 @@ import AllPaymentsTableRow from './AllPaymentsTableRow';
 const AllPayments = () => {
     const [paymentData, paymentLoading, paymentRefetch]= usePaymentHistory()
     if(paymentLoading) return <PageLoader />
-
-    console.log(paymentData);
     return (
         <div>
             <Helmet>

@@ -9,6 +9,8 @@ const AllCasesTableRow = ({ index, singleCase, refetch }) => {
     const [axiosSecure] = useAxiosSecure();
     const [isCaseOpen, setIsCaseOpen] = useState(false);
     const [statusUpdate, setStatusUpdate] = useState(status);
+
+    
     const handleCaseModal = e => {
         if (e == "cancel") setIsCaseOpen(false)
     }
@@ -18,7 +20,6 @@ const AllCasesTableRow = ({ index, singleCase, refetch }) => {
             status: statusUpdate,
             email
         };
-        console.log(statusData);
 
         if (statusUpdate != "undefined") {
             Swal.fire({

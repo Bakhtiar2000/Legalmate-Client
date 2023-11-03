@@ -30,8 +30,6 @@ const MyCasesTableRow = ({ index, singleCase, refetch }) => {
             confirmButtonText: "Yes, Delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log('delete', _id)
-
                 axiosSecure
                     .delete(`/case/delete/${_id}`)
                     .then((res) => {
@@ -57,12 +55,10 @@ const MyCasesTableRow = ({ index, singleCase, refetch }) => {
             caseId:_id,
             case_post:data.case_post
         }
-        console.log(updateCase);
 
         axiosSecure
         .patch(`/case/update/${_id}` , updateCase)
         .then((res) => {
-            console.log(res)
             if (res.status == 200) {
                 refetch()
                 reset()

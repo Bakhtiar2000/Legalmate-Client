@@ -30,7 +30,6 @@ const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
     }, [chat, currentUser]);
 
     const searchOnlineUser = onlineUser?.some(user => user.userId === chatReceiver?._id)
-    // console.log(chatReceiver?.name)
     return (
         <div>
             <div className='bg-dark hover:bg-primary/20 shadow-md shadow-white/20 p-2 rounded-md mb-2 duration-300 group'>

@@ -11,7 +11,6 @@ import PageLoader from '../../components/PageLoader';
 
 const Messages = () => {
     const [chats,chatLoading, chatRefetch] = useChat();
-    console.log(chats, chatLoading)
     const [axiosSecure] = useAxiosSecure()
     const [currentChat, setCurrentChat] = useState();
     const [onlineUser, setOnlineUser] = useState([]);
