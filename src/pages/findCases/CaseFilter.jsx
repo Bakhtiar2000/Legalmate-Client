@@ -7,21 +7,24 @@ import { AiOutlineClear } from 'react-icons/ai';
 import usePracticeAreas from '../../hooks/usePracticeAreas';
 import CaseDiv from './CaseDiv';
 import useAllCases from '../../hooks/useAllCase';
+import useAuth from '../../hooks/useAuth';
 
 const CaseFilter = () => {
-    const [allCasesData, allCaseLoading, refetch]= useAllCases()
+    const { currentUser } = useAuth();
+
+    const [allCasesData, allCaseLoading, refetch] = useAllCases()
     const [practiceAreasData] = usePracticeAreas();
     const { register, watch, handleSubmit, reset } = useForm();
-    const approvedCases= allCasesData.filter(data=> data.status === "approved")
+    const approvedCases = allCasesData.filter(data => data.status === "approved")
     const [filteredData, setFilteredData] = useState(approvedCases);
-    console.log(allCasesData);
-    console.log(filteredData);
+    console.log(currentUser);
+    // console.log(filteredData);
 
 
     const [name, setName] = useState();
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
-    
+
     const onSubmit = data => {
         setName(data.name)
         setLocation(data.location)
@@ -113,9 +116,9 @@ const CaseFilter = () => {
                 </form>
             </div>
             {
-                allCasesData.length!==0?
-                allCasesData.map((singleCase) => <CaseDiv key={singleCase._id} singleCase={singleCase}></CaseDiv>):
-                <p className="py-4 px-6 sm:text-lg max-w-5xl mx-auto text-center bg-lightDark rounded-lg">☹ No case Found!</p>
+                allCasesData.length !== 0 ?
+                    allCasesData.map((singleCase) => <CaseDiv key={singleCase._id} singleCase={singleCase}></CaseDiv>) :
+                    <p className="py-4 px-6 sm:text-lg max-w-5xl mx-auto text-center bg-lightDark rounded-lg">☹ No case Found!</p>
             }
         </div>
     );

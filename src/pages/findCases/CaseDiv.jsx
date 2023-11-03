@@ -16,7 +16,7 @@ const CaseDiv = ({ singleCase }) => {
     const [attorneysData] = useAttorneys();
     const [paymentSuccess, setPaymentSuccess] = useState();
     const [paymentData, paymentLoading, paymentRefetch] = usePaymentHistory();
-    // console.log(currentUser)
+    console.log(currentUser?.status==="pending")
     const { _id, writer, writer_id, email, location, status, practice_area, case_post } = singleCase;
     // console.log(singleCase);
     const [receiverId, setReceiverId] = useState();
@@ -41,11 +41,11 @@ const CaseDiv = ({ singleCase }) => {
         }
     }, [clientsData, currentUser, attorneysData]);
 
-    console.log(paymentData)
+    console.log(currentUser?.status === "pending")
 
 
     useEffect(() => {
-        console.log("paystatus")
+        // console.log("paystatus")
         paymentData?.map(pay => {
             console.log(pay)
 
@@ -137,10 +137,9 @@ const CaseDiv = ({ singleCase }) => {
                     {/* Message */}
                     {
                         paymentSuccess ?
-                            <button onClick={createChat} className="lg:text-xl text-center">
+                            <button d onClick={createChat} className="lg:text-xl text-center">
                                 <div className="mt-auto w-full bg-green-600 hover:bg-green-600/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
                                     Message
-
                                 </div>
                             </button>
                             :
@@ -151,7 +150,6 @@ const CaseDiv = ({ singleCase }) => {
                                     Message 
                                 </div>
                             </button>
-
                     }
 
 
