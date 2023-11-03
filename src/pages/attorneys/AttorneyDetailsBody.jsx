@@ -131,7 +131,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
             }
         })
 
-    }, [paymentLoading, userData,paymentData ]);
+    }, [paymentLoading, currentUser,paymentData, singleAttorney ]);
 
     if (paymentSuccess) {
         paymentRefetch()

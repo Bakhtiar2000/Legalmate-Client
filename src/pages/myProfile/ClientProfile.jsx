@@ -51,7 +51,7 @@ const ClientProfile = () => {
        const picture = event.target.files[0]
        const formData = new FormData()
        formData.append('image', picture)
-       console.log(picture)
+       console.log(picture , image_hosting_url)
        fetch(image_hosting_url, {
            method: "POST",
            body: formData
