@@ -121,7 +121,7 @@ const CaseDiv = ({ singleCase }) => {
                                 </div>
                             </button>:
                         paymentSuccess ?
-                            <button onClick={createChat} className="lg:text-xl text-center">
+                            <button d onClick={createChat} className="lg:text-xl text-center">
                                 <div className="mt-auto w-full bg-green-600 hover:bg-green-600/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
                                     Message
                                 </div>
@@ -134,7 +134,6 @@ const CaseDiv = ({ singleCase }) => {
                                     Message 
                                 </div>
                             </button>
-
                     }
 
 

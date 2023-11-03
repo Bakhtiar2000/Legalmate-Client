@@ -7,17 +7,20 @@ import { AiOutlineClear } from 'react-icons/ai';
 import usePracticeAreas from '../../hooks/usePracticeAreas';
 import CaseDiv from './CaseDiv';
 import useAllCases from '../../hooks/useAllCase';
+import useAuth from '../../hooks/useAuth';
 
 const CaseFilter = () => {
-    const [allCasesData, allCaseLoading, refetch]= useAllCases()
+    const { currentUser } = useAuth();
+
+    const [allCasesData, allCaseLoading, refetch] = useAllCases()
     const [practiceAreasData] = usePracticeAreas();
     const { register, watch, handleSubmit, reset } = useForm();
-    const approvedCases= allCasesData.filter(data=> data.status === "approved")
+    const approvedCases = allCasesData.filter(data => data.status === "approved")
     const [filteredData, setFilteredData] = useState(approvedCases);
     const [name, setName] = useState();
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
-    
+
     const onSubmit = data => {
         setName(data.name)
         setLocation(data.location)
