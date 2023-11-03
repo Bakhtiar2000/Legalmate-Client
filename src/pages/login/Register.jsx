@@ -15,7 +15,6 @@ const Register = () => {
   const from = location.state?.from?.pathname || '/';
 
   const onSubmit = (data) => {
-    console.log(data);
     if (data.password.length < 6) {
       return toast.warning("password should have at least 6 characters", {
         position: "top-right",
@@ -37,16 +36,14 @@ const Register = () => {
       image: data.image,
       role: data.role,
     }
-    console.log(userData)
     signUp(data.email, data.password)
       .then((result) => {
         profileUpdate(result.user, data.name)
           .then((result) => {
             axiosSecure.post('/users', userData)
             .then(res => {
-              console.log(res.data)
               if (res.status === 200) {
-                  navigate(from, { replace: true });
+                  navigate('/', { state: { from: location }, replace: true });
               }
           })
               .catch((err) => {
@@ -77,23 +74,6 @@ const Register = () => {
       })
   };
 
-  const handleLogInWithGoogle = () => {
-    googleSignIn()
-      .then(() => {
-        navigate(from, { replace: true })
-
-        Swal.fire({
-          title: 'Account created successfully',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        })
-      })
-      .catch(error => console.log(error));
-  }
   return (
     <div className="max-w-5xl mx-auto">
       <div className="flex justify-center">
@@ -186,31 +166,8 @@ const Register = () => {
               {/* Sign up */}
               <p className='mt-2 text-end text-gray'>Already have an account? <Link className='text-primary' to='/login'>Sign in</Link></p>
             </form>
-
-            {/* Divider */}
-            <div className='flex items-center gap-3 mx-5 my-5'>
-              <span className='border-t w-full block'></span>
-              <span>OR</span>
-              <span className='border-t w-full block'></span>
-            </div>
-
-            {/* Sign in with Google */}
-            <button
-              onClick={handleLogInWithGoogle}
-              className="flex items-center justify-center gap-5 bg-white text-black w-full h-12 duration-300"
-            >
-              <img
-                className="w-8"
-                src="https://i.ibb.co/0f4JQNf/google.png"
-                alt="Google"
-              />
-              <p>Sign up with Google</p>
-            </button>
           </div>
         </div>
-
-
-
       </div>
     </div>
   );

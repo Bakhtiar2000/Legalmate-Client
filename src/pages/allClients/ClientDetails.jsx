@@ -5,7 +5,6 @@ import { useLoaderData } from 'react-router-dom';
 
 const ClientDetails = () => {
     const singleClient= useLoaderData()
-    console.log(singleClient);
     const {name, email, img, occupation, location}= singleClient
     return (
         <div>

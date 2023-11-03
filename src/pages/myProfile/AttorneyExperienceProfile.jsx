@@ -25,7 +25,6 @@ const AttorneyExperienceProfile = ({ exp,id, refetch, index }) => {
             if (result.isConfirmed) {
             axiosSecure.patch(`/attorney/deleteExp`, data)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     refetch()
                     Swal.fire(

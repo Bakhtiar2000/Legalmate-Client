@@ -8,8 +8,6 @@ import useCases from '../../hooks/useCases';
 const AllCases = () => {
     const [casesData, loading, refetch]= useCases();
     if(loading) return <PageLoader />
-
-    console.log(casesData);
     return (
         <div>
             <Helmet>

@@ -12,7 +12,6 @@ const AllClientsTableRow = ({ index, client, refetch }) => {
             status: statusUpdate,
             email
         };
-        console.log(statusData);
 
         if (statusUpdate != "undefined") {
             Swal.fire({

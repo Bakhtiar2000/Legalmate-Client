@@ -14,7 +14,6 @@ const PostACase = () => {
     const [practiceAreasData] = usePracticeAreas();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [currentClientData, clientLoading, refetch] = useCurrentClient();
-    // console.log(currentClientData)
 
     const onCaseSubmit = data => {
         const addedCase = {
@@ -24,11 +23,9 @@ const PostACase = () => {
             writer: currentUser?.name,
             writer_id: currentClientData?._id,
         }
-        console.log(addedCase);
 
         axiosSecure.post('/case', addedCase)
         .then(res => {
-            console.log(res)
             if (res.status === 200) {
                 Swal.fire(
                     'Your Case is Posted!',

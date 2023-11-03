@@ -23,7 +23,6 @@ const AttorneyDocumentProfile = ({ id, refetch, index, doc }) => {
                 if (result.isConfirmed) {
                     axiosSecure.patch(`/attorney/deleteDoc`, data)
                         .then(res => {
-                            console.log(res.data)
                             if (res.status === 200) {
                                 refetch()
                                 Swal.fire(

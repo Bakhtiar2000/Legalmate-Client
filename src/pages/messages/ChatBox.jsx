@@ -66,35 +66,6 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
             })
     };
 
-    // const deleteChat = () => {
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: "You won't be able to revert this!",
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Yes, delete it!'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             axiosSecure.delete(`/chat/delete/${currentChat._id}`)
-    //                 .then(res => {
-    //                     if (res.status === 200) {
-    //                         Swal.fire(
-    //                             'Deleted!',
-    //                             'Conversation has been deleted.',
-    //                             'success'
-    //                         )
-    //                         chatRefetch()
-    //                     }
-    //                 })
-    //                 .catch(error => {
-    //                     console.log(error);
-    //                 })
-    //         }
-    //     })
-    // }
-
     return (
         <div className='bg-lightDark shadow-lg p-3 rounded-md'>
             <div className='flex items-center justify-between bg-dark shadow-md shadow-white/20 p-2 rounded-md mb-2 duration-300'>
@@ -112,17 +83,6 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
                         <p className='text-sm text-dark'>{searchOnlineUser ? "online " : "offline"}</p>
                     </div>
                 </div>
-                {/* <div>
-                    <Tooltip id="delete_chat"
-                    />
-                    <button
-                        onClick={deleteChat}
-                        data-tooltip-id="delete_chat" data-tooltip-content="Delete Conversation"
-                        className='h-10 w-10 bg-white rounded-full shadow-md text-black flex items-center justify-center hover:text-red-400 duration-300'
-                    >
-                        <MdDeleteOutline size='24' />
-                    </button>
-                </div> */}
             </div>
 
             <div className='h-[54vh] overflow-y-scroll p-3 rounded-md'>

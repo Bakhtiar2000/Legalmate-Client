@@ -21,7 +21,6 @@ import useClients from "../../hooks/useClients";
 import useAttorneys from "../../hooks/useAttorneys";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
-    // console.log(singleAttorney)
     const navigate = useNavigate();
     const { _id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, reviews, awards, email } = singleAttorney
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
@@ -47,11 +46,9 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
         }
         else if (currentUser?.role === "attorney") {
             const senderId = attorneysData?.filter(attorney => attorney.email === currentUser?.email)
-            console.log(senderId)
             setSenderId(senderId[0]?._id)
         }
     }, [clientsData, currentUser, attorneysData]);
-    console.log(senderId)
 
     // rating style
     const myStyles = {
@@ -74,14 +71,12 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
             sender: currentUser?._id,
             receiver: receiverId,
         };
-        console.log(chatMembers);
         if (receiverId === undefined || currentUser?._id === undefined) {
             return
         }
         axiosSecure
             .post("/chat", chatMembers)
             .then((res) => {
-                console.log(res.data)
                 navigate("/messages");
             })
             .catch((error) => {
@@ -93,7 +88,6 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
         const timestamp = new Date().getTime();
         const random = Math.floor(Math.random() * 1000);
         const tran_id = `${timestamp}${random}`
-        console.log(tran_id)
         const paymentInfo = {
             sender_id: senderId,
             sender_name: currentUser.name,
@@ -106,10 +100,8 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
             tran_id: tran_id,
             amount: 500
         }
-        console.log(paymentInfo)
         axiosSecure.post('/payment', paymentInfo)
             .then(res => {
-                console.log("res.data", res.data)
                 window.location.replace(res.data.url)
             })
             .catch(error => {
@@ -120,13 +112,13 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
 
     useEffect(() => {
         paymentData?.map(pay => {
-            console.log(pay)
+
 
             if (pay.target_role === "attorney") {
                 const paymentStatus = pay.target_id === _id && pay.target_email === email && pay.sender_email === currentUser?.email && pay.sender_name === currentUser?.name && pay.isPaid === true
-                console.log(paymentStatus)
                 if (paymentStatus) {
                     setPaymentSuccess(true)
+                    paymentRefetch()
                 }
             }
         })

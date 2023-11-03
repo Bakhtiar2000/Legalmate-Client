@@ -16,7 +16,6 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
     signIn(data.email, data.password)
         .then(() => {
             navigate(from, { replace: true })
@@ -53,24 +52,6 @@ const Login = () => {
             });
         })
     };
-
-    const handleLogInWithGoogle = ()=> {
-      googleSignIn()
-        .then(() => {
-          navigate(from, { replace: true })
-          
-          Swal.fire({
-            title: 'Account login successful',
-            showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-        })
-        .catch(error => console.log(error));
-    }
 
   return (
     <div className="max-w-5xl mx-auto">
@@ -122,26 +103,6 @@ const Login = () => {
             {/* Sign up */}
             <p className='mt-2 text-end text-gray'>New to Legalmate? <Link className='text-primary' to='/register'>Sign Up</Link></p>
            </form>
-
-            {/* Divider */}
-            <div className='flex items-center gap-3 mx-5 my-5'>
-              <span className='border-t w-full block'></span>
-              <span>OR</span>
-              <span className='border-t w-full block'></span>
-            </div>
-
-            {/* Sign in with Google */}
-            <button 
-            onClick={handleLogInWithGoogle}
-              className="flex items-center justify-center gap-5 bg-white text-black w-full h-12 duration-300"
-            >
-              <img
-                className="w-8"
-                src="https://i.ibb.co/0f4JQNf/google.png"
-                alt="Google"
-              />
-              <p>Sign in with Google</p>
-            </button>
           </div>
         </div>
       </div>

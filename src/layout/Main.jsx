@@ -8,12 +8,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../providers/AuthProvider';
 import PageLoader from "../components/PageLoader"
 const Main = () => {
-    const {loading} = useContext(AuthContext)
+    const {currentUser, loading} = useContext(AuthContext)
     return (
         <div>
             <Header></Header>
             <div className='bg-[#14161B] text-white pt-10'>
-                {loading ? <PageLoader />: <Outlet></Outlet>}
+                {currentUser && loading ? <PageLoader />: <Outlet></Outlet>}
             </div>
             <Footer></Footer>
             <ToastContainer />

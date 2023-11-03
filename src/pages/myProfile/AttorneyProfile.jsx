@@ -20,7 +20,6 @@ const AttorneyProfile = () => {
     const { register, handleSubmit, watch, setValue, reset, formState: { errors } } = useForm();
     const [currentAttorneyData, attorneyLoading, refetch] = useCurrentAttorney();
     const [practiceAreasData] = usePracticeAreas();
-    // console.log(currentAttorneyData);
 
     // States
     const [isBasicInfoModalOpen, setIsBasicInfoModalOpen] = useState(false);
@@ -62,7 +61,6 @@ const AttorneyProfile = () => {
             hourlyRate: data.hourlyRate,
             about: data.about
         }
-        console.log(updateData);
         axiosSecure.patch('/attorney/basic', updateData)
             .then(res => {
                 if (res.status === 200) {
@@ -93,7 +91,6 @@ const AttorneyProfile = () => {
             }
 
         }
-        console.log(updateData);
         axiosSecure.patch(`/attorney/license/`, updateData)
             .then(res => {
                 if (res.status === 200) {
@@ -113,15 +110,11 @@ const AttorneyProfile = () => {
             email: email,
             newDocuments
         }
-        console.log(updateData);
-        console.log(data.link, name);
         axiosSecure.patch('/attorney/document', updateData)
             .then(res => {
-                console.log(res)
                 if (res.status === 200) {
                     refetch();
                     reset()
-                    // setIsDocumentEditClicked(false)
                 }
             })
             .catch(error => {
@@ -138,7 +131,6 @@ const AttorneyProfile = () => {
             email: email,
             newEducations
         }
-        console.log(updateData);
         axiosSecure.patch('/attorney/education', updateData)
             .then(res => {
                 if (res.status === 200) {
@@ -161,7 +153,6 @@ const AttorneyProfile = () => {
             email: email,
             newExperience
         }
-        console.log(updateData);
         axiosSecure.patch('/attorney/experience', updateData)
             .then(res => {
                 if (res.status === 200) {
@@ -184,7 +175,6 @@ const AttorneyProfile = () => {
             email: email,
             newAwards
         }
-        console.log(updateData);
         axiosSecure.patch('/attorney/awards', updateData)
             .then(res => {
                 if (res.status === 200) {
@@ -209,7 +199,6 @@ const AttorneyProfile = () => {
         const picture = event.target.files[0]
         const formData = new FormData()
         formData.append('image', picture)
-        console.log(picture)
         fetch(image_hosting_url, {
             method: "POST",
             body: formData
@@ -225,7 +214,6 @@ const AttorneyProfile = () => {
 
                     axiosSecure.patch(`/attorney/profilePhoto/${_id }`, profile)
                         .then(res => {
-                            console.log(res.data)
                             if (res.status === 200) {
                                 refetch()
                             }
@@ -682,7 +670,6 @@ const AttorneyProfile = () => {
                                         type="checkbox"
                                         onChange={e => {
                                             setPresent(e.target.checked);
-                                            console.log(e.target.checked);
                                             if (e.target.checked) {
                                                 setValue('edu_end_year', 'Present')
                                             } else {
@@ -776,7 +763,6 @@ const AttorneyProfile = () => {
                                         type="checkbox"
                                         onChange={e => {
                                             setPresent(e.target.checked);
-                                            console.log(e.target.checked);
                                             if (e.target.checked) {
                                                 setValue('exp_end_year', 'Present')
                                             } else {

@@ -20,7 +20,6 @@ const AllCasesTableRow = ({ index, singleCase, refetch }) => {
             status: statusUpdate,
             email
         };
-        console.log(statusData);
 
         if (statusUpdate != "undefined") {
             Swal.fire({

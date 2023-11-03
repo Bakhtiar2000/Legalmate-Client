@@ -8,8 +8,6 @@ import useAttorneys from '../../hooks/useAttorneys';
 const AllAttorneys = () => {
     const [attorneysData, loading, refetch]= useAttorneys()
     if (loading) return <PageLoader />
-
-    console.log(attorneysData);
     return (
         <div>
             <Helmet>

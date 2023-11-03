@@ -5,7 +5,6 @@ import useAxiosSecure from "./useAxios";
 const useChat = () => {
   const { currentUser } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  // console.log(currentUser._id)
   const {
     data: chats = [], isLoading: chatLoading, refetch: chatRefetch, } = useQuery({
       queryKey: ["chats"],

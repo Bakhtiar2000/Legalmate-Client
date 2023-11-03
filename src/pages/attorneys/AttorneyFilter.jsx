@@ -17,14 +17,12 @@ const AttorneyFilter = () => {
     const [name, setName] = useState();
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
-    console.log(attorneysData);
     const onSubmit = data => {
         setName(data.name)
         setLocation(data.location)
         setPractice_area(data.practice_area)
         reset();
     }
-    console.log(name, location, practice_area);
 
     useEffect(() => {
         

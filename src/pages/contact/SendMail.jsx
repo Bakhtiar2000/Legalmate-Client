@@ -11,7 +11,6 @@ const SendMail = () => {
 
         emailjs.sendForm('service_6cj9dkq', 'template_oumfitc', form.current, '5scPk13_dW8HI-vmZ')
             .then((result) => {
-                console.log('Message Sending status: ', result.text);
                 e.target.reset()
                 Swal.fire(
                     'Message has been Sent!',

@@ -8,7 +8,6 @@ import PageLoader from '../../components/PageLoader';
 const AllClients = () => {
     const [clientsData, loading, refetch]= useClients()
     if(loading) return <PageLoader />
-    console.log(clientsData);
 
     return (
         <div>

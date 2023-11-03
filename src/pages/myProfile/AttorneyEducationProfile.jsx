@@ -25,7 +25,6 @@ const AttorneyEducationProfile = ({ id, refetch, edu, index }) => {
         if (result.isConfirmed) {
         axiosSecure.patch(`/attorney/deleteEdu`, data)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     refetch()
                     Swal.fire(

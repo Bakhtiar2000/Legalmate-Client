@@ -33,7 +33,6 @@ const AttorneyReviews = ({ paymentSuccess, reviews, email, name }) => {
             email: email,
             newReview
         }
-        console.log(updateData);
         axiosSecure.patch('/attorney/review', updateData)
             .then(res => {
                 if (res.status === 200) {
