@@ -12,7 +12,6 @@ const Register = () => {
   const [axiosSecure] = useAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
 
   const onSubmit = (data) => {
     if (data.password.length < 6) {
@@ -43,7 +42,7 @@ const Register = () => {
             axiosSecure.post('/users', userData)
             .then(res => {
               if (res.status === 200) {
-                  navigate('/', { state: { from: location }, replace: true });
+                  navigate('/login', { state: { from: location }, replace: true });
               }
           })
               .catch((err) => {
