@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Header from '../shared/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../shared/Footer';
@@ -10,12 +10,21 @@ import PageLoader from "../components/PageLoader"
 const Main = () => {
     const { currentUser, loading } = useContext(AuthContext);
     const location = useLocation()
-    console.log(location)
+    // console.log(location)
+    const [pageLocation, setPageLocation] = useState()
+    useEffect(() => {
+        if (location.pathname === '/login' || location.pathname === '/register') {
+            setPageLocation(false)
+        }
+        else setPageLocation(true)
+    }, [location.pathname]);
+    console.log(pageLocation)
     return (
         <div>
             {
-                location.pathname === '/login' || location.pathname === '/register' && <Header />
+              pageLocation && <Header />
             }
+            {/* <Header /> */}
 
             <div className='bg-[#14161B] text-white pt-10'>
                 {currentUser && loading ? <PageLoader /> : <Outlet></Outlet>}
