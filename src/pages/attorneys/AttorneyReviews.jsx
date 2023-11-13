@@ -118,7 +118,7 @@ const AttorneyReviews = ({ paymentSuccess, reviews, email, name }) => {
                             <textarea
                                 {...register("review")}
                                 placeholder={`Write your experience with ${name} within 150 words`}
-                                className='w-full text-black h-20 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
+                                className='w-full text-black bg-white h-20 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                             />
                         </>
                     }

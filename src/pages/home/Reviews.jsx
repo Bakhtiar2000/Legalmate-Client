@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../components/SectionTitle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
@@ -9,6 +9,12 @@ import useOurReviews from '../../hooks/useOurReviews';
 
 const Reviews = () => {
     const [ourReviewsData] = useOurReviews();
+    const [review , setReview]=useState()
+    useEffect(() => {
+     const approvedReview=ourReviewsData.filter(data=>data.status==="approved")
+    //  console.log(approvedReview);
+     setReview(approvedReview)
+    }, [ourReviewsData]);
     return (
         <section className='mx-2 pb-20'>
             <SectionTitle  title="Client" redTitle="Reviews" para="Hear what our clients have to say" />
@@ -26,7 +32,7 @@ const Reviews = () => {
                 className="mySwiper"
             >
                 {
-                    ourReviewsData.map(review=>
+                    review?.map(review=>
                         <SwiperSlide key={review._id}>
                             <div className='duration-300 h-72 bg-lightDark rounded-lg p-3 md:py-5 md:px-8 border border-slate-500 shadow-lg max-w-4xl mx-auto'>
                                

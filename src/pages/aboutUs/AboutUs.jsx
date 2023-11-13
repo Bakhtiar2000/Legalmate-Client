@@ -2,25 +2,57 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../hooks/useAuth';
+import useCurrentClient from '../../hooks/useCurrentClient';
+import useAxiosSecure from '../../hooks/useAxios';
+import useOurReviews from '../../hooks/useOurReviews';
 
 const AboutUs = () => {
-    const [ faqData, setFaqData ]= useState([])
+    const [faqData, setFaqData] = useState([]);
+    const { currentUser } = useAuth();
+    const [ourReviewsData] = useOurReviews();
+    const [axiosSecure] = useAxiosSecure();
+    const [currentClientData, clientLoading, refetch] = useCurrentClient();
+    console.log(ourReviewsData)
     const { register, handleSubmit, reset } = useForm();
-    useEffect(()=> {
+
+
+    useEffect(() => {
         fetch('/faqs.json')
-        .then(res=> res.json())
-        .then(data => {
-            setFaqData(data);
-        })
+            .then(res => res.json())
+            .then(data => {
+                setFaqData(data);
+            })
+
+
+
     }, [])
 
-    const onSubmit = data=>{
-        console.log(data);
+
+    const onSubmit = data => {
+        const reviewData = {
+            name: currentUser?.name,
+            img: currentUser?.image,
+            job: currentUser?.role === "client" ? currentClientData?.occupation : "attorney",
+            review: data.review
+        }
+        // const newReview = [...ourReviewsData, reviewData]
+        console.log(reviewData);
+        axiosSecure.post('/clientReview', reviewData)
+            .then(res => {
+                console.log(res);
+                if (res.status === 200) {
+                    reset()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
         <div>
-             <Helmet>
+            <Helmet>
                 <title>About Us - Legalmate</title>
             </Helmet>
 
@@ -39,14 +71,14 @@ const AboutUs = () => {
                     <h2 className='text-4xl text-primary font-semibold mb-5 mt-10 mx-auto'>Frequently Asked Questions</h2>
                     <div className="join join-vertical w-full text-white ">
                         {
-                            faqData.map(faq=> 
+                            faqData.map(faq =>
                                 <div key={faq?._id} className="collapse collapse-arrow join-item border border-primary/60 rounded-lg mb-3">
-                                    <input type="radio" name="my-accordion-4" /> 
+                                    <input type="radio" name="my-accordion-4" />
                                     <div className="collapse-title text-lg font-medium">
-                                    {faq?.question}
+                                        {faq?.question}
                                     </div>
-                                    <div className="collapse-content"> 
-                                    <p>{faq?.solution}</p>
+                                    <div className="collapse-content">
+                                        <p>{faq?.solution}</p>
                                     </div>
                                 </div>
                             )
@@ -59,7 +91,7 @@ const AboutUs = () => {
                         <textarea
                             {...register("review")}
                             placeholder="share your experience with us..."
-                            className='w-full text-black h-20 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
+                            className='w-full text-black bg-white h-20 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                         />
                         <input
                             type='submit'

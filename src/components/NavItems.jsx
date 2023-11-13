@@ -30,6 +30,7 @@ const NavItems = () => {
                 <li><ActiveLink to="/allClients">All clients</ActiveLink></li>
                 <li><ActiveLink to="/allCases">All cases</ActiveLink></li>
                 <li><ActiveLink to="/allPayments">All payments</ActiveLink></li>
+                <li><ActiveLink to="/allReviews">All Reviews</ActiveLink></li>
             </>:
 
             <>

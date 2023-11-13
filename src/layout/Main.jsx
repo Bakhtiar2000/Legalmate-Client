@@ -7,25 +7,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../providers/AuthProvider';
 import PageLoader from "../components/PageLoader"
+
 const Main = () => {
     const { currentUser, loading } = useContext(AuthContext);
-    const location = useLocation()
-    // console.log(location)
-    const [pageLocation, setPageLocation] = useState()
-    useEffect(() => {
-        if (location.pathname === '/login' || location.pathname === '/register') {
-            setPageLocation(false)
-        }
-        else setPageLocation(true)
-    }, [location.pathname]);
-    console.log(pageLocation)
     return (
-        <div>
-            {
-                pageLocation && <Header />
-            }
-            {/* <Header /> */}
-
+        <div> 
+            <Header />
             <div className='bg-[#14161B] text-white pt-10'>
                 {currentUser && loading ? <PageLoader /> : <Outlet></Outlet>}
             </div>

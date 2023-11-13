@@ -7,8 +7,8 @@ import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxios';
 
 const Register = () => {
-  const { signUp, profileUpdate, setLoading } = useContext(AuthContext)
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { signUp, profileUpdate, setLoading, logOut } = useContext(AuthContext)
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [axiosSecure] = useAxiosSecure();
   const navigate = useNavigate();
 
@@ -41,7 +41,21 @@ const Register = () => {
             axiosSecure.post('/users', userData)
             .then(res => {
               if (res.status === 200) {
+                logOut()
+                      .then()
+                      .catch()
+                      
                   navigate('/login');
+                  
+                  Swal.fire({
+                    title: 'Account registration successful',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
               }
           })
               .catch((err) => {
@@ -80,8 +94,9 @@ const Register = () => {
                 className="h-12 w-full outline-none focus:border-b-4 focus:border-primary  px-3 text-dark bg-white"
                 type="text"
                 placeholder="Full Name: "
-                {...register("name")}
+                {...register("name", { required: true })}
               />
+              {errors.name && <span className='text-sm text-red-500 ml-1'>Name is required</span>}
 
               {/* Email */}
               <input
