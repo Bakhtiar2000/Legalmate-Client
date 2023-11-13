@@ -23,6 +23,9 @@ import AllClients from '../pages/allClients/AllClients';
 import AllCases from '../pages/allCases/AllCases';
 import ClientDetails from '../pages/allClients/ClientDetails';
 import Awareness from '../pages/awareness/Awareness';
+import TermsAndConditions from '../pages/termsAndConditions/TermsAndConditions';
+import CookiePolicy from '../pages/cookiePolicy/CookiePolicy';
+import PrivacyPolicy from '../pages/privacyPolicy/PrivacyPolicy';
 
 const baseURL= "https://legalmate-server.vercel.app/"
 
@@ -113,6 +116,18 @@ const router= createBrowserRouter([
                 {
                     path: "/allPayments",
                     element: <AllPayments></AllPayments>
+                },
+                {
+                    path: "/termsAndConditions",
+                    element: <TermsAndConditions></TermsAndConditions>
+                },
+                {
+                    path: "/cookiePolicy",
+                    element: <CookiePolicy></CookiePolicy>
+                },
+                {
+                    path: "/privacyPolicy",
+                    element: <PrivacyPolicy></PrivacyPolicy>
                 }
             ]
         }

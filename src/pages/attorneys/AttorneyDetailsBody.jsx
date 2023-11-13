@@ -23,6 +23,7 @@ import useAttorneys from "../../hooks/useAttorneys";
 const AttorneyDetailsBody = ({ singleAttorney }) => {
     const navigate = useNavigate();
     const { _id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, reviews, awards, email } = singleAttorney
+    const presentEmployment= experience.filter(exp=> exp.end_year.toLowerCase() === "present")
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
     const currentYear = new Date().getFullYear();
@@ -158,8 +159,11 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                         {/* Name, practice area, location, rating */}
                         <div>
                             <p className='text-4xl'>{name}</p>
-                            <p className="lg:text-xl md:mt-2">{practiceArea} attorney at {location}</p>
-                            <p className="lg:text-xl md:mt-2">Hourly rate: <span className="text-orange-500">{hourly_rate}</span></p>
+                            <p className="lg:text-xl md:mt-2">{practiceArea} attorney from {location}</p>
+                            {
+                                presentEmployment && <p className="lg:text-xl md:mt-2">{presentEmployment[0]?.position} at {presentEmployment[0]?.company}</p>
+                            }
+                            {/* <p className="lg:text-xl md:mt-2">Hourly rate: <span className="text-orange-500">{hourly_rate}</span></p> */}
 
                             {/* rating */}
                             <div className="flex items-center gap-2 mt-2 mb-5">

@@ -23,7 +23,7 @@ const Awareness = () => {
             <Breadcrumbs title="Awareness" />
  
             <div className='container py-20'>
-            <div className='grid lg:grid-cols-2 gap-5'>
+            <div className='grid xl:grid-cols-2 gap-5'>
                     {
                         awarenessData.map(awareness=> <div 
                             key={awareness?._id} 

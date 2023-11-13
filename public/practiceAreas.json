@@ -1,80 +1,156 @@
 [
-    {
-      "_id": 1,
-      "name": "Criminal Law",
-      "img": "https://www.svgrepo.com/show/380208/crime-handcuffs-magic-magician-police.svg",
-      "attorneys": 32,
-      "contents": [
-        "Criminal Appeal",
-        "Ad-interim Bail",
-        "Anticipatory (Bail from the Hon’ble High Court)",
-        "Criminal Defense",
-        "Criminal Prosecution"
-      ]
-    },
-    {
-      "_id": 2,
-      "name": "Civil Matters",
-      "img": "https://www.svgrepo.com/show/504626/mull.svg",
-      "attorneys": 15,
-      "contents": [
-        "Land disputes",
-        "Succession, partition, breach of contract",
-        "Landlord-Tenant disputes",
-        "Landlord-Developer disputes",
-        "Declaration suit, Title suit, Money Suit"
-      ]
-    },
-    {
-      "_id": 3,
-      "name": "Family Law",
-      "img": "https://www.svgrepo.com/show/438524/family-round.svg",
-      "attorneys": 42,
-      "contents": [
-        "Litigation in the Family Courts",
-        "Divorce process",
-        "Pre & post divorce mediation",
-        "Special Marriage (Cross religion marriage)",
-        "Child custody"
-      ]
-    },
-    {
-      "_id": 4,
-      "name": "Business Law",
-      "img": "https://www.svgrepo.com/show/422574/business-growth-management.svg",
-      "attorneys": 26,
-      "contents": [
-        "Corporate Governance",
-        "Business Formation and Registration",
-        "Mergers and Acquisitions",
-        "Commercial Contracts",
-        "Intellectual Property"
-      ]
-    },
-    {
-      "_id": 5,
-      "name": "Immigration & Visa",
-      "img": "https://www.svgrepo.com/show/429364/identification-immigration-passport.svg",
-      "attorneys": 28,
-      "contents": [
-        "File assessment for immigration application",
-        "Application filing & handing",
-        "Appeal against rejection",
-        "Drafting of required documents",
-        "PI Visa recommendation"
-      ]
-    },
-    {
-      "_id": 6,
-      "name": "Banking & Finance",
-      "img": "https://www.svgrepo.com/show/513165/bank.svg",
-      "attorneys": 19,
-      "contents": [
-        "Banking Regulations",
-        "Loan Agreements",
-        "Securities and Investments",
-        "Financial Compliance",
-        "Debt Restructuring"
-      ]
-    }
+  {
+    "_id": 1,
+    "name": "Bankruptcy",
+    "img": "https://www.svgrepo.com/show/513165/bank.svg",
+    "attorneys": 19,
+    "contents": [
+      "Banking Regulations",
+      "Loan Agreements",
+      "Securities and Investments",
+      "Financial Compliance",
+      "Debt Restructuring"
+    ]
+  },
+  {
+    "_id": 2,
+    "name": "Business",
+    "img": "https://www.svgrepo.com/show/422574/business-growth-management.svg",
+    "attorneys": 26,
+    "contents": [
+      "Corporate Governance",
+      "Business Formation and Registration",
+      "Mergers and Acquisitions",
+      "Commercial Contracts",
+      "Intellectual Property"
+    ]
+  },
+  {
+    "_id": 3,
+    "name": "Constitution",
+    "img": "https://www.svgrepo.com/show/95720/law-book.svg",
+    "attorneys": 16,
+    "contents": [
+      "Constitutional Law",
+      "Legal Rights and Liberties",
+      "Constitutional Amendments"
+    ]
+  },
+  {
+    "_id": 4,
+    "name": "Criminal Defense",
+    "img": "https://www.svgrepo.com/show/380208/crime-handcuffs-magic-magician-police.svg",
+    "attorneys": 32,
+    "contents": [
+      "Criminal Appeal",
+      "Ad-interim Bail",
+      "Anticipatory (Bail from the Hon’ble High Court)",
+      "Criminal Defense",
+      "Criminal Prosecution"
+    ]
+  },
+  {
+    "_id": 5,
+    "name": "Employment and Labor",
+    "img": "https://www.svgrepo.com/show/300247/labor-woman-labor.svg",
+    "attorneys": 23,
+    "contents": [
+      "Employment Contracts",
+      "Labor Disputes",
+      "Workplace Discrimination",
+      "Employee Benefits",
+      "Occupational Health and Safety"
+    ]
+  },
+  {
+    "_id": 6,
+    "name": "Entertainment",
+    "img": "https://www.svgrepo.com/show/444084/map-entertainment.svg",
+    "attorneys": 17,
+    "contents": [
+      "Entertainment Contracts",
+      "Intellectual Property in Entertainment",
+      "Media Law",
+      "Rights and Royalties",
+      "Contracts Disputes"
+    ]
+  },
+  {
+    "_id": 7,
+    "name": "Estate Planning",
+    "img": "https://www.svgrepo.com/show/506663/home.svg",
+    "attorneys": 16,
+    "contents": [
+      "Wills and Trusts",
+      "Probate",
+      "Estate Administration",
+      "Estate Taxation",
+      "Asset Protection"
+    ]
+  },
+  {
+    "_id": 8,
+    "name": "Family",
+    "img": "https://www.svgrepo.com/show/438524/family-round.svg",
+    "attorneys": 42,
+    "contents": [
+      "Litigation in the Family Courts",
+      "Divorce process",
+      "Pre & post divorce mediation",
+      "Special Marriage (Cross religion marriage)",
+      "Child custody"
+    ]
+  },
+  {
+    "_id": 9,
+    "name": "Immigration",
+    "img": "https://www.svgrepo.com/show/429364/identification-immigration-passport.svg",
+    "attorneys": 28,
+    "contents": [
+      "File assessment for immigration application",
+      "Application filing & handling",
+      "Appeal against rejection",
+      "Drafting of required documents",
+      "PI Visa recommendation"
+    ]
+  },
+  {
+    "_id": 10,
+    "name": "Intellectual Property",
+    "img": "https://www.svgrepo.com/show/504626/mull.svg",
+    "attorneys": 15,
+    "contents": [
+      "Patents",
+      "Trademarks",
+      "Copyrights",
+      "Trade Secrets",
+      "Licensing and Contracts"
+    ]
+  },
+  {
+    "_id": 11,
+    "name": "Personal Injury",
+    "img": "https://www.svgrepo.com/show/482809/injury-1.svg",
+    "attorneys": 11,
+    "contents": [
+      "Car Accidents",
+      "Medical Malpractice",
+      "Slip and Fall",
+      "Product Liability",
+      "Wrongful Death"
+    ]
+  },
+  {
+    "_id": 12,
+    "name": "Tax",
+    "img": "https://www.svgrepo.com/show/486123/tax-yijiao-line.svg",
+    "attorneys": 19,
+    "contents": [
+      "Tax Planning",
+      "Tax Litigation",
+      "Tax Compliance",
+      "Business Taxation",
+      "Individual Taxation"
+    ]
+  }
 ]
