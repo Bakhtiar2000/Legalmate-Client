@@ -6,9 +6,10 @@ import Stats from './Stats';
 import Reviews from './Reviews';
 import { AuthContext } from '../../providers/AuthProvider';
 import UserManual from '../../components/UserManual';
+import { useLocation } from 'react-router-dom';
 
 const HomePage = () => {
-    const { currentUser } = useContext(AuthContext)
+    const { currentUser } = useContext(AuthContext);
     return (
         <div>
             <Hero />

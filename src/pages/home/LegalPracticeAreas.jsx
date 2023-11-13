@@ -18,7 +18,7 @@ const LegalPracticeAreas = () => {
       <SectionTitle
         title="Our"
         redTitle="Practice Areas"
-        para="Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita ratione id dolores velit tenetur. Illo."
+        para="Find attorneys from your designated legal practice area"
       />
 
       <Swiper

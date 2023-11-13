@@ -90,6 +90,7 @@ const CaseDiv = ({ singleCase }) => {
             amount: 500,
 
         }
+        console.log(paymentInfo)
         axiosSecure.post('/payment', paymentInfo)
             .then(res => {
                 window.location.replace(res.data.url)
@@ -99,7 +100,7 @@ const CaseDiv = ({ singleCase }) => {
             })
 
     }
-
+    // console.log(currentUser?.status === "pending")
 
 
     return (
@@ -114,26 +115,26 @@ const CaseDiv = ({ singleCase }) => {
 
                     {/* Message */}
                     {
-                        currentUser?.status!=="approved"?
-                        <button disabled className="lg:text-xl text-center">
+                        currentUser?.status !== "approved" ?
+                            <button disabled className="lg:text-xl text-center">
                                 <div className="mt-auto w-full bg-gray-500 duration-300 rounded-lg px-2 py-3 text-center">
                                     Message
                                 </div>
-                            </button>:
-                        paymentSuccess ?
-                            <button d onClick={createChat} className="lg:text-xl text-center">
-                                <div className="mt-auto w-full bg-green-600 hover:bg-green-600/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
-                                    Message
-                                </div>
-                            </button>
-                            :
-                            <button
-                                onClick={paymentHandle}
-                                className="lg:text-xl text-center">
-                                <div className="mt-auto w-full  bg-secondary hover:bg-secondary/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
-                                    Message 
-                                </div>
-                            </button>
+                            </button> :
+                            paymentSuccess ?
+                                <button onClick={createChat} className="lg:text-xl text-center">
+                                    <div className="mt-auto w-full bg-green-600 hover:bg-green-600/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
+                                        Message
+                                    </div>
+                                </button>
+                                :
+                                <button
+                                    onClick={paymentHandle}
+                                    className="lg:text-xl text-center">
+                                    <div className="mt-auto w-full  bg-secondary hover:bg-secondary/60 duration-300 rounded-lg px-2 py-3 cursor-pointer text-center">
+                                        Message
+                                    </div>
+                                </button>
                     }
 
 
