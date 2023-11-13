@@ -1,0 +1,27 @@
+[
+    {
+        "_id": 1,
+        "question": "How does LegalMate match me with the right lawyer?",
+        "solution": "LegalMate utilizes advanced algorithms and a comprehensive database of legal professionals to ensure precise matches based on your specific needs. By understanding the details of your case and preferences, we employ a sophisticated matching system to connect you with the most suitable lawyer for your unique situation."
+    },
+    {
+        "_id": 2,
+        "question": "What types of legal services are available on LegalMate?",
+        "solution": "LegalMate offers a diverse range of legal services, spanning from family law and criminal defense to business litigation and intellectual property. Our platform is designed to accommodate various legal needs, ensuring that individuals and businesses alike can find expert representation across different legal domains."
+    },
+    {
+        "_id": 3,
+        "question": "How does communication work between clients and lawyers on LegalMate?",
+        "solution": "LegalMate facilitates secure and efficient communication between clients and lawyers through our integrated messaging system. Once you've connected with a lawyer, you can easily discuss your case, share documents, and receive updates on the progress of your legal matter—all within the secure confines of our platform."
+    },
+    {
+        "_id": 4,
+        "question": "What sets LegalMate apart from other legal matching services?",
+        "solution": "LegalMate stands out due to its commitment to transparency, efficiency, and personalized matching. Our platform not only streamlines the lawyer-client connection process but also prioritizes clear communication and tailored matches, ensuring that you receive the legal assistance that best aligns with your specific needs and goals."
+    },
+    {
+        "_id": 5,
+        "question": "Is my information secure on LegalMate?",
+        "solution": "Yes, at LegalMate, the security and privacy of your information are paramount. We employ robust encryption measures and adhere to strict privacy protocols to safeguard your personal and legal data. Rest assured that your details are treated with the utmost confidentiality, providing you with a secure environment to navigate the legal matchmaking process."
+    }
+]

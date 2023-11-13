@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxios';
 
 const Register = () => {
-  const { signUp, profileUpdate, setLoading, googleSignIn } = useContext(AuthContext)
+  const { signUp, profileUpdate, setLoading } = useContext(AuthContext)
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [axiosSecure] = useAxiosSecure();
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const Register = () => {
     const userData = {
       name: data.name,
       email: data.email,
-      image: data.image,
+      image: "",
       role: data.role,
     }
     signUp(data.email, data.password)
@@ -81,14 +81,6 @@ const Register = () => {
                 type="text"
                 placeholder="Full Name: "
                 {...register("name")}
-              />
-
-              {/* Image */}
-              <input
-                className="h-12 w-full outline-none focus:border-b-4 focus:border-primary px-3 text-dark mt-5 bg-white"
-                type="text"
-                placeholder="Image URL: "
-                {...register("image")}
               />
 
               {/* Email */}

@@ -46,8 +46,8 @@ const Footer = () => {
                   <p className='border rounded border-primary mb-2 w-16'></p>
                   <p>43/7 Northern Tower, Banani</p>
                   <p>Dhaka-1263, Bangladesh</p>
-                  <p>support@legalmate.com</p>
-                  <p>+8801543435473</p>
+                  <p>legalmate2023@gmail.com</p>
+                  <p>+9988476</p>
                 </div>
             </div> 
         </footer>

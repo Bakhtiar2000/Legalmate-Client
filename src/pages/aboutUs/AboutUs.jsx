@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
+import { useForm } from 'react-hook-form';
 
 const AboutUs = () => {
+    const [ faqData, setFaqData ]= useState([])
+    const { register, handleSubmit, reset } = useForm();
+    useEffect(()=> {
+        fetch('/faqs.json')
+        .then(res=> res.json())
+        .then(data => {
+            setFaqData(data);
+        })
+    }, [])
+
+    const onSubmit = data=>{
+        console.log(data);
+    }
+
     return (
         <div>
              <Helmet>
@@ -11,27 +26,47 @@ const AboutUs = () => {
 
             <Breadcrumbs title="About Us" />
 
-            <div className='container md:flex justify-center gap-10 py-20'>
+            <div className='container lg:flex justify-center gap-10 py-20'>
                 <img className='mx-auto h-fit' src="https://img.freepik.com/free-photo/businessman-pointing-screen-showing-project-details-colleague_74855-7976.jpg?size=626&ext=jpg&ga=GA1.1.670690934.1670350375&semt=ais" alt="" />
 
                 <div>
-                    <h2 className='text-4xl text-primary font-semibold mb-3 mt-10 md:mt-0 mx-auto'>Welcome to Legalmate</h2>
-                    <p className='lg:text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae distinctio ea adipisci pariatur, ipsum repudiandae. Dolorem, ad? Incidunt, saepe necessitatibus sapiente eligendi maxime reprehenderit quisquam! Error necessitatibus blanditiis facere deserunt, dignissimos vitae eligendi animi totam nihil nemo eveniet tenetur voluptates est, quis consequuntur incidunt alias tempore repudiandae dicta eum cum aliquid ipsa iste ut? Qui quis error, fugiat corrupti, excepturi odit possimus eum voluptates distinctio iusto ex? Tenetur fugiat eum modi quas necessitatibus saepe sunt qui exercitationem magnam excepturi. Quaerat a amet molestias veniam exercitationem facilis possimus expedita fugit unde iste neque, iure id itaque totam alias blanditiis ab aut.</p>
 
-                    <h2 className='text-4xl text-primary font-semibold mb-5 mt-10 mx-auto'>Why Choose Us?</h2>
-                    <div className='flex items-center gap-3 mb-5 lg:text-xl pl-8'>
-                        <img className="w-6 h-6" src="https://i.ibb.co/ChcsTY9/law-office-svgrepo-com.png" alt="" />
-                        <p>Best Case Strategy</p>
-                    </div>
-                    <div className='flex items-center gap-3 mb-5 lg:text-xl pl-8'>
-                        <img className="w-6 h-6" src="https://i.ibb.co/s6bDWsy/female-attorney-woman-female-lawyer-svgrepo-com.png" alt="" />
-                        <p>Unparalleled Access to Top Attorneys</p>
-                    </div>
-                    <div className='flex items-center gap-3 mb-5 lg:text-xl pl-8'>
-                        <img className="w-6 h-6" src="https://i.ibb.co/L858fbY/incognito-svgrepo-com.png" alt="" />
-                        <p>Privacy and Security</p>
+                    {/* About us */}
+                    <h2 className='text-4xl text-primary font-semibold mb-3 mt-10 lg:mt-0 mx-auto'>Welcome to Legalmate</h2>
+                    <p className='lg:text-xl'>we understand the critical importance of finding the right legal representation tailored to your unique requirements. Our platform serves as a trusted intermediary, connecting individuals and businesses with a network of highly skilled and dedicated lawyers. With a commitment to facilitating transparent and efficient communication, LegalMate empowers clients to make informed decisions about their legal matters. Whether you seek guidance in family law, business litigation, or any other legal domain, our platform simplifies the process of finding the perfect legal match. Trust LegalMate to be your ally in navigating the complexities of the legal landscape, ensuring that your journey to justice is both accessible and reliable.</p>
+
+                    {/* FAQs */}
+                    <h2 className='text-4xl text-primary font-semibold mb-5 mt-10 mx-auto'>Frequently Asked Questions</h2>
+                    <div className="join join-vertical w-full text-white ">
+                        {
+                            faqData.map(faq=> 
+                                <div key={faq?._id} className="collapse collapse-arrow join-item border border-primary/60 rounded-lg mb-3">
+                                    <input type="radio" name="my-accordion-4" /> 
+                                    <div className="collapse-title text-lg font-medium">
+                                    {faq?.question}
+                                    </div>
+                                    <div className="collapse-content"> 
+                                    <p>{faq?.solution}</p>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
 
+                    {/* Write a review */}
+                    <h2 className='text-4xl text-primary font-semibold mb-5 mt-10 mx-auto'>Let us know what you think about us</h2>
+                    <form className='mt-5' onSubmit={handleSubmit(onSubmit)}>
+                        <textarea
+                            {...register("review")}
+                            placeholder="share your experience with us..."
+                            className='w-full text-black h-20 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
+                        />
+                        <input
+                            type='submit'
+                            value="Post Review"
+                            className="w-fit h-fit text-center px-5 py-2 bg-secondary hover:bg-secondary/60 duration-300 rounded text-white cursor-pointer"
+                        />
+                    </form>
                 </div>
             </div>
         </div>

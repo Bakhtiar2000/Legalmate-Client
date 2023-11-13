@@ -26,19 +26,7 @@ const SendMail = () => {
         <section className='pt-5 pb-20'>
             <div className='container'>
             <SectionTitle title="Get in Touch"  redTitle="With Us" para="Send Us a Message" />
-                <div className='flex flex-col xl:flex-row justify-center items-center gap-8 bg-lightDark py-10 rounded-lg'>
-
-                    {/* Map */}
-                    <div className="relative mx-auto overflow-hidden">
-                        <iframe
-                            className="w-72 h-72 md:w-[500px] md:h-[500px] border border-purple rounded-md m-4"
-                            title="map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5883.0758572185!2d90.2328906!3d24.0261625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755e7476bf143bd%3A0x294a5f0f54fd353a!2sZahid%20telecom%20%26%20electronicsStore!5e0!3m2!1sen!2sbd!4v1668667428200!5m2!1sen!2sbd"
-                            style={{ filter: 'contrast(1.2)',  }}
-                            allowFullScreen
-                        ></iframe>
-                        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-                    </div>
+                <div className='bg-lightDark p-10 rounded-lg w-fit mx-auto'>
 
                     {/* Mail Form  */}
                     <div className='max-w-xl mx-auto text-center text-black'>

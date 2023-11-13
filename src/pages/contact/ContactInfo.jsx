@@ -30,7 +30,7 @@ const ContactInfo = () => {
                 Phone number
                 </p>
                 <p className="text-center">
-                +8801543435473
+                +9988476
                 </p>
             </div>
 
@@ -43,7 +43,7 @@ const ContactInfo = () => {
                 Email address
                 </p>
                 <p className="text-center">
-                support@legalmate.com
+                legalmate2023@gmail.com
                 </p>
             </div>
 
@@ -56,7 +56,7 @@ const ContactInfo = () => {
                 Contact Timing
                 </p>
                 <p className="text-center">Monday to Friday</p>
-                <p className="text-center">10:00 to 06:00</p>
+                <p className="text-center">10:00AM to 06:00PM</p>
             </div>
             </div>
       </section>
