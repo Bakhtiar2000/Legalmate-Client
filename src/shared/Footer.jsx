@@ -36,9 +36,9 @@ const Footer = () => {
                 <div className='flex flex-col mb-10 md:mb-0  w-fit'>
                 <header className='text-xl text-primary mb-1'>Legal Concerns</header> 
                   <span className='border rounded border-primary mb-2 w-20'></span>
-                  <a className="link link-hover">Terms of use</a>
-                  <a className="link link-hover">Privacy policy</a>
-                  <a className="link link-hover">Cookie policy</a>
+                  <Link to="/termsAndConditions" className="link link-hover">Terms and Conditions</Link> 
+                  <Link to="/privacyPolicy" className="link link-hover">Privacy policy</Link> 
+                  <Link to="/cookiePolicy" className="link link-hover">Cookie policy</Link>
                 </div> 
 
                 <div className='mb-10 md:mb-0  w-fit'>

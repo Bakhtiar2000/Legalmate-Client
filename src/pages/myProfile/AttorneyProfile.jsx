@@ -37,6 +37,8 @@ const AttorneyProfile = () => {
     if (attorneyLoading || currentAttorneyData === null) return <PageLoader />
 
     const { _id, email, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards, documents } = currentAttorneyData
+    const presentEmployment= experience.filter(exp=> exp.end_year.toLowerCase() === "present")
+    console.log(presentEmployment);
     const newEducations = [...education, { subject: watch('subject'), institution: watch('institution'), start_year: watch('edu_start_year'), end_year: watch('edu_end_year') }];
     const newExperience = [...experience, { company: watch('company'), position: watch('position'), start_year: watch('exp_start_year'), end_year: watch('exp_end_year') }];
     const newAwards = [...awards, { name: watch('award_name'), from: watch('from'), year: watch('year') }];
@@ -264,8 +266,11 @@ const AttorneyProfile = () => {
                         {/* Name, practice area, location, rating */}
                         <div>
                             <p className='text-4xl'>{name}</p>
-                            <p className="lg:text-xl md:mt-2">{practiceArea} attorney at {location}</p>
-                            <p className="lg:text-xl md:mt-2">Hourly rate: <span className="text-orange-500">{hourly_rate}</span></p>
+                            <p className="lg:text-xl md:mt-2">{practiceArea} lawyer from {location}</p>
+                            {
+                                presentEmployment && <p className="lg:text-xl md:mt-2">{presentEmployment[0]?.position} at {presentEmployment[0]?.company}</p>
+                            }
+                            {/* <p className="lg:text-xl md:mt-2">Hourly rate: <span className="text-orange-500">{hourly_rate} BDT</span></p> */}
 
                         </div>
 
@@ -536,15 +541,16 @@ const AttorneyProfile = () => {
                             </div>
 
                             {/* Hourly rate */}
-                            <div className='w-full'>
+                            {/* <div className='w-full'>
                                 <label className='text-dark text-sm'>Hourly rate:</label>
                                 <input
                                     {...register("hourlyRate")}
+                                    type='number'
                                     defaultValue={hourly_rate}
                                     placeholder='Write within a range'
                                     className='w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
-                            </div>
+                            </div> */}
                         </div>
 
                         {/* About */}

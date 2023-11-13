@@ -84,7 +84,7 @@ const AttorneyReviews = ({ paymentSuccess, reviews, email, name }) => {
                 {
                     reviews.map((review, index) =>
                         <SwiperSlide key={index}>
-                            <div className='duration-300 h-full bg-lightDark rounded-lg p-3 md:py-5 md:px-8 border border-slate-500 shadow-lg max-w-4xl mx-auto'>
+                            <div className='duration-300 h-full bg-lightDark rounded-lg p-3 md:py-5 md:px-8 border border-slate-500 shadow-lg max-w-4xl mx-auto mb-10'>
                                 <div className='flex items-center justify-between gap-5 mb-5'>
                                     <div>
                                         <p className='text-xl md:text-2xl font-semibold md:mb-2'>{review?.name}</p>

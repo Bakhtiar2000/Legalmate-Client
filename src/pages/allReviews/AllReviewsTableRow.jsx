@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxios';
 import CustomModal from '../../components/CustomModal';
 
-const AllReviewsTableRow = ({ ReviewsData , index }) => {
+const AllReviewsTableRow = ({ ReviewsData , index ,refetch }) => {
     const { name, img, review, status, _id } = ReviewsData;
     const [axiosSecure] = useAxiosSecure();
     const [statusUpdate, setStatusUpdate] = useState(status);
@@ -16,9 +16,8 @@ const AllReviewsTableRow = ({ ReviewsData , index }) => {
     const statusChanges = () => {
         const statusData = {
             status: statusUpdate,
-            _id
         };
-        console.log(statusData)
+        console.log(statusData , _id)
         if (statusUpdate != "undefined") {
             Swal.fire({
                 title: "Are you sure?",
@@ -30,19 +29,19 @@ const AllReviewsTableRow = ({ ReviewsData , index }) => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     // updated data send server
-                    // axiosSecure.patch(`/client/status`, statusData)
-                    //     .then((res) => {
-                    //         if (res.status == 200) {
-                    //             refetch();
-                    //             Swal.fire({
-                    //                 icon: "success",
-                    //                 title: "Updated Successfully!",
-                    //                 showConfirmButton: false,
-                    //                 timer: 1500,
-                    //             });
-                    //         }
-                    //     })
-                    //     .catch((err) => console.log(err));
+                    axiosSecure.patch(`/clientReview/updateStatus/${_id}`, statusData)
+                        .then((res) => {
+                            if (res.status == 200) {
+                                refetch();
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Updated Successfully!",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                });
+                            }
+                        })
+                        .catch((err) => console.log(err));
 
                 }
             });
