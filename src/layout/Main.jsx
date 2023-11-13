@@ -22,7 +22,7 @@ const Main = () => {
     return (
         <div>
             {
-              pageLocation && <Header />
+                pageLocation && <Header />
             }
             {/* <Header /> */}
 
