@@ -4,6 +4,7 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const NavItems = () => {
     const { currentUser } = useContext(AuthContext)
+    // console.log(currentUser);
 
     return (
         <>
@@ -37,6 +38,8 @@ const NavItems = () => {
                 <li><ActiveLink to="/attorneys">Our attorneys</ActiveLink></li>
                 <li><ActiveLink to="/aboutUs">About us</ActiveLink></li>
                 <li><ActiveLink to="/contact">Contact</ActiveLink></li>
+                <li><ActiveLink to="/awareness">Awareness</ActiveLink></li>
+                <li><ActiveLink to="/WriteAReview">Write a review</ActiveLink></li>
             </>
 
         }            
