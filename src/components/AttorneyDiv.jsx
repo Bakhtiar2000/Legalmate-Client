@@ -38,7 +38,7 @@ const AttorneyDiv = ({attorney}) => {
             <div>
                 {/* name and practice area */}
                 <div className='sm:flex items-end gap-3 '>
-                    <p className="hover:text-primary font-semibold text-2xl cursor-pointer duration-300 w-fit"> {name} </p>
+                    <Link to={`/attorney_details/${_id}`} className="hover:text-primary font-semibold text-2xl cursor-pointer duration-300 w-fit"> {name} </Link>
                     { practiceArea && <p>({practiceArea} Specialist)</p>}
                 </div>
                 <p>{presentEmployment[0]?.position} at {presentEmployment[0]?.company}</p>
