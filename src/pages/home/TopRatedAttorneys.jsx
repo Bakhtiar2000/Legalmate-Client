@@ -29,7 +29,7 @@ const TopRatedAttorneys = () => {
       {
         sortedAttorneys?.slice(0,3).map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>)
       }
-      <Link className="flex justify-center" to="/attorneys">
+      <Link className="flex justify-center  w-fit mx-auto" to="/attorneys">
         <button className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5">
           Show more
         </button>

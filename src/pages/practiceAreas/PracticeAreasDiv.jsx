@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PracticeAreasDiv = ({practiceArea}) => {
-    const {name, img, attorneys, contents}= practiceArea
+    const {_id, name, img, attorneys, contents}= practiceArea
     return (
         <div className="rounded-lg border border-primary p-5 w-80 mx-auto duration-300 h-full">
             <img
@@ -9,9 +10,9 @@ const PracticeAreasDiv = ({practiceArea}) => {
                 src={img}
                 alt=""
               />
-             <p className="text-2xl font-semibold mt-5 mb-2 cursor-pointer text-primary hover:underline duration-300 w-fit">
-                {name}
-              </p>
+             <Link to={`/practiceAreasDetails/${_id}`} className="text-2xl font-semibold mt-5 mb-2 cursor-pointer text-primary hover:underline duration-300 w-fit">
+                {name} Law
+              </Link>
               <p>Expert Attorneys: {attorneys}</p>
               <ul className="pl-5 mt-5">
                 {contents.map((content, index) => (

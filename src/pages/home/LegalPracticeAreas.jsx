@@ -41,23 +41,23 @@ const LegalPracticeAreas = () => {
         }}
         modules={[Navigation]}
       >
-        <div className="h-max">
+        <div>
         {
-          practiceAreasData?.map((practiceArea) => (
-            <SwiperSlide key={practiceArea._id} className="rounded-lg border border-primary p-5 w-80 mx-auto duration-300 h-full">
+          practiceAreasData?.slice(0,6).map((practiceArea) => (
+            <SwiperSlide key={practiceArea?._id} className="rounded-lg border border-primary p-5 mx-auto duration-300">
               <img
                 className="w-16 md:w-20 h-16 md:h-20 object-cover bg-white text-secondary p-2 rounded-full mb-3"
-                src={practiceArea.img}
+                src={practiceArea?.img}
                 alt=""
               />
 
               {/* TODO: Make the name Link for the practice item */}
-              <p className="text-2xl font-semibold mt-5 mb-2 cursor-pointer text-primary hover:underline duration-300 w-fit">
-                {practiceArea.name}
-              </p>
-              <p>Expert Attorneys: {practiceArea.attorneys}</p>
+              <Link to={`/practiceAreasDetails/${practiceArea?._id}`} className="text-2xl font-semibold mt-5 mb-2 cursor-pointer text-primary hover:underline duration-300 w-fit">
+                {practiceArea?.name}
+              </Link>
+              <p>Expert Attorneys: {practiceArea?.attorneys}</p>
               <ul className="pl-5 mt-5">
-                {practiceArea.contents.map((content, index) => (
+                {practiceArea?.contents.map((content, index) => (
                   <div key={index}>
                     <li className="list-item list-disc">{content}</li>
                   </div>
@@ -71,7 +71,7 @@ const LegalPracticeAreas = () => {
 
       {
         currentUser?.role!== "attorney" &&
-        <Link className="flex justify-center" to="/practiceAreas">
+        <Link className="flex justify-center w-fit mx-auto" to="/practiceAreas">
           <button className="text-center px-3 md:px-5 py-1 md:py-3 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white mt-5">
             Show more
           </button>
