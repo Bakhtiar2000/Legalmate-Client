@@ -11,43 +11,36 @@ const PrivacyPolicy = () => {
 
        <Breadcrumbs title="Privacy Policy" />
 
-       <div className='container py-20'>
-            <div className='container py-20'>
-                <div className='max-w-5xl mx-auto'>
-                    <h2 className='mb-2 text-center'> Please read these Privacy Policies carefully before using our website.</h2>
+        <div className='container py-20'>
+            <div className='max-w-5xl mx-auto'>
+                <h2 className='mb-5 text-xl text-center'> Please read these Privacy Policies carefully before using our website.</h2>
 
-                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>1. How We Use Your Information:</h4>
-                    <p className='mb-1'>a. We use your information to facilitate connections between clients and lawyers.</p>
-                    <p className='mb-5'>b. Users are responsible for maintaining the confidentiality of their account information.</p>
+                <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>1. How We Use Your Information:</h4>
+                <p className='mb-1'>a. We use your information to facilitate connections between clients and lawyers.</p>
+                <p className='mb-1'>b.  Personalized content and recommendations may be provided based on your preferences and usage patterns.</p>
+                <p className='mb-5'>c. We may use your information to improve our platform and services.</p>
 
-                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>2. User Responsibilities:</h4>
-                    <p className='mb-1'>a. Users must provide accurate and up-to-date information when creating an account.</p>
-                    <p className='mb-1'>b. Users are responsible for their interactions with lawyers on the platform.</p>
-                    <p className='mb-5'>c. Users must not engage in any activity that could harm, disable, or overburden LegalMate.</p>
+                <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>2. Information Sharing:</h4>
+                <p className='mb-1'>a. We do not sell, rent, or trade your personal information to third parties.</p>
+                <p className='mb-1'>b. Your information may be shared with lawyers on our platform to facilitate connections.</p>
+                <p className='mb-5'>c. We may disclose information if required by law or to protect our rights.</p>
 
-                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>3. Lawyer Responsibilities:</h4>
-                    <p className='mb-1'>a. Lawyers must provide accurate information about their expertise and qualifications.</p>
-                    <p className='mb-5'>b. Lawyers are responsible for the services they offer and must adhere to professional standards.</p>
+                <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>3. Security:</h4>
+                <p className='mb-1'>a. We employ industry-standard security measures to protect your information.</p>
+                <p className='mb-5'>b. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
 
-                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>4. Payment and Billing:</h4>
-                    <p className='mb-1'>a. LegalMate may charge fees for certain services. Users agree to pay all applicable fees.</p>
-                    <p className='mb-5'>b. Fees are non-refundable unless otherwise stated.</p>
+                <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>4. Cookies and Similar Technologies:</h4>
+                <p className='mb-1'>a. We use cookies and similar technologies to enhance your experience on our platform.</p>
+                <p className='mb-5'>b. You can manage your cookie preferences through your browser settings.</p>
 
-                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>5. Privacy:</h4>
-                    <p className='mb-5'>a. LegalMate takes user privacy seriously. Please refer to our Privacy Policy for details on how we collect, use, and disclose information.</p>
+                <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>5. Children's Privacy:</h4>
+                <p className='mb-1'>a. LegalMate is not intended for individuals under the age of 13. We do not knowingly collect personal information from children.</p>
+                <p className='mb-5'>b. LegalMate's content, logo, and trademarks are the property of LegalMate and may not be used without permission.</p>
 
-                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>6. Content and Intellectual Property:</h4>
-                    <p className='mb-1'>a. Users retain ownership of their content but grant LegalMate a license to use, display, and distribute it on the platform.</p>
-                    <p className='mb-5'>b. LegalMate's content, logo, and trademarks are the property of LegalMate and may not be used without permission.</p>
-
-                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>7. Termination:</h4>
-                    <p className='mb-5'>a. LegalMate reserves the right to suspend or terminate user accounts that violate these terms.</p>
-
-                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>8. Changes to Terms:</h4>
-                    <p>a. LegalMate may update these Terms and Conditions. Users will be notified of significant changes.</p>
-                </div>
+                <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>6. Changes to the Privacy Policy:</h4>
+                <p>a. We may update this Privacy Policy to reflect changes in our practices. Users will be notified of significant updates.</p>
             </div>
-       </div>
+        </div>
    </div>
     );
 };

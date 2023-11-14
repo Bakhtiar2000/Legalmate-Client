@@ -10,42 +10,29 @@ const CookiePolicy = () => {
             </Helmet>
 
             <Breadcrumbs title="Cookie Policy" />
- 
+
             <div className='container py-20'>
-                <div className='container py-20'>
-                    <div className='max-w-5xl mx-auto'>
-                        <h2 className='mb-2 text-center'> Please read these Cookie Policies carefully before using our website.</h2>
+                <div className='max-w-5xl mx-auto'>
+                    <h2 className='mb-5 text-xl text-center'> Please read these Cookie Policies carefully before using our website.</h2>
 
-                        <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>1. Use of the Platform:</h4>
-                        <p className='mb-1'>a. LegalMate provides an online platform to connect clients with lawyers. Users must use the platform for lawful purposes only.</p>
-                        <p className='mb-5'>b. Users are responsible for maintaining the confidentiality of their account information.</p>
+                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>1. What Are Cookies?</h4>
+                    <p className='mb-1'>a. Cookies are small text files that are stored on your device when you visit a website.</p>
+                    <p className='mb-5'>b. They help us enhance your user experience by remembering your preferences and actions.</p>
 
-                        <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>2. User Responsibilities:</h4>
-                        <p className='mb-1'>a. Users must provide accurate and up-to-date information when creating an account.</p>
-                        <p className='mb-1'>b. Users are responsible for their interactions with lawyers on the platform.</p>
-                        <p className='mb-5'>c. Users must not engage in any activity that could harm, disable, or overburden LegalMate.</p>
+                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>2. How We Use Cookies:</h4>
+                    <p className='mb-1'>a. We use cookies to provide you with a personalized experience and improve our services.</p>
+                    <p className='mb-1'>b. Cookies help us understand how you use our website, allowing us to make necessary adjustments.</p>
+                    <p className='mb-5'>c. Users must not engage in any activity that could harm, disable, or overburden LegalMate.</p>
 
-                        <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>3. Lawyer Responsibilities:</h4>
-                        <p className='mb-1'>a. Lawyers must provide accurate information about their expertise and qualifications.</p>
-                        <p className='mb-5'>b. Lawyers are responsible for the services they offer and must adhere to professional standards.</p>
+                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>3. Managing Your Cookie Preferences:</h4>
+                    <p className='mb-5'>a. You can manage your cookie preferences through your browser settings.</p>
 
-                        <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>4. Payment and Billing:</h4>
-                        <p className='mb-1'>a. LegalMate may charge fees for certain services. Users agree to pay all applicable fees.</p>
-                        <p className='mb-5'>b. Fees are non-refundable unless otherwise stated.</p>
+                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>4. Third-Party Cookies:</h4>
+                    <p className='mb-1'>a. LegalMate may use third-party services that use cookies. These third parties have their own privacy policies.</p>
+                    <p className='mb-5'>b. Fees are non-refundable unless otherwise stated.</p>
 
-                        <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>5. Privacy:</h4>
-                        <p className='mb-5'>a. LegalMate takes user privacy seriously. Please refer to our Privacy Policy for details on how we collect, use, and disclose information.</p>
-
-                        <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>6. Content and Intellectual Property:</h4>
-                        <p className='mb-1'>a. Users retain ownership of their content but grant LegalMate a license to use, display, and distribute it on the platform.</p>
-                        <p className='mb-5'>b. LegalMate's content, logo, and trademarks are the property of LegalMate and may not be used without permission.</p>
-
-                        <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>7. Termination:</h4>
-                        <p className='mb-5'>a. LegalMate reserves the right to suspend or terminate user accounts that violate these terms.</p>
-
-                        <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>8. Changes to Terms:</h4>
-                        <p>a. LegalMate may update these Terms and Conditions. Users will be notified of significant changes.</p>
-                    </div>
+                    <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>5. Changes to the Cookie Policy:</h4>
+                    <p>va. We may update this Cookie Policy to reflect changes in our practices. Users will be notified of significant updates.</p>
                 </div>
             </div>
         </div>

@@ -13,7 +13,7 @@ const TermsAndConditions = () => {
  
             <div className='container py-20'>
                 <div className='max-w-5xl mx-auto'>
-                    <h2 className='mb-2 text-center'> Please read these Terms and Conditions carefully before using our website.</h2>
+                    <h2 className='mb-5 text-xl text-center'> Please read these Terms and Conditions carefully before using our website.</h2>
 
                     <h4 className='text-lg lg:text-xl font-semibold mb-2 text-primary'>1. Use of the Platform:</h4>
                     <p className='mb-1'>a. LegalMate provides an online platform to connect clients with lawyers. Users must use the platform for lawful purposes only.</p>
