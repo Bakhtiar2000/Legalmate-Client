@@ -109,7 +109,7 @@ const CaseDiv = ({ singleCase }) => {
                 <div>
                     <p className='font-semibold text-lg'>{writer}</p>
                     <p>{location}</p>
-                    <p className='text-sm'>Searching specialist in {practice_area}</p>
+                    <p className='text-sm'>Searching specialist in {practice_area} Law</p>
                 </div>
                 <div>
 

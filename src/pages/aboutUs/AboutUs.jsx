@@ -8,6 +8,7 @@ import useAxiosSecure from '../../hooks/useAxios';
 import useOurReviews from '../../hooks/useOurReviews';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const AboutUs = () => {
     const [faqData, setFaqData] = useState([]);
@@ -41,6 +42,15 @@ const AboutUs = () => {
         }
         // const newReview = [...ourReviewsData, reviewData]
         console.log(reviewData);
+        if(currentUser?.status!== "approved"){
+            toast.error("You cannot post reviews yet", {
+                position: "top-center",
+                autoClose: 3000,
+                theme: "light",
+            })
+            reset()
+            return;
+        }
         axiosSecure.post('/clientReview', reviewData)
             .then(res => {
                 console.log(res);
@@ -100,13 +110,15 @@ const AboutUs = () => {
                     {/* Write a review */}
                     <h2 className='text-4xl text-primary font-semibold mb-5 mt-10 mx-auto'>Let us know what you think about us</h2>
                     <form className='mt-5' onSubmit={handleSubmit(onSubmit)}>
-                        <textarea
-                            {...register("review", { required: true })}
+                        <div className=' mb-1 sm:mb-3'>
+                            <textarea
+                                {...register("review", { required: true })}
 
-                            placeholder="share your experience with us..."
-                            className='w-full text-black bg-white h-20 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
-                        />
-                        {errors.review && <span className='text-sm text-red-500 ml-1'>Review is required</span>}
+                                placeholder="share your experience with us..."
+                                className='w-full text-black bg-white h-20 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary'
+                            />
+                            {errors.review && <span className='text-sm text-red-500 ml-1'>Review is required</span>}
+                        </div>
                         {
                             user ? <input
                                 type='submit'
