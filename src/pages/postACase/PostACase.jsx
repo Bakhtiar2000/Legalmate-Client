@@ -75,7 +75,7 @@ const PostACase = () => {
                                 {
                                     Array.from(new Set(practiceAreasData.map(area => area.name))).map((name, index) => (
                                         <option key={index} value={name}>
-                                            {name}
+                                            {name} Law
                                         </option>
                                     ))
                                 }

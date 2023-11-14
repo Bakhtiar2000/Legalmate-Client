@@ -39,31 +39,40 @@ const AttorneyDiv = ({attorney}) => {
                 {/* name and practice area */}
                 <div className='sm:flex items-end gap-3 '>
                     <Link to={`/attorney_details/${_id}`} className="hover:text-primary font-semibold text-2xl cursor-pointer duration-300 w-fit"> {name} </Link>
-                    { practiceArea && <p>({practiceArea} Specialist)</p>}
+                    { practiceArea && <p>({practiceArea} Law Specialist)</p>}
                 </div>
                 <p>{presentEmployment[0]?.position} at {presentEmployment[0]?.company}</p>
                 <p className="text-sm">{location}</p>
 
                 {/* rating */}
                 {
-                    reviews.length!==0 &&
+                    reviews.length!==0 ?
                     <div className="flex items-center gap-2 mt-2 mb-5">
-                    <Rating
-                    className="max-w-[110px]"
-                    readOnly
-                    value={reviews.length > 0 && averageRating}
-                    itemStyles={myStyles}
-                    />
-                         <p className="font-bold text-orange-500">{averageRating.toFixed(1)}</p>
-                    <span className="text-gray">({reviews.length} reviews)</span>
-                </div>
+                        <Rating
+                        className="max-w-[110px]"
+                        readOnly
+                        value={reviews.length > 0 && averageRating}
+                        itemStyles={myStyles}
+                        />
+                            <p className="font-bold text-orange-500">{averageRating.toFixed(1)}</p>
+                        <span className="text-gray">({reviews.length} reviews)</span>
+                    </div>:
+                    <div className='flex items-center gap-2 mt-2 mb-5'>
+                        <Rating
+                        className="max-w-[110px]"
+                        readOnly
+                        value={0}
+                        itemStyles={myStyles}
+                        />
+                        <span className="text-gray">(no reviews yet)</span>
+                    </div>    
                 }
 
                 {
                     license.length!== 0 && 
                     < p className='text-orange-500'>Licensed for {currentYear - license.acquired_year} years</p>
                 }
-                <p>{about}</p>
+                <p className='line-clamp-3'>{about}</p>
                 </div>
 
             {/* TODO: add link address */}
