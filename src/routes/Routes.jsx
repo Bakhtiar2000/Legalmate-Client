@@ -27,6 +27,7 @@ import AllReviews from '../pages/allReviews/allReviews';
 import TermsAndConditions from '../pages/termsAndConditions/TermsAndConditions';
 import CookiePolicy from '../pages/cookiePolicy/CookiePolicy';
 import PrivacyPolicy from '../pages/privacyPolicy/PrivacyPolicy';
+import AwarenessDetails from '../pages/awareness/AwarenessDetails';
 
 const baseURL= "https://legalmate-server.vercel.app/"
 
@@ -69,6 +70,11 @@ const router= createBrowserRouter([
                 {
                     path: "/awareness",
                     element: <Awareness></Awareness>
+                },
+                {
+                    path: "/awarenessDetails/:id",
+                    element: <AwarenessDetails></AwarenessDetails>,
+                    loader: ({ params }) => fetch(`${baseURL}awareness/id/${params.id}`)
                 },
                 {
                     path: "/login",

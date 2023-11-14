@@ -41,7 +41,7 @@ const LegalPracticeAreas = () => {
         }}
         modules={[Navigation]}
       >
-        <div>
+        <div className="h-max">
         {
           practiceAreasData?.map((practiceArea) => (
             <SwiperSlide key={practiceArea._id} className="rounded-lg border border-primary p-5 w-80 mx-auto duration-300 h-full">

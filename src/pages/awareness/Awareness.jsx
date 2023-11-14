@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { FaRegClock } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 const Awareness = () => {
     const [ awarenessData, setAwarenessData ]= useState([])
@@ -39,8 +40,8 @@ const Awareness = () => {
                                     <p className='text-blue-500 hover:underline cursor-pointer'>{awareness?.practiceArea}</p>
                                     <p className='flex justify-center gap-2 items-center text-sm'><FaRegClock /> {awareness?.read_time} min read</p>
                                 </div>
-                                <p className='text-xl md:text-2xl text-primary mt-2'>{awareness?.title}</p>
-                                <p className='line-clamp-3 mt-2'>{awareness?.blog}</p>
+                                <Link to={`/awarenessDetails/${awareness?._id}`} className='text-xl md:text-2xl text-primary hover:underline mt-2'>{awareness?.title}</Link>
+                                <p className='mt-2'>{awareness?.blog}</p>
                                 
                             </div>)
                     }
