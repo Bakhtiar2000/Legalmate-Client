@@ -22,8 +22,9 @@ import useAttorneys from "../../hooks/useAttorneys";
 
 const AttorneyDetailsBody = ({ singleAttorney }) => {
     const navigate = useNavigate();
-    const { _id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, reviews, awards, email } = singleAttorney
-    const presentEmployment= experience.filter(exp=> exp.end_year.toLowerCase() === "present")
+    const { _id, name, img, about, practiceArea, location, hourly_rate, license, experience, education, reviews, awards, email } = singleAttorney;
+    console.log(experience);
+    const presentEmployment= experience.filter(exp=> exp.end_year === "Present")
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
     const currentYear = new Date().getFullYear();

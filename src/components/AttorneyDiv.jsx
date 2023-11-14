@@ -6,7 +6,7 @@ import "@smastrom/react-rating/style.css";
 
 const AttorneyDiv = ({attorney}) => {
     const {_id, name, img, about, practiceArea, location, license, experience, reviews }= attorney
-    const presentEmployment= experience.filter(exp=> exp?.end_year === "present")
+    const presentEmployment= experience.filter(exp=> exp?.end_year === "Present")
     const totalRating = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
     const averageRating = totalRating / reviews.length;
     const currentYear = new Date().getFullYear();

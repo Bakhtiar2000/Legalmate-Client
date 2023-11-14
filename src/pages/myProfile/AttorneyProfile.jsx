@@ -37,7 +37,7 @@ const AttorneyProfile = () => {
     if (attorneyLoading || currentAttorneyData === null) return <PageLoader />
 
     const { _id, email, name, img, about, practiceArea, location, hourly_rate, license, experience, education, awards, documents } = currentAttorneyData
-    const presentEmployment= experience.filter(exp=> exp.end_year.toLowerCase() === "present")
+    const presentEmployment= experience.filter(exp=> exp.end_year === "Present")
     console.log(presentEmployment);
     const newEducations = [...education, { subject: watch('subject'), institution: watch('institution'), start_year: watch('edu_start_year'), end_year: watch('edu_end_year') }];
     const newExperience = [...experience, { company: watch('company'), position: watch('position'), start_year: watch('exp_start_year'), end_year: watch('exp_end_year') }];

@@ -55,7 +55,7 @@ const AllReviewsTableRow = ({ ReviewsData , index ,refetch }) => {
                     {
                         img ?
                             <img className='w-10 h-10 rounded-full object-cover object-center mx-auto' src={img} alt={name} /> :
-                            <p className='w-10 h-10 bg-primary text-dark text-xl flex items-center justify-center font-bold rounded-full uppercase shadow-lg mx-auto'>{name.slice(0, 2)}</p>
+                            <p className='w-10 h-10 bg-primary text-dark text-xl flex items-center justify-center font-bold rounded-full uppercase shadow-lg mx-auto'>{name?.slice(0, 2)}</p>
                     }
                 </td>
                 <td>

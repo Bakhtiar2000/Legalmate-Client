@@ -9,42 +9,42 @@ import useOurReviews from '../../hooks/useOurReviews';
 
 const Reviews = () => {
     const [ourReviewsData] = useOurReviews();
-    const [review , setReview]=useState()
+    const [review, setReview] = useState()
     useEffect(() => {
-     const approvedReview=ourReviewsData.filter(data=>data.status==="approved")
-    //  console.log(approvedReview);
-     setReview(approvedReview)
+        const approvedReview = ourReviewsData.filter(data => data.status === "approved")
+        //  console.log(approvedReview);
+        setReview(approvedReview)
     }, [ourReviewsData]);
     return (
         <section className='mx-2 pb-20'>
-            <SectionTitle  title="Client" redTitle="Reviews" para="Hear what our clients have to say" />
+            <SectionTitle title="Client" redTitle="Reviews" para="Hear what our clients have to say" />
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
+                    delay: 5000,
+                    disableOnInteraction: false,
                 }}
                 pagination={{
-                clickable: true,
+                    clickable: true,
                 }}
                 modules={[Autoplay, Pagination]}
                 className="mySwiper"
             >
                 {
-                    review?.map(review=>
+                    review?.map(review =>
                         <SwiperSlide key={review._id}>
                             <div className='duration-300 h-72 bg-lightDark rounded-lg p-3 md:py-5 md:px-8 border border-slate-500 shadow-lg max-w-4xl mx-auto'>
-                               
-                               <div className='flex items-center gap-5 my-5'>
-                                <img className='w-16 md:w-20 h-16 md:h-20 object-cover rounded-full mb-3' src={review.img} alt="" />
+
+                                <div className='flex items-center gap-5 my-5'>
+                                    <img className='w-16 md:w-20 h-16 md:h-20 object-cover rounded-full mb-3' src={review.img} alt="" />
                                     <div>
                                         <p className='text-xl md:text-2xl font-semibold md:mb-2'>{review.name}</p>
                                         <p className='text-slate-500'>{review.job}</p>
                                     </div>
-                               </div>
+                                </div>
 
-                               <p className='mb-5 italic text-base lg:text-xl'>"{review.review}"</p>
+                                <p className='mb-5 italic text-base lg:text-xl'>"{review.review}"</p>
                             </div>
                         </SwiperSlide>
                     )

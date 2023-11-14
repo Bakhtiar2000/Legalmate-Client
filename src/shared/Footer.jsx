@@ -10,7 +10,7 @@ const Footer = () => {
                 <div className='mb-10 md:mb-0'>
                   <img src={logo} alt="" />
                   <p className='text-primary text-2xl -mt-3'>Legalmate</p>
-                  <p>Serving Legal support since 2012</p>
+                  <p>One stop 360° solution</p>
                   <div className="flex gap-3 items-center mt-5">
                     <a href="https:/www.facebook.com/" target="_blank" className="flex justify-center items-center rounded-full border border-primary w-8 h-8 text-primary hover:bg-primary hover:text-dark duration-300 cursor-pointer">
                       <FaFacebookF />

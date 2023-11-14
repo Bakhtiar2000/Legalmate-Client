@@ -6,15 +6,18 @@ import useAuth from '../../hooks/useAuth';
 import useCurrentClient from '../../hooks/useCurrentClient';
 import useAxiosSecure from '../../hooks/useAxios';
 import useOurReviews from '../../hooks/useOurReviews';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const AboutUs = () => {
     const [faqData, setFaqData] = useState([]);
-    const { currentUser } = useAuth();
+    const { currentUser, user } = useAuth();
+    console.log(user)
     const [ourReviewsData] = useOurReviews();
     const [axiosSecure] = useAxiosSecure();
     const [currentClientData, clientLoading, refetch] = useCurrentClient();
     console.log(ourReviewsData)
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit,reset, formState: { errors } } = useForm();
 
 
     useEffect(() => {
@@ -42,6 +45,15 @@ const AboutUs = () => {
             .then(res => {
                 console.log(res);
                 if (res.status === 200) {
+                    Swal.fire({
+                        title: 'Review Posted successfully',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
                     reset()
                 }
             })
@@ -89,15 +101,21 @@ const AboutUs = () => {
                     <h2 className='text-4xl text-primary font-semibold mb-5 mt-10 mx-auto'>Let us know what you think about us</h2>
                     <form className='mt-5' onSubmit={handleSubmit(onSubmit)}>
                         <textarea
-                            {...register("review")}
+                            {...register("review", { required: true })}
+
                             placeholder="share your experience with us..."
                             className='w-full text-black bg-white h-20 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                         />
-                        <input
-                            type='submit'
-                            value="Post Review"
-                            className="w-fit h-fit text-center px-5 py-2 bg-secondary hover:bg-secondary/60 duration-300 rounded text-white cursor-pointer"
-                        />
+                        {errors.review && <span className='text-sm text-red-500 ml-1'>Review is required</span>}
+                        {
+                            user ? <input
+                                type='submit'
+                                value="Post Review"
+                                className="w-fit h-fit text-center px-5 py-2 bg-secondary hover:bg-secondary/60 duration-300 rounded text-white cursor-pointer"
+                            /> :
+                                <Link to="/login"  className="w-fit h-fit text-center px-5 py-2 bg-secondary hover:bg-secondary/60 duration-300 rounded text-white cursor-pointer">Post Review</Link>
+                        }
+
                     </form>
                 </div>
             </div>
