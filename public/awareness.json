@@ -1,6 +1,6 @@
 [
     {
-        "_id": 1,
+        
         "video": "https://www.youtube.com/embed/JVApp-4ncEw?si=-hkLtpAZYJ047Kl7",
         "thumbnail": "https://i.ibb.co/FwQjML8/Screenshot-2023-11-14-165412.png",
         "title": "Income Tax Law | Law & Order",
@@ -9,7 +9,7 @@
         "read_time": 7
     },
     {
-        "_id": 2,
+        
         "video": "https://www.youtube.com/embed/OYt-6clnZWM?si=cy-RwEy2kM7nbnB8",
         "thumbnail": "https://i.ibb.co/dM07FXm/Screenshot-2023-11-14-155642.png",
         "title": "Divorce Law in Bangladesh",
@@ -18,7 +18,7 @@
         "read_time": 3
     },
     {
-        "_id": 3,
+        
         "video": "https://www.youtube.com/embed/NVUVBTAoIJE?si=NAakHTTW5p3GFfkc",
         "thumbnail": "https://i.ibb.co/jkKjHdq/Screenshot-2023-11-14-165929.png",
         "title": "Insolvency vs Bankruptcy",
@@ -27,7 +27,7 @@
         "read_time": 5
     },
     {
-        "_id": 4,
+        
         "video": "https://www.youtube.com/embed/-56WZRlr3Ag?si=HymskXSZ5hp76We3",
         "thumbnail": "https://i.ibb.co/nMYBNgH/Screenshot-2023-11-14-170401.png",
         "title": "Termination | Bangladesh Labour Law",
@@ -36,7 +36,7 @@
         "read_time": 3
     },
     {
-        "_id": 5,
+        
         "video": "https://www.youtube.com/embed/_YmFtrhbo5Q?si=LTHL01vjlsfB6f_r",
         "thumbnail": "https://i.ibb.co/tQXtytf/Screenshot-2023-11-14-171134.png",
         "title": "Immigration Law in Bangladesh",
@@ -45,7 +45,7 @@
         "read_time": 10
     },
     {
-        "_id": 6,
+        
         "video": "https://www.youtube.com/embed/HchAeAVP8jQ?si=P1dzVjOGEOfVT4sI",
         "thumbnail": "https://i.ibb.co/k5f3Mk3/Screenshot-2023-11-14-171607.png",
         "title": "Private Limited Company Vs Public Limited Company",
