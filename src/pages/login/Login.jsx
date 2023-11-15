@@ -8,12 +8,45 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   
-  const { signIn, setLoading, googleSignIn } = useContext(AuthContext)
+  const { signIn, setLoading, resetPassword } = useContext(AuthContext)
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
   const [type, setType] = useState('password');
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+      // reset password
+      const handlePassReset = () => {
+        const email = watch('email');
+        if (errors.email || email === '') {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Write your email!',
+                text: '',
+                showConfirmButton: false,
+                timer: 2500
+            })
+        }
+
+        resetPassword(email)
+            .then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Check your email!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setLoading(false)
+            })
+            .catch(error => {
+                setLoading(false)
+                toast.error(error.message, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    theme: "light",
+                });
+            })
+    }
 
   const onSubmit = data => {
     signIn(data.email, data.password)
@@ -92,6 +125,9 @@ const Login = () => {
               </div>
             </div>
             {errors.password && <span className='text-sm text-red-400 ml-1'>Password is required</span>}
+
+            {/* Password reset */}
+            <div onClick={handlePassReset} className='text-right text-sm hover:text-blue-500 hover:underline block cursor-pointer duration-300 z-30 mt-1'>Forgot password?</div>
 
             {/* Submit */}
             <input 
