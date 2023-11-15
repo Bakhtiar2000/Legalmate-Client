@@ -18,7 +18,7 @@ const Profile = () => {
             }
             {/* Dropdown */}
             <div
-                className="absolute right-0 top-28 max-w-xs min-w-[200px] bg-white rounded-lg border-b-4 border-dark origin-top-right transition-all duration-300 ease-in-out group-hover:top-[45px] overflow-hidden invisible group-hover:visible opacity-0 group-hover:opacity-100">
+                className="absolute right-0 top-28 max-w-xs min-w-[200px] bg-white rounded-lg border-b-4 border-dark origin-top-right transition-all duration-300 ease-in-out group-hover:top-[50px] overflow-hidden invisible group-hover:visible opacity-0 group-hover:opacity-100">
 
                 <ul className="flex flex-col text-dark">
                 {

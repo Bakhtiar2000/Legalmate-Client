@@ -117,6 +117,7 @@ const AttorneyProfile = () => {
                 if (res.status === 200) {
                     refetch();
                     reset()
+                    setIsDocumentModalOpen(false)
                 }
             })
             .catch(error => {
@@ -266,9 +267,9 @@ const AttorneyProfile = () => {
                         {/* Name, practice area, location, rating */}
                         <div>
                             <p className='text-4xl'>{name}</p>
-                            <p className="lg:text-xl md:mt-2">{practiceArea} lawyer from {location}</p>
+                            <p className="lg:text-xl md:mt-2">{practiceArea} {location && "lawyer from"} {location}</p>
                             {
-                                presentEmployment && <p className="lg:text-xl md:mt-2">{presentEmployment[0]?.position} at {presentEmployment[0]?.company}</p>
+                                presentEmployment && <p className="lg:text-xl md:mt-2">{presentEmployment[0]?.position} {presentEmployment[0] && "at"} {presentEmployment[0]?.company}</p>
                             }
                             {/* <p className="lg:text-xl md:mt-2">Hourly rate: <span className="text-orange-500">{hourly_rate} BDT</span></p> */}
 
@@ -276,7 +277,7 @@ const AttorneyProfile = () => {
 
                         {/* License information */}
                         <form onSubmit={handleSubmit(onLicenseSubmit)} className="relative group bg-lightDark/50 rounded-lg px-5 py-3 lg :ml-5 mt-5 lg:mt-0 border border-dashed border-white h-fit w-fit">
-                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {currentYear - license?.acquired_year} {license?.licensed_for && "years"}</p>
+                            <p className="text-2xl border-b pb-3 border-dark mb-5">Licensed for {license?.acquired_year && currentYear - license?.acquired_year} {license && "years"}</p>
 
                             <div className="flex items-center gap-5 duration-300">
                                 <div>
@@ -535,7 +536,7 @@ const AttorneyProfile = () => {
                                 <input
                                     {...register("location")}
                                     defaultValue={location}
-                                    placeholder='e.g. Dhaka, Bangladesh'
+                                    placeholder='e.g. Dhaka'
                                     className='w-full border  text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                                 />
                             </div>

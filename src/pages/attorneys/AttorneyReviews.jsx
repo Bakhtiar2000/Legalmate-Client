@@ -132,7 +132,7 @@ const AttorneyReviews = ({ paymentSuccess, reviews, email, name }) => {
 
                             <button
                                 onClick={() => setIsReviewClicked(true)}
-                                className="mt-2 w-max text-center px-3 py-1 bg-secondary hover:bg-secondary/60 duration-300 rounded text-white cursor-pointer"
+                                className={`mt-2 w-max text-center px-3 py-1 ${paymentSuccess? "bg-green-600 hover:bg-green-600/60" : "bg-secondary hover:bg-secondary/60"} duration-300 rounded text-white cursor-pointer`}
                                 disabled={!paymentSuccess}
                             >
                                 Write a Review

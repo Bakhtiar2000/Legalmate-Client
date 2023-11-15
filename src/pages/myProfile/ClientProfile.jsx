@@ -147,7 +147,7 @@ const ClientProfile = () => {
                             <input
                                 {...register("location")}
                                 defaultValue={location}
-                                placeholder='e.g. Dhaka, Bangladesh'
+                                placeholder='e.g. Dhaka'
                                 className='w-full border  text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 sm:mb-3'
                             />
                         </div>
