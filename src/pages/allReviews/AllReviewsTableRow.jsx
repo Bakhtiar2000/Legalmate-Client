@@ -93,7 +93,7 @@ const AllReviewsTableRow = ({ ReviewsData , index ,refetch }) => {
                         setIsModalOpen={setIsCaseOpen}
                         handleModal={handleCaseModal}
                     >
-                        <h3 className="font-bold text-secondary text-xl mb-2">Case Post</h3>
+                        <h3 className="font-bold text-secondary text-xl mb-2">Review</h3>
                         <p className='border-t border-dark mb-3'></p>
                         <p className='text-black text-left md:text-lg'>{review}</p>
                     </CustomModal>
