@@ -18,7 +18,7 @@ const LegalPracticeAreas = () => {
       <SectionTitle
         title="Our"
         redTitle="Practice Areas"
-        para="Find attorneys from your designated legal practice area"
+        para="Find lawyers from your designated legal practice area"
       />
 
       <Swiper
@@ -55,7 +55,7 @@ const LegalPracticeAreas = () => {
               <Link to={`/practiceAreasDetails/${practiceArea?._id}`} className="text-2xl font-semibold mt-5 mb-2 cursor-pointer text-primary hover:underline duration-300 w-fit">
                 {practiceArea?.name}
               </Link>
-              <p>Expert Attorneys: {practiceArea?.attorneys}</p>
+              <p>Expert Lawyers: {practiceArea?.attorneys}</p>
               <ul className="pl-5 mt-5">
                 {practiceArea?.contents.map((content, index) => (
                   <div key={index}>

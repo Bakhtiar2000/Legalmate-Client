@@ -7,6 +7,7 @@ import { AiOutlineClear } from 'react-icons/ai';
 import { BsFillPersonFill } from 'react-icons/bs';
 import usePracticeAreas from '../../hooks/usePracticeAreas';
 import { useForm } from 'react-hook-form';
+import Pagination from '../../components/Pagination';
 
 const AttorneyFilter = () => {
     const [attorneysData, loading] = useAttorneys();
@@ -17,6 +18,9 @@ const AttorneyFilter = () => {
     const [name, setName] = useState();
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+    const attorneysPerPage = 8;
+
     const onSubmit = data => {
         setName(data.name)
         setLocation(data.location)
@@ -38,6 +42,12 @@ const AttorneyFilter = () => {
 
         setFilteredData(filter);
     }, [name, location, practice_area, loading]);
+ 
+     // Pagination Logic
+     const indexOfLastAttorney = currentPage * attorneysPerPage;
+     const indexOfFirstAttorney = indexOfLastAttorney - attorneysPerPage;
+     const currentAttorneys = filteredData.slice(indexOfFirstAttorney, indexOfLastAttorney);
+     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div className='container py-20'>
@@ -111,8 +121,17 @@ const AttorneyFilter = () => {
             {
                 filteredData.length!==0?
                 filteredData?.map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>):
-                <p className="py-4 px-6 max-w-5xl mx-auto sm:text-lg text-center bg-lightDark rounded-lg">☹ No attorney Found!</p>
+                <p className="py-4 px-6 max-w-5xl mx-auto sm:text-lg text-center bg-lightDark rounded-lg">☹ No lawyer Found!</p>
             }
+            {/* {
+                filteredData.length>attorneysPerPage &&
+                <Pagination
+                attorneysPerPage={attorneysPerPage}
+                totalAttorneys={filteredData.length}
+                paginate={paginate}
+                currentPage={currentPage}
+            />
+            } */}
         </div>
     );
 };

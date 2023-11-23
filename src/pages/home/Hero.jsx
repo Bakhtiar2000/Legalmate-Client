@@ -27,7 +27,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-60"></div>
                 <div className='absolute top-1/4 md:top-1/2 max-w-6xl px-3 md:px-5 lg:px-10'>
                     <h2 className='text-3xl md:text-4xl lg:text-7xl text-secondary font-semibold mb-3 lg:mb-5'>Welcome to Legalmate</h2>
-                    <p className='text-sm md:text-base lg:text-xl mb-5 lg:mb-8'> Where you gain access to a network of expert attorneys in various legal domains. Whether you're dealing with a personal injury, a family matter, or a business dispute, our platform connects you with top-tier legal professionals who can guide you through the maze of legal intricacies. LegalMate is your trusted partner in finding the right attorney for your unique needs.</p>
+                    <p className='text-sm md:text-base lg:text-xl mb-5 lg:mb-8'> Where you gain access to a network of expert lawyers in various legal domains. Whether you're dealing with a personal injury, a family matter, or a business dispute, our platform connects you with top-tier legal professionals who can guide you through the maze of legal intricacies. LegalMate is your trusted partner in finding the right lawyer for your unique needs.</p>
                     <Link to="/contact"><button className='text-center px-3 md:px-5 lg:px-6 py-1 md:py-3 lg:py-4 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white lg:text-xl'>Contact us</button></Link>
                 </div>
             </div>
@@ -38,7 +38,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-60"></div>
                 <div className='absolute top-1/4 md:top-1/2 max-w-6xl px-3 md:px-5 lg:px-10'>
                     <h2 className='text-3xl md:text-4xl lg:text-7xl text-secondary font-semibold mb-3 lg:mb-5'>Welcome to Legalmate</h2>
-                    <p className='text-sm md:text-base lg:text-xl mb-5 lg:mb-8'> Where we believe that personalized legal support is essential for your peace of mind. Legal matters are not one-size-fits-all. That's why our platform is dedicated to matching you with an attorney who understands your specific circumstances. We know that your legal needs are as unique as you are, and our mission is to ensure that you receive the tailored assistance you deserve.</p>
+                    <p className='text-sm md:text-base lg:text-xl mb-5 lg:mb-8'> Where we believe that personalized legal support is essential for your peace of mind. Legal matters are not one-size-fits-all. That's why our platform is dedicated to matching you with an lawyer who understands your specific circumstances. We know that your legal needs are as unique as you are, and our mission is to ensure that you receive the tailored assistance you deserve.</p>
                     <Link to="/contact"><button className='text-center px-3 md:px-5 lg:px-6 py-1 md:py-3 lg:py-4 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white lg:text-xl'>Contact us</button></Link>
                 </div>
            </div>
@@ -49,7 +49,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-60"></div>
                 <div className='absolute top-1/4 md:top-1/2 max-w-6xl px-3 md:px-5 lg:px-10'>
                     <h2 className='text-3xl md:text-4xl lg:text-7xl text-secondary font-semibold mb-3 lg:mb-5'>Welcome to Legalmate</h2>
-                    <p className='text-sm md:text-base lg:text-xl mb-5 lg:mb-8'> Your convenient and confidential gateway to legal solutions. We understand the importance of privacy when it comes to legal matters. With just a few clicks, you can find the right attorney, schedule appointments, share documents, and communicate securely. LegalMate is your trusted partner, ensuring that your legal journey is as stress-free as possible.</p>
+                    <p className='text-sm md:text-base lg:text-xl mb-5 lg:mb-8'> Your convenient and confidential gateway to legal solutions. We understand the importance of privacy when it comes to legal matters. With just a few clicks, you can find the right lawyer, schedule appointments, share documents, and communicate securely. LegalMate is your trusted partner, ensuring that your legal journey is as stress-free as possible.</p>
                     <Link to="/contact"><button className='text-center px-3 md:px-5 lg:px-6 py-1 md:py-3 lg:py-4 bg-secondary hover:bg-secondary/60 duration-300 rounded-lg text-white lg:text-xl'>Contact us</button></Link>
                 </div>
            </div>

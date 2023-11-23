@@ -9,10 +9,10 @@ const AttorneyDetails = () => {
     return (
         <div>
              <Helmet>
-                <title>Attorney Details - Legalmate</title>
+                <title>Lawyer Details - Legalmate</title>
             </Helmet>
 
-            <Breadcrumbs title="Attorney Details" />
+            <Breadcrumbs title="Lawyer Details" />
 
             <AttorneyDetailsBody singleAttorney={singleAttorney}></AttorneyDetailsBody>
         </div>

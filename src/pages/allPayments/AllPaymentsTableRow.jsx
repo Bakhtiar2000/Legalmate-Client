@@ -12,11 +12,11 @@ const AllPaymentsTableRow = ({index, payment, refetch}) => {
                         sender_role === "client"?
                             <div className='flex justify-center items-center gap-2'>
                                 <Link to={`/client_details/${sender_id}`} className="hover:text-primary duration-300 hover:underline cursor-pointer">{sender_name}</Link>
-                                <p>({sender_role})</p>
+                                <p>(Client)</p>
                             </div>:
                             <div className='flex justify-center items-center gap-2'>
                                 <Link to={`/attorney_details/${sender_id}`} className="hover:text-primary duration-300 hover:underline cursor-pointer">{sender_name}</Link>
-                                <p>({sender_role})</p>
+                                <p>(Lawyer)</p>
                             </div>
                     }
                 </td>
@@ -26,11 +26,11 @@ const AllPaymentsTableRow = ({index, payment, refetch}) => {
                         target_role === "client"?
                         <div className='flex justify-center items-center gap-2'>
                                 <Link to={`/client_details/${target_id}`} className="hover:text-primary duration-300 hover:underline cursor-pointer">{target_name}</Link>
-                                <p>({target_role})</p>
+                                <p>(Client)</p>
                             </div>:
                             <div className='flex justify-center items-center gap-2'>
                                 <Link to={`/attorney_details/${target_id}`} className="hover:text-primary duration-300 hover:underline cursor-pointer">{target_name}</Link>
-                                <p>({target_role})</p>
+                                <p>(Lawyer)</p>
                             </div>
                     }
                 </td>

@@ -23,8 +23,8 @@ const TopRatedAttorneys = () => {
     <section className="container mb-20">
       <SectionTitle
         title="Top Rated"
-        redTitle="Attorneys"
-        para="Meet expert attorneys from across the country."
+        redTitle="Lawyers"
+        para="Meet expert lawyers from across the country."
       />
       {
         sortedAttorneys?.slice(0,3).map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>)

@@ -160,7 +160,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                         {/* Name, practice area, location, rating */}
                         <div>
                             <p className='text-4xl'>{name}</p>
-                            <p className="lg:text-xl md:mt-2">{practiceArea} attorney from {location}</p>
+                            <p className="lg:text-xl md:mt-2">{practiceArea} lawyer from {location}</p>
                             {
                                 presentEmployment && <p className="lg:text-xl md:mt-2">{presentEmployment[0]?.position} at {presentEmployment[0]?.company}</p>
                             }

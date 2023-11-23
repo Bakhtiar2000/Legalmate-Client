@@ -14,7 +14,7 @@ const Stats = () => {
                     <div className='text-center'>
                     <img className='rounded-full w-16 h-16 mx-auto bg-white p-1' src="https://www.svgrepo.com/show/414229/write.svg" alt="" />
                         <p className='font-bold text-2xl mt-3'>200+</p>
-                        <p className='text-primary text-xl'>Expert Attorneys</p>
+                        <p className='text-primary text-xl'>Expert Lawyers</p>
                     </div>
                 </div>
             </div>

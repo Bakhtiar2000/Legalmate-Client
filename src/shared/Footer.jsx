@@ -28,7 +28,7 @@ const Footer = () => {
                   <header className='text-xl text-primary mb-1'>Quick Links</header> 
                   <p className='border rounded border-primary mb-2 w-16'></p>
                   <Link to="/practiceAreas" className="link link-hover">Practice areas</Link> 
-                  <Link to="/attorneys" className="link link-hover">Our attorneys</Link> 
+                  <Link to="/attorneys" className="link link-hover">Our lawyers</Link> 
                   <Link to="/aboutUs" className="link link-hover">About us</Link> 
                   <Link to="/contact" className="link link-hover">Contact</Link>
                 </div> 

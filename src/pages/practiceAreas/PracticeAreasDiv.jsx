@@ -13,7 +13,7 @@ const PracticeAreasDiv = ({practiceArea}) => {
              <Link to={`/practiceAreasDetails/${_id}`} className="text-2xl font-semibold mt-5 mb-2 cursor-pointer text-primary hover:underline duration-300 w-fit">
                 {name} Law
               </Link>
-              <p>Expert Attorneys: {attorneys}</p>
+              <p>Expert Lawyers: {attorneys}</p>
               <ul className="pl-5 mt-5">
                 {contents.map((content, index) => (
                   <div key={index}>

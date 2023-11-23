@@ -70,7 +70,7 @@ const Header = () => {
 
                 {/* Toggle Icon */}
                 <label className="btn btn-circle swap swap-rotate bg-transparent text-white hover:text-black">
-                    <input onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} type="checkbox" />  
+                    <input onClick={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)} type="checkbox" checked={isMenuOpen}  />  
 
                     {/* hamburger icon */}
                     <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
@@ -83,7 +83,7 @@ const Header = () => {
                 {
                     isMenuOpen &&
                     // NavItems
-                    <ul className="absolute lg:hidden top-24 right-2 duration-300 bg-dark z-50 p-2 menu text-white w-56 rounded-box">
+                    <ul onClick={()=> setIsMenuOpen(false)} className="absolute lg:hidden top-24 right-2 duration-300 bg-dark z-50 p-2 menu text-white w-56 rounded-box">
                         <NavItems />
 
                     {/* Login button */}
