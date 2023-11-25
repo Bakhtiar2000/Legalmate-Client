@@ -19,6 +19,7 @@ const CaseDiv = ({ singleCase }) => {
     const { _id, writer, writer_id, email, location, status, practice_area, case_post } = singleCase;
     const [receiverId, setReceiverId] = useState();
     const [senderId, setSenderId] = useState();
+    const [showFullText, setShowFullText] = useState(false);
 
     useEffect(() => {
         const user = userData.find(user => user?.email === email)
@@ -140,7 +141,18 @@ const CaseDiv = ({ singleCase }) => {
 
                 </div>
             </div>
-            <p>{case_post}</p>
+            <div>
+                <p className={`line-clamp-${showFullText ? 'none' : '3'}`}>{case_post}</p>
+                {!showFullText ? (
+                    <button className="text-primary font-bold hover:underline" onClick={() => setShowFullText(!showFullText)}>See more</button>
+                ) : (
+                    <div>
+                        <p>{case_post}</p>
+                        <button className="text-primary font-bold hover:underline" onClick={() => setShowFullText(!showFullText)}>See less</button>
+                    </div>
+                )}
+            </div>
+            <p></p>
         </div>
     );
 };

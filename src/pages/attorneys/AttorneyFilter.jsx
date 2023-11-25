@@ -6,6 +6,7 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import usePracticeAreas from '../../hooks/usePracticeAreas';
 import { useForm } from 'react-hook-form';
 import AttorneyContent from './AttorneyContent';
+import PageLoader from '../../components/PageLoader';
 
 const AttorneyFilter = () => {
     const [attorneysData, loading] = useAttorneys();
@@ -17,6 +18,7 @@ const AttorneyFilter = () => {
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
     const [currentPage, setCurrentPage] = useState(1);
+    
 
     const onSubmit = data => {
         setName(data.name)
@@ -42,7 +44,7 @@ const AttorneyFilter = () => {
     }, [name, location, practice_area, loading]);
  
      
-
+    if (loading) return <PageLoader />
     return (
         <div className='container py-20'>
 
