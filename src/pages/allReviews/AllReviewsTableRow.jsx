@@ -62,7 +62,7 @@ const AllReviewsTableRow = ({ ReviewsData , index ,refetch }) => {
                     <p className="hover:text-primary duration-300 hover:underline cursor-pointer">{name}</p>
                 </td>
                 <td>
-                    <td><button onClick={() => setIsCaseOpen(true)} className="mt-5 sm:mt-0 h-fit text-center px-3 py-1 bg-green-500 hover:bg-green-500/60 duration-300 rounded text-white cursor-pointer w-max">Show Post</button></td>
+                    <td className='flex justify-center'><button onClick={() => setIsCaseOpen(true)} className="mt-5 sm:mt-0 h-fit text-center px-3 py-1 bg-green-500 hover:bg-green-500/60 duration-300 rounded text-white cursor-pointer w-max">Show Review</button></td>
                 </td>
                 <td>
                     <div
