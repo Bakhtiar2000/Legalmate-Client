@@ -1,6 +1,6 @@
 [
   {
-    "_id": 1,
+    
     "name": "Bankruptcy",
     "img": "https://www.svgrepo.com/show/513165/bank.svg",
     "attorneys": 19,
@@ -14,7 +14,7 @@
     "details": "Bankruptcy lawyers are experts in the Bangladesh Bankruptcy Code, and handle insolvency issues for individuals or corporations. Bankruptcy lawyers generally specialize in either consumer bankruptcy or commercial bankruptcy. In consumer bankruptcy, lawyers represent individuals or creditors; in commercial, they represent corporate creditors and debtors. However, the scope of work for bankruptcy lawyers in either specialization is the same, as both specializations navigate solutions for financial restructurings, plan confirmations, and valuation disputes. Clerking or interning at a firm that has a bankruptcy practice is one way to figure out whether a future position in this field suits you.While not required, some states offer bankruptcy law certification to further distinguish lawyers’ expertise in the field."
   },
   {
-    "_id": 2,
+    
     "name": "Business",
     "img": "https://www.svgrepo.com/show/422574/business-growth-management.svg",
     "attorneys": 26,
@@ -28,7 +28,7 @@
     "details": "Business lawyers, also known as corporate lawyers, handle legal matters for businesses and ensure that all company transactions occur within the scope of local, state, and federal laws. Common legal work includes mergers, acquisitions, formation or dissolution of businesses, patents, intellectual property, and liability disputes. Day to day, a business lawyer may conduct legal research, write and revise legal documents, and negotiate contracts. Some law schools allow students to pursue a business law certificate in addition to their J.D., and receive advanced training for a corporate law career. Upon graduating and passing the bar, business lawyers typically work at either a corporate firm, or as in-house counsel for a sole company. "
   },
   {
-    "_id": 3,
+    
     "name": "Constitution",
     "img": "https://www.svgrepo.com/show/95720/law-book.svg",
     "attorneys": 16,
@@ -40,7 +40,7 @@
     "details": "Constitutional lawyers deal with the interpretation and implementation of the Bangladesh Constitution, and balance the interests of government institutions with the interests of individuals. Various roles of a constitutional lawyer might include challenging the constitutionality of a piece of legislation, representing individuals in discrimination suits, or working as a constitutional law expert at a university. Constitutional lawyers may be involved in civil rights cases, and some argue legal issues before state supreme courts or the Bangladesh Supreme Court—a rare opportunity for lawyers in other fields. Depending on the school, law students may be able to obtain a constitutional law certificate or pursue advanced studies by taking a required number of related courses. While not required for a career, future employers may see it as a strong commitment to the practice area. "
   },
   {
-    "_id": 4,
+    
     "name": "Criminal Defense",
     "img": "https://www.svgrepo.com/show/380208/crime-handcuffs-magic-magician-police.svg",
     "attorneys": 32,
@@ -54,7 +54,7 @@
     "details": "Criminal defense lawyers advocate on behalf of those accused of criminal activity and ensure that their liberties and basic rights are fairly upheld within the justice system. A criminal defense lawyer may work as a public defender or as a private attorney. In either position, their job is to leverage the law to the advantage of the accused. They must protect the best interests of their client, within the bounds of the law. Criminal defense lawyers may appear in court more frequently than other types of lawyers—especially if a case goes to trial. A number of state bar associations offer specialty programs in criminal law, while those passionate about trial advocacy can receive certification as a criminal trial lawyer."
   },
   {
-    "_id": 5,
+    
     "name": "Employment and Labor",
     "img": "https://www.svgrepo.com/show/300247/labor-woman-labor.svg",
     "attorneys": 23,
@@ -68,7 +68,7 @@
     "details": "Employment and labor lawyers broadly handle the relationships between unions, employers, and employees. They deal with issues around workplace discrimination, harassment, wage and hours regulations, benefits, and pension security. While the responsibilities of employment lawyers and labor lawyers tend to overlap, labor lawyers focus on union-management relations and collective bargaining, while employment lawyers address matters in non-union workplaces. Just as with other specialties, many law schools offer a specialization certificate in employment/labor law for students who take a minimum number of courses in the area, but it is not required for employment. "
   },
   {
-    "_id": 6,
+    
     "name": "Entertainment",
     "img": "https://www.svgrepo.com/show/444084/map-entertainment.svg",
     "attorneys": 17,
@@ -82,7 +82,7 @@
     "details": "Entertainment lawyers represent athletes, artists, musicians, actors, and other media-related clients or brands. They help to protect the intellectual property of their clients, which can be anything from a singer’s lyrics to a comedian’s comedy routine. Additionally, entertainment lawyers may negotiate contracts and fee arrangements, secure talent releases, act as a liaison between agents or venues, or oversee membership into unions and guilds. You’ll find a number of law schools offer certificate programs or classes in entertainment law, even at the LL.M. level. "
   },
   {
-    "_id": 7,
+    
     "name": "Estate Planning",
     "img": "https://www.svgrepo.com/show/506663/home.svg",
     "attorneys": 16,
@@ -96,7 +96,7 @@
     "details": "An estate planning lawyer is well-versed in the intricacies of property rights, wills, probate, and trusts. They provide legal advice and assistance to ensure client assets passing both inside and outside the will or trust are handled correctly, while also ensuring that tax and legal issues are properly addressed. Deciding how to provide for various family members is a delicate process, so estate planning lawyers may use questionnaires to help clients evaluate their assets and liabilities, and aid them in their decision-making. Estate planning lawyers may pursue additional certification—most commonly the Chartered Trust and Estate Planner (CTEP), Accredited Estate Planner (AEP), or the Certified Trust and Fiduciary Advisor (CTFA) certification."
   },
   {
-    "_id": 8,
+    
     "name": "Family",
     "img": "https://www.svgrepo.com/show/438524/family-round.svg",
     "attorneys": 42,
@@ -110,7 +110,7 @@
     "details": "While many people may think of family lawyers as divorce attorneys who handle the division of marital assets, child custody, and alimony, family law extends to many more issues. Any domestic relations or family-related issues including adoption and guardianship, paternity, juvenile delinquency matters, and child welfare fall within the scope of a family lawyer. Typical responsibilities of a family lawyer may include drafting contracts or negotiations, writing prenuptial agreements, counseling clients on legal options, or resolving familial disputes. Family lawyers can work at smaller law firms specializing in family law, or at nonprofit organizations. Some states also offer board certification in family law or child welfare law for those who want to demonstrate verified knowledge and expertise in the area, but it is not required."
   },
   {
-    "_id": 9,
+    
     "name": "Immigration",
     "img": "https://www.svgrepo.com/show/429364/identification-immigration-passport.svg",
     "attorneys": 28,
@@ -124,7 +124,7 @@
     "details": "Gaining citizenship or legal status can be an intimidating process. Immigration lawyers play a pivotal role in providing guidance to individuals and families navigating the necessary requirements to live, work, or study in the Bangladesh Sometimes, immigration lawyers may even assist refugee and asylum seekers. Employers and employees participating in work-visa programs may also use immigration lawyers to assist in the process of gaining legal work status. Some law schools offer certificate programs that allow students to specialize in immigration law. However, even schools that do not offer a formal certificate may recommend suggested courses for interested students to take.  Immigration lawyers may work in a variety of settings, from firms that specialize in immigration law to government agencies or non-profit organizations."
   },
   {
-    "_id": 10,
+    
     "name": "Intellectual Property",
     "img": "https://www.svgrepo.com/show/504626/mull.svg",
     "attorneys": 15,
@@ -138,7 +138,7 @@
     "details": "Intellectual property (IP) lawyers protect and enforce the rights and creations of inventors, authors, artists, and businesses. IP law encompasses copyrighting, trademarking, patenting, and protecting trade secrets for tangible products like inventions, and intangible ones like brand names, slogans, or symbols. Lawyers in this field have three main responsibilities: the first is to counsel their clients on the best way to protect their intellectual property; the second is to protect their intellectual property by registering a trademark, copyright, or patent; and the third is to enforce intellectual property rights against infringement. Both law schools and state bars may offer either specialty programs or certificates to specialize in the field."
   },
   {
-    "_id": 11,
+    
     "name": "Personal Injury",
     "img": "https://www.svgrepo.com/show/482809/injury-1.svg",
     "attorneys": 11,
@@ -152,7 +152,7 @@
     "details": "Personal injury lawyers work primarily in civil litigations, representing clients who have sustained an injury. Most often, these injuries stem from car accidents, medical malpractice, product liability, or workplace accidents. Personal injury lawyers must prove that the responsible party—typically another individual or a corporation—is liable and owes damages to their client. Many of these cases are settled out of court. Personal injury lawyers follow the same educational path as all lawyers who earn a J.D. and pass the bar. However, personal injury certifications are less common, but some states, like Texas, do offer i"
   },
   {
-    "_id": 12,
+    
     "name": "Income Tax",
     "img": "https://www.svgrepo.com/show/486123/tax-yijiao-line.svg",
     "attorneys": 19,
