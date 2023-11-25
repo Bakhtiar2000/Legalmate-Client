@@ -38,7 +38,7 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
     const [receiverId, setReceiverId] = useState();
     const [axiosSecure] = useAxiosSecure();
     const [paymentSuccess, setPaymentSuccess] = useState();
-    const [targetRole, setTargetRole] = useState();
+    const [showFullText, setShowFullText] = useState(false);
     const [senderId, setSenderId] = useState();
 
     useEffect(() => {
@@ -213,8 +213,18 @@ const AttorneyDetailsBody = ({ singleAttorney }) => {
                     {/* About */}
                     {
                         about &&
-                        <div className="bg-primary/20 px-5 py-3 rounded-lg max-w-2xl">
-                            <p>{about}</p>
+                        <div className="bg-primary/20 px-5 py-3 rounded-lg max-w-3xl">
+                            <div>
+                                <p className={`line-clamp-${showFullText ? 'none' : '3'}`}>{about}</p>
+                                {!showFullText ? (
+                                    <button className="text-primary font-bold hover:underline" onClick={() => setShowFullText(!showFullText)}>See more</button>
+                                ) : (
+                                    <div>
+                                        <p>{about}</p>
+                                        <button className="text-primary font-bold hover:underline" onClick={() => setShowFullText(!showFullText)}>See less</button>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     }
 

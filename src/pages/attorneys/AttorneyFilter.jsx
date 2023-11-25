@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useAttorneys from '../../hooks/useAttorneys';
-import AttorneyDiv from '../../components/AttorneyDiv';
-import PageLoader from '../../components/PageLoader';
 import { BiCategory, BiSearchAlt, BiCurrentLocation } from 'react-icons/bi';
 import { AiOutlineClear } from 'react-icons/ai';
 import { BsFillPersonFill } from 'react-icons/bs';
 import usePracticeAreas from '../../hooks/usePracticeAreas';
 import { useForm } from 'react-hook-form';
-import Pagination from '../../components/Pagination';
+import AttorneyContent from './AttorneyContent';
 
 const AttorneyFilter = () => {
     const [attorneysData, loading] = useAttorneys();
@@ -19,12 +17,12 @@ const AttorneyFilter = () => {
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
     const [currentPage, setCurrentPage] = useState(1);
-    const attorneysPerPage = 8;
 
     const onSubmit = data => {
         setName(data.name)
         setLocation(data.location)
         setPractice_area(data.practice_area)
+        setCurrentPage(1);
         reset();
     }
 
@@ -43,11 +41,7 @@ const AttorneyFilter = () => {
         setFilteredData(filter);
     }, [name, location, practice_area, loading]);
  
-     // Pagination Logic
-     const indexOfLastAttorney = currentPage * attorneysPerPage;
-     const indexOfFirstAttorney = indexOfLastAttorney - attorneysPerPage;
-     const currentAttorneys = filteredData.slice(indexOfFirstAttorney, indexOfLastAttorney);
-     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+     
 
     return (
         <div className='container py-20'>
@@ -120,18 +114,9 @@ const AttorneyFilter = () => {
             </div>
             {
                 filteredData.length!==0?
-                filteredData?.map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>):
+                <AttorneyContent allAttorneys={filteredData} currentPage={currentPage} setCurrentPage={setCurrentPage}></AttorneyContent>:
                 <p className="py-4 px-6 max-w-5xl mx-auto sm:text-lg text-center bg-lightDark rounded-lg">☹ No lawyer Found!</p>
             }
-            {/* {
-                filteredData.length>attorneysPerPage &&
-                <Pagination
-                attorneysPerPage={attorneysPerPage}
-                totalAttorneys={filteredData.length}
-                paginate={paginate}
-                currentPage={currentPage}
-            />
-            } */}
         </div>
     );
 };
