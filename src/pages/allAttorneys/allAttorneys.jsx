@@ -11,9 +11,9 @@ const AllAttorneys = () => {
     return (
         <div>
             <Helmet>
-                <title>All Attorneys - Legalmate</title>
+                <title>All Lawyers - Legalmate</title>
             </Helmet>
-            <Breadcrumbs title="All Attorneys" />
+            <Breadcrumbs title="All Lawyers" />
 
             <div className='container py-20 '>
                 <div className="w-full max-w-5xl mx-auto overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-lightDark">

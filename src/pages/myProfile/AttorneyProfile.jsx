@@ -292,7 +292,7 @@ const AttorneyProfile = () => {
                                     </div>
 
                                     <div className="flex items-center gap-2">
-                                        <GrStatusGoodSmall fill="green" />
+                                        <GrStatusGoodSmall className={`text-green-500 ${license?.status === "Inactive" && "text-red-500"}`} />
                                         <p>Status:</p>
                                     </div>
                                 </div>
@@ -302,7 +302,7 @@ const AttorneyProfile = () => {
                                         <div>
                                             <p>{license?.state}</p>
                                             <p>{license?.acquired_year}</p>
-                                            <p className="text-green-500">{license?.status}</p>
+                                            <p className={`text-green-500 ${license?.status === "Inactive" && "text-red-500"}`}>{license?.status}</p>
                                         </div> :
 
                                         <div className='max-w-[160px] text-black'>
@@ -310,7 +310,7 @@ const AttorneyProfile = () => {
                                             <div className='w-full'>
                                                 <input
                                                     {...register("licenseState")}
-                                                    defaultValue={license.state}
+                                                    defaultValue={license?.state}
                                                     placeholder='License of State'
                                                     className='w-full border text-black bg-white border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
@@ -321,7 +321,7 @@ const AttorneyProfile = () => {
                                                 <input
                                                     type='number'
                                                     {...register("licenseAcquiredYear")}
-                                                    defaultValue={license.acquired_year}
+                                                    defaultValue={license?.acquired_year}
                                                     placeholder='Year of Acquisition'
                                                     className='w-full border text-black bg-white border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
                                                 />
@@ -329,12 +329,14 @@ const AttorneyProfile = () => {
 
                                             {/* license Status */}
                                             <div className='w-full'>
-                                                <input
+                                                <select
                                                     {...register("licenseStatus")}
-                                                    defaultValue={license.status}
-                                                    placeholder='Active / Inactive'
+                                                    defaultValue={license?.status}
                                                     className='w-full border text-black bg-white border-dark/40 px-1 rounded-md focus:outline-none focus:border-primary mb-1'
-                                                />
+                                                >
+                                                    <option value="Active">Active</option>
+                                                    <option value="Inactive">Inactive</option>
+                                                </select>
                                             </div>
                                         </div>
                                 }
@@ -591,7 +593,7 @@ const AttorneyProfile = () => {
                             <input
                                 type='text'
                                 {...register("link", { required: true })}
-                                placeholder='Provide the drive link of Attorney documents'
+                                placeholder='Provide the drive link of Lawyer documents'
                                 className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.link && 'border-2 border-red-500'}`}
                             />
                         </div>
@@ -726,7 +728,7 @@ const AttorneyProfile = () => {
                                 <input
                                     type='text'
                                     {...register("position", { required: true })}
-                                    placeholder='e.g: Attorney'
+                                    placeholder='e.g: Lawyer'
                                     className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${errors.position && 'border-2 border-red-500'}`}
                                 />
                             </div>

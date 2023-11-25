@@ -146,7 +146,7 @@ const Register = () => {
                   value="attorney"
                   {...register("role", { required: true })}
                 />
-                <label className='pl-2' htmlFor="attorney">Attorney</label>
+                <label className='pl-2' htmlFor="attorney">Lawyer</label>
               </div>
               {errors.role && <span className='text-sm text-red-500 ml-1'>User Role is required</span>}
 

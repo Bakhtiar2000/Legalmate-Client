@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useAttorneys from '../../hooks/useAttorneys';
-import AttorneyDiv from '../../components/AttorneyDiv';
-import PageLoader from '../../components/PageLoader';
 import { BiCategory, BiSearchAlt, BiCurrentLocation } from 'react-icons/bi';
 import { AiOutlineClear } from 'react-icons/ai';
 import { BsFillPersonFill } from 'react-icons/bs';
 import usePracticeAreas from '../../hooks/usePracticeAreas';
 import { useForm } from 'react-hook-form';
+import AttorneyContent from './AttorneyContent';
 
 const AttorneyFilter = () => {
     const [attorneysData, loading] = useAttorneys();
@@ -17,10 +16,13 @@ const AttorneyFilter = () => {
     const [name, setName] = useState();
     const [location, setLocation] = useState();
     const [practice_area, setPractice_area] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+
     const onSubmit = data => {
         setName(data.name)
         setLocation(data.location)
         setPractice_area(data.practice_area)
+        setCurrentPage(1);
         reset();
     }
 
@@ -38,6 +40,8 @@ const AttorneyFilter = () => {
 
         setFilteredData(filter);
     }, [name, location, practice_area, loading]);
+ 
+     
 
     return (
         <div className='container py-20'>
@@ -110,8 +114,8 @@ const AttorneyFilter = () => {
             </div>
             {
                 filteredData.length!==0?
-                filteredData?.map((attorney) => <AttorneyDiv key={attorney._id} attorney={attorney}></AttorneyDiv>):
-                <p className="py-4 px-6 max-w-5xl mx-auto sm:text-lg text-center bg-lightDark rounded-lg">☹ No attorney Found!</p>
+                <AttorneyContent allAttorneys={filteredData} currentPage={currentPage} setCurrentPage={setCurrentPage}></AttorneyContent>:
+                <p className="py-4 px-6 max-w-5xl mx-auto sm:text-lg text-center bg-lightDark rounded-lg">☹ No lawyer Found!</p>
             }
         </div>
     );

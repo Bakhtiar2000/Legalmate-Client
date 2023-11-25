@@ -8,10 +8,10 @@ const Attorneys = () => {
     return (
         <div>
              <Helmet>
-                <title>Our Attorneys - Legalmate</title>
+                <title>Our Lawyers - Legalmate</title>
             </Helmet>
 
-            <Breadcrumbs title="Our Attorneys" />
+            <Breadcrumbs title="Our Lawyers" />
 
             <AttorneyFilter></AttorneyFilter>
         </div>

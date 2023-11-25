@@ -18,7 +18,7 @@ const LegalPracticeAreas = () => {
       <SectionTitle
         title="Our"
         redTitle="Practice Areas"
-        para="Find attorneys from your designated legal practice area"
+        para="Find lawyers from your designated legal practice area"
       />
 
       <Swiper
@@ -30,21 +30,21 @@ const LegalPracticeAreas = () => {
             slidesPerView: 2,
             spaceBetween: 20,
           },
-          768: {
+          1024: {
             slidesPerView: 3,
             spaceBetween: 40,
           },
-          1024: {
+          1280: {
             slidesPerView: 4,
             spaceBetween: 50,
           },
         }}
         modules={[Navigation]}
       >
-        <div>
+        <div className="">
         {
           practiceAreasData?.slice(0,6).map((practiceArea) => (
-            <SwiperSlide key={practiceArea?._id} className="rounded-lg border border-primary p-5 mx-auto duration-300">
+            <SwiperSlide key={practiceArea?._id} className="rounded-lg border border-primary p-5 duration-300">
               <img
                 className="w-16 md:w-20 h-16 md:h-20 object-cover bg-white text-secondary p-2 rounded-full mb-3"
                 src={practiceArea?.img}
@@ -52,11 +52,11 @@ const LegalPracticeAreas = () => {
               />
 
               {/* TODO: Make the name Link for the practice item */}
-              <Link to={`/practiceAreasDetails/${practiceArea?._id}`} className="text-2xl font-semibold mt-5 mb-2 cursor-pointer text-primary hover:underline duration-300 w-fit">
+              <Link to={`/practiceAreasDetails/${practiceArea?._id}`} className="text-xl md:text-2xl font-semibold mt-5 mb-2 cursor-pointer text-primary hover:underline duration-300">
                 {practiceArea?.name}
               </Link>
-              <p>Expert Attorneys: {practiceArea?.attorneys}</p>
-              <ul className="pl-5 mt-5">
+              <p>Expert Lawyers: {practiceArea?.attorneys}</p>
+              <ul className="pl-5 mt-3 md:mt-5">
                 {practiceArea?.contents.map((content, index) => (
                   <div key={index}>
                     <li className="list-item list-disc">{content}</li>

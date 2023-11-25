@@ -13,12 +13,12 @@ const Profile = () => {
             {/* Profile Picture */}
             {
                 currentUser?.image ? 
-                <div className='w-10 h-10'><img className="h-10 w-10 rounded-full object-cover shadow-lg duration-300 drop-shadow-xl cursor-pointer bg-white" src={currentUser?.image} alt={currentUser?.name} /></div> :
-                <p className="h-12 w-12 bg-primary text-dark text-xl flex items-center justify-center font-bold rounded-full uppercase shadow-lg duration-300 drop-shadow-xl cursor-pointer">{currentUser?.name?.slice(0, 2)}</p>
+                <img className="w-8 md:w-10 h-8 md:h-10 rounded-full object-cover shadow-lg duration-300 drop-shadow-xl cursor-pointer bg-white" src={currentUser?.image} alt={currentUser?.name} /> :
+                <p className="w-8 md:w-10 h-8 md:h-10 bg-primary text-dark text-sm md:text-xl flex items-center justify-center font-bold rounded-full uppercase shadow-lg duration-300 drop-shadow-xl cursor-pointer">{currentUser?.name?.slice(0, 2)}</p>
             }
             {/* Dropdown */}
             <div
-                className="absolute right-0 top-28 max-w-xs min-w-[200px] bg-white rounded-lg border-b-4 border-dark origin-top-right transition-all duration-300 ease-in-out group-hover:top-[50px] overflow-hidden invisible group-hover:visible opacity-0 group-hover:opacity-100">
+                className="absolute right-0 top-28 max-w-xs min-w-[200px] bg-white rounded-lg border-b-4 border-dark origin-top-right transition-all duration-300 ease-in-out group-hover:top-[36px] md:group-hover:top-[44px] overflow-hidden invisible group-hover:visible opacity-0 group-hover:opacity-100">
 
                 <ul className="flex flex-col text-dark">
                 {
