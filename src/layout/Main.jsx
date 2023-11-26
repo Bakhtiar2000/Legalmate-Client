@@ -10,6 +10,12 @@ import PageLoader from "../components/PageLoader"
 
 const Main = () => {
     const { currentUser, loading } = useContext(AuthContext);
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [pathname]);
+
     return (
         <div> 
             <Header />
