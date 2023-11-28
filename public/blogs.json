@@ -1,0 +1,122 @@
+[
+    {
+        "_id": 1,
+        "question" : "If a wife want to send divorce notice what is the legal process for it and how much money may it cost?",
+        "answer": "Bangladeshi law allows a wife to seek divorce if her husband subjects her to physical or mental torture for a continuous period of two years and fails to provide maintenance during that time. Even after divorce, a wife can claim her 'Kabin' (dower) money. Divorce can be initiated through the office of a Qazi or a Notary Public. The divorce becomes effective after 90 days of issuing the divorce notice. The husband may or may not accept it. The divorce notice must be given to the husband or, if unavailable, to the Chairman of the Union Parishad. After divorce, it needs to be registered at the Qazi office. Cases can be filed with legal aid. If a case is filed with legal aid, there is no cost incurred.",
+        "practice_area": "Family law",
+        "read_time": 3,
+        "asked_by": "Sushmita mim",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 2,
+        "question" : "What legal recourse does a person have in Bangladesh if they've been injured due to someone else's negligence?",
+        "answer": "In Bangladesh, personal injury claims due to negligence fall under tort law. Individuals have the right to seek compensation for injuries caused by others' negligence, whether in road accidents, workplace mishaps, or medical malpractice. To pursue a claim, gathering evidence such as medical records, witness statements, and police reports is crucial. It's essential to file a case within the statutory limitation period, generally within three years from the date of the incident. Courts assess damages based on the severity of injuries, medical expenses, loss of income, and pain and suffering.",
+        "practice_area": "Personal Injury Law",
+        "read_time": 3,
+        "asked_by": "Samia Azme",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 3,
+        "question" : "What are the key components individuals need to know about income tax regulations in Bangladesh?",
+        "answer": "Bangladesh imposes income tax on residents' global income and non-residents' income sourced in Bangladesh. Understanding tax brackets, allowable deductions, exemptions, and filing obligations is crucial. Individuals should be aware of various sources of income, including employment, business profits, capital gains, and investments. Seeking professional guidance or consulting the National Board of Revenue (NBR) can clarify specific tax liabilities and ensure compliance with the Income Tax Ordinance.",
+        "practice_area": "Income Tax Law",
+        "read_time": 3,
+        "asked_by": "Raisul Zuhala",
+        "reader_count": 0,
+        "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 4,
+        "question" : "What legal requirements are essential for starting a business in Bangladesh?",
+        "answer": "Initiating a business in Bangladesh involves compliance with legal formalities. These include company registration with the Registrar of Joint Stock Companies and Firms, obtaining necessary licenses and permits, adhering to labor laws, ensuring tax registrations, and potentially understanding specific industry regulations. Determining the business structure, whether sole proprietorship, partnership, or company, also impacts legal obligations. Seeking legal advice is advisable to ensure compliance and avoid legal complications.",
+        "practice_area": "Business Law",
+        "read_time": 3,
+        "asked_by": "Jakia Sultana Munni",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 5,
+        "question" : "What are the legal rights and defenses available to someone accused of a crime in Bangladesh?",
+        "answer": "Accused individuals in Bangladesh have fundamental rights, including the right to legal representation, presumption of innocence until proven guilty, and a fair trial. Defenses can vary based on the nature of the crime, ranging from alibis and lack of evidence to self-defense or lawful justification. Understanding procedural rights during arrest, bail, trial, and appeals is crucial. Seeking legal counsel is highly recommended to navigate through legal procedures and build a robust defense strategy.",
+        "practice_area": "Criminal Defense Law",
+        "read_time": 3,
+        "asked_by": "Sk M. Arif Khan",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 6,
+        "question" : "How can individuals in Bangladesh ensure effective estate planning and asset distribution?",
+        "answer": "Estate planning in Bangladesh involves structuring assets and determining their distribution after death. It includes drafting wills, setting up trusts, and understanding inheritance laws. Proper documentation and compliance with succession laws are crucial to ensure the intended distribution of assets to heirs. Individuals need to identify beneficiaries, including family members, and specify their shares clearly. Consulting legal experts or registering wills can help in effective estate planning while minimizing potential disputes among heirs.",
+        "practice_area": "Estate Planning Law",
+        "read_time": 3,
+        "asked_by": "MD. BAKHTIAR FAHIM",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 7,
+        "question" : "How can an individual protect their intellectual property rights in Bangladesh?",
+        "answer": "In Bangladesh, intellectual property rights covering patents, trademarks, copyrights, and industrial designs are protected under specific laws. Registering patents with the Department of Patents, Designs & Trademarks, trademarks with the Department of Patents, Designs & Trademarks, and copyrights with the Copyright Office ensures legal protection. Enforcement mechanisms through civil and criminal courts safeguard against infringements.",
+        "practice_area": "Intellectual Property Law",
+        "read_time": 3,
+        "asked_by": "Sushmita mim",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 8,
+        "question" : "What legal regulations apply to artists and entertainers in Bangladesh?",
+        "answer": "Bangladesh has legal frameworks governing entertainment, covering contracts, royalties, image rights, and content creation. Artists and entertainers should adhere to contractual obligations, ensuring clarity on rights and royalties. Copyright laws protect artistic works, and agreements with production houses or distributors should be well-drafted to safeguard interests.",
+        "practice_area": "Entertainment Law",
+        "read_time": 3,
+        "asked_by": "Samia Azme",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 9,
+        "question" : "What are the procedures for obtaining and maintaining legal immigration status in Bangladesh?",
+        "answer": "Bangladesh's immigration laws outline various visas and permits for different purposes such as work, study, or residence. Applicants must fulfill specific criteria, including documentation and financial requirements. Renewing or extending visas before expiration and complying with immigration regulations ensure legal status in the country.",
+        "practice_area": "Immigration Law",
+        "read_time": 3,
+        "asked_by": "Raisul Zuhala",
+        "reader_count": 0,
+        "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 10,
+        "question" : "How does the Constitution of Bangladesh protect fundamental rights?",
+        "answer": "The Constitution of Bangladesh guarantees fundamental rights such as the right to equality, freedom of speech, religion, and privacy. The judiciary ensures the protection of these rights through the Supreme Court and the High Court Division. Citizens can seek legal remedies if their constitutional rights are infringed.",
+        "practice_area": "Constitution Law",
+        "read_time": 3,
+        "asked_by": "Jakia Sultana Munni",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 11,
+        "question" : "What are the legal procedures for bankruptcy or insolvency in Bangladesh?",
+        "answer": "In Bangladesh, bankruptcy proceedings are regulated under the Bankruptcy Act. Individuals or businesses facing financial distress can file for bankruptcy. The law outlines procedures for debt restructuring, liquidation, and the appointment of trustees to oversee the process, providing a legal framework for debt relief and resolution.",
+        "practice_area": "Bankruptcy Law",
+        "read_time": 3,
+        "asked_by": "Sk M. Arif Khan",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    },
+    {
+        "_id": 12,
+        "question" : "What are the key aspects of employment and labor laws in Bangladesh?",
+        "answer": "Bangladesh has comprehensive labor laws governing employment conditions, wages, working hours, and safety standards. Employers must comply with these laws concerning hiring, termination, benefits, and workplace safety. Employees have rights to fair treatment, remuneration, and protection against discrimination or unfair dismissal.",
+        "practice_area": "Employment and Labor Law",
+        "read_time": 3,
+        "asked_by": "MD. BAKHTIAR FAHIM",
+        "reader_count": 0,
+         "date_posted": "21/07/2023"
+    }
+]

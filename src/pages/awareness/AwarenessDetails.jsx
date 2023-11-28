@@ -6,9 +6,9 @@ import useAwareness from '../../hooks/useAwareness';
 import { FaRegClock } from 'react-icons/fa6';
 
 const AwarenessDetails = () => {
-    const singleAwareness= useLoaderData()
-    const [awarenessData]= useAwareness()
-    const {_id, video, thumbnail, title, practiceArea, blog, read_time}= singleAwareness
+    const singleAwareness = useLoaderData()
+    const [awarenessData] = useAwareness()
+    const { _id, video, thumbnail, title, practiceArea, blog, read_time } = singleAwareness
     const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
     const sidebarData = shuffleArray(awarenessData).filter(data => data?._id !== _id);
     return (
@@ -28,29 +28,29 @@ const AwarenessDetails = () => {
                         <p>{blog}</p>
                     </div>
                     <div className='cols-span-1 max-w-sm mt-10 xl:mt-0'>
-                    {
-                        sidebarData?.slice(0,2).map(sidebar=>
-                            <div
-                                key={sidebar?._id}
-                                className='rounded p-3 border border-primary/20 mb-5 shadow-lg hover:shadow-primary/40 duration-300'
-                            >
-                                 <img className='w-full rounded' src={sidebar?.thumbnail} alt="" />
-                                <div className='flex gap-5 justify-between mt-2'>
-                                    <p className='text-blue-500'>{sidebar?.practiceArea}</p>
-                                    <p className='flex justify-center gap-2 items-center text-sm'><FaRegClock /> {sidebar?.read_time} min read</p>
+                        {
+                            sidebarData?.slice(0, 2).map(sidebar =>
+                                <div
+                                    key={sidebar?._id}
+                                    className='rounded p-3 border border-primary/20 mb-5 shadow-lg hover:shadow-primary/40 duration-300'
+                                >
+                                    <img className='w-full rounded' src={sidebar?.thumbnail} alt="" />
+                                    <div className='flex gap-5 justify-between mt-2'>
+                                        <p className='text-blue-500'>{sidebar?.practiceArea}</p>
+                                        <p className='flex justify-center gap-2 items-center text-sm'><FaRegClock /> {sidebar?.read_time} min read</p>
+                                    </div>
+                                    <Link to={`/awarenessDetails/${sidebar?._id}`} className='text-lg text-primary hover:underline mt-2'>{sidebar?.title}</Link>
+                                    <p className='line-clamp-3 text-sm mt-2 mb-6'>{sidebar?.blog}</p>
+
+                                    {/* Sidebar */}
+                                    {/* <p className='border-t border-primary mt-2 mb-1'></p> */}
+
+                                    <Link to={`/awarenessDetails/${sidebar?._id}`} className='py-2 rounded bg-secondary text-center cursor-pointer'>
+                                        <button className='w-full mb-2'>Explore</button>
+                                    </Link>
                                 </div>
-                                <Link to={`/awarenessDetails/${sidebar?._id}`} className='text-lg text-primary hover:underline mt-2'>{sidebar?.title}</Link>
-                                <p className='line-clamp-3 text-sm mt-2 mb-6'>{sidebar?.blog}</p>
-
-                                {/* Sidebar */}
-                                {/* <p className='border-t border-primary mt-2 mb-1'></p> */}
-
-                                <Link to={`/awarenessDetails/${sidebar?._id}`} className='py-2 rounded bg-secondary text-center cursor-pointer'>
-                                    <button className='w-full mb-2'>Explore</button>
-                                </Link>
-                            </div>    
-                        )
-                    }
+                            )
+                        }
                     </div>
                 </div>
             </div>
