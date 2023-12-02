@@ -10,7 +10,6 @@ import useBlog from '../../hooks/useBlog';
 const Awareness = () => {
     const [awarenessData] = useAwareness()
     const [blogData] = useBlog()
-    console.log(awarenessData);
 
     return (
         <div>
@@ -25,7 +24,7 @@ const Awareness = () => {
                 <div className='lg:grid grid-cols-5 gap-5'>
                     {/* Blogs */}
                     <div className='col-span-3 mb-10 lg:mb-0 w-fit h-fit mx-auto'>
-                        <h2 className='text-3xl lg:text-3xl mb-6 lg:mb-8 text-primary  w-full text-center lg:text-left'>Blog Contents</h2>
+                        <h2 className='text-3xl lg:text-4xl mb-6 lg:mb-8 text-primary w-full text-center lg:text-left'>Blog Contents</h2>
                         <div className='border border-primary/40 rounded-lg bg-lightDark'>
                             {
                                 blogData.map(blog => <div
@@ -51,7 +50,7 @@ const Awareness = () => {
 
                     {/* Awareness videos */}
                     <div className='col-span-2 mx-auto lg:mx-0'>
-                        <h2 className='text-3xl lg:text-3xl mb-6 lg:mb-8 text-primary w-full text-center lg:text-left'>Video Contents</h2>
+                        <h2 className='text-3xl lg:text-4xl mb-6 lg:mb-8 text-primary w-full text-center lg:text-left'>Video Contents</h2>
                         {
                             awarenessData.map(awareness => <div
                                 key={awareness?._id}
