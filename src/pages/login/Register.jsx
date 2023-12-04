@@ -39,25 +39,26 @@ const Register = () => {
         profileUpdate(result.user, data.name)
           .then((result) => {
             axiosSecure.post('/users', userData)
-            .then(res => {
-              if (res.status === 200) {
-                logOut()
-                      .then()
-                      .catch()
-                      
+              .then(res => {
+                // console.log(res.data)
+                if (res.status === 200) {
+                  logOut()
+                    .then()
+                    .catch()
+
                   navigate('/login');
-                  
+
                   Swal.fire({
                     title: 'Account registration successful',
                     showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
+                      popup: 'animate__animated animate__fadeInDown'
                     },
                     hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
+                      popup: 'animate__animated animate__fadeOutUp'
                     }
-                })
-              }
-          })
+                  })
+                }
+              })
               .catch((err) => {
                 console.log(err)
               });
