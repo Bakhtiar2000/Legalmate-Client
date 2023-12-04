@@ -86,9 +86,7 @@ const router= createBrowserRouter([
                 {
                     path: "/blogDetails/:id",
                     element: <BlogDetails></BlogDetails>,
-                    // loader: ({ params }) => fetch(`${baseURL}awareness/${params.id}`)
-                    loader: () => fetch("/blogs.json")
-
+                    loader: ({ params }) => fetch(`${baseURL}blog/${params.id}`)
                 },
                 {
                     path: "/login",
