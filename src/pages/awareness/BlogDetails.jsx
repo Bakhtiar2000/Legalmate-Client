@@ -10,7 +10,7 @@ import { FaRegClock } from "react-icons/fa6";
 
 const BlogDetails = () => {
     const singleAwareness = useLoaderData()
-    const { _id, question, answer, practice_area, date_posted, asked_by, views } = singleAwareness[0]
+    const { _id, question, answer, practice_area, date_posted, asked_by, views } = singleAwareness
      
     const currentDate = new Date(moment(new Date()).format("YYYY-MM-DD"))
     const postedDate= new Date(date_posted)
