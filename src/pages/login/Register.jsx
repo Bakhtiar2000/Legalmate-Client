@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxios';
+import { sendEmailVerification } from 'firebase/auth';
 
 const Register = () => {
   const { signUp, profileUpdate, setLoading, logOut } = useContext(AuthContext)
@@ -36,28 +37,29 @@ const Register = () => {
     }
     signUp(data.email, data.password)
       .then((result) => {
+        sendEmailVerification(result?.user)
+          .then(() => {
+            Swal.fire({
+              title: 'Check Your mail to verify email address',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
+          })
         profileUpdate(result.user, data.name)
           .then((result) => {
             axiosSecure.post('/users', userData)
-            .then(res => {
-              if (res.status === 200) {
-                logOut()
-                      .then()
-                      .catch()
-                      
+              .then(res => {
+                if (res.status === 200) {
+                  logOut()
+                    .then()
+                    .catch()
                   navigate('/login');
-                  
-                  Swal.fire({
-                    title: 'Account registration successful',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                })
-              }
-          })
+                }
+              })
               .catch((err) => {
                 console.log(err)
               });

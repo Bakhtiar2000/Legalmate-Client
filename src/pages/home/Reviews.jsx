@@ -11,9 +11,10 @@ const Reviews = () => {
     const [ourReviewsData] = useOurReviews();
     const [review, setReview] = useState()
     useEffect(() => {
-        const approvedReview = ourReviewsData.filter(data => data.status === "approved")
-        //  console.log(approvedReview);
-        setReview(approvedReview)
+        if (ourReviewsData && ourReviewsData.length > 0) {
+            const approvedReviews = ourReviewsData.filter(data => data?.status === "approved");
+            setReview(approvedReviews);
+        }
     }, [ourReviewsData]);
     return (
         <section className='mx-2 pb-20'>
