@@ -6,10 +6,25 @@ import { Link } from 'react-router-dom';
 import useAwareness from '../../hooks/useAwareness';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import useBlog from '../../hooks/useBlog';
+import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxios';
 
 const Awareness = () => {
-    const [awarenessData] = useAwareness()
-    const [blogData] = useBlog()
+    const { currentUser } = useAuth();
+    const [awarenessData] = useAwareness();
+    const [blogData] = useBlog();
+    const [axiosSecure] = useAxiosSecure();
+
+    const increaseView = (_id) => {
+        // console.log(_id)
+        axiosSecure.patch(`/blog/increaseView/${_id}` )
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch((err) => console.log(err));
+
+    }
+   
 
     return (
         <div>
@@ -31,7 +46,15 @@ const Awareness = () => {
                                     key={blog?._id}
                                     className='py-2 md:py-3 lg:py-5 px-3 md:px-5 lg:px-8 border-b border-primary/20 mx-auto shadow hover:bg-primary/10 duration-300'
                                 >
-                                    <Link to={`/blogDetails/${blog?._id}`} className='font-semibold text-lg md:text-xl lg:text-2xl text-primary hover:underline duration-300'>{blog?.question}</Link>
+                                    <button onClick={() => increaseView(blog?._id)}>
+                                        <Link to={`/blogDetails/${blog?._id}`}
+                                            className='font-semibold text-lg md:text-xl lg:text-2xl text-primary hover:underline duration-300'>
+                                        {blog?.question}
+                                        </Link>
+                                    </button>
+
+
+
                                     <p className='line-clamp-2 mt-5 mb-4'>{blog?.answer}</p>
 
                                     <div className='flex justify-between gap-5 text-xs sm:text-sm md:text-base'>
@@ -40,7 +63,7 @@ const Awareness = () => {
                                         </div>
                                         <div className='flex items-center gap-2 bg-dark  px-2 py-1 rounded'>
                                             <FaRegClock />
-                                            <p>{blog?.read_time} min read</p>
+                                            <p>{blog?.read_time} min read </p>
                                         </div>
                                     </div>
                                 </div>)
