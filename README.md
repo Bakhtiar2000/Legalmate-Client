@@ -41,14 +41,14 @@ Legalmate is a platform designed to facilitate seamless communication between la
 
 ## Screenshots
 
-### Client Dashboard
-![Client Dashboard](path_to_image)
+### Client Side
+![Client Dashboard](public/Client%20Side.png)
 
-### Lawyer Dashboard
-![Lawyer Dashboard](path_to_image)
+### Lawyer Side
+![Lawyer Dashboard](public/Lawyer%20Side.png)
 
-### Admin Dashboard
-![Admin Dashboard](path_to_image)
+### Admin Side
+![Admin Dashboard](public/Admin%20Side.png)
 
 ## Installation
 
@@ -72,7 +72,7 @@ Legalmate is a platform designed to facilitate seamless communication between la
 
 1. Clone the server repository:
     ```bash
-    git clone https://github.com/yourusername/legalmate-server.git
+    git clone https://github.com/Bakhtiar2000/Legalmate-Server.git
     ```
 2. Install dependencies:
     ```bash
@@ -91,8 +91,3 @@ Legalmate is a platform designed to facilitate seamless communication between la
 3. Commit your changes (`git commit -am 'Add new feature'`).
 4. Push to the branch (`git push origin feature-name`).
 5. Open a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-****
