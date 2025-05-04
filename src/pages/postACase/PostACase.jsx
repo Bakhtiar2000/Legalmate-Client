@@ -25,20 +25,20 @@ const PostACase = () => {
         }
 
         axiosSecure.post('/case', addedCase)
-        .then(res => {
-            if (res.status === 200) {
-                Swal.fire(
-                    'Your Case is Posted!',
-                    'It will be visible after admin approval!',
-                    'success'
-                  )
-                refetch();
-                reset()
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(res => {
+                if (res.status === 200) {
+                    Swal.fire(
+                        'Your Case is Posted!',
+                        'It will be visible after admin approval!',
+                        'success'
+                    )
+                    refetch();
+                    reset()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
 
         //TODO: save the basic info data and refetch() after sending to database
         reset()
@@ -59,7 +59,7 @@ const PostACase = () => {
                         <textarea
                             {...register("case_post", { required: true })}
                             placeholder='Write the case for which you require a lawyer. Explain every details accordingly. N.B. You must choose appropriate law practice area for finding the appropriate lawyer'
-                            className='w-full h-60 border border-dark/40 py-2 md:py-3 px-3 md:px-5 rounded-md focus:outline-none focus:border-primary'
+                            className='w-full h-60 border border-dark/40 py-2 md:py-3 px-3 md:px-5 rounded-md focus:outline-none focus:border-primary text-white'
                         />
                         {errors.case_post && <span className='text-red-500 text-sm md:text-base'>Writing an appropriate case post is required</span>}
                     </div>
@@ -69,7 +69,7 @@ const PostACase = () => {
                             <select
                                 {...register("practice_area", { required: true })}
                                 defaultValue=""
-                                className="w-64 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1"
+                                className="w-64 border border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-1 text-white"
                             >
                                 <option disabled value="">Select post related law practice</option>
                                 {
