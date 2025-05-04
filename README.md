@@ -50,6 +50,22 @@ Legalmate is a platform designed to facilitate seamless communication between la
 ### Admin Side
 ![Admin Dashboard](public/Admin%20Side.png)
 
+## Test Credentials
+
+Use the following credentials to explore the platform:
+
+- **Admin**
+  - **Email:** legalmate2023@gmail.com  
+  - **Password:** 111111
+
+- **Client**
+  - **Email:** bakhtiarfahim360@gmail.com  
+  - **Password:** 111111
+
+- **Lawyer**
+  - **Email:** bakhtiar2120@gmail.com  
+  - **Password:** 111111
+
 ## Installation
 
 ### Client Code
